@@ -59,12 +59,12 @@ This consist in a aerospace IP used to data between another switch who contain a
 
 ###Configuration of Environment
 
-To systemC , icarus verilog and gtkwave follow instalation guide provided by developers and make propely exports to linux distro see includes and objects used during build of environment. The folder work is where you need compile and execute the test using systemC and DUT in verilog. Note on env_uart.cpp some includes fail because location so you need set it where you have compiled or instaled icarus verilog. 
+To systemC , icarus verilog and gtkwave follow instalation guide provided by developers and make propely exports to linux distro see includes and objects used during build of environment. The folder work is where you need compile and execute the test using systemC and DUT in verilog. Note on env_global_spw.cpp some includes fail because location so you need set it where you have compiled or instaled icarus verilog. 
 
 On work folder you should see after yoo installed systemC if is propely installed
 
 ```sh
-$ ldd sc_uart.so
+$ ldd final_spw.so
 ```
 
 The result of command should be this 
