@@ -79,7 +79,7 @@ localparam [5:0]  error_reset   = 6'b00_0000,
 assign enable_tx    = (!resetn | state_fsm == error_reset | state_fsm == error_wait)?1'b0:1'b1;
 
 //
-assign rx_resetn    = (!resetn | state_fsm == error_reset)?1'b0:1'b1;
+assign rx_resetn    = (state_fsm == error_reset)?1'b0:1'b1;
 
 //
 assign send_null_tx = (state_fsm == started | state_fsm == connecting | state_fsm == run)?1'b1:1'b0;
@@ -270,8 +270,10 @@ begin
 	end
 	else
 	begin
-		if(after850ns <= 9'd0 && state_fsm != error_reset)
+		if(after850ns <= 12'd9 && (auto_start | link_start))
 			after850ns <= after850ns + 12'd1;
+		else
+			after850ns <= 12'd0;
 	end
 
 end

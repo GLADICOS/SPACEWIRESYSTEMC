@@ -56,8 +56,8 @@ module RX_SPW (
 
 	wire [4:0] counter;
 
-	wire  [4:0] counter_pos;
-	wire  [4:0] counter_neg;
+	reg  [4:0] counter_pos;
+	reg  [4:0] counter_neg;
 
 	wire posedge_clk;
 	wire negedge_clk;
@@ -86,7 +86,7 @@ module RX_SPW (
 	
 	wire data_control_up;
 
-	assign data_control_up = (last_was_control)?1'b1:
+	assign data_control_up = (counter == 5'd3 & control[2:2])?1'b1:
 			         (last_was_data)?1'b1: 
 			         (last_was_time_code)?1'b1:1'b0;
 
@@ -100,8 +100,8 @@ module RX_SPW (
 			  ((rx_din ^ rx_sin) | !(rx_din ^ rx_sin))?counter + 5'd1:counter;
 */
 
-	assign counter_pos = (!rx_resetn)?5'd0:(counter == 5'd3 & control[2:2])?5'd0:(counter == 5'd9)?5'd0:(posedge_clk)?counter_pos+5'd1:counter_pos;
-	assign counter_neg = (!rx_resetn)?5'd0:(counter == 5'd3 & control[2:2])?5'd0:(counter == 5'd9)?5'd0:(posedge_clk)?counter_neg+5'd1:counter_neg;
+	//assign counter_pos = (!rx_resetn)?5'd0:(counter == 5'd3 & control[2:2])?5'd0:(counter == 5'd9)?5'd0:(posedge_clk)?counter_pos+5'd1:counter_pos;
+	//assign counter_neg = (!rx_resetn)?5'd0:(counter == 5'd3 & control[2:2])?5'd0:(counter == 5'd9)?5'd0:(negedge_clk)?counter_neg+5'd1:counter_neg;
 
 	assign  counter = counter_pos + counter_neg;
 
@@ -138,7 +138,8 @@ module RX_SPW (
 	assign rx_got_null      = (counter == 5'd3   & control_l_r[2:0] == 3'd7 & control_l_a[2:0] == 3'd4)? 1'b1:1'b0;
 	assign rx_got_bit       = (posedge_clk | negedge_clk)?1'b1:1'b0;
 
-	assign rx_error         = parity_error;
+	assign rx_error         = (parity_error)?1'b1: 
+				  ((counter == 5'd9 | counter == 5'd4) & !rx_got_fct & !rx_got_nchar & !rx_got_time_code & !rx_got_null & !last_was_control)?1'b1:1'b0;
 
 	assign rx_data_flag	= (rx_got_nchar)?data[8:0]:data_l_a[8:0];
 	assign rx_buffer_write	= (rx_got_nchar & data_control_up)?1'b1:1'b0;
@@ -146,16 +147,16 @@ module RX_SPW (
 	assign rx_time_out	= (rx_got_time_code)?timecode[7:0]:timecode_l_a[7:0];
 	assign rx_tick_out	= (rx_got_time_code & data_control_up)?1'b1:1'b0; 
 
-/*
-always@(posedge posedge_clk or negedge rx_resetn)
+
+always@(posedge posedge_clk or negedge rx_resetn  or posedge last_was_control)
 begin
-	if(!rx_resetn)
+	if(!rx_resetn | last_was_control)
 	begin
 		counter_pos <= 5'd0;	
 	end
 	else
 	begin
-		if(counter == 5'd3 & control[2:2])
+		if(counter == 5'd4 & control[2:2])
 		begin
 			counter_pos <= 5'd0;
 		end
@@ -171,15 +172,15 @@ begin
 end
 
 //
-always@(posedge negedge_clk or negedge rx_resetn)
+always@(posedge negedge_clk or negedge rx_resetn or posedge last_was_control)
 begin
-	if(!rx_resetn)
+	if(!rx_resetn | last_was_control )
 	begin
 		counter_neg <= 5'd0;	
 	end
 	else
 	begin
-		if(counter == 5'd3 & control[2:2])
+		if(counter == 5'd4 & control[2:2])
 		begin
 			counter_neg <= 5'd0;
 		end
@@ -193,7 +194,7 @@ begin
 		end
 	end
 end
-*/
+
 //parity error
 always@(*)
 begin
@@ -266,7 +267,7 @@ begin
 	last_was_data     = 1'b0;
 	last_was_time_code= 1'b0;
 
-	if(counter == 5'd3 & control[2:2])
+	if(counter == 5'd4 & control[2:2])
 	begin
 		last_was_control  = 1'b1;
 	end
