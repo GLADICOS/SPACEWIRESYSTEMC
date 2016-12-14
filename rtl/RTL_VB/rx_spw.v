@@ -93,16 +93,6 @@ module RX_SPW (
 	assign posedge_clk = (rx_din ^ rx_sin)?1'b1:1'b0;
 	assign negedge_clk = (!(rx_din ^ rx_sin))?1'b1:1'b0;
 
-/*
-	assign  counter = (!rx_resetn)?5'd0:
-			  (counter == 5'd3 & control[2:2])? 5'd0:
-			  (counter == 5'd9 )?5'd0:
-			  ((rx_din ^ rx_sin) | !(rx_din ^ rx_sin))?counter + 5'd1:counter;
-*/
-
-	//assign counter_pos = (!rx_resetn)?5'd0:(counter == 5'd3 & control[2:2])?5'd0:(counter == 5'd9)?5'd0:(posedge_clk)?counter_pos+5'd1:counter_pos;
-	//assign counter_neg = (!rx_resetn)?5'd0:(counter == 5'd3 & control[2:2])?5'd0:(counter == 5'd9)?5'd0:(negedge_clk)?counter_neg+5'd1:counter_neg;
-
 	assign  counter = counter_pos + counter_neg;
 
 	assign data[9:9] = (!rx_resetn)?1'b0:(counter == 5'd0)?rx_din:data[9:9];
@@ -132,11 +122,11 @@ module RX_SPW (
 	assign control[2:2]  = (!rx_resetn)?1'b0:(counter == 5'd1)?rx_din:control[2:2];
 	assign control[3:3]  = (!rx_resetn)?1'b0:(counter == 5'd0)?rx_din:control[3:3];
 
-	assign rx_got_fct       = (counter == 5'd3   & control_l_a[2:0] != 3'd7 & control[2:2] & control[2:0] == 3'd4)?1'b1:1'b0;
-	assign rx_got_nchar     = (!control_l_a[2:2] & data_l_a[2:0] != 3'd7)?1'b1:1'b0;
-	assign rx_got_time_code = (counter == 5'd9   & control_l_a[2:0] == 3'd7)? 1'b1:1'b0;
-	assign rx_got_null      = (counter == 5'd3   & control_l_r[2:0] == 3'd7 & control_l_a[2:0] == 3'd4)? 1'b1:1'b0;
-	assign rx_got_bit       = (posedge_clk | negedge_clk)?1'b1:1'b0;
+	assign rx_got_fct       = (!rx_resetn)?1'b0:(counter == 5'd3   & control_l_a[2:0] != 3'd7 & control[2:2] & control[2:0] == 3'd4)?1'b1:1'b0;
+	assign rx_got_nchar     = (!rx_resetn)?1'b0:(!control_l_a[2:2] & data_l_a[2:0] != 3'd7)?1'b1:1'b0;
+	assign rx_got_time_code = (!rx_resetn)?1'b0:(counter == 5'd9   & control_l_a[2:0] == 3'd7)? 1'b1:1'b0;
+	assign rx_got_null      = (!rx_resetn)?1'b0:(counter == 5'd3   & control_l_r[2:0] == 3'd7 & control_l_a[2:0] == 3'd4)? 1'b1:1'b0;
+	assign rx_got_bit       = (posedge_clk)?1'b1:1'b0;
 
 	assign rx_error         = (parity_error)?1'b1: 
 				  ((counter == 5'd9 | counter == 5'd4) & !rx_got_fct & !rx_got_nchar & !rx_got_time_code & !rx_got_null & !last_was_control)?1'b1:1'b0;
