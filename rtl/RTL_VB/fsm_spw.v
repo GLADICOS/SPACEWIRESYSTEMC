@@ -82,7 +82,7 @@ assign enable_tx    = (!resetn | state_fsm == error_reset | state_fsm == error_w
 assign rx_resetn    = (state_fsm == error_reset)?1'b0:1'b1;
 
 //
-assign send_null_tx = (state_fsm == started | state_fsm == connecting | state_fsm == run)?1'b1:1'b0;
+assign send_null_tx = (next_state_fsm == started | next_state_fsm == connecting | next_state_fsm == run)?1'b1:1'b0;
 
 //
 assign send_fct_tx  = (state_fsm == connecting | state_fsm == run)?1'b1:1'b0;
@@ -164,7 +164,7 @@ begin
 	run:
 	begin
 
-		if(rx_error | rx_credit_error | link_disable)
+		if(rx_error | rx_credit_error | link_disable  | after850ns == 12'd85)
 		begin
 			next_state_fsm = error_reset;
 		end
@@ -179,9 +179,8 @@ end
 
 always@(posedge pclk)
 begin
-	if(!resetn | after850ns == 12'd9)
+	if(!resetn)
 	begin
-		//delay_counter<= {width{1'b0}};
 		state_fsm <= error_reset;
 	end
 	else
@@ -260,7 +259,6 @@ begin
 
 end
 
-
 always@(posedge pclk)
 begin
 
@@ -270,7 +268,7 @@ begin
 	end
 	else
 	begin
-		if(after850ns <= 12'd9 && (auto_start | link_start))
+		if(after850ns < 12'd85 && (auto_start | link_start))
 			after850ns <= after850ns + 12'd1;
 		else
 			after850ns <= 12'd0;
