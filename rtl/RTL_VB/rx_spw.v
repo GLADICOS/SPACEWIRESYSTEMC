@@ -87,8 +87,8 @@ module RX_SPW (
 	wire data_control_up;
 
 	assign data_control_up = (counter == 5'd3 & control[2:2])?1'b1:
-			         (last_was_data)?1'b1: 
-			         (last_was_time_code)?1'b1:1'b0;
+			         (counter == 5'd9 & !control_l_a[2:2] & data_l_a[2:0] != 3'd7)?1'b1: 
+			         (counter == 5'd9 & control_l_a[2:0] == 3'd7)?1'b1:1'b0;
 
 	assign posedge_clk = (rx_din ^ rx_sin)?1'b1:1'b0;
 	assign negedge_clk = (!(rx_din ^ rx_sin))?1'b1:1'b0;
