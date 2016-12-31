@@ -135,6 +135,13 @@ module module_tb;
 
 		wire [5:0] TOP_FSM;
 
+		wire TX_CLOCK_RECOVERY_VLOG;
+		wire [3:0] SPW_SC_FSM;
+		wire [3:0] SPW_SC_FSM_OUT;
+
+		assign TX_CLOCK_RECOVERY_VLOG = TOP_DOUT ^ TOP_SOUT;
+		assign SPW_SC_FSM_OUT = SPW_SC_FSM;
+
 		integer i;
 
 		initial
@@ -194,30 +201,31 @@ module module_tb;
 
 
 
-		//
-		always@(posedge PCLK)
-			$write_tx_fsm_spw_ultra_light;
+	//
+	always@(posedge PCLK)
+		$write_tx_fsm_spw_ultra_light;
 
-		//
-		always@(posedge PCLK)
-			$write_tx_data_spw_ultra_light;
+	//
+	always@(posedge PCLK)
+		$write_tx_data_spw_ultra_light;
 
-		always@(posedge PCLK)
-			$write_tx_time_code_spw_ultra_light;
+	always@(posedge PCLK)
+		$write_tx_time_code_spw_ultra_light;
 
-		//
-		always@(posedge PCLK)
-			$receive_rx_data_spw_ultra_light;
+	//
+	always@(posedge BUFFER_WRITE)
+		$receive_rx_data_spw_ultra_light;
 		
-		always@(posedge PCLK)
-			$receive_rx_time_code_spw_ultra_light;
+	always@(posedge TICK_OUT)
+		$receive_rx_time_code_spw_ultra_light;
 
-		//
-		always@(posedge PCLK , negedge PCLK)
-			$global_reset;
-		//
-		always@(posedge CLK_SIM)
-			$run_sim;
+	//
+	always@(posedge PCLK , negedge PCLK)
+		$global_reset;
+	
+	//
+	always@(posedge CLK_SIM)
+		$run_sim;
 
 	//FLAG USED TO FINISH SIMULATION PROGRAM 
 	always@(posedge CLK_SIM)
