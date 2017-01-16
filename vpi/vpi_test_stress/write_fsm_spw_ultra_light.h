@@ -11,9 +11,6 @@ static int write_tx_fsm_spw_ultra_light_calltf(char*user_data)
 	link_enable_value.value.integer  = SC_TOP->verilog_linkenable();
 	vpi_put_value(LINKSTART, &link_enable_value, NULL, vpiNoDelay);
 
-	//if(SC_TOP->verilog_linkenable())
-	//	printf("TESTE\n");
-
 	auto_start_value.value.integer   = SC_TOP->verilog_autostart();
 	vpi_put_value(AUTOSTART, &auto_start_value, NULL, vpiNoDelay);
 

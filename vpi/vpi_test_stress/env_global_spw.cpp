@@ -2,9 +2,9 @@
 
 #include "../../systemC/link_sc.h"
 
-int counter;
+int counter=0;
 int data_iteration_vlog=0;
-int position;
+int position=0;
 
 #include <stdio.h>
 #include <iostream>
@@ -46,11 +46,11 @@ s_vpi_value link_disable_value;
 #define SEND_TIME_CODE 	0
 #define WAIT_500_CYCLES	1
 
-unsigned int state_test;
+unsigned int state_test=0;
 
-unsigned int state_test_rx;
+unsigned int state_test_rx=0;
 
-unsigned int counter_null;
+unsigned int counter_null=0;
 
 #include "run_sim.h"
 #include "global_init.h"

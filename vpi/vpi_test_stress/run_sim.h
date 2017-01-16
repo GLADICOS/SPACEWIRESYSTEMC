@@ -5,10 +5,12 @@ static int run_sim_calltf(char*user_data)
 	vpiHandle DIN          = vpi_handle_by_name("module_tb.TOP_DIN", NULL);
 	vpiHandle SIN          = vpi_handle_by_name("module_tb.TOP_SIN", NULL);
 
-	//vpiHandle DTA        = vpi_handle_by_name("module_tb.SPW_SC_FSM", NULL);
+	vpiHandle DTA        = vpi_handle_by_name("module_tb.SPW_SC_FSM", NULL);
 	//vpiHandle TX_CLOCK_OUT        = vpi_handle_by_name("module_tb.TX_CLOCK_OUT", NULL);
 
 	vpiHandle i          = vpi_handle_by_name("module_tb.i", NULL);
+	vpiHandle tx_clock   = vpi_handle_by_name("module_tb.time_clk_ns", NULL);
+
 
 	dout_value.format    = vpiIntVal;
 	sout_value.format    = vpiIntVal;
@@ -19,7 +21,7 @@ static int run_sim_calltf(char*user_data)
 	fsm_value.format     = vpiIntVal;
 
 	v_generate.format=vpiIntVal;
-	//fsm_value.format     = vpiIntVal;
+	fsm_value.format     = vpiIntVal;
 	//message_value.format = vpiIntVal;
 
 	if(SC_TOP->finish_simulation() == 1)
@@ -43,9 +45,16 @@ static int run_sim_calltf(char*user_data)
 		SC_TOP->set_rx_sin(sout_value.value.integer);
 		SC_TOP->set_rx_din(dout_value.value.integer);
 
-		//fsm_value.value.integer = SC_TOP->get_spw_fsm();
-		//vpi_put_value(DTA, &fsm_value, NULL, vpiNoDelay);
+		fsm_value.value.integer = SC_TOP->get_spw_fsm();
+		vpi_put_value(DTA, &fsm_value, NULL, vpiNoDelay);
 
+		vpi_get_value(tx_clock, &sout_value);
+
+		if(sout_value.value.integer != SC_TOP->verilog_frequency())
+		{
+			sin_value.value.integer = SC_TOP->verilog_frequency();
+			vpi_put_value(tx_clock, &sin_value, NULL, vpiNoDelay);
+		}
 		//fsm_value.value.integer = SC_TOP->clock_tx();
 		//vpi_put_value(TX_CLOCK_OUT, &fsm_value, NULL, vpiNoDelay);
 

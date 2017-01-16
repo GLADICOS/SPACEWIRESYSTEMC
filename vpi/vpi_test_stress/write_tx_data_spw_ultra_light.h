@@ -8,6 +8,7 @@ static int write_tx_data_spw_ultra_light_calltf(char*user_data)
 
 	if(SC_TOP->reset_set())
 	{
+
 		if(SC_TOP->start_tx_test())
 		{
 			switch(state_test)
@@ -16,17 +17,18 @@ static int write_tx_data_spw_ultra_light_calltf(char*user_data)
 
 					value_to_tx.value.integer = 0;
 					vpi_put_value(TX_WRITE, &value_to_tx, NULL, vpiNoDelay);
-
-					value_to_tx.value.integer = SC_TOP->take_data(position);
-					vpi_put_value(TX_DATA, &value_to_tx, NULL, vpiNoDelay);
 					state_test = 59;
 				break;
 				case 59:
+								
+					value_to_tx.value.integer = SC_TOP->take_data(position);
+					vpi_put_value(TX_DATA, &value_to_tx, NULL, vpiNoDelay);
+
 					vpi_get_value(TX_READY, &value_to_tx);
 					
 					if(value_to_tx.value.integer == 0)
 					{
-						value_to_tx.value.integer = 1;						
+						value_to_tx.value.integer =1;						
 						vpi_put_value(TX_WRITE, &value_to_tx, NULL, vpiNoDelay);
 						state_test = WAIT_DATA;
 					}
