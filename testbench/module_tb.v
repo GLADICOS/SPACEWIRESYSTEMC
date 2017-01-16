@@ -150,13 +150,14 @@ module module_tb;
 			$dumpvars(0,module_tb);
 			$global_init;
 			i=0;
+			time_clk_ns = 500;
 		 end
 
 		initial PCLK = 1'b0;
 		always #(5) PCLK = ~PCLK;
 
 		initial PPLLCLK = 1'b0;
-		always #(100) PPLLCLK = ~PPLLCLK;
+		always #(time_clk_ns/2) PPLLCLK = ~PPLLCLK;
 
 		initial CLK_SIM = 1'b0;
 		always #(1) CLK_SIM = ~CLK_SIM;
@@ -198,15 +199,12 @@ module module_tb;
 					.top_fsm(TOP_FSM)
 				      );
 
-
-
-
 	//
 	always@(posedge PCLK)
 		$write_tx_fsm_spw_ultra_light;
 
 	//
-	always@(posedge PCLK)
+	always@(posedge PCLK or posedge TOP_TX_READY)
 		$write_tx_data_spw_ultra_light;
 
 	always@(posedge PCLK)
