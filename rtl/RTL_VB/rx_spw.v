@@ -117,15 +117,15 @@ module RX_SPW (
 	assign timecode[8:8] = (!rx_resetn)?1'b0:(counter == 5'd8)?rx_din:timecode[8:8];
 	assign timecode[9:9] = (!rx_resetn)?1'b0:(counter == 5'd9)?rx_din:timecode[9:9];
 
-	assign control[0:0]  = (!rx_resetn)?1'b0:(counter == 5'd3)?rx_din:control[0:0];
-	assign control[1:1]  = (!rx_resetn)?1'b0:(counter == 5'd2)?rx_din:control[1:1];
-	assign control[2:2]  = (!rx_resetn)?1'b0:(counter == 5'd1)?rx_din:control[2:2];
-	assign control[3:3]  = (!rx_resetn)?1'b0:(counter == 5'd0)?rx_din:control[3:3];
+	assign control[0:0]  = (counter == 5'd3)?rx_din:control[0:0];
+	assign control[1:1]  = (counter == 5'd2)?rx_din:control[1:1];
+	assign control[2:2]  = (counter == 5'd1)?rx_din:control[2:2];
+	assign control[3:3]  = (counter == 5'd0)?rx_din:control[3:3];
 
-	assign rx_got_fct       = (!rx_resetn)?1'b0:(counter == 5'd3   & control_l_a[2:0] != 3'd7 & control[2:2] & control[2:0] == 3'd4)?1'b1:1'b0;
-	assign rx_got_nchar     = (!rx_resetn)?1'b0:(!control_l_a[2:2] & data_l_a[2:0] != 3'd7)?1'b1:1'b0;
-	assign rx_got_time_code = (!rx_resetn)?1'b0:(counter == 5'd9   & control_l_a[2:0] == 3'd7)? 1'b1:1'b0;
-	assign rx_got_null      = (!rx_resetn)?1'b0:(counter == 5'd3   & control_l_r[2:0] == 3'd7 & control_l_a[2:0] == 3'd4)? 1'b1:1'b0;
+	assign rx_got_fct       = (counter == 5'd3   & control_l_a[2:0] != 3'd7 & control[2:2] & control[2:0] == 3'd4)?1'b1:1'b0;
+	assign rx_got_nchar     = (!control_l_a[2:2] & data_l_a[2:0] != 3'd7)?1'b1:1'b0;
+	assign rx_got_time_code = (counter == 5'd9   & control_l_a[2:0] == 3'd7)? 1'b1:1'b0;
+	assign rx_got_null      = (counter == 5'd3   & control_l_r[2:0] == 3'd7 & control_l_a[2:0] == 3'd4)? 1'b1:1'b0;
 	assign rx_got_bit       = (posedge_clk)?1'b1:1'b0;
 
 	assign rx_error         = (parity_error)?1'b1: 

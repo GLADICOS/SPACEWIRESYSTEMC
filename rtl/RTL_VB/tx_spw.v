@@ -110,6 +110,11 @@ localparam [5:0] NULL     = 6'b000001,
 
 assign ready_tx_timecode = (enable_time_code & global_counter_transfer == 14)?1'b1:1'b0;
 
+/*
+assign ready_tx_data     = (enable_n_char & global_counter_transfer == 4'd9  & !data_tx_i[8])?1'b1:
+			   (enable_n_char & global_counter_transfer == 4'd3  &  data_tx_i[8])?1'b1:1'b0;
+*/
+
 always@(*)
 begin
 	tx_dout = 1'b0;
@@ -436,7 +441,8 @@ begin
 	else if((enable_null | enable_fct | enable_n_char) && tx_dout != last_tx_dout)
 	begin
 		tx_sout = last_tx_sout;	
-	end		
+	end	
+	
 end
 
 //slots open in another side
@@ -496,10 +502,10 @@ begin
 	begin
 		if(send_null_tx && enable_tx)
 		begin
-			if(!hold_null)
+			//if(!hold_null)
 				next_state_tx = tx_spw_null;
 			
-			enable_null = 1'b1;
+			//enable_null = 1'b1;
 		end
 		else
 		begin
@@ -535,7 +541,8 @@ begin
 			enable_fct = 1'b0;
 			if(send_fct_tx && fct_counter > 6'd0)
 			begin
-				next_state_tx =  tx_spw_full;
+				//if(global_counter_transfer == 4'd7)
+					next_state_tx =  tx_spw_full;
 			end
 
 		end
@@ -547,6 +554,13 @@ begin
 		enable_fct  = 1'b0;
 		enable_n_char = 1'b0;
 		enable_time_code = 1'b0;
+
+		/*
+		hold_null	<= 1'b0;
+		hold_fct	<= 1'b0;
+		hold_data	<= 1'b0;
+		hold_time_code	<= 1'b0;
+		*/
 
 		if(tickin_tx && !hold_null && !hold_fct && !hold_data)
 		begin
