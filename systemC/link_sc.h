@@ -37,6 +37,7 @@ class Control_SC
 	virtual bool verilog_linkenable();
 	virtual bool verilog_autostart();
 	virtual bool verilog_linkdisable();
+	virtual float verilog_frequency();
 
 	//tests 
 	virtual bool start_tx_test();
