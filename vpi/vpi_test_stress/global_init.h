@@ -24,6 +24,7 @@ static int global_init_calltf(char*user_data)
 	position = 0;
 	counter_null = 0;
 	state_test_rx=0;
+	state_test_tx_timec=0;
 
 	lib_handle = dlopen("./final_spw.so", RTLD_LAZY);
 

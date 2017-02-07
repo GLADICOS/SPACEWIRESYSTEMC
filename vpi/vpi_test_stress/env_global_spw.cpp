@@ -30,6 +30,7 @@ s_vpi_value din_value;
 s_vpi_value sin_value;
 s_vpi_value fsm_value;
 s_vpi_value value_to_tx;
+s_vpi_value value_to_tx_timec;
 s_vpi_value value_to_rx;
 
 s_vpi_value value_to_fsm;
@@ -47,6 +48,8 @@ s_vpi_value link_disable_value;
 #define WAIT_500_CYCLES	1
 
 unsigned int state_test=0;
+unsigned int state_test_tx_timec=0;
+unsigned int timecode=0;
 
 unsigned int state_test_rx=0;
 
