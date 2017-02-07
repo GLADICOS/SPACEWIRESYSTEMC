@@ -599,16 +599,11 @@ along with .  If not, see <http://www.gnu.org/licenses/>.
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <child>
-              <placeholder/>
-            </child>
-            <child>
-              <object class="GtkFrame" id="frameveriloginterface3">
+              <object class="GtkFrame" id="frameveriloginterface5">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="margin_left">20</property>
-                <property name="margin_right">20</property>
                 <property name="margin_top">11</property>
                 <property name="margin_bottom">12</property>
                 <property name="label_xalign">0</property>
@@ -619,17 +614,16 @@ along with .  If not, see <http://www.gnu.org/licenses/>.
                     <property name="can_focus">False</property>
                     <property name="left_padding">12</property>
                     <child>
-                      <object class="GtkButtonBox" id="btn_boxv_interface5">
+                      <object class="GtkButtonBox" id="btn_boxv_interface7">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="spacing">31</property>
                         <property name="layout_style">center</property>
                         <child>
-                          <object class="GtkButton" id="BtnSendDataScTx">
-                            <property name="label" translatable="yes">Send Data</property>
+                          <object class="GtkLabel" id="sytenctxsetup">
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">label</property>
                           </object>
                           <packing>
                             <property name="expand">True</property>
@@ -638,11 +632,40 @@ along with .  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkButton" id="BtnTimeCodeScTx">
-                            <property name="label" translatable="yes">Enable Time Code</property>
+                          <object class="GtkCheckButton" id="CheckBtnEopGenSystemC">
+                            <property name="label" translatable="yes">eop</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="draw_indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">True</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="CheckBtnEepGenSystemC">
+                            <property name="label" translatable="yes">eep</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="draw_indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">True</property>
+                            <property name="fill">True</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="BtnGenerateDataSc">
+                            <property name="label" translatable="yes">Generate</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
+                            <signal name="clicked" handler="on_BtnGenerateDataSc_clicked" swapped="no"/>
                           </object>
                           <packing>
                             <property name="expand">True</property>
@@ -650,15 +673,42 @@ along with .  If not, see <http://www.gnu.org/licenses/>.
                             <property name="position">3</property>
                           </packing>
                         </child>
+                        <child>
+                          <object class="GtkButton" id="BtnSendDataScTx">
+                            <property name="label" translatable="yes">send data</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">True</property>
+                            <property name="fill">True</property>
+                            <property name="position">5</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="BtnTimeCodeScTx">
+                            <property name="label" translatable="yes">time code</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <signal name="clicked" handler="on_BtnTimeCodeScTx_clicked" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="expand">True</property>
+                            <property name="fill">True</property>
+                            <property name="position">6</property>
+                          </packing>
+                        </child>
                       </object>
                     </child>
                   </object>
                 </child>
                 <child type="label">
-                  <object class="GtkLabel" id="veriloglabel3">
+                  <object class="GtkLabel" id="veriloglabel5">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">Verilog Interface</property>
+                    <property name="label" translatable="yes">SystemC Interface</property>
                   </object>
                 </child>
               </object>
@@ -666,8 +716,11 @@ along with .  If not, see <http://www.gnu.org/licenses/>.
                 <property name="expand">True</property>
                 <property name="fill">True</property>
                 <property name="padding">7</property>
-                <property name="position">1</property>
+                <property name="position">0</property>
               </packing>
+            </child>
+            <child>
+              <placeholder/>
             </child>
             <child>
               <placeholder/>
