@@ -54,7 +54,7 @@ module TX_SPW (
 		output reg tx_sout,
 		//
 		output  reg ready_tx_data,
-		output  ready_tx_timecode
+		output  reg ready_tx_timecode
 
 		);
 
@@ -108,9 +108,10 @@ localparam [5:0] NULL     = 6'b000001,
 
 	reg [3:0] global_counter_transfer; 
 
-assign ready_tx_timecode = (enable_time_code & global_counter_transfer == 14)?1'b1:1'b0;
-
 /*
+assign ready_tx_timecode = (enable_time_code & global_counter_transfer == 13)?1'b1:1'b0;
+
+
 assign ready_tx_data     = (enable_n_char & global_counter_transfer == 4'd9  & !data_tx_i[8])?1'b1:
 			   (enable_n_char & global_counter_transfer == 4'd3  &  data_tx_i[8])?1'b1:1'b0;
 */
@@ -261,35 +262,35 @@ begin
 	 end
 	 else if( enable_time_code & !first_time & global_counter_transfer == 4'd6)
 	 begin
-		tx_dout = timecode_s[7];
+		tx_dout = timecode_s[0];
 	 end
 	 else if( enable_time_code & !first_time & global_counter_transfer == 4'd7)
 	 begin
-		tx_dout = timecode_s[6];
+		tx_dout = timecode_s[1];
 	 end
 	 else if( enable_time_code & !first_time & global_counter_transfer == 4'd8)
 	 begin
-		tx_dout = timecode_s[5];
+		tx_dout = timecode_s[2];
 	 end
 	 else if( enable_time_code & !first_time & global_counter_transfer == 4'd9)
 	 begin
-		tx_dout = timecode_s[4];
+		tx_dout = timecode_s[3];
 	 end
 	 else if( enable_time_code & !first_time & global_counter_transfer == 4'd10)
 	 begin
-		tx_dout = timecode_s[3];
+		tx_dout = timecode_s[4];
 	 end
 	 else if( enable_time_code & !first_time & global_counter_transfer == 4'd11)
 	 begin
-		tx_dout = timecode_s[2];
+		tx_dout = timecode_s[5];
 	 end
 	 else if( enable_time_code & !first_time & global_counter_transfer == 4'd12)
 	 begin
-		tx_dout = timecode_s[1];
+		tx_dout = timecode_s[6];
 	 end
 	 else if( enable_time_code & !first_time & global_counter_transfer == 4'd13)
 	 begin
-		tx_dout = timecode_s[0];
+		tx_dout = timecode_s[7];
 	 end
 	 else if( enable_n_char   & !data_tx_i[8] & !first_time & last_type == NULL  & global_counter_transfer == 4'd0)
 	 begin
@@ -434,11 +435,11 @@ begin
 	begin
 		tx_sout = 1'b0;
 	end 
-	else if((enable_null | enable_fct | enable_n_char) && tx_dout == last_tx_dout)
+	else if((enable_null | enable_fct | enable_n_char | enable_time_code) && tx_dout == last_tx_dout)
 	begin
 		tx_sout = !last_tx_sout;
 	end
-	else if((enable_null | enable_fct | enable_n_char) && tx_dout != last_tx_dout)
+	else if((enable_null | enable_fct | enable_n_char | enable_time_code) && tx_dout != last_tx_dout)
 	begin
 		tx_sout = last_tx_sout;	
 	end	
@@ -588,17 +589,18 @@ always@(posedge pclk_tx)
 begin
 	if(!enable_tx)
 	begin
-		null_s <= 8'h74;
-		fct_s  <= 4'h4;
-		eop_s  <= 4'h5;
-		eep_s  <= 4'h6;
-		timecode_s <= 14'h1e00;
+		null_s        <= 8'h74;
+		fct_s         <= 4'h4;
+		eop_s         <= 4'h5;
+		eep_s         <= 4'h6;
+		timecode_s    <= 14'b01110000000000;
 		
-		fct_flag <= 3'd0;
+		fct_flag      <= 3'd0;
 		fct_send_last <= 3'd0;
 
-		first_time <= 1'b1;
-		ready_tx_data <= 1'b0;
+		first_time 	  <= 1'b1;
+		ready_tx_data	  <= 1'b0;
+		ready_tx_timecode <= 1'b0;
 
 		hold_null	<= 1'b0;
 		hold_fct	<= 1'b0;
@@ -629,6 +631,7 @@ begin
 		begin
 
 			ready_tx_data <= 1'b0;
+			ready_tx_timecode <= 1'b0;
 
 			//
 			if(fct_send_last != fct_send)
@@ -681,6 +684,7 @@ begin
 		begin
 
 			ready_tx_data <= 1'b0;
+			ready_tx_timecode <= 1'b0;
 
 			//
 			if(fct_counter_last != fct_counter)
@@ -713,6 +717,11 @@ begin
 		begin
 								
 			ready_tx_data <= 1'b0;
+
+			if(global_counter_transfer == 4'd13)
+			begin
+				ready_tx_timecode <= 1'b1;
+			end
 
 			//
 			if(fct_counter_last != fct_counter)
@@ -747,16 +756,19 @@ begin
 			if(global_counter_transfer < 4'd13)
 			begin
 				global_counter_transfer <= global_counter_transfer + 4'd1;
-				last_timein_control_flag_tx <= timecode_tx_i;
+				timecode_s <= {timecode_s[13:10],2'd2,timecode_tx_i[7:0]};
 			end
 			else
 			begin
+				last_timein_control_flag_tx <= timecode_tx_i;
 				global_counter_transfer <= 4'd0;
 			end
 		end
 		else if(enable_n_char)
 		begin
 			
+			ready_tx_timecode <= 1'b0;
+
 			//
 			if(fct_send_last != fct_send)
 			begin
