@@ -100,7 +100,6 @@ localparam [5:0] NULL     = 6'b000001,
 	reg [2:0] fct_flag;
 
 	reg [5:0] fct_counter;
-	reg [5:0] fct_counter_last;
 	reg [5:0] fct_counter_receive;
 
 	reg last_tx_dout;
@@ -108,13 +107,7 @@ localparam [5:0] NULL     = 6'b000001,
 
 	reg [3:0] global_counter_transfer; 
 
-/*
-assign ready_tx_timecode = (enable_time_code & global_counter_transfer == 13)?1'b1:1'b0;
 
-
-assign ready_tx_data     = (enable_n_char & global_counter_transfer == 4'd9  & !data_tx_i[8])?1'b1:
-			   (enable_n_char & global_counter_transfer == 4'd3  &  data_tx_i[8])?1'b1:1'b0;
-*/
 
 always@(*)
 begin
@@ -447,19 +440,48 @@ begin
 end
 
 //slots open in another side
-always@(posedge gotfct_tx or negedge enable_tx)
+always@(posedge gotfct_tx , negedge enable_tx)
 begin
-
 	if(!enable_tx)
 	begin
-		fct_counter <= {6{1'b0}};
+		fct_counter <= 6'd0;
 	end
-	else 
+	else
 	begin
-		if(fct_counter == 6'd56)
-			fct_counter <= 6'd8;
+		if(fct_counter  < 6'd55)
+		begin
+			if(enable_n_char && global_counter_transfer == 4'd9 && !data_tx_i[8])
+			begin
+				if(fct_counter < 6'd55)
+					fct_counter <= fct_counter_receive + 6'd8 - 6'd1;
+				else
+					fct_counter <= 6'd0;
+			end
+			else if(enable_n_char && global_counter_transfer == 4'd3 && data_tx_i[8])
+			begin
+				if(fct_counter < 6'd55)
+					fct_counter <= fct_counter_receive + 6'd8 - 6'd1;
+				else
+					fct_counter <= 6'd0;
+			end
+			else if(fct_counter == 6'd48) 
+			begin
+				if(fct_counter < 6'd55)
+					fct_counter <= fct_counter_receive + 6'd7;
+				else
+					fct_counter <= 6'd0;
+			end
+			else
+			begin
+				if(fct_counter < 6'd55)
+					fct_counter <= fct_counter_receive + 6'd8;
+				else
+					fct_counter <= 6'd0;
+			end
+
+		end
 		else
-			fct_counter <= fct_counter + 6'd8;
+		fct_counter <= 6'd0;
 	end
 end
 
@@ -614,7 +636,8 @@ begin
 		last_timein_control_flag_tx <= 8'd0;
 
 		fct_counter_receive <= 6'd0;
-		fct_counter_last <= 6'd0;
+		//fct_counter_update <= 6'd0;
+		//fct_counter_last <= 6'd0;
 
 		last_tx_dout      <= 1'b0;
 		last_tx_sout 	  <= 1'b0;
@@ -633,6 +656,8 @@ begin
 			ready_tx_data <= 1'b0;
 			ready_tx_timecode <= 1'b0;
 
+			if(fct_counter > 6'd0)
+				fct_counter_receive <= fct_counter;
 			//
 			if(fct_send_last != fct_send)
 			begin
@@ -646,21 +671,6 @@ begin
 				end
 
 				fct_send_last <= fct_send;
-			end
-
-			//
-			if(fct_counter_last != fct_counter)
-			begin
-				if(fct_counter == 6'd8 && fct_counter_last == 6'd56)
-				begin
-					fct_counter_receive <= fct_counter_receive + 6'd8;
-				end
-				else
-				begin
-					fct_counter_receive <= fct_counter_receive + (fct_counter - fct_counter_last);
-				end
-
-				fct_counter_last <= fct_counter;
 			end
 
 			if(first_time)
@@ -686,20 +696,9 @@ begin
 			ready_tx_data <= 1'b0;
 			ready_tx_timecode <= 1'b0;
 
-			//
-			if(fct_counter_last != fct_counter)
-			begin
-				if(fct_counter == 6'd8 && fct_counter_last == 6'd56)
-				begin
-					fct_counter_receive <= fct_counter_receive + 6'd8;
-				end
-				else
-				begin
-					fct_counter_receive <= fct_counter_receive + (fct_counter - fct_counter_last);
-				end
+			if(fct_counter > 6'd0)
+				fct_counter_receive <= fct_counter;
 
-				fct_counter_last <= fct_counter;
-			end
 
 			if(global_counter_transfer != 4'd3)
 			begin
@@ -718,26 +717,14 @@ begin
 								
 			ready_tx_data <= 1'b0;
 
+			if(fct_counter > 6'd0)
+				fct_counter_receive <= fct_counter;
+
+
 			if(global_counter_transfer == 4'd13)
 			begin
 				ready_tx_timecode <= 1'b1;
 			end
-
-			//
-			if(fct_counter_last != fct_counter)
-			begin
-				if(fct_counter == 6'd8 && fct_counter_last == 6'd56)
-				begin
-					fct_counter_receive <= fct_counter_receive + 6'd8;
-				end
-				else
-				begin
-					fct_counter_receive <= fct_counter_receive + (fct_counter - fct_counter_last);
-				end
-
-				fct_counter_last <= fct_counter;
-			end
-			
 			//
 			if(fct_send_last != fct_send)
 			begin
@@ -769,6 +756,8 @@ begin
 			
 			ready_tx_timecode <= 1'b0;
 
+			//if(fct_counter > 6'd0)
+			//	fct_counter_receive <= fct_counter;
 			//
 			if(fct_send_last != fct_send)
 			begin
@@ -803,23 +792,8 @@ begin
 					hold_data <= 1'b0;
 					global_counter_transfer <= 4'd0;
 					//
-					if(fct_counter_last != fct_counter)
-					begin
-						if(fct_counter == 6'd8 && fct_counter_last == 6'd56)
-						begin
-							fct_counter_receive <= fct_counter_receive + 6'd8 - 6'd1;
-						end
-						else
-						begin
-							fct_counter_receive <= fct_counter_receive + (fct_counter - fct_counter_last) - 6'd1;
-						end
+					fct_counter_receive <= fct_counter_receive - 6'd1;
 
-						fct_counter_last <= fct_counter;
-					end
-					else
-					begin
-						fct_counter_receive <= fct_counter_receive - 6'd1;
-					end
 				end
 
 			end
@@ -839,26 +813,13 @@ begin
 				end
 				else
 				begin
+
 					hold_data <= 1'b0;
 					global_counter_transfer <= 4'd0;
-					//
-					if(fct_counter_last != fct_counter)
-					begin
-						if(fct_counter == 6'd8 && fct_counter_last == 6'd56)
-						begin
-							fct_counter_receive <= fct_counter_receive + 6'd8 - 6'd1;
-						end
-						else
-						begin
-							fct_counter_receive <= fct_counter_receive + (fct_counter - fct_counter_last) - 6'd1;
-						end
 
-						fct_counter_last <= fct_counter;
-					end
-					else
-					begin
-						fct_counter_receive <= fct_counter_receive - 6'd1;
-					end
+
+					fct_counter_receive <= fct_counter_receive - 6'd1;
+
 				end
 			end
 
