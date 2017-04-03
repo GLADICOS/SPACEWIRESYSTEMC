@@ -262,16 +262,23 @@ end
 always@(posedge pclk)
 begin
 
-	if(!resetn | rx_got_bit)
+	if(!resetn)
 	begin
 		after850ns <= 12'd0;
 	end
 	else
 	begin
-		if(after850ns < 12'd85 && state_fsm == run)
-			after850ns <= after850ns + 12'd1;
-		else
+		if(rx_got_bit)
+		begin
 			after850ns <= 12'd0;
+		end
+		else
+		begin
+			if(after850ns < 12'd85 && state_fsm == run)
+				after850ns <= after850ns + 12'd1;
+			else
+				after850ns <= 12'd0;
+		end
 	end
 
 end
