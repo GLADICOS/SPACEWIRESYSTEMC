@@ -105,6 +105,8 @@ localparam [5:0] NULL     = 6'b000001,
 	reg last_tx_dout;
 	reg last_tx_sout;
 
+	reg block_sum;
+
 	reg [3:0] global_counter_transfer; 
 
 
@@ -439,52 +441,30 @@ begin
 	
 end
 
-//slots open in another side
-always@(posedge gotfct_tx , negedge enable_tx)
+always@(*)
 begin
-	if(!enable_tx)
+	fct_counter = 6'd0;
+
+	if(gotfct_tx)
 	begin
-		fct_counter <= 6'd0;
-	end
-	else
-	begin
-		if(fct_counter  < 6'd55)
+		if(block_sum)
 		begin
-			if(enable_n_char && global_counter_transfer == 4'd9 && !data_tx_i[8])
-			begin
-				if(fct_counter < 6'd55)
-					fct_counter <= fct_counter_receive + 6'd8 - 6'd1;
-				else
-					fct_counter <= 6'd0;
-			end
-			else if(enable_n_char && global_counter_transfer == 4'd3 && data_tx_i[8])
-			begin
-				if(fct_counter < 6'd55)
-					fct_counter <= fct_counter_receive + 6'd8 - 6'd1;
-				else
-					fct_counter <= 6'd0;
-			end
-			else if(fct_counter == 6'd48) 
-			begin
-				if(fct_counter < 6'd55)
-					fct_counter <= fct_counter_receive + 6'd7;
-				else
-					fct_counter <= 6'd0;
-			end
-			else
-			begin
-				if(fct_counter < 6'd55)
-					fct_counter <= fct_counter_receive + 6'd8;
-				else
-					fct_counter <= 6'd0;
-			end
 
 		end
 		else
-		fct_counter <= 6'd0;
+		begin
+			if(fct_counter_receive < 6'd48) 
+			begin
+				fct_counter = fct_counter_receive + 6'd8;
+			end
+			else
+			begin
+				fct_counter = fct_counter_receive + 6'd7;
+			
+			end
+		end
 	end
 end
-
 
 //slots open in our side
 always@(posedge send_fct_now or negedge enable_tx)
@@ -513,12 +493,13 @@ end
 always@(*)
 begin
 
-	next_state_tx = state_tx;
 
 	enable_null      = 1'b0;
 	enable_fct       = 1'b0;
 	enable_n_char    = 1'b0;
 	enable_time_code = 1'b0;
+
+	next_state_tx = state_tx;
 
 	case(state_tx)
 	tx_spw_start:
@@ -562,7 +543,7 @@ begin
 		else
 		begin
 			enable_fct = 1'b0;
-			if(send_fct_tx && fct_counter > 6'd0)
+			if(send_fct_tx && fct_counter_receive > 6'd0)
 			begin
 				//if(global_counter_transfer == 4'd7)
 					next_state_tx =  tx_spw_full;
@@ -572,19 +553,6 @@ begin
 	end
 	tx_spw_full:
 	begin
-
-		enable_null = 1'b0;
-		enable_fct  = 1'b0;
-		enable_n_char = 1'b0;
-		enable_time_code = 1'b0;
-
-		/*
-		hold_null	<= 1'b0;
-		hold_fct	<= 1'b0;
-		hold_data	<= 1'b0;
-		hold_time_code	<= 1'b0;
-		*/
-
 		if(tickin_tx && !hold_null && !hold_fct && !hold_data)
 		begin
 			enable_time_code = 1'b1;
@@ -593,15 +561,14 @@ begin
 		begin
 			enable_fct  = 1'b1;
 		end
-		else if(txwrite_tx && fct_counter_receive > 6'd0 && !hold_null && !hold_time_code && !hold_fct )
+		else if((txwrite_tx && fct_counter_receive > 6'd0 && !hold_null && !hold_time_code && !hold_fct) == 1'b1 )
 		begin
 			enable_n_char = 1'b1;				
 		end
-		else if(!hold_time_code && !hold_fct && !hold_data)
+		else
 		begin
 			enable_null = 1'b1;
 		end
-
 	end
 	endcase
 
@@ -636,12 +603,13 @@ begin
 		last_timein_control_flag_tx <= 8'd0;
 
 		fct_counter_receive <= 6'd0;
-		//fct_counter_update <= 6'd0;
-		//fct_counter_last <= 6'd0;
+	
+		block_sum  <= 1'b0;
 
 		last_tx_dout      <= 1'b0;
 		last_tx_sout 	  <= 1'b0;
 		state_tx <= tx_spw_start;
+
 	end
 	else
 	begin
@@ -656,8 +624,18 @@ begin
 			ready_tx_data <= 1'b0;
 			ready_tx_timecode <= 1'b0;
 
-			if(fct_counter > 6'd0)
+			if(gotfct_tx && !block_sum)
+			begin
 				fct_counter_receive <= fct_counter;
+				block_sum<= 1'b1;
+			end
+			else if(!gotfct_tx)
+			begin
+				block_sum<= 1'b0;
+			end
+			else
+				block_sum <= block_sum;
+
 			//
 			if(fct_send_last != fct_send)
 			begin
@@ -696,8 +674,17 @@ begin
 			ready_tx_data <= 1'b0;
 			ready_tx_timecode <= 1'b0;
 
-			if(fct_counter > 6'd0)
+			if(gotfct_tx && !block_sum)
+			begin
 				fct_counter_receive <= fct_counter;
+				block_sum<= 1'b1;
+			end
+			else if(!gotfct_tx)
+			begin
+				block_sum<= 1'b0;
+			end
+			else
+				block_sum <= block_sum;
 
 
 			if(global_counter_transfer != 4'd3)
@@ -717,8 +704,17 @@ begin
 								
 			ready_tx_data <= 1'b0;
 
-			if(fct_counter > 6'd0)
+			if(gotfct_tx && !block_sum)
+			begin
 				fct_counter_receive <= fct_counter;
+				block_sum<= 1'b1;
+			end
+			else if(!gotfct_tx)
+			begin
+				block_sum<= 1'b0;
+			end
+			else
+				block_sum <= block_sum;
 
 
 			if(global_counter_transfer == 4'd13)
@@ -780,20 +776,34 @@ begin
 				begin
 					ready_tx_data <= 1'b1;
 				end
+				else
+				begin
+					ready_tx_data <= 1'b0;
+				end
 
 				if(global_counter_transfer != 4'd9)
 				begin
 					hold_data <= 1'b1;
 					global_counter_transfer <= global_counter_transfer + 4'd1;
 					txdata_flagctrl_tx_last <= data_tx_i;
+
+					if(gotfct_tx && !block_sum)
+					begin
+						fct_counter_receive <= fct_counter;
+						block_sum<= 1'b1;
+					end
+					else if(!gotfct_tx)
+					begin
+						block_sum<= 1'b0;
+					end
+					else
+						block_sum <= block_sum;
 				end
 				else
 				begin
 					hold_data <= 1'b0;
 					global_counter_transfer <= 4'd0;
-					//
 					fct_counter_receive <= fct_counter_receive - 6'd1;
-
 				end
 
 			end
@@ -804,22 +814,35 @@ begin
 				begin
 					ready_tx_data <= 1'b1;
 				end
+				else
+				begin
+					ready_tx_data <= 1'b0;
+				end
 
 				if(global_counter_transfer != 4'd3)
 				begin
 					hold_data <= 1'b1;
 					global_counter_transfer <= global_counter_transfer + 4'd1;
 					txdata_flagctrl_tx_last <= data_tx_i;
+
+					if(gotfct_tx && !block_sum)
+					begin
+						fct_counter_receive <= fct_counter;
+						block_sum<= 1'b1;
+					end
+					else if(!gotfct_tx)
+					begin
+						block_sum<= 1'b0;
+					end
+					else
+						block_sum <= block_sum;
 				end
 				else
 				begin
 
 					hold_data <= 1'b0;
 					global_counter_transfer <= 4'd0;
-
-
 					fct_counter_receive <= fct_counter_receive - 6'd1;
-
 				end
 			end
 
