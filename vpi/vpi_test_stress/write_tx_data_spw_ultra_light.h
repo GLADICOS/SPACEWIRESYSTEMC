@@ -48,6 +48,11 @@ static int write_tx_data_spw_ultra_light_calltf(char*user_data)
 							value_to_tx.value.integer = 0;
 							vpi_put_value(TX_WRITE, &value_to_tx, NULL, vpiNoDelay);
 							state_test = 60;	
+						}
+						else
+						{
+							value_to_tx.value.integer = 0;
+							vpi_put_value(TX_WRITE, &value_to_tx, NULL, vpiNoDelay);
 						}					
 					}
 					else
