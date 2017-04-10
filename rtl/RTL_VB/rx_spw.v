@@ -47,11 +47,11 @@ module RX_SPW (
 			output rx_got_time_code,
 			output rx_got_fct,
 
-			output [8:0] rx_data_flag,
-			output rx_buffer_write,
+			output reg [8:0] rx_data_flag,
+			output reg rx_buffer_write,
 
-			output [7:0] rx_time_out,
-			output rx_tick_out
+			output reg [7:0] rx_time_out,
+			output reg rx_tick_out
 		 );
 
 
@@ -97,6 +97,8 @@ module RX_SPW (
 	reg parity_error;
 	wire check_c_d;
 
+	reg rx_data_take;
+
 	//CLOCK RECOVERY
 	assign posedge_clk 	= (rx_din ^ rx_sin)?1'b1:1'b0;
 	assign negedge_clk 	= (!(rx_din ^ rx_sin))?1'b1:1'b0;
@@ -112,14 +114,6 @@ module RX_SPW (
 
 	assign rx_got_nchar     = (control[2:0] != 3'd7 & is_data)?1'b1:1'b0;
 	assign rx_got_time_code = (control[2:0] == 3'd7 & is_data)?1'b1:1'b0;
-
-	assign rx_buffer_write	= ( (control[2:0] == 3'd5 & is_control) == 1'b1 | (control[2:0] != 3'd7 & is_data) == 1'b1)?1'b1:1'b0;
-	assign rx_data_flag     = (  (control[2:0] == 3'd6 & is_control) == 1'b1 )?9'b100000001:
-				  (  (control[2:0] == 3'd5 & is_control) == 1'b1 )?9'b100000000:
-				  (  (control[2:0] != 3'd7 & is_data) == 1'b1)?data[8:0]:9'd0;
-
-	assign rx_time_out	= ((control[2:0] == 3'd7 & is_data) == 1'b1)?timecode[7:0]:8'd0;
-	assign rx_tick_out	= ((control[2:0] == 3'd7 & is_data) == 1'b1)?1'b1:1'b0;
 
 always@(posedge posedge_clk or negedge rx_resetn)
 begin
@@ -293,10 +287,15 @@ begin
 		control	    <= 4'd0;
 		control_l_r <= 4'd0;
 
-		data 	    <= 10'd0;
-		data_l_r    <= 10'd0;
+		data 	        <= 10'd0;
+		data_l_r        <= 10'd0;
+		rx_data_flag    <= 9'd0; 
+		rx_buffer_write <= 1'b0;
+		rx_data_take    <= 1'b0;
 
 		timecode    <= 10'd0;
+		rx_time_out <= 8'd0;
+		rx_tick_out <= 1'b0;
 
 		last_is_control <=1'b0;
 		last_is_data 	<=1'b0;
@@ -309,11 +308,20 @@ begin
 	end
 	else
 	begin
+
+		rx_buffer_write <= rx_data_take;
+		rx_data_flag <= data[8:0];
+		
+		rx_time_out <= timecode;
+
 		if((control[2:0] != 3'd7 & is_data) == 1'b1)
 		begin
 
-			data        	 	<= {bit_d_9,bit_d_8,bit_d_7,bit_d_6,bit_d_5,bit_d_4,bit_d_3,bit_d_2,bit_d_1,bit_d_0};
+			data        	 	<= {bit_d_9,bit_d_8,bit_d_0,bit_d_1,bit_d_2,bit_d_3,bit_d_4,bit_d_5,bit_d_6,bit_d_7};
 			data_l_r    	 	<= data;
+			
+			rx_data_take <= 1'b1;
+			rx_tick_out  <= 1'b0;
 
 			last_is_control  	<=1'b0;
 			last_is_data     	<=1'b1;
@@ -326,6 +334,8 @@ begin
 		begin
 
 			timecode    		 <= {bit_d_9,bit_d_8,bit_d_0,bit_d_1,bit_d_2,bit_d_3,bit_d_4,bit_d_5,bit_d_6,bit_d_7};
+			rx_tick_out  <= 1'b1;
+			rx_data_take <= 1'b0;
 
 			last_is_control  	<= 1'b0;
 			last_is_data     	<= 1'b0;
@@ -339,15 +349,24 @@ begin
 
 			control     	 <= {bit_c_3,bit_c_2,bit_c_1,bit_c_0};
 			control_l_r 	 <= control[3:0];
-			
-/*
-			if(last_is_data & last_was_data)
+
+			if((control[2:0] == 3'd6 & is_control) == 1'b1 )
 			begin
-				data 	    <= 10'd0;
-				data_l_r    <= 10'd0;
-				timecode    <= 10'd0;
+				data <= 10'b0100000001;
+				rx_data_take <= 1'b1;
 			end
-*/
+			else if(  (control[2:0] == 3'd5 & is_control) == 1'b1 )
+			begin
+				data <= 10'b0100000000;
+				rx_data_take <= 1'b1;
+			end
+			else
+			begin
+				rx_data_take 	<= 1'b0;
+			end
+
+			rx_tick_out  <= 1'b0;
+
 			last_is_control 	 <= 1'b1;
 			last_is_data    	 <= 1'b0;
 			last_is_timec   	 <= 1'b0;
