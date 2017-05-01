@@ -582,10 +582,10 @@ always@(posedge pclk_tx)
 begin
 	if(!enable_tx)
 	begin
-		null_s        <= 8'h74;
-		fct_s         <= 4'h4;
-		eop_s         <= 4'h5;
-		eep_s         <= 4'h6;
+		null_s        <= 8'b01110100;
+		fct_s         <= 4'b0100;
+		eop_s         <= 4'b0101;
+		eep_s         <= 4'b0110;
 		timecode_s    <= 14'b01110000000000;
 		
 		fct_flag      <= 3'd7;
@@ -655,7 +655,7 @@ begin
 			if(first_time)
 			begin
 				first_time <= 1'b0;
-				hold_null <= 1'b1;
+				hold_null  <= 1'b1;
 				global_counter_transfer <= global_counter_transfer + 4'd1;
 			end
 			else if(global_counter_transfer != 4'd7)
