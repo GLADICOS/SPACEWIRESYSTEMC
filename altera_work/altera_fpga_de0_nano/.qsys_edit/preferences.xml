@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable filter="All Interfaces">
+  <columns>
+   <connections preferredWidth="191" />
+   <irq preferredWidth="34" />
+   <inputclock preferredWidth="149" />
+   <export preferredWidth="241" />
+  </columns>
+ </systemtable>
+ <library
+   expandedCategories="Library/Basic Functions/Simulation; Debug and Verification/Simulation,Library/Basic Functions/Simulation; Debug and Verification/Verification,Library/Qsys Interconnect,Library/Interface Protocols/Ethernet/Reference Design Components,Library/Basic Functions/DMA/mSGDMA Sub-core,Library/University Program/Bridges,Library/Basic Functions/Bridges and Adaptors/Memory Mapped,Library/Interface Protocols/Ethernet,Library/Basic Functions/DMA,Library/Basic Functions/Simulation; Debug and Verification,Library/University Program,Library/Interface Protocols/Audio &amp; Video,Library/DSP/Error Detection and Correction,Library/Interface Protocols/Ethernet/1G Multi-rate Ethernet,Library/University Program/Audio &amp; Video,Library/Interface Protocols/RapidIO,Library/Interface Protocols/Transceiver PLL,Project,Library/University Program/Memory,Library/Qsys Interconnect/Memory-Mapped Alpha,Library/Processors and Peripherals,Library/University Program/Clock,Library/Memory Interfaces and Controllers/Memory Interfaces with UniPHY,Library/Qsys Interconnect/Memory-Mapped,Library/DSP,Library/Basic Functions/Configuration and Programming,Library/Interface Protocols/PCI Express,Library/DSP/Primitive DSP,Library/Interface Protocols/PCI Express/Example Design Components,Library/Processors and Peripherals/Peripherals,Library/Low Power,Library/Basic Functions/Bridges and Adaptors,Library/Processors and Peripherals/Hard Processor Components,Library/Memory Interfaces and Controllers/SDRAM,Library/University Program/Generic IO,Library/Basic Functions/Bridges and Adaptors/Streaming,Library/Interface Protocols/JESD,Library/Qsys Interconnect/Tri-State Components,Library/Memory Interfaces and Controllers/Memory Interfaces with ALTMEMPHY,Library,Library/Processors and Peripherals/Hard Processor Systems,Library/Basic Functions/Simulation; Debug and Verification/Debug and Performance,Library/Interface Protocols,Library/University Program/Communications,Library/Basic Functions/Bridges and Adaptors/Clock,Library/Processors and Peripherals/Co-Processors,Library/DSP/Video and Image Processing,Library/Processors and Peripherals/Co-Processors/Nios II Custom Instructions,Library/Basic Functions/On Chip Memory,Library/Basic Functions,Library/Interface Protocols/PCI Express/QSYS Example Designs,Library/Memory Interfaces and Controllers/Flash,Library/Memory Interfaces and Controllers,Library/University Program/Audio &amp; Video/Video,Library/Basic Functions/Bridges and Adaptors/Interrupt,Library/Basic Functions/Bridges and Adaptors/Reset" />
+ <window width="1366" height="741" x="0" y="27" />
+ <generation greybox="0" />
+</preferences>

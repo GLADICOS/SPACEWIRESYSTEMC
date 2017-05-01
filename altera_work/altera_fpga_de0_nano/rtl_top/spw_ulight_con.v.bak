@@ -1,0 +1,171 @@
+
+module spw_ulight_con(
+								input   			FPGA_CLK1_50,
+								input   [1:0]  KEY
+							);
+
+
+	wire ppllclk;
+	wire ppll_5_MHZ;
+	wire ppll_10_MHZ;
+	wire ppll_50_MHZ;
+	wire ppll_100_MHZ;
+	wire ppll_150_MHZ;
+	wire ppll_200_MHZ;
+	wire ppll_300_MHZ;
+
+	wire top_tx_write;
+	wire [8:0] top_tx_data;
+
+	wire top_tx_tick;
+	wire [7:0] top_tx_time;
+
+	wire credit_error_rx;
+	wire top_send_fct_now;
+
+	wire [8:0] datarx_flag;
+	wire buffer_write;
+
+	wire [7:0] time_out;
+	wire tick_out;
+
+	wire top_dout;
+	wire top_sout;
+	
+	wire top_din;
+	wire top_sin;
+
+	wire top_tx_ready;
+	wire top_tx_ready_tick;
+
+	wire [5:0] top_fsm_i;
+	
+	wire [7:0] clock_sel;
+	wire reset_hps_n;
+		
+	wire top_auto_start;
+	wire top_link_start;
+	wire top_link_disable;
+	
+	wire resetn_rx;
+	wire error_rx;
+
+	wire got_bit_rx;
+	wire got_null_rx;
+	wire got_nchar_rx;
+	wire got_time_code_rx;
+	wire got_fct_rx;
+
+	wire enable_tx;
+	wire send_null_tx;
+	wire send_fct_tx;
+		
+	assign  ppllclk = (clock_sel == 8'd0)?ppll_5_MHZ:
+			  (clock_sel == 8'd1)?ppll_10_MHZ:
+			  (clock_sel == 8'd2)?ppll_50_MHZ:
+			  (clock_sel == 8'd3)?ppll_100_MHZ:
+			  (clock_sel == 8'd4)?ppll_200_MHZ:ppll_5_MHZ;
+			  //(clock_sel == 8'd5)?ppll_200_MHZ:
+			  //(clock_sel == 8'd6)?ppll_300_MHZ:ppll_5_MHZ;
+
+		assign top_sin = top_sout;
+		assign top_din = top_dout;
+		
+	spw_ulight_nofifo  AXI_INTERFACE (
+		.auto_start_external_connection_export(top_auto_start),      //      auto_start_external_connection.export
+		.clk_clk(FPGA_CLK1_50),                                    //                                 clk.clk
+		.credit_error_rx_external_connection_export(credit_error_rx), // credit_error_rx_external_connection.export
+		.data_en_to_w_external_connection_export(top_tx_write),    //    data_en_to_w_external_connection.export
+		.data_rx_r_external_connection_export(datarx_flag),       //       data_rx_r_external_connection.export
+		.data_rx_ready_external_connection_export(buffer_write),   //   data_rx_ready_external_connection.export
+		.data_tx_ready_external_connection_export(top_tx_ready),   //   data_tx_ready_external_connection.export
+		.data_tx_to_w_external_connection_export(top_tx_data),    //    data_tx_to_w_external_connection.export
+		//input  wire [5:0] fsm_info_external_connection_export,        //        fsm_info_external_connection.export
+		//output wire [7:0] led_fpga_external_connection_export,        //        led_fpga_external_connection.export
+		//output wire       link_disable_external_connection_export,    //    link_disable_external_connection.export
+		//output wire       link_start_external_connection_export,      //      link_start_external_connection.export
+		.pll_tx_outclk0_clk(ppll_5_MHZ),                         //                      pll_tx_outclk0.clk
+		.pll_tx_outclk1_clk(ppll_10_MHZ),                         //                      pll_tx_outclk1.clk
+		.pll_tx_outclk2_clk(ppll_50_MHZ),                         //                      pll_tx_outclk2.clk
+		.pll_tx_outclk3_clk(ppll_100_MHZ),                         //                      pll_tx_outclk3.clk
+		.pll_tx_outclk4_clk(ppll_200_MHZ),                         //                      pll_tx_outclk4.clk
+		.reset_reset_n(KEY[0])                              //                               reset.reset_n
+		//output wire       send_fct_now_external_connection_export,    //    send_fct_now_external_connection.export
+		//output wire       timec_en_to_tx_external_connection_export,  //  timec_en_to_tx_external_connection.export
+		//input  wire [7:0] timec_rx_r_external_connection_export,      //      timec_rx_r_external_connection.export
+		//input  wire       timec_rx_ready_external_connection_export,  //  timec_rx_ready_external_connection.export
+		//input  wire       timec_tx_ready_external_connection_export,  //  timec_tx_ready_external_connection.export
+		//output wire [7:0] timec_tx_to_w_external_connection_export    //   timec_tx_to_w_external_connection.export
+	);
+	
+			FSM_SPW FSM(
+			.pclk(ppll_100_MHZ),
+			.resetn(KEY[1]),
+
+			.auto_start(top_auto_start),
+			.link_start(top_link_start),
+			.link_disable(top_link_disable),
+
+			.rx_error(error_rx),
+			.rx_credit_error(credit_error_rx),
+			.rx_got_bit(got_bit_rx),
+			.rx_got_null(got_null_rx),
+			.rx_got_nchar(got_nchar_rx),
+			.rx_got_time_code(got_time_code_rx),
+			.rx_got_fct(got_fct_rx),
+			.rx_resetn(resetn_rx),
+
+			.enable_tx(enable_tx),
+			.send_null_tx(send_null_tx),
+			.send_fct_tx(send_fct_tx),
+
+			.fsm_state(top_fsm_i)
+	
+			);
+
+
+	RX_SPW RX(
+			.rx_din(top_din),
+			.rx_sin(top_sin),
+
+			.rx_resetn(resetn_rx),
+
+			.rx_error(error_rx),
+			.rx_got_bit(got_bit_rx),
+			.rx_got_null(got_null_rx),
+			.rx_got_nchar(got_nchar_rx),
+			.rx_got_time_code(got_time_code_rx),
+			.rx_got_fct(got_fct_rx),
+
+			.rx_data_flag(datarx_flag),
+			.rx_buffer_write(buffer_write),
+
+			.rx_time_out(time_out),
+			.rx_tick_out(tick_out)
+
+ 			 );
+
+	TX_SPW        TX(
+			.pclk_tx(ppllclk),
+
+			.data_tx_i(top_tx_data),
+			.txwrite_tx(top_tx_write),
+		
+			.timecode_tx_i(top_tx_time),
+			.tickin_tx(top_tx_tick),
+		
+			.enable_tx(enable_tx),
+			.send_null_tx(send_null_tx),
+			.send_fct_tx(send_fct_tx),
+
+			.gotfct_tx(got_fct_rx),
+			.send_fct_now(top_send_fct_now),
+		
+			.tx_dout(top_dout),
+			.tx_sout(top_sout),
+
+			.ready_tx_data(top_tx_ready),
+			.ready_tx_timecode(top_tx_ready_tick)
+			);
+
+endmodule

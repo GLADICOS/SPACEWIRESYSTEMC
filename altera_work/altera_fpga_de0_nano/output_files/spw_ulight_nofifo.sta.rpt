@@ -1,0 +1,1553 @@
+TimeQuest Timing Analyzer report for spw_ulight_nofifo
+Sun Apr 30 21:26:29 2017
+Quartus Prime Version 16.1.2 Build 203 01/18/2017 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. TimeQuest Timing Analyzer Summary
+  3. Parallel Compilation
+  4. SDC File List
+  5. Clocks
+  6. Slow 1100mV 85C Model Fmax Summary
+  7. Timing Closure Recommendations
+  8. Slow 1100mV 85C Model Setup Summary
+  9. Slow 1100mV 85C Model Hold Summary
+ 10. Slow 1100mV 85C Model Recovery Summary
+ 11. Slow 1100mV 85C Model Removal Summary
+ 12. Slow 1100mV 85C Model Minimum Pulse Width Summary
+ 13. Slow 1100mV 85C Model Metastability Summary
+ 14. Slow 1100mV 0C Model Fmax Summary
+ 15. Slow 1100mV 0C Model Setup Summary
+ 16. Slow 1100mV 0C Model Hold Summary
+ 17. Slow 1100mV 0C Model Recovery Summary
+ 18. Slow 1100mV 0C Model Removal Summary
+ 19. Slow 1100mV 0C Model Minimum Pulse Width Summary
+ 20. Slow 1100mV 0C Model Metastability Summary
+ 21. Fast 1100mV 85C Model Setup Summary
+ 22. Fast 1100mV 85C Model Hold Summary
+ 23. Fast 1100mV 85C Model Recovery Summary
+ 24. Fast 1100mV 85C Model Removal Summary
+ 25. Fast 1100mV 85C Model Minimum Pulse Width Summary
+ 26. Fast 1100mV 85C Model Metastability Summary
+ 27. Fast 1100mV 0C Model Setup Summary
+ 28. Fast 1100mV 0C Model Hold Summary
+ 29. Fast 1100mV 0C Model Recovery Summary
+ 30. Fast 1100mV 0C Model Removal Summary
+ 31. Fast 1100mV 0C Model Minimum Pulse Width Summary
+ 32. Fast 1100mV 0C Model Metastability Summary
+ 33. Multicorner Timing Analysis Summary
+ 34. Board Trace Model Assignments
+ 35. Input Transition Times
+ 36. Signal Integrity Metrics (Slow 1100mv 0c Model)
+ 37. Signal Integrity Metrics (Slow 1100mv 85c Model)
+ 38. Signal Integrity Metrics (Fast 1100mv 0c Model)
+ 39. Signal Integrity Metrics (Fast 1100mv 85c Model)
+ 40. Setup Transfers
+ 41. Hold Transfers
+ 42. Recovery Transfers
+ 43. Removal Transfers
+ 44. Report TCCS
+ 45. Report RSKM
+ 46. Unconstrained Paths Summary
+ 47. Clock Status Summary
+ 48. Unconstrained Input Ports
+ 49. Unconstrained Output Ports
+ 50. Unconstrained Input Ports
+ 51. Unconstrained Output Ports
+ 52. TimeQuest Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Intel and sold by Intel or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++-----------------------------------------------------------------------------+
+; TimeQuest Timing Analyzer Summary                                           ;
++-----------------------+-----------------------------------------------------+
+; Quartus Prime Version ; Version 16.1.2 Build 203 01/18/2017 SJ Lite Edition ;
+; Timing Analyzer       ; TimeQuest                                           ;
+; Revision Name         ; spw_ulight_nofifo                                   ;
+; Device Family         ; Cyclone V                                           ;
+; Device Name           ; 5CSEMA4U23C6                                        ;
+; Timing Models         ; Final                                               ;
+; Delay Model           ; Combined                                            ;
+; Rise/Fall Delays      ; Enabled                                             ;
++-----------------------+-----------------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.35        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;  34.8%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------+
+; SDC File List                                                                                          ;
++--------------------------------------------------------------------+--------+--------------------------+
+; SDC File Path                                                      ; Status ; Read at                  ;
++--------------------------------------------------------------------+--------+--------------------------+
+; sdc_spw/spw_ulight_nofifo.out.sdc                                  ; OK     ; Sun Apr 30 21:25:43 2017 ;
+; spw_ulight_nofifo/synthesis/submodules/altera_reset_controller.sdc ; OK     ; Sun Apr 30 21:25:43 2017 ;
++--------------------------------------------------------------------+--------+--------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ;
++---------------------------------------------------------------------------------+-----------+---------+-----------+-------+---------+------------+-----------+-------------+-------+--------+-----------+------------+----------+---------------------------------------------------------------------+------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+; Clock Name                                                                      ; Type      ; Period  ; Frequency ; Rise  ; Fall    ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master                                                              ; Source                                                                             ; Targets                                                                             ;
++---------------------------------------------------------------------------------+-----------+---------+-----------+-------+---------+------------+-----------+-------------+-------+--------+-----------+------------+----------+---------------------------------------------------------------------+------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; Generated ; 200.000 ; 5.0 MHz   ; 0.000 ; 100.000 ; 50.00      ; 80        ; 1           ;       ;        ;           ;            ; false    ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0] ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|vco0ph[0] ; { AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk } ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; Generated ; 100.000 ; 10.0 MHz  ; 0.000 ; 50.000  ; 50.00      ; 40        ; 1           ;       ;        ;           ;            ; false    ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0] ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|vco0ph[0] ; { AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk } ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; Generated ; 20.000  ; 50.0 MHz  ; 0.000 ; 10.000  ; 50.00      ; 8         ; 1           ;       ;        ;           ;            ; false    ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0] ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|vco0ph[0] ; { AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk } ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; Generated ; 10.000  ; 100.0 MHz ; 0.000 ; 5.000   ; 50.00      ; 4         ; 1           ;       ;        ;           ;            ; false    ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0] ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|vco0ph[0] ; { AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk } ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; Generated ; 5.000   ; 200.0 MHz ; 0.000 ; 2.500   ; 50.00      ; 2         ; 1           ;       ;        ;           ;            ; false    ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0] ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|vco0ph[0] ; { AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk } ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]             ; Generated ; 2.500   ; 400.0 MHz ; 0.000 ; 1.250   ; 50.00      ; 2         ; 8           ;       ;        ;           ;            ; false    ; FPGA_CLK1_50                                                        ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll|refclkin                ; { AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0] }             ;
+; detector_tokens:A|counter_neg[0]                                                ; Base      ; 2.000   ; 500.0 MHz ; 0.000 ; 0.500   ;            ;           ;             ;       ;        ;           ;            ;          ;                                                                     ;                                                                                    ; { detector_tokens:A|counter_neg[0] }                                                ;
+; detector_tokens:B|counter_neg[0]                                                ; Base      ; 2.000   ; 500.0 MHz ; 0.000 ; 0.500   ;            ;           ;             ;       ;        ;           ;            ;          ;                                                                     ;                                                                                    ; { detector_tokens:B|counter_neg[0] }                                                ;
+; FPGA_CLK1_50                                                                    ; Base      ; 10.000  ; 100.0 MHz ; 0.000 ; 5.000   ;            ;           ;             ;       ;        ;           ;            ;          ;                                                                     ;                                                                                    ; { FPGA_CLK1_50 }                                                                    ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; Base      ; 2.000   ; 500.0 MHz ; 0.000 ; 0.500   ;            ;           ;             ;       ;        ;           ;            ;          ;                                                                     ;                                                                                    ; { FSM_SPW:FSM_B|state_fsm.connecting }                                              ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; Base      ; 2.000   ; 500.0 MHz ; 0.000 ; 0.500   ;            ;           ;             ;       ;        ;           ;            ;          ;                                                                     ;                                                                                    ; { FSM_SPW:FSM|state_fsm.connecting }                                                ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; Base      ; 2.000   ; 500.0 MHz ; 0.000 ; 0.500   ;            ;           ;             ;       ;        ;           ;            ;          ;                                                                     ;                                                                                    ; { RX_SPW:RX_B|counter_neg[0] }                                                      ;
+; RX_SPW:RX|counter_neg[0]                                                        ; Base      ; 2.000   ; 500.0 MHz ; 0.000 ; 0.500   ;            ;           ;             ;       ;        ;           ;            ;          ;                                                                     ;                                                                                    ; { RX_SPW:RX|counter_neg[0] }                                                        ;
++---------------------------------------------------------------------------------+-----------+---------+-----------+-------+---------+------------+-----------+-------------+-------+--------+-----------+------------+----------+---------------------------------------------------------------------+------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Slow 1100mV 85C Model Fmax Summary                                                                                   ;
++-----------+-----------------+---------------------------------------------------------------------------------+------+
+; Fmax      ; Restricted Fmax ; Clock Name                                                                      ; Note ;
++-----------+-----------------+---------------------------------------------------------------------------------+------+
+; 41.59 MHz ; 41.59 MHz       ; FSM_SPW:FSM_B|state_fsm.connecting                                              ;      ;
+; 51.48 MHz ; 51.48 MHz       ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ;      ;
+; 55.2 MHz  ; 55.2 MHz        ; detector_tokens:A|counter_neg[0]                                                ;      ;
+; 55.72 MHz ; 55.72 MHz       ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ;      ;
+; 55.94 MHz ; 55.94 MHz       ; RX_SPW:RX_B|counter_neg[0]                                                      ;      ;
+; 59.21 MHz ; 59.21 MHz       ; RX_SPW:RX|counter_neg[0]                                                        ;      ;
+; 59.74 MHz ; 59.74 MHz       ; FSM_SPW:FSM|state_fsm.connecting                                                ;      ;
+; 66.48 MHz ; 66.48 MHz       ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ;      ;
+; 70.0 MHz  ; 70.0 MHz        ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ;      ;
+; 70.0 MHz  ; 70.0 MHz        ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ;      ;
+; 74.34 MHz ; 74.34 MHz       ; detector_tokens:B|counter_neg[0]                                                ;      ;
+; 85.01 MHz ; 85.01 MHz       ; FPGA_CLK1_50                                                                    ;      ;
++-----------+-----------------+---------------------------------------------------------------------------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
+----------------------------------
+; Timing Closure Recommendations ;
+----------------------------------
+HTML report is unavailable in plain text report export.
+
+
++-----------------------------------------------------------------------------------------------------------+
+; Slow 1100mV 85C Model Setup Summary                                                                       ;
++---------------------------------------------------------------------------------+---------+---------------+
+; Clock                                                                           ; Slack   ; End Point TNS ;
++---------------------------------------------------------------------------------+---------+---------------+
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; -20.210 ; -184.365      ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; -19.832 ; -171.613      ;
+; FPGA_CLK1_50                                                                    ; -16.024 ; -102.908      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; -15.645 ; -816.219      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; -13.451 ; -527.885      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; -12.140 ; -428.815      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; -11.854 ; -407.639      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; -11.308 ; -371.407      ;
+; RX_SPW:RX|counter_neg[0]                                                        ; -10.007 ; -376.399      ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; -9.820  ; -373.281      ;
+; detector_tokens:A|counter_neg[0]                                                ; -9.498  ; -306.531      ;
+; detector_tokens:B|counter_neg[0]                                                ; -9.080  ; -303.976      ;
++---------------------------------------------------------------------------------+---------+---------------+
+
+
++-----------------------------------------------------------------------------------------------------------+
+; Slow 1100mV 85C Model Hold Summary                                                                        ;
++---------------------------------------------------------------------------------+---------+---------------+
+; Clock                                                                           ; Slack   ; End Point TNS ;
++---------------------------------------------------------------------------------+---------+---------------+
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; -10.415 ; -600.237      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; -10.289 ; -590.856      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; -9.477  ; -740.732      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; -8.774  ; -477.162      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; -8.126  ; -428.562      ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; -6.153  ; -109.585      ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; -6.018  ; -98.567       ;
+; FPGA_CLK1_50                                                                    ; -2.820  ; -52.085       ;
+; detector_tokens:B|counter_neg[0]                                                ; -1.844  ; -18.527       ;
+; detector_tokens:A|counter_neg[0]                                                ; -1.775  ; -23.243       ;
+; RX_SPW:RX|counter_neg[0]                                                        ; -1.554  ; -16.780       ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; -1.509  ; -23.294       ;
++---------------------------------------------------------------------------------+---------+---------------+
+
+
++-------------------------------------------------------------+
+; Slow 1100mV 85C Model Recovery Summary                      ;
++------------------------------------+--------+---------------+
+; Clock                              ; Slack  ; End Point TNS ;
++------------------------------------+--------+---------------+
+; RX_SPW:RX_B|counter_neg[0]         ; -6.317 ; -342.286      ;
+; RX_SPW:RX|counter_neg[0]           ; -6.128 ; -336.511      ;
+; FSM_SPW:FSM_B|state_fsm.connecting ; -4.615 ; -79.912       ;
+; FSM_SPW:FSM|state_fsm.connecting   ; -4.490 ; -89.038       ;
+; detector_tokens:B|counter_neg[0]   ; -3.195 ; -106.542      ;
+; detector_tokens:A|counter_neg[0]   ; -3.175 ; -116.907      ;
+; FPGA_CLK1_50                       ; 3.986  ; 0.000         ;
++------------------------------------+--------+---------------+
+
+
++-------------------------------------------------------------+
+; Slow 1100mV 85C Model Removal Summary                       ;
++------------------------------------+--------+---------------+
+; Clock                              ; Slack  ; End Point TNS ;
++------------------------------------+--------+---------------+
+; FSM_SPW:FSM_B|state_fsm.connecting ; -2.453 ; -20.993       ;
+; FSM_SPW:FSM|state_fsm.connecting   ; -1.515 ; -21.376       ;
+; detector_tokens:A|counter_neg[0]   ; 0.942  ; 0.000         ;
+; FPGA_CLK1_50                       ; 1.273  ; 0.000         ;
+; detector_tokens:B|counter_neg[0]   ; 1.393  ; 0.000         ;
+; RX_SPW:RX_B|counter_neg[0]         ; 3.710  ; 0.000         ;
+; RX_SPW:RX|counter_neg[0]           ; 3.964  ; 0.000         ;
++------------------------------------+--------+---------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Slow 1100mV 85C Model Minimum Pulse Width Summary                                                        ;
++---------------------------------------------------------------------------------+--------+---------------+
+; Clock                                                                           ; Slack  ; End Point TNS ;
++---------------------------------------------------------------------------------+--------+---------------+
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; -2.297 ; -365.892      ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; -1.522 ; -209.975      ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; -0.464 ; -16.637       ;
+; RX_SPW:RX|counter_neg[0]                                                        ; -0.328 ; -13.162       ;
+; detector_tokens:A|counter_neg[0]                                                ; -0.289 ; -10.061       ;
+; detector_tokens:B|counter_neg[0]                                                ; -0.210 ; -6.968        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; 1.076  ; 0.000         ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]             ; 1.250  ; 0.000         ;
+; FPGA_CLK1_50                                                                    ; 4.199  ; 0.000         ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; 4.227  ; 0.000         ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; 9.152  ; 0.000         ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; 49.286 ; 0.000         ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 95.614 ; 0.000         ;
++---------------------------------------------------------------------------------+--------+---------------+
+
+
+-----------------------------------------------
+; Slow 1100mV 85C Model Metastability Summary ;
+-----------------------------------------------
+The design MTBF is not calculated because there are no specified synchronizers in the design.
+Number of Synchronizer Chains Found: 69
+Shortest Synchronizer Chain: 2 Registers
+Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
+Worst Case Available Settling Time: 9.942 ns
+
+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Slow 1100mV 0C Model Fmax Summary                                                                                    ;
++-----------+-----------------+---------------------------------------------------------------------------------+------+
+; Fmax      ; Restricted Fmax ; Clock Name                                                                      ; Note ;
++-----------+-----------------+---------------------------------------------------------------------------------+------+
+; 41.49 MHz ; 41.49 MHz       ; FSM_SPW:FSM_B|state_fsm.connecting                                              ;      ;
+; 52.94 MHz ; 52.94 MHz       ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ;      ;
+; 55.62 MHz ; 55.62 MHz       ; detector_tokens:A|counter_neg[0]                                                ;      ;
+; 57.01 MHz ; 57.01 MHz       ; RX_SPW:RX_B|counter_neg[0]                                                      ;      ;
+; 57.61 MHz ; 57.61 MHz       ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ;      ;
+; 62.19 MHz ; 62.19 MHz       ; RX_SPW:RX|counter_neg[0]                                                        ;      ;
+; 63.47 MHz ; 63.47 MHz       ; FSM_SPW:FSM|state_fsm.connecting                                                ;      ;
+; 69.19 MHz ; 69.19 MHz       ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ;      ;
+; 73.23 MHz ; 73.23 MHz       ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ;      ;
+; 73.23 MHz ; 73.23 MHz       ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ;      ;
+; 77.02 MHz ; 77.02 MHz       ; detector_tokens:B|counter_neg[0]                                                ;      ;
+; 88.61 MHz ; 88.61 MHz       ; FPGA_CLK1_50                                                                    ;      ;
++-----------+-----------------+---------------------------------------------------------------------------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++-----------------------------------------------------------------------------------------------------------+
+; Slow 1100mV 0C Model Setup Summary                                                                        ;
++---------------------------------------------------------------------------------+---------+---------------+
+; Clock                                                                           ; Slack   ; End Point TNS ;
++---------------------------------------------------------------------------------+---------+---------------+
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; -19.836 ; -182.116      ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; -19.311 ; -165.313      ;
+; FPGA_CLK1_50                                                                    ; -15.463 ; -94.068       ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; -15.109 ; -774.150      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; -12.816 ; -509.762      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; -11.501 ; -410.436      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; -11.224 ; -389.910      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; -10.684 ; -353.226      ;
+; RX_SPW:RX|counter_neg[0]                                                        ; -9.592  ; -364.810      ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; -9.402  ; -357.568      ;
+; detector_tokens:A|counter_neg[0]                                                ; -9.031  ; -292.101      ;
+; detector_tokens:B|counter_neg[0]                                                ; -8.756  ; -293.796      ;
++---------------------------------------------------------------------------------+---------+---------------+
+
+
++-----------------------------------------------------------------------------------------------------------+
+; Slow 1100mV 0C Model Hold Summary                                                                         ;
++---------------------------------------------------------------------------------+---------+---------------+
+; Clock                                                                           ; Slack   ; End Point TNS ;
++---------------------------------------------------------------------------------+---------+---------------+
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; -10.326 ; -599.063      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; -10.203 ; -590.146      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; -9.334  ; -739.299      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; -8.645  ; -472.988      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; -8.001  ; -424.688      ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; -5.925  ; -106.634      ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; -5.686  ; -92.111       ;
+; FPGA_CLK1_50                                                                    ; -2.891  ; -60.198       ;
+; detector_tokens:B|counter_neg[0]                                                ; -1.795  ; -17.878       ;
+; detector_tokens:A|counter_neg[0]                                                ; -1.767  ; -23.754       ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; -1.459  ; -22.480       ;
+; RX_SPW:RX|counter_neg[0]                                                        ; -1.442  ; -15.671       ;
++---------------------------------------------------------------------------------+---------+---------------+
+
+
++-------------------------------------------------------------+
+; Slow 1100mV 0C Model Recovery Summary                       ;
++------------------------------------+--------+---------------+
+; Clock                              ; Slack  ; End Point TNS ;
++------------------------------------+--------+---------------+
+; RX_SPW:RX_B|counter_neg[0]         ; -6.266 ; -341.439      ;
+; RX_SPW:RX|counter_neg[0]           ; -6.055 ; -334.056      ;
+; FSM_SPW:FSM_B|state_fsm.connecting ; -4.637 ; -81.886       ;
+; FSM_SPW:FSM|state_fsm.connecting   ; -4.438 ; -89.344       ;
+; detector_tokens:B|counter_neg[0]   ; -3.176 ; -106.524      ;
+; detector_tokens:A|counter_neg[0]   ; -3.166 ; -116.934      ;
+; FPGA_CLK1_50                       ; 4.078  ; 0.000         ;
++------------------------------------+--------+---------------+
+
+
++-------------------------------------------------------------+
+; Slow 1100mV 0C Model Removal Summary                        ;
++------------------------------------+--------+---------------+
+; Clock                              ; Slack  ; End Point TNS ;
++------------------------------------+--------+---------------+
+; FSM_SPW:FSM_B|state_fsm.connecting ; -2.283 ; -18.916       ;
+; FSM_SPW:FSM|state_fsm.connecting   ; -1.252 ; -19.063       ;
+; detector_tokens:A|counter_neg[0]   ; 0.974  ; 0.000         ;
+; FPGA_CLK1_50                       ; 1.198  ; 0.000         ;
+; detector_tokens:B|counter_neg[0]   ; 1.482  ; 0.000         ;
+; RX_SPW:RX_B|counter_neg[0]         ; 3.788  ; 0.000         ;
+; RX_SPW:RX|counter_neg[0]           ; 4.016  ; 0.000         ;
++------------------------------------+--------+---------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Slow 1100mV 0C Model Minimum Pulse Width Summary                                                         ;
++---------------------------------------------------------------------------------+--------+---------------+
+; Clock                                                                           ; Slack  ; End Point TNS ;
++---------------------------------------------------------------------------------+--------+---------------+
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; -2.261 ; -358.628      ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; -1.324 ; -186.082      ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; -0.473 ; -17.529       ;
+; RX_SPW:RX|counter_neg[0]                                                        ; -0.280 ; -12.757       ;
+; detector_tokens:A|counter_neg[0]                                                ; -0.269 ; -9.432        ;
+; detector_tokens:B|counter_neg[0]                                                ; -0.172 ; -5.480        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; 1.003  ; 0.000         ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]             ; 1.250  ; 0.000         ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; 4.223  ; 0.000         ;
+; FPGA_CLK1_50                                                                    ; 4.272  ; 0.000         ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; 9.227  ; 0.000         ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; 49.220 ; 0.000         ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 95.547 ; 0.000         ;
++---------------------------------------------------------------------------------+--------+---------------+
+
+
+----------------------------------------------
+; Slow 1100mV 0C Model Metastability Summary ;
+----------------------------------------------
+The design MTBF is not calculated because there are no specified synchronizers in the design.
+Number of Synchronizer Chains Found: 69
+Shortest Synchronizer Chain: 2 Registers
+Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
+Worst Case Available Settling Time: 10.327 ns
+
+
+
+
++-----------------------------------------------------------------------------------------------------------+
+; Fast 1100mV 85C Model Setup Summary                                                                       ;
++---------------------------------------------------------------------------------+---------+---------------+
+; Clock                                                                           ; Slack   ; End Point TNS ;
++---------------------------------------------------------------------------------+---------+---------------+
+; FSM_SPW:FSM|state_fsm.connecting                                                ; -11.143 ; -97.320       ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; -11.059 ; -98.937       ;
+; FPGA_CLK1_50                                                                    ; -6.990  ; -42.378       ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; -6.900  ; -305.713      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; -6.710  ; -167.199      ;
+; RX_SPW:RX|counter_neg[0]                                                        ; -5.956  ; -223.157      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; -5.954  ; -127.317      ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; -5.913  ; -224.487      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; -5.872  ; -123.217      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; -5.573  ; -113.779      ;
+; detector_tokens:A|counter_neg[0]                                                ; -5.507  ; -178.451      ;
+; detector_tokens:B|counter_neg[0]                                                ; -5.308  ; -174.556      ;
++---------------------------------------------------------------------------------+---------+---------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Fast 1100mV 85C Model Hold Summary                                                                       ;
++---------------------------------------------------------------------------------+--------+---------------+
+; Clock                                                                           ; Slack  ; End Point TNS ;
++---------------------------------------------------------------------------------+--------+---------------+
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; -5.671 ; -312.574      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; -5.610 ; -307.999      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; -5.289 ; -399.030      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; -4.853 ; -251.224      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; -4.591 ; -231.574      ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; -3.830 ; -62.163       ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; -3.729 ; -61.537       ;
+; FPGA_CLK1_50                                                                    ; -1.525 ; -30.278       ;
+; detector_tokens:B|counter_neg[0]                                                ; -0.971 ; -9.614        ;
+; detector_tokens:A|counter_neg[0]                                                ; -0.881 ; -10.863       ;
+; RX_SPW:RX|counter_neg[0]                                                        ; -0.826 ; -8.831        ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; -0.799 ; -11.531       ;
++---------------------------------------------------------------------------------+--------+---------------+
+
+
++-------------------------------------------------------------+
+; Fast 1100mV 85C Model Recovery Summary                      ;
++------------------------------------+--------+---------------+
+; Clock                              ; Slack  ; End Point TNS ;
++------------------------------------+--------+---------------+
+; RX_SPW:RX_B|counter_neg[0]         ; -3.437 ; -183.213      ;
+; RX_SPW:RX|counter_neg[0]           ; -3.359 ; -179.789      ;
+; FSM_SPW:FSM|state_fsm.connecting   ; -2.422 ; -44.587       ;
+; FSM_SPW:FSM_B|state_fsm.connecting ; -2.307 ; -37.982       ;
+; detector_tokens:A|counter_neg[0]   ; -1.805 ; -63.321       ;
+; detector_tokens:B|counter_neg[0]   ; -1.800 ; -56.943       ;
+; FPGA_CLK1_50                       ; 6.433  ; 0.000         ;
++------------------------------------+--------+---------------+
+
+
++-------------------------------------------------------------+
+; Fast 1100mV 85C Model Removal Summary                       ;
++------------------------------------+--------+---------------+
+; Clock                              ; Slack  ; End Point TNS ;
++------------------------------------+--------+---------------+
+; FSM_SPW:FSM_B|state_fsm.connecting ; -1.535 ; -16.404       ;
+; FSM_SPW:FSM|state_fsm.connecting   ; -1.082 ; -17.007       ;
+; detector_tokens:A|counter_neg[0]   ; 0.390  ; 0.000         ;
+; detector_tokens:B|counter_neg[0]   ; 0.496  ; 0.000         ;
+; FPGA_CLK1_50                       ; 0.749  ; 0.000         ;
+; RX_SPW:RX_B|counter_neg[0]         ; 1.850  ; 0.000         ;
+; RX_SPW:RX|counter_neg[0]           ; 2.017  ; 0.000         ;
++------------------------------------+--------+---------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Fast 1100mV 85C Model Minimum Pulse Width Summary                                                        ;
++---------------------------------------------------------------------------------+--------+---------------+
+; Clock                                                                           ; Slack  ; End Point TNS ;
++---------------------------------------------------------------------------------+--------+---------------+
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; -1.042 ; -87.479       ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; -0.778 ; -74.905       ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; -0.187 ; -3.181        ;
+; detector_tokens:A|counter_neg[0]                                                ; -0.035 ; -0.898        ;
+; RX_SPW:RX|counter_neg[0]                                                        ; -0.025 ; -0.239        ;
+; detector_tokens:B|counter_neg[0]                                                ; 0.015  ; 0.000         ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]             ; 1.250  ; 0.000         ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; 1.489  ; 0.000         ;
+; FPGA_CLK1_50                                                                    ; 4.076  ; 0.000         ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; 4.347  ; 0.000         ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; 9.318  ; 0.000         ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; 49.455 ; 0.000         ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 97.493 ; 0.000         ;
++---------------------------------------------------------------------------------+--------+---------------+
+
+
+-----------------------------------------------
+; Fast 1100mV 85C Model Metastability Summary ;
+-----------------------------------------------
+The design MTBF is not calculated because there are no specified synchronizers in the design.
+Number of Synchronizer Chains Found: 69
+Shortest Synchronizer Chain: 2 Registers
+Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
+Worst Case Available Settling Time: 13.488 ns
+
+
+
+
++-----------------------------------------------------------------------------------------------------------+
+; Fast 1100mV 0C Model Setup Summary                                                                        ;
++---------------------------------------------------------------------------------+---------+---------------+
+; Clock                                                                           ; Slack   ; End Point TNS ;
++---------------------------------------------------------------------------------+---------+---------------+
+; FSM_SPW:FSM|state_fsm.connecting                                                ; -10.304 ; -87.457       ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; -10.284 ; -91.324       ;
+; FPGA_CLK1_50                                                                    ; -6.031  ; -33.061       ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; -5.820  ; -233.982      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; -5.453  ; -127.077      ;
+; RX_SPW:RX|counter_neg[0]                                                        ; -5.279  ; -199.414      ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; -5.237  ; -199.114      ;
+; detector_tokens:A|counter_neg[0]                                                ; -4.870  ; -158.135      ;
+; detector_tokens:B|counter_neg[0]                                                ; -4.735  ; -156.286      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; -4.724  ; -90.918       ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; -4.674  ; -88.568       ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; -4.388  ; -78.191       ;
++---------------------------------------------------------------------------------+---------+---------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Fast 1100mV 0C Model Hold Summary                                                                        ;
++---------------------------------------------------------------------------------+--------+---------------+
+; Clock                                                                           ; Slack  ; End Point TNS ;
++---------------------------------------------------------------------------------+--------+---------------+
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; -5.405 ; -302.597      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; -5.352 ; -298.622      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; -5.049 ; -394.066      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; -4.624 ; -244.022      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; -4.404 ; -227.522      ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; -3.414 ; -54.050       ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; -3.378 ; -55.784       ;
+; FPGA_CLK1_50                                                                    ; -1.507 ; -34.775       ;
+; detector_tokens:B|counter_neg[0]                                                ; -0.894 ; -8.701        ;
+; detector_tokens:A|counter_neg[0]                                                ; -0.829 ; -10.207       ;
+; RX_SPW:RX|counter_neg[0]                                                        ; -0.742 ; -7.914        ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; -0.723 ; -10.414       ;
++---------------------------------------------------------------------------------+--------+---------------+
+
+
++-------------------------------------------------------------+
+; Fast 1100mV 0C Model Recovery Summary                       ;
++------------------------------------+--------+---------------+
+; Clock                              ; Slack  ; End Point TNS ;
++------------------------------------+--------+---------------+
+; RX_SPW:RX_B|counter_neg[0]         ; -3.305 ; -177.762      ;
+; RX_SPW:RX|counter_neg[0]           ; -3.225 ; -174.190      ;
+; FSM_SPW:FSM|state_fsm.connecting   ; -2.357 ; -44.381       ;
+; FSM_SPW:FSM_B|state_fsm.connecting ; -2.297 ; -38.783       ;
+; detector_tokens:A|counter_neg[0]   ; -1.644 ; -58.463       ;
+; detector_tokens:B|counter_neg[0]   ; -1.643 ; -52.555       ;
+; FPGA_CLK1_50                       ; 6.619  ; 0.000         ;
++------------------------------------+--------+---------------+
+
+
++-------------------------------------------------------------+
+; Fast 1100mV 0C Model Removal Summary                        ;
++------------------------------------+--------+---------------+
+; Clock                              ; Slack  ; End Point TNS ;
++------------------------------------+--------+---------------+
+; FSM_SPW:FSM_B|state_fsm.connecting ; -1.343 ; -12.358       ;
+; FSM_SPW:FSM|state_fsm.connecting   ; -0.907 ; -13.294       ;
+; detector_tokens:A|counter_neg[0]   ; 0.370  ; 0.000         ;
+; detector_tokens:B|counter_neg[0]   ; 0.492  ; 0.000         ;
+; FPGA_CLK1_50                       ; 0.688  ; 0.000         ;
+; RX_SPW:RX_B|counter_neg[0]         ; 1.847  ; 0.000         ;
+; RX_SPW:RX|counter_neg[0]           ; 1.994  ; 0.000         ;
++------------------------------------+--------+---------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Fast 1100mV 0C Model Minimum Pulse Width Summary                                                         ;
++---------------------------------------------------------------------------------+--------+---------------+
+; Clock                                                                           ; Slack  ; End Point TNS ;
++---------------------------------------------------------------------------------+--------+---------------+
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; -0.931 ; -75.971       ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; -0.616 ; -53.503       ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; -0.130 ; -1.724        ;
+; detector_tokens:A|counter_neg[0]                                                ; 0.006  ; 0.000         ;
+; RX_SPW:RX|counter_neg[0]                                                        ; 0.027  ; 0.000         ;
+; detector_tokens:B|counter_neg[0]                                                ; 0.068  ; 0.000         ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]             ; 1.250  ; 0.000         ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; 1.600  ; 0.000         ;
+; FPGA_CLK1_50                                                                    ; 4.040  ; 0.000         ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; 4.424  ; 0.000         ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; 9.407  ; 0.000         ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; 49.524 ; 0.000         ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 97.701 ; 0.000         ;
++---------------------------------------------------------------------------------+--------+---------------+
+
+
+----------------------------------------------
+; Fast 1100mV 0C Model Metastability Summary ;
+----------------------------------------------
+The design MTBF is not calculated because there are no specified synchronizers in the design.
+Number of Synchronizer Chains Found: 69
+Shortest Synchronizer Chain: 2 Registers
+Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
+Worst Case Available Settling Time: 14.194 ns
+
+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                                                                                                 ;
++----------------------------------------------------------------------------------+-----------+----------+-----------+---------+---------------------+
+; Clock                                                                            ; Setup     ; Hold     ; Recovery  ; Removal ; Minimum Pulse Width ;
++----------------------------------------------------------------------------------+-----------+----------+-----------+---------+---------------------+
+; Worst-case Slack                                                                 ; -20.210   ; -10.415  ; -6.317    ; -2.453  ; -2.297              ;
+;  AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; -13.451   ; -10.415  ; N/A       ; N/A     ; 95.547              ;
+;  AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; -12.140   ; -8.126   ; N/A       ; N/A     ; 49.220              ;
+;  AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; -11.854   ; -8.774   ; N/A       ; N/A     ; 9.152               ;
+;  AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; -15.645   ; -9.477   ; N/A       ; N/A     ; 4.223               ;
+;  AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; -11.308   ; -10.289  ; N/A       ; N/A     ; 1.003               ;
+;  AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]             ; N/A       ; N/A      ; N/A       ; N/A     ; 1.250               ;
+;  FPGA_CLK1_50                                                                    ; -16.024   ; -2.891   ; 3.986     ; 0.688   ; 4.040               ;
+;  FSM_SPW:FSM_B|state_fsm.connecting                                              ; -20.210   ; -6.153   ; -4.637    ; -2.453  ; -2.297              ;
+;  FSM_SPW:FSM|state_fsm.connecting                                                ; -19.832   ; -6.018   ; -4.490    ; -1.515  ; -1.522              ;
+;  RX_SPW:RX_B|counter_neg[0]                                                      ; -9.820    ; -1.509   ; -6.317    ; 1.847   ; -0.473              ;
+;  RX_SPW:RX|counter_neg[0]                                                        ; -10.007   ; -1.554   ; -6.128    ; 1.994   ; -0.328              ;
+;  detector_tokens:A|counter_neg[0]                                                ; -9.498    ; -1.775   ; -3.175    ; 0.370   ; -0.289              ;
+;  detector_tokens:B|counter_neg[0]                                                ; -9.080    ; -1.844   ; -3.195    ; 0.492   ; -0.210              ;
+; Design-wide TNS                                                                  ; -4371.038 ; -3179.63 ; -1071.196 ; -42.369 ; -622.695            ;
+;  AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; -527.885  ; -600.237 ; N/A       ; N/A     ; 0.000               ;
+;  AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; -428.815  ; -428.562 ; N/A       ; N/A     ; 0.000               ;
+;  AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; -407.639  ; -477.162 ; N/A       ; N/A     ; 0.000               ;
+;  AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; -816.219  ; -740.732 ; N/A       ; N/A     ; 0.000               ;
+;  AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; -371.407  ; -590.856 ; N/A       ; N/A     ; 0.000               ;
+;  AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]             ; N/A       ; N/A      ; N/A       ; N/A     ; 0.000               ;
+;  FPGA_CLK1_50                                                                    ; -102.908  ; -60.198  ; 0.000     ; 0.000   ; 0.000               ;
+;  FSM_SPW:FSM_B|state_fsm.connecting                                              ; -184.365  ; -109.585 ; -81.886   ; -20.993 ; -365.892            ;
+;  FSM_SPW:FSM|state_fsm.connecting                                                ; -171.613  ; -98.567  ; -89.344   ; -21.376 ; -209.975            ;
+;  RX_SPW:RX_B|counter_neg[0]                                                      ; -373.281  ; -23.294  ; -342.286  ; 0.000   ; -17.529             ;
+;  RX_SPW:RX|counter_neg[0]                                                        ; -376.399  ; -16.780  ; -336.511  ; 0.000   ; -13.162             ;
+;  detector_tokens:A|counter_neg[0]                                                ; -306.531  ; -23.754  ; -116.934  ; 0.000   ; -10.061             ;
+;  detector_tokens:B|counter_neg[0]                                                ; -303.976  ; -18.527  ; -106.542  ; 0.000   ; -6.968              ;
++----------------------------------------------------------------------------------+-----------+----------+-----------+---------+---------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Board Trace Model Assignments                                                                                                                                                                                                                                                                                                                                                                             ;
++--------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; Pin    ; I/O Standard ; Near Tline Length ; Near Tline L per Length ; Near Tline C per Length ; Near Series R ; Near Differential R ; Near Pull-up R ; Near Pull-down R ; Near C ; Far Tline Length ; Far Tline L per Length ; Far Tline C per Length ; Far Series R ; Far Pull-up R ; Far Pull-down R ; Far C ; Termination Voltage ; Far Differential R ; EBD File Name ; EBD Signal Name ; EBD Far-end ;
++--------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; LED[6] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; LED[7] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; LED[0] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; LED[1] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; LED[2] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; LED[3] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; LED[4] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; LED[5] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
++--------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+
+
++-----------------------------------------------------------------+
+; Input Transition Times                                          ;
++--------------+--------------+-----------------+-----------------+
+; Pin          ; I/O Standard ; 10-90 Rise Time ; 90-10 Fall Time ;
++--------------+--------------+-----------------+-----------------+
+; KEY[1]       ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; FPGA_CLK1_50 ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; KEY[0]       ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
++--------------+--------------+-----------------+-----------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 1100mv 0c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ;
++--------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin    ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++--------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; LED[6] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.5e-07 V                    ; 3.14 V              ; -0.195 V            ; 0.158 V                              ; 0.394 V                              ; 4.46e-10 s                  ; 1.64e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 3.5e-07 V                   ; 3.14 V             ; -0.195 V           ; 0.158 V                             ; 0.394 V                             ; 4.46e-10 s                 ; 1.64e-10 s                 ; Yes                       ; No                        ;
+; LED[7] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.35e-07 V                   ; 3.14 V              ; -0.257 V            ; 0.13 V                               ; 0.399 V                              ; 4.27e-10 s                  ; 1.5e-10 s                   ; Yes                        ; No                         ; 3.08 V                      ; 3.35e-07 V                  ; 3.14 V             ; -0.257 V           ; 0.13 V                              ; 0.399 V                             ; 4.27e-10 s                 ; 1.5e-10 s                  ; Yes                       ; No                        ;
+; LED[0] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.62e-07 V                   ; 3.1 V               ; -0.153 V            ; 0.035 V                              ; 0.31 V                               ; 4.23e-10 s                  ; 1.59e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.62e-07 V                  ; 3.1 V              ; -0.153 V           ; 0.035 V                             ; 0.31 V                              ; 4.23e-10 s                 ; 1.59e-10 s                 ; Yes                       ; No                        ;
+; LED[1] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.35e-07 V                   ; 3.14 V              ; -0.258 V            ; 0.13 V                               ; 0.399 V                              ; 4.27e-10 s                  ; 1.5e-10 s                   ; Yes                        ; No                         ; 3.08 V                      ; 3.35e-07 V                  ; 3.14 V             ; -0.258 V           ; 0.13 V                              ; 0.399 V                             ; 4.27e-10 s                 ; 1.5e-10 s                  ; Yes                       ; No                        ;
+; LED[2] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.5e-07 V                    ; 3.14 V              ; -0.195 V            ; 0.158 V                              ; 0.394 V                              ; 4.46e-10 s                  ; 1.64e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 3.5e-07 V                   ; 3.14 V             ; -0.195 V           ; 0.158 V                             ; 0.394 V                             ; 4.46e-10 s                 ; 1.64e-10 s                 ; Yes                       ; No                        ;
+; LED[3] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.62e-07 V                   ; 3.1 V               ; -0.153 V            ; 0.035 V                              ; 0.31 V                               ; 4.23e-10 s                  ; 1.59e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.62e-07 V                  ; 3.1 V              ; -0.153 V           ; 0.035 V                             ; 0.31 V                              ; 4.23e-10 s                 ; 1.59e-10 s                 ; Yes                       ; No                        ;
+; LED[4] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.35e-07 V                   ; 3.14 V              ; -0.258 V            ; 0.13 V                               ; 0.399 V                              ; 4.27e-10 s                  ; 1.5e-10 s                   ; Yes                        ; No                         ; 3.08 V                      ; 3.35e-07 V                  ; 3.14 V             ; -0.258 V           ; 0.13 V                              ; 0.399 V                             ; 4.27e-10 s                 ; 1.5e-10 s                  ; Yes                       ; No                        ;
+; LED[5] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.35e-07 V                   ; 3.14 V              ; -0.257 V            ; 0.13 V                               ; 0.399 V                              ; 4.27e-10 s                  ; 1.5e-10 s                   ; Yes                        ; No                         ; 3.08 V                      ; 3.35e-07 V                  ; 3.14 V             ; -0.257 V           ; 0.13 V                              ; 0.399 V                             ; 4.27e-10 s                 ; 1.5e-10 s                  ; Yes                       ; No                        ;
++--------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 1100mv 85c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ;
++--------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin    ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++--------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; LED[6] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.32e-05 V                   ; 3.09 V              ; -0.11 V             ; 0.031 V                              ; 0.155 V                              ; 5.43e-10 s                  ; 3.14e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 3.32e-05 V                  ; 3.09 V             ; -0.11 V            ; 0.031 V                             ; 0.155 V                             ; 5.43e-10 s                 ; 3.14e-10 s                 ; Yes                       ; Yes                       ;
+; LED[7] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.19e-05 V                   ; 3.1 V               ; -0.136 V            ; 0.025 V                              ; 0.167 V                              ; 4.92e-10 s                  ; 3.12e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 3.19e-05 V                  ; 3.1 V              ; -0.136 V           ; 0.025 V                             ; 0.167 V                             ; 4.92e-10 s                 ; 3.12e-10 s                 ; Yes                       ; No                        ;
+; LED[0] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.61e-05 V                   ; 3.09 V              ; -0.0638 V           ; 0.034 V                              ; 0.099 V                              ; 5.12e-10 s                  ; 2.97e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 2.61e-05 V                  ; 3.09 V             ; -0.0638 V          ; 0.034 V                             ; 0.099 V                             ; 5.12e-10 s                 ; 2.97e-10 s                 ; Yes                       ; Yes                       ;
+; LED[1] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.19e-05 V                   ; 3.1 V               ; -0.133 V            ; 0.025 V                              ; 0.169 V                              ; 4.92e-10 s                  ; 3.13e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 3.19e-05 V                  ; 3.1 V              ; -0.133 V           ; 0.025 V                             ; 0.169 V                             ; 4.92e-10 s                 ; 3.13e-10 s                 ; Yes                       ; No                        ;
+; LED[2] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.32e-05 V                   ; 3.09 V              ; -0.11 V             ; 0.031 V                              ; 0.155 V                              ; 5.43e-10 s                  ; 3.14e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 3.32e-05 V                  ; 3.09 V             ; -0.11 V            ; 0.031 V                             ; 0.155 V                             ; 5.43e-10 s                 ; 3.14e-10 s                 ; Yes                       ; Yes                       ;
+; LED[3] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.61e-05 V                   ; 3.09 V              ; -0.0638 V           ; 0.034 V                              ; 0.099 V                              ; 5.12e-10 s                  ; 2.97e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 2.61e-05 V                  ; 3.09 V             ; -0.0638 V          ; 0.034 V                             ; 0.099 V                             ; 5.12e-10 s                 ; 2.97e-10 s                 ; Yes                       ; Yes                       ;
+; LED[4] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.19e-05 V                   ; 3.1 V               ; -0.133 V            ; 0.025 V                              ; 0.169 V                              ; 4.92e-10 s                  ; 3.13e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 3.19e-05 V                  ; 3.1 V              ; -0.133 V           ; 0.025 V                             ; 0.169 V                             ; 4.92e-10 s                 ; 3.13e-10 s                 ; Yes                       ; No                        ;
+; LED[5] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.19e-05 V                   ; 3.1 V               ; -0.136 V            ; 0.025 V                              ; 0.167 V                              ; 4.92e-10 s                  ; 3.12e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 3.19e-05 V                  ; 3.1 V              ; -0.136 V           ; 0.025 V                             ; 0.167 V                             ; 4.92e-10 s                 ; 3.12e-10 s                 ; Yes                       ; No                        ;
++--------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Fast 1100mv 0c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ;
++--------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin    ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++--------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; LED[6] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.94e-06 V                   ; 3.69 V              ; -0.414 V            ; 0.134 V                              ; 0.585 V                              ; 4.19e-10 s                  ; 1.53e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.94e-06 V                  ; 3.69 V             ; -0.414 V           ; 0.134 V                             ; 0.585 V                             ; 4.19e-10 s                 ; 1.53e-10 s                 ; Yes                       ; No                        ;
+; LED[7] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.621 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.621 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; LED[0] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 3.63e-06 V                   ; 3.64 V              ; -0.326 V            ; 0.091 V                              ; 0.479 V                              ; 3.83e-10 s                  ; 1.5e-10 s                   ; Yes                        ; No                         ; 3.63 V                      ; 3.63e-06 V                  ; 3.64 V             ; -0.326 V           ; 0.091 V                             ; 0.479 V                             ; 3.83e-10 s                 ; 1.5e-10 s                  ; Yes                       ; No                        ;
+; LED[1] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.622 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.622 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; LED[2] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.94e-06 V                   ; 3.69 V              ; -0.414 V            ; 0.134 V                              ; 0.585 V                              ; 4.19e-10 s                  ; 1.53e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.94e-06 V                  ; 3.69 V             ; -0.414 V           ; 0.134 V                             ; 0.585 V                             ; 4.19e-10 s                 ; 1.53e-10 s                 ; Yes                       ; No                        ;
+; LED[3] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 3.63e-06 V                   ; 3.64 V              ; -0.326 V            ; 0.091 V                              ; 0.479 V                              ; 3.83e-10 s                  ; 1.5e-10 s                   ; Yes                        ; No                         ; 3.63 V                      ; 3.63e-06 V                  ; 3.64 V             ; -0.326 V           ; 0.091 V                             ; 0.479 V                             ; 3.83e-10 s                 ; 1.5e-10 s                  ; Yes                       ; No                        ;
+; LED[4] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.622 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.622 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; LED[5] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.621 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.621 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
++--------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Fast 1100mv 85c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ;
++--------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin    ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++--------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; LED[6] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000238 V                   ; 3.64 V              ; -0.254 V            ; 0.052 V                              ; 0.543 V                              ; 4.59e-10 s                  ; 1.96e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000238 V                  ; 3.64 V             ; -0.254 V           ; 0.052 V                             ; 0.543 V                             ; 4.59e-10 s                 ; 1.96e-10 s                 ; Yes                       ; No                        ;
+; LED[7] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.319 V            ; 0.041 V                              ; 0.528 V                              ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.319 V           ; 0.041 V                             ; 0.528 V                             ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; LED[0] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000184 V                   ; 3.64 V              ; -0.19 V             ; 0.019 V                              ; 0.425 V                              ; 4.44e-10 s                  ; 1.91e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000184 V                  ; 3.64 V             ; -0.19 V            ; 0.019 V                             ; 0.425 V                             ; 4.44e-10 s                 ; 1.91e-10 s                 ; Yes                       ; No                        ;
+; LED[1] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.316 V            ; 0.041 V                              ; 0.53 V                               ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.316 V           ; 0.041 V                             ; 0.53 V                              ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; LED[2] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000238 V                   ; 3.64 V              ; -0.254 V            ; 0.052 V                              ; 0.543 V                              ; 4.59e-10 s                  ; 1.96e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000238 V                  ; 3.64 V             ; -0.254 V           ; 0.052 V                             ; 0.543 V                             ; 4.59e-10 s                 ; 1.96e-10 s                 ; Yes                       ; No                        ;
+; LED[3] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000184 V                   ; 3.64 V              ; -0.19 V             ; 0.019 V                              ; 0.425 V                              ; 4.44e-10 s                  ; 1.91e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000184 V                  ; 3.64 V             ; -0.19 V            ; 0.019 V                             ; 0.425 V                             ; 4.44e-10 s                 ; 1.91e-10 s                 ; Yes                       ; No                        ;
+; LED[4] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.316 V            ; 0.041 V                              ; 0.53 V                               ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.316 V           ; 0.041 V                             ; 0.53 V                              ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; LED[5] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.319 V            ; 0.041 V                              ; 0.528 V                              ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.319 V           ; 0.041 V                             ; 0.528 V                             ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
++--------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup Transfers                                                                                                                                                                                               ;
++---------------------------------------------------------------------------------+---------------------------------------------------------------------------------+----------+----------+----------+----------+
+; From Clock                                                                      ; To Clock                                                                        ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++---------------------------------------------------------------------------------+---------------------------------------------------------------------------------+----------+----------+----------+----------+
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 9042     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; FPGA_CLK1_50                                                                    ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 1199     ; 0        ; 0        ; 0        ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 177      ; 177      ; 0        ; 0        ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 177      ; 177      ; 0        ; 0        ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 104      ; 104      ; 0        ; 0        ;
+; RX_SPW:RX|counter_neg[0]                                                        ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 104      ; 104      ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; 9042     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; FPGA_CLK1_50                                                                    ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; 1199     ; 0        ; 0        ; 0        ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; 177      ; 177      ; 0        ; 0        ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; 177      ; 177      ; 0        ; 0        ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; 104      ; 104      ; 0        ; 0        ;
+; RX_SPW:RX|counter_neg[0]                                                        ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; 104      ; 104      ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; 9042     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; FPGA_CLK1_50                                                                    ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; 1199     ; 0        ; 0        ; 0        ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; 177      ; 177      ; 0        ; 0        ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; 177      ; 177      ; 0        ; 0        ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; 104      ; 104      ; 0        ; 0        ;
+; RX_SPW:RX|counter_neg[0]                                                        ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; 104      ; 104      ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; 81634    ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; 81634    ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; 81634    ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; 84791    ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; 81634    ; 0        ; 0        ; 0        ;
+; FPGA_CLK1_50                                                                    ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; 10941    ; 0        ; 0        ; 0        ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; 614      ; 614      ; 0        ; 0        ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; 614      ; 614      ; 0        ; 0        ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; 1403     ; 1403     ; 0        ; 0        ;
+; RX_SPW:RX|counter_neg[0]                                                        ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; 1403     ; 1403     ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; 9042     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; FPGA_CLK1_50                                                                    ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; 1199     ; 0        ; 0        ; 0        ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; 177      ; 177      ; 0        ; 0        ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; 177      ; 177      ; 0        ; 0        ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; 104      ; 104      ; 0        ; 0        ;
+; RX_SPW:RX|counter_neg[0]                                                        ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; 104      ; 104      ; 0        ; 0        ;
+; detector_tokens:A|counter_neg[0]                                                ; detector_tokens:A|counter_neg[0]                                                ; 384      ; 384      ; 384      ; 384      ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; detector_tokens:A|counter_neg[0]                                                ; 724      ; 724      ; 724      ; 724      ;
+; detector_tokens:B|counter_neg[0]                                                ; detector_tokens:B|counter_neg[0]                                                ; 384      ; 384      ; 384      ; 384      ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; detector_tokens:B|counter_neg[0]                                                ; 724      ; 724      ; 724      ; 724      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; FPGA_CLK1_50                                                                    ; 4866     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; FPGA_CLK1_50                                                                    ; 4866     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; FPGA_CLK1_50                                                                    ; 4866     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; FPGA_CLK1_50                                                                    ; 4926     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; FPGA_CLK1_50                                                                    ; 4866     ; 0        ; 0        ; 0        ;
+; detector_tokens:A|counter_neg[0]                                                ; FPGA_CLK1_50                                                                    ; 89       ; 89       ; 0        ; 0        ;
+; detector_tokens:B|counter_neg[0]                                                ; FPGA_CLK1_50                                                                    ; 89       ; 89       ; 0        ; 0        ;
+; FPGA_CLK1_50                                                                    ; FPGA_CLK1_50                                                                    ; 598284   ; 0        ; 0        ; 0        ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; FPGA_CLK1_50                                                                    ; 31       ; 31       ; 0        ; 0        ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; FPGA_CLK1_50                                                                    ; 31       ; 31       ; 0        ; 0        ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; FPGA_CLK1_50                                                                    ; 19       ; 19       ; 0        ; 0        ;
+; RX_SPW:RX|counter_neg[0]                                                        ; FPGA_CLK1_50                                                                    ; 19       ; 19       ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; FSM_SPW:FSM_B|state_fsm.connecting                                              ; 6440     ; 0        ; 6440     ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; FSM_SPW:FSM_B|state_fsm.connecting                                              ; 6440     ; 0        ; 6440     ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; FSM_SPW:FSM_B|state_fsm.connecting                                              ; 6440     ; 0        ; 6440     ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; FSM_SPW:FSM_B|state_fsm.connecting                                              ; 6504     ; 0        ; 6504     ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; FSM_SPW:FSM_B|state_fsm.connecting                                              ; 6440     ; 0        ; 6440     ; 0        ;
+; detector_tokens:B|counter_neg[0]                                                ; FSM_SPW:FSM_B|state_fsm.connecting                                              ; 36       ; 36       ; 36       ; 36       ;
+; FPGA_CLK1_50                                                                    ; FSM_SPW:FSM_B|state_fsm.connecting                                              ; 862      ; 0        ; 862      ; 0        ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; FSM_SPW:FSM_B|state_fsm.connecting                                              ; 322      ; 322      ; 322      ; 322      ;
+; RX_SPW:RX|counter_neg[0]                                                        ; FSM_SPW:FSM_B|state_fsm.connecting                                              ; 18       ; 18       ; 18       ; 18       ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; FSM_SPW:FSM|state_fsm.connecting                                                ; 6440     ; 0        ; 6440     ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; FSM_SPW:FSM|state_fsm.connecting                                                ; 6440     ; 0        ; 6440     ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; FSM_SPW:FSM|state_fsm.connecting                                                ; 6440     ; 0        ; 6440     ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; FSM_SPW:FSM|state_fsm.connecting                                                ; 6504     ; 0        ; 6504     ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; FSM_SPW:FSM|state_fsm.connecting                                                ; 6440     ; 0        ; 6440     ; 0        ;
+; detector_tokens:A|counter_neg[0]                                                ; FSM_SPW:FSM|state_fsm.connecting                                                ; 36       ; 36       ; 36       ; 36       ;
+; FPGA_CLK1_50                                                                    ; FSM_SPW:FSM|state_fsm.connecting                                                ; 862      ; 0        ; 862      ; 0        ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; FSM_SPW:FSM|state_fsm.connecting                                                ; 334      ; 334      ; 334      ; 334      ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; FSM_SPW:FSM|state_fsm.connecting                                                ; 18       ; 18       ; 18       ; 18       ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; RX_SPW:RX_B|counter_neg[0]                                                      ; 1542     ; 1542     ; 1542     ; 1542     ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; RX_SPW:RX_B|counter_neg[0]                                                      ; 286      ; 286      ; 286      ; 286      ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; RX_SPW:RX|counter_neg[0]                                                        ; 1542     ; 1542     ; 1542     ; 1542     ;
+; RX_SPW:RX|counter_neg[0]                                                        ; RX_SPW:RX|counter_neg[0]                                                        ; 286      ; 286      ; 286      ; 286      ;
++---------------------------------------------------------------------------------+---------------------------------------------------------------------------------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold Transfers                                                                                                                                                                                                ;
++---------------------------------------------------------------------------------+---------------------------------------------------------------------------------+----------+----------+----------+----------+
+; From Clock                                                                      ; To Clock                                                                        ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++---------------------------------------------------------------------------------+---------------------------------------------------------------------------------+----------+----------+----------+----------+
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 9042     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; FPGA_CLK1_50                                                                    ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 1199     ; 0        ; 0        ; 0        ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 177      ; 177      ; 0        ; 0        ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 177      ; 177      ; 0        ; 0        ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 104      ; 104      ; 0        ; 0        ;
+; RX_SPW:RX|counter_neg[0]                                                        ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 104      ; 104      ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; 9042     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; FPGA_CLK1_50                                                                    ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; 1199     ; 0        ; 0        ; 0        ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; 177      ; 177      ; 0        ; 0        ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; 177      ; 177      ; 0        ; 0        ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; 104      ; 104      ; 0        ; 0        ;
+; RX_SPW:RX|counter_neg[0]                                                        ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; 104      ; 104      ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; 9042     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; FPGA_CLK1_50                                                                    ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; 1199     ; 0        ; 0        ; 0        ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; 177      ; 177      ; 0        ; 0        ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; 177      ; 177      ; 0        ; 0        ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; 104      ; 104      ; 0        ; 0        ;
+; RX_SPW:RX|counter_neg[0]                                                        ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; 104      ; 104      ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; 81634    ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; 81634    ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; 81634    ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; 84791    ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; 81634    ; 0        ; 0        ; 0        ;
+; FPGA_CLK1_50                                                                    ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; 10941    ; 0        ; 0        ; 0        ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; 614      ; 614      ; 0        ; 0        ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; 614      ; 614      ; 0        ; 0        ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; 1403     ; 1403     ; 0        ; 0        ;
+; RX_SPW:RX|counter_neg[0]                                                        ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; 1403     ; 1403     ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; 9042     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; 8704     ; 0        ; 0        ; 0        ;
+; FPGA_CLK1_50                                                                    ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; 1199     ; 0        ; 0        ; 0        ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; 177      ; 177      ; 0        ; 0        ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; 177      ; 177      ; 0        ; 0        ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; 104      ; 104      ; 0        ; 0        ;
+; RX_SPW:RX|counter_neg[0]                                                        ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; 104      ; 104      ; 0        ; 0        ;
+; detector_tokens:A|counter_neg[0]                                                ; detector_tokens:A|counter_neg[0]                                                ; 384      ; 384      ; 384      ; 384      ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; detector_tokens:A|counter_neg[0]                                                ; 724      ; 724      ; 724      ; 724      ;
+; detector_tokens:B|counter_neg[0]                                                ; detector_tokens:B|counter_neg[0]                                                ; 384      ; 384      ; 384      ; 384      ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; detector_tokens:B|counter_neg[0]                                                ; 724      ; 724      ; 724      ; 724      ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; FPGA_CLK1_50                                                                    ; 4866     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; FPGA_CLK1_50                                                                    ; 4866     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; FPGA_CLK1_50                                                                    ; 4866     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; FPGA_CLK1_50                                                                    ; 4926     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; FPGA_CLK1_50                                                                    ; 4866     ; 0        ; 0        ; 0        ;
+; detector_tokens:A|counter_neg[0]                                                ; FPGA_CLK1_50                                                                    ; 89       ; 89       ; 0        ; 0        ;
+; detector_tokens:B|counter_neg[0]                                                ; FPGA_CLK1_50                                                                    ; 89       ; 89       ; 0        ; 0        ;
+; FPGA_CLK1_50                                                                    ; FPGA_CLK1_50                                                                    ; 598284   ; 0        ; 0        ; 0        ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; FPGA_CLK1_50                                                                    ; 31       ; 31       ; 0        ; 0        ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; FPGA_CLK1_50                                                                    ; 31       ; 31       ; 0        ; 0        ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; FPGA_CLK1_50                                                                    ; 19       ; 19       ; 0        ; 0        ;
+; RX_SPW:RX|counter_neg[0]                                                        ; FPGA_CLK1_50                                                                    ; 19       ; 19       ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; FSM_SPW:FSM_B|state_fsm.connecting                                              ; 6440     ; 0        ; 6440     ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; FSM_SPW:FSM_B|state_fsm.connecting                                              ; 6440     ; 0        ; 6440     ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; FSM_SPW:FSM_B|state_fsm.connecting                                              ; 6440     ; 0        ; 6440     ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; FSM_SPW:FSM_B|state_fsm.connecting                                              ; 6504     ; 0        ; 6504     ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; FSM_SPW:FSM_B|state_fsm.connecting                                              ; 6440     ; 0        ; 6440     ; 0        ;
+; detector_tokens:B|counter_neg[0]                                                ; FSM_SPW:FSM_B|state_fsm.connecting                                              ; 36       ; 36       ; 36       ; 36       ;
+; FPGA_CLK1_50                                                                    ; FSM_SPW:FSM_B|state_fsm.connecting                                              ; 862      ; 0        ; 862      ; 0        ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; FSM_SPW:FSM_B|state_fsm.connecting                                              ; 322      ; 322      ; 322      ; 322      ;
+; RX_SPW:RX|counter_neg[0]                                                        ; FSM_SPW:FSM_B|state_fsm.connecting                                              ; 18       ; 18       ; 18       ; 18       ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; FSM_SPW:FSM|state_fsm.connecting                                                ; 6440     ; 0        ; 6440     ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; FSM_SPW:FSM|state_fsm.connecting                                                ; 6440     ; 0        ; 6440     ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; FSM_SPW:FSM|state_fsm.connecting                                                ; 6440     ; 0        ; 6440     ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; FSM_SPW:FSM|state_fsm.connecting                                                ; 6504     ; 0        ; 6504     ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; FSM_SPW:FSM|state_fsm.connecting                                                ; 6440     ; 0        ; 6440     ; 0        ;
+; detector_tokens:A|counter_neg[0]                                                ; FSM_SPW:FSM|state_fsm.connecting                                                ; 36       ; 36       ; 36       ; 36       ;
+; FPGA_CLK1_50                                                                    ; FSM_SPW:FSM|state_fsm.connecting                                                ; 862      ; 0        ; 862      ; 0        ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; FSM_SPW:FSM|state_fsm.connecting                                                ; 334      ; 334      ; 334      ; 334      ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; FSM_SPW:FSM|state_fsm.connecting                                                ; 18       ; 18       ; 18       ; 18       ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; RX_SPW:RX_B|counter_neg[0]                                                      ; 1542     ; 1542     ; 1542     ; 1542     ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; RX_SPW:RX_B|counter_neg[0]                                                      ; 286      ; 286      ; 286      ; 286      ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; RX_SPW:RX|counter_neg[0]                                                        ; 1542     ; 1542     ; 1542     ; 1542     ;
+; RX_SPW:RX|counter_neg[0]                                                        ; RX_SPW:RX|counter_neg[0]                                                        ; 286      ; 286      ; 286      ; 286      ;
++---------------------------------------------------------------------------------+---------------------------------------------------------------------------------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Recovery Transfers                                                                                                                                               ;
++---------------------------------------------------------------------------------+------------------------------------+----------+----------+----------+----------+
+; From Clock                                                                      ; To Clock                           ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++---------------------------------------------------------------------------------+------------------------------------+----------+----------+----------+----------+
+; FPGA_CLK1_50                                                                    ; detector_tokens:A|counter_neg[0]   ; 78       ; 0        ; 78       ; 0        ;
+; FPGA_CLK1_50                                                                    ; detector_tokens:B|counter_neg[0]   ; 78       ; 0        ; 78       ; 0        ;
+; FPGA_CLK1_50                                                                    ; FPGA_CLK1_50                       ; 5169     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; FSM_SPW:FSM_B|state_fsm.connecting ; 36       ; 0        ; 36       ; 0        ;
+; FPGA_CLK1_50                                                                    ; FSM_SPW:FSM_B|state_fsm.connecting ; 26       ; 0        ; 26       ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; FSM_SPW:FSM|state_fsm.connecting   ; 42       ; 0        ; 42       ; 0        ;
+; FPGA_CLK1_50                                                                    ; FSM_SPW:FSM|state_fsm.connecting   ; 32       ; 0        ; 32       ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; RX_SPW:RX_B|counter_neg[0]         ; 114      ; 0        ; 114      ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; RX_SPW:RX|counter_neg[0]           ; 114      ; 0        ; 114      ; 0        ;
++---------------------------------------------------------------------------------+------------------------------------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removal Transfers                                                                                                                                                ;
++---------------------------------------------------------------------------------+------------------------------------+----------+----------+----------+----------+
+; From Clock                                                                      ; To Clock                           ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++---------------------------------------------------------------------------------+------------------------------------+----------+----------+----------+----------+
+; FPGA_CLK1_50                                                                    ; detector_tokens:A|counter_neg[0]   ; 78       ; 0        ; 78       ; 0        ;
+; FPGA_CLK1_50                                                                    ; detector_tokens:B|counter_neg[0]   ; 78       ; 0        ; 78       ; 0        ;
+; FPGA_CLK1_50                                                                    ; FPGA_CLK1_50                       ; 5169     ; 0        ; 0        ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; FSM_SPW:FSM_B|state_fsm.connecting ; 36       ; 0        ; 36       ; 0        ;
+; FPGA_CLK1_50                                                                    ; FSM_SPW:FSM_B|state_fsm.connecting ; 26       ; 0        ; 26       ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; FSM_SPW:FSM|state_fsm.connecting   ; 42       ; 0        ; 42       ; 0        ;
+; FPGA_CLK1_50                                                                    ; FSM_SPW:FSM|state_fsm.connecting   ; 32       ; 0        ; 32       ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; RX_SPW:RX_B|counter_neg[0]         ; 114      ; 0        ; 114      ; 0        ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; RX_SPW:RX|counter_neg[0]           ; 114      ; 0        ; 114      ; 0        ;
++---------------------------------------------------------------------------------+------------------------------------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No non-DPA dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths Summary                    ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 1     ; 1    ;
+; Unconstrained Input Port Paths  ; 18    ; 18   ;
+; Unconstrained Output Ports      ; 7     ; 7    ;
+; Unconstrained Output Port Paths ; 7     ; 7    ;
++---------------------------------+-------+------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Status Summary                                                                                                                                                                        ;
++---------------------------------------------------------------------------------+---------------------------------------------------------------------------------+-----------+-------------+
+; Target                                                                          ; Clock                                                                           ; Type      ; Status      ;
++---------------------------------------------------------------------------------+---------------------------------------------------------------------------------+-----------+-------------+
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; Generated ; Constrained ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk ; Generated ; Constrained ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk ; Generated ; Constrained ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk ; Generated ; Constrained ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk ; Generated ; Constrained ;
+; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]             ; AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]             ; Generated ; Constrained ;
+; FPGA_CLK1_50                                                                    ; FPGA_CLK1_50                                                                    ; Base      ; Constrained ;
+; FSM_SPW:FSM_B|state_fsm.connecting                                              ; FSM_SPW:FSM_B|state_fsm.connecting                                              ; Base      ; Constrained ;
+; FSM_SPW:FSM|state_fsm.connecting                                                ; FSM_SPW:FSM|state_fsm.connecting                                                ; Base      ; Constrained ;
+; RX_SPW:RX_B|counter_neg[0]                                                      ; RX_SPW:RX_B|counter_neg[0]                                                      ; Base      ; Constrained ;
+; RX_SPW:RX|counter_neg[0]                                                        ; RX_SPW:RX|counter_neg[0]                                                        ; Base      ; Constrained ;
+; detector_tokens:A|counter_neg[0]                                                ; detector_tokens:A|counter_neg[0]                                                ; Base      ; Constrained ;
+; detector_tokens:B|counter_neg[0]                                                ; detector_tokens:B|counter_neg[0]                                                ; Base      ; Constrained ;
++---------------------------------------------------------------------------------+---------------------------------------------------------------------------------+-----------+-------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                         ;
++------------+--------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                              ;
++------------+--------------------------------------------------------------------------------------+
+; KEY[0]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------+--------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; LED[0]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LED[1]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LED[2]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LED[3]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LED[4]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LED[5]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LED[6]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                         ;
++------------+--------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                              ;
++------------+--------------------------------------------------------------------------------------+
+; KEY[0]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------+--------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; LED[0]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LED[1]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LED[2]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LED[3]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LED[4]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LED[5]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LED[6]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
+
+
++------------------------------------+
+; TimeQuest Timing Analyzer Messages ;
++------------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime TimeQuest Timing Analyzer
+    Info: Version 16.1.2 Build 203 01/18/2017 SJ Lite Edition
+    Info: Processing started: Sun Apr 30 21:25:36 2017
+Info: Command: quartus_sta spw_ulight_nofifo -c spw_ulight_nofifo
+Info: qsta_default_script.tcl version: #1
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Info (332104): Reading SDC File: 'sdc_spw/spw_ulight_nofifo.out.sdc'
+Info (332104): Reading SDC File: 'spw_ulight_nofifo/synthesis/submodules/altera_reset_controller.sdc'
+Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
+    Info (332098): From: AXI_INTERFACE|hps_0|fpga_interfaces|hps2fpga|clk  to: spw_ulight_nofifo:AXI_INTERFACE|spw_ulight_nofifo_hps_0:hps_0|spw_ulight_nofifo_hps_0_fpga_interfaces:fpga_interfaces|hps2fpga~FF_3457
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|REFCLK_SELECT  from: clkin[0]  to: clkout
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll  from: refclkin  to: fbclk
+    Info (332098): Cell: A|info[4]  from: datac  to: combout
+    Info (332098): Cell: A|info[4]  from: dataf  to: combout
+    Info (332098): Cell: B|info[4]  from: datad  to: combout
+    Info (332098): Cell: B|info[4]  from: dataf  to: combout
+    Info (332098): Cell: Equal0~0  from: datad  to: combout
+    Info (332098): Cell: Equal0~0  from: dataf  to: combout
+    Info (332098): Cell: RX_B|rx_got_bit  from: datac  to: combout
+    Info (332098): Cell: RX_B|rx_got_bit  from: dataf  to: combout
+    Info (332098): Cell: RX|rx_got_bit  from: datac  to: combout
+    Info (332098): Cell: RX|rx_got_bit  from: dataf  to: combout
+    Info (332098): Cell: TX_B|always1~1  from: dataa  to: combout
+    Info (332098): Cell: TX_B|always1~1  from: datac  to: combout
+    Info (332098): Cell: TX_B|always1~1  from: datad  to: combout
+    Info (332098): Cell: TX_B|always1~1  from: dataf  to: combout
+    Info (332098): Cell: TX_B|tx_dout~43  from: datad  to: combout
+    Info (332098): Cell: TX_B|tx_sout~0  from: dataf  to: combout
+    Info (332098): Cell: TX_B|tx_sout~2  from: dataa  to: combout
+    Info (332098): Cell: TX_B|tx_sout~2  from: datac  to: combout
+    Info (332098): Cell: TX_B|tx_sout~2  from: datad  to: combout
+    Info (332098): Cell: TX_B|tx_sout~2  from: dataf  to: combout
+    Info (332098): Cell: TX|always1~1  from: dataa  to: combout
+    Info (332098): Cell: TX|always1~1  from: datab  to: combout
+    Info (332098): Cell: TX|always1~1  from: datae  to: combout
+    Info (332098): Cell: TX|always1~1  from: dataf  to: combout
+    Info (332098): Cell: TX|tx_dout~43  from: dataf  to: combout
+    Info (332098): Cell: TX|tx_sout~0  from: dataf  to: combout
+    Info (332098): Cell: TX|tx_sout~2  from: dataa  to: combout
+    Info (332098): Cell: TX|tx_sout~2  from: datad  to: combout
+    Info (332098): Cell: TX|tx_sout~2  from: datae  to: combout
+    Info (332098): Cell: TX|tx_sout~2  from: dataf  to: combout
+    Info (332098): Cell: ppllclk~4  from: datab  to: combout
+Info (332152): The following assignments are ignored by the derive_clock_uncertainty command
+Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Analyzing Slow 1100mV 85C Model
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the TimeQuest Timing Analyzer.
+Info (332146): Worst-case setup slack is -20.210
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):   -20.210            -184.365 FSM_SPW:FSM_B|state_fsm.connecting 
+    Info (332119):   -19.832            -171.613 FSM_SPW:FSM|state_fsm.connecting 
+    Info (332119):   -16.024            -102.908 FPGA_CLK1_50 
+    Info (332119):   -15.645            -816.219 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk 
+    Info (332119):   -13.451            -527.885 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
+    Info (332119):   -12.140            -428.815 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk 
+    Info (332119):   -11.854            -407.639 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk 
+    Info (332119):   -11.308            -371.407 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk 
+    Info (332119):   -10.007            -376.399 RX_SPW:RX|counter_neg[0] 
+    Info (332119):    -9.820            -373.281 RX_SPW:RX_B|counter_neg[0] 
+    Info (332119):    -9.498            -306.531 detector_tokens:A|counter_neg[0] 
+    Info (332119):    -9.080            -303.976 detector_tokens:B|counter_neg[0] 
+Info (332146): Worst-case hold slack is -10.415
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):   -10.415            -600.237 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
+    Info (332119):   -10.289            -590.856 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk 
+    Info (332119):    -9.477            -740.732 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk 
+    Info (332119):    -8.774            -477.162 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk 
+    Info (332119):    -8.126            -428.562 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk 
+    Info (332119):    -6.153            -109.585 FSM_SPW:FSM_B|state_fsm.connecting 
+    Info (332119):    -6.018             -98.567 FSM_SPW:FSM|state_fsm.connecting 
+    Info (332119):    -2.820             -52.085 FPGA_CLK1_50 
+    Info (332119):    -1.844             -18.527 detector_tokens:B|counter_neg[0] 
+    Info (332119):    -1.775             -23.243 detector_tokens:A|counter_neg[0] 
+    Info (332119):    -1.554             -16.780 RX_SPW:RX|counter_neg[0] 
+    Info (332119):    -1.509             -23.294 RX_SPW:RX_B|counter_neg[0] 
+Info (332146): Worst-case recovery slack is -6.317
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -6.317            -342.286 RX_SPW:RX_B|counter_neg[0] 
+    Info (332119):    -6.128            -336.511 RX_SPW:RX|counter_neg[0] 
+    Info (332119):    -4.615             -79.912 FSM_SPW:FSM_B|state_fsm.connecting 
+    Info (332119):    -4.490             -89.038 FSM_SPW:FSM|state_fsm.connecting 
+    Info (332119):    -3.195            -106.542 detector_tokens:B|counter_neg[0] 
+    Info (332119):    -3.175            -116.907 detector_tokens:A|counter_neg[0] 
+    Info (332119):     3.986               0.000 FPGA_CLK1_50 
+Info (332146): Worst-case removal slack is -2.453
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -2.453             -20.993 FSM_SPW:FSM_B|state_fsm.connecting 
+    Info (332119):    -1.515             -21.376 FSM_SPW:FSM|state_fsm.connecting 
+    Info (332119):     0.942               0.000 detector_tokens:A|counter_neg[0] 
+    Info (332119):     1.273               0.000 FPGA_CLK1_50 
+    Info (332119):     1.393               0.000 detector_tokens:B|counter_neg[0] 
+    Info (332119):     3.710               0.000 RX_SPW:RX_B|counter_neg[0] 
+    Info (332119):     3.964               0.000 RX_SPW:RX|counter_neg[0] 
+Info (332146): Worst-case minimum pulse width slack is -2.297
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -2.297            -365.892 FSM_SPW:FSM_B|state_fsm.connecting 
+    Info (332119):    -1.522            -209.975 FSM_SPW:FSM|state_fsm.connecting 
+    Info (332119):    -0.464             -16.637 RX_SPW:RX_B|counter_neg[0] 
+    Info (332119):    -0.328             -13.162 RX_SPW:RX|counter_neg[0] 
+    Info (332119):    -0.289             -10.061 detector_tokens:A|counter_neg[0] 
+    Info (332119):    -0.210              -6.968 detector_tokens:B|counter_neg[0] 
+    Info (332119):     1.076               0.000 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk 
+    Info (332119):     1.250               0.000 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0] 
+    Info (332119):     4.199               0.000 FPGA_CLK1_50 
+    Info (332119):     4.227               0.000 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk 
+    Info (332119):     9.152               0.000 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk 
+    Info (332119):    49.286               0.000 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk 
+    Info (332119):    95.614               0.000 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
+Info (332114): Report Metastability: Found 69 synchronizer chains.
+    Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
+    Info (332114): Number of Synchronizer Chains Found: 69
+    Info (332114): Shortest Synchronizer Chain: 2 Registers
+    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
+    Info (332114): Worst Case Available Settling Time: 9.942 ns
+    Info (332114): 
+Info: Analyzing Slow 1100mV 0C Model
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
+    Info (332098): From: AXI_INTERFACE|hps_0|fpga_interfaces|hps2fpga|clk  to: spw_ulight_nofifo:AXI_INTERFACE|spw_ulight_nofifo_hps_0:hps_0|spw_ulight_nofifo_hps_0_fpga_interfaces:fpga_interfaces|hps2fpga~FF_3457
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|REFCLK_SELECT  from: clkin[0]  to: clkout
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll  from: refclkin  to: fbclk
+    Info (332098): Cell: A|info[4]  from: datac  to: combout
+    Info (332098): Cell: A|info[4]  from: dataf  to: combout
+    Info (332098): Cell: B|info[4]  from: datad  to: combout
+    Info (332098): Cell: B|info[4]  from: dataf  to: combout
+    Info (332098): Cell: Equal0~0  from: datad  to: combout
+    Info (332098): Cell: Equal0~0  from: dataf  to: combout
+    Info (332098): Cell: RX_B|rx_got_bit  from: datac  to: combout
+    Info (332098): Cell: RX_B|rx_got_bit  from: dataf  to: combout
+    Info (332098): Cell: RX|rx_got_bit  from: datac  to: combout
+    Info (332098): Cell: RX|rx_got_bit  from: dataf  to: combout
+    Info (332098): Cell: TX_B|always1~1  from: dataa  to: combout
+    Info (332098): Cell: TX_B|always1~1  from: datac  to: combout
+    Info (332098): Cell: TX_B|always1~1  from: datad  to: combout
+    Info (332098): Cell: TX_B|always1~1  from: dataf  to: combout
+    Info (332098): Cell: TX_B|tx_dout~43  from: datad  to: combout
+    Info (332098): Cell: TX_B|tx_sout~0  from: dataf  to: combout
+    Info (332098): Cell: TX_B|tx_sout~2  from: dataa  to: combout
+    Info (332098): Cell: TX_B|tx_sout~2  from: datac  to: combout
+    Info (332098): Cell: TX_B|tx_sout~2  from: datad  to: combout
+    Info (332098): Cell: TX_B|tx_sout~2  from: dataf  to: combout
+    Info (332098): Cell: TX|always1~1  from: dataa  to: combout
+    Info (332098): Cell: TX|always1~1  from: datab  to: combout
+    Info (332098): Cell: TX|always1~1  from: datae  to: combout
+    Info (332098): Cell: TX|always1~1  from: dataf  to: combout
+    Info (332098): Cell: TX|tx_dout~43  from: dataf  to: combout
+    Info (332098): Cell: TX|tx_sout~0  from: dataf  to: combout
+    Info (332098): Cell: TX|tx_sout~2  from: dataa  to: combout
+    Info (332098): Cell: TX|tx_sout~2  from: datad  to: combout
+    Info (332098): Cell: TX|tx_sout~2  from: datae  to: combout
+    Info (332098): Cell: TX|tx_sout~2  from: dataf  to: combout
+    Info (332098): Cell: ppllclk~4  from: datab  to: combout
+Info (332152): The following assignments are ignored by the derive_clock_uncertainty command
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the TimeQuest Timing Analyzer.
+Info (332146): Worst-case setup slack is -19.836
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):   -19.836            -182.116 FSM_SPW:FSM_B|state_fsm.connecting 
+    Info (332119):   -19.311            -165.313 FSM_SPW:FSM|state_fsm.connecting 
+    Info (332119):   -15.463             -94.068 FPGA_CLK1_50 
+    Info (332119):   -15.109            -774.150 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk 
+    Info (332119):   -12.816            -509.762 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
+    Info (332119):   -11.501            -410.436 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk 
+    Info (332119):   -11.224            -389.910 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk 
+    Info (332119):   -10.684            -353.226 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk 
+    Info (332119):    -9.592            -364.810 RX_SPW:RX|counter_neg[0] 
+    Info (332119):    -9.402            -357.568 RX_SPW:RX_B|counter_neg[0] 
+    Info (332119):    -9.031            -292.101 detector_tokens:A|counter_neg[0] 
+    Info (332119):    -8.756            -293.796 detector_tokens:B|counter_neg[0] 
+Info (332146): Worst-case hold slack is -10.326
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):   -10.326            -599.063 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
+    Info (332119):   -10.203            -590.146 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk 
+    Info (332119):    -9.334            -739.299 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk 
+    Info (332119):    -8.645            -472.988 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk 
+    Info (332119):    -8.001            -424.688 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk 
+    Info (332119):    -5.925            -106.634 FSM_SPW:FSM_B|state_fsm.connecting 
+    Info (332119):    -5.686             -92.111 FSM_SPW:FSM|state_fsm.connecting 
+    Info (332119):    -2.891             -60.198 FPGA_CLK1_50 
+    Info (332119):    -1.795             -17.878 detector_tokens:B|counter_neg[0] 
+    Info (332119):    -1.767             -23.754 detector_tokens:A|counter_neg[0] 
+    Info (332119):    -1.459             -22.480 RX_SPW:RX_B|counter_neg[0] 
+    Info (332119):    -1.442             -15.671 RX_SPW:RX|counter_neg[0] 
+Info (332146): Worst-case recovery slack is -6.266
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -6.266            -341.439 RX_SPW:RX_B|counter_neg[0] 
+    Info (332119):    -6.055            -334.056 RX_SPW:RX|counter_neg[0] 
+    Info (332119):    -4.637             -81.886 FSM_SPW:FSM_B|state_fsm.connecting 
+    Info (332119):    -4.438             -89.344 FSM_SPW:FSM|state_fsm.connecting 
+    Info (332119):    -3.176            -106.524 detector_tokens:B|counter_neg[0] 
+    Info (332119):    -3.166            -116.934 detector_tokens:A|counter_neg[0] 
+    Info (332119):     4.078               0.000 FPGA_CLK1_50 
+Info (332146): Worst-case removal slack is -2.283
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -2.283             -18.916 FSM_SPW:FSM_B|state_fsm.connecting 
+    Info (332119):    -1.252             -19.063 FSM_SPW:FSM|state_fsm.connecting 
+    Info (332119):     0.974               0.000 detector_tokens:A|counter_neg[0] 
+    Info (332119):     1.198               0.000 FPGA_CLK1_50 
+    Info (332119):     1.482               0.000 detector_tokens:B|counter_neg[0] 
+    Info (332119):     3.788               0.000 RX_SPW:RX_B|counter_neg[0] 
+    Info (332119):     4.016               0.000 RX_SPW:RX|counter_neg[0] 
+Info (332146): Worst-case minimum pulse width slack is -2.261
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -2.261            -358.628 FSM_SPW:FSM_B|state_fsm.connecting 
+    Info (332119):    -1.324            -186.082 FSM_SPW:FSM|state_fsm.connecting 
+    Info (332119):    -0.473             -17.529 RX_SPW:RX_B|counter_neg[0] 
+    Info (332119):    -0.280             -12.757 RX_SPW:RX|counter_neg[0] 
+    Info (332119):    -0.269              -9.432 detector_tokens:A|counter_neg[0] 
+    Info (332119):    -0.172              -5.480 detector_tokens:B|counter_neg[0] 
+    Info (332119):     1.003               0.000 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk 
+    Info (332119):     1.250               0.000 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0] 
+    Info (332119):     4.223               0.000 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk 
+    Info (332119):     4.272               0.000 FPGA_CLK1_50 
+    Info (332119):     9.227               0.000 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk 
+    Info (332119):    49.220               0.000 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk 
+    Info (332119):    95.547               0.000 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
+Info (332114): Report Metastability: Found 69 synchronizer chains.
+    Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
+    Info (332114): Number of Synchronizer Chains Found: 69
+    Info (332114): Shortest Synchronizer Chain: 2 Registers
+    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
+    Info (332114): Worst Case Available Settling Time: 10.327 ns
+    Info (332114): 
+Info: Analyzing Fast 1100mV 85C Model
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
+    Info (332098): From: AXI_INTERFACE|hps_0|fpga_interfaces|hps2fpga|clk  to: spw_ulight_nofifo:AXI_INTERFACE|spw_ulight_nofifo_hps_0:hps_0|spw_ulight_nofifo_hps_0_fpga_interfaces:fpga_interfaces|hps2fpga~FF_3457
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|REFCLK_SELECT  from: clkin[0]  to: clkout
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll  from: refclkin  to: fbclk
+    Info (332098): Cell: A|info[4]  from: datac  to: combout
+    Info (332098): Cell: A|info[4]  from: dataf  to: combout
+    Info (332098): Cell: B|info[4]  from: datad  to: combout
+    Info (332098): Cell: B|info[4]  from: dataf  to: combout
+    Info (332098): Cell: Equal0~0  from: datad  to: combout
+    Info (332098): Cell: Equal0~0  from: dataf  to: combout
+    Info (332098): Cell: RX_B|rx_got_bit  from: datac  to: combout
+    Info (332098): Cell: RX_B|rx_got_bit  from: dataf  to: combout
+    Info (332098): Cell: RX|rx_got_bit  from: datac  to: combout
+    Info (332098): Cell: RX|rx_got_bit  from: dataf  to: combout
+    Info (332098): Cell: TX_B|always1~1  from: dataa  to: combout
+    Info (332098): Cell: TX_B|always1~1  from: datac  to: combout
+    Info (332098): Cell: TX_B|always1~1  from: datad  to: combout
+    Info (332098): Cell: TX_B|always1~1  from: dataf  to: combout
+    Info (332098): Cell: TX_B|tx_dout~43  from: datad  to: combout
+    Info (332098): Cell: TX_B|tx_sout~0  from: dataf  to: combout
+    Info (332098): Cell: TX_B|tx_sout~2  from: dataa  to: combout
+    Info (332098): Cell: TX_B|tx_sout~2  from: datac  to: combout
+    Info (332098): Cell: TX_B|tx_sout~2  from: datad  to: combout
+    Info (332098): Cell: TX_B|tx_sout~2  from: dataf  to: combout
+    Info (332098): Cell: TX|always1~1  from: dataa  to: combout
+    Info (332098): Cell: TX|always1~1  from: datab  to: combout
+    Info (332098): Cell: TX|always1~1  from: datae  to: combout
+    Info (332098): Cell: TX|always1~1  from: dataf  to: combout
+    Info (332098): Cell: TX|tx_dout~43  from: dataf  to: combout
+    Info (332098): Cell: TX|tx_sout~0  from: dataf  to: combout
+    Info (332098): Cell: TX|tx_sout~2  from: dataa  to: combout
+    Info (332098): Cell: TX|tx_sout~2  from: datad  to: combout
+    Info (332098): Cell: TX|tx_sout~2  from: datae  to: combout
+    Info (332098): Cell: TX|tx_sout~2  from: dataf  to: combout
+    Info (332098): Cell: ppllclk~4  from: datab  to: combout
+Info (332152): The following assignments are ignored by the derive_clock_uncertainty command
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the TimeQuest Timing Analyzer.
+Info (332146): Worst-case setup slack is -11.143
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):   -11.143             -97.320 FSM_SPW:FSM|state_fsm.connecting 
+    Info (332119):   -11.059             -98.937 FSM_SPW:FSM_B|state_fsm.connecting 
+    Info (332119):    -6.990             -42.378 FPGA_CLK1_50 
+    Info (332119):    -6.900            -305.713 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk 
+    Info (332119):    -6.710            -167.199 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
+    Info (332119):    -5.956            -223.157 RX_SPW:RX|counter_neg[0] 
+    Info (332119):    -5.954            -127.317 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk 
+    Info (332119):    -5.913            -224.487 RX_SPW:RX_B|counter_neg[0] 
+    Info (332119):    -5.872            -123.217 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk 
+    Info (332119):    -5.573            -113.779 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk 
+    Info (332119):    -5.507            -178.451 detector_tokens:A|counter_neg[0] 
+    Info (332119):    -5.308            -174.556 detector_tokens:B|counter_neg[0] 
+Info (332146): Worst-case hold slack is -5.671
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -5.671            -312.574 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
+    Info (332119):    -5.610            -307.999 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk 
+    Info (332119):    -5.289            -399.030 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk 
+    Info (332119):    -4.853            -251.224 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk 
+    Info (332119):    -4.591            -231.574 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk 
+    Info (332119):    -3.830             -62.163 FSM_SPW:FSM|state_fsm.connecting 
+    Info (332119):    -3.729             -61.537 FSM_SPW:FSM_B|state_fsm.connecting 
+    Info (332119):    -1.525             -30.278 FPGA_CLK1_50 
+    Info (332119):    -0.971              -9.614 detector_tokens:B|counter_neg[0] 
+    Info (332119):    -0.881             -10.863 detector_tokens:A|counter_neg[0] 
+    Info (332119):    -0.826              -8.831 RX_SPW:RX|counter_neg[0] 
+    Info (332119):    -0.799             -11.531 RX_SPW:RX_B|counter_neg[0] 
+Info (332146): Worst-case recovery slack is -3.437
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -3.437            -183.213 RX_SPW:RX_B|counter_neg[0] 
+    Info (332119):    -3.359            -179.789 RX_SPW:RX|counter_neg[0] 
+    Info (332119):    -2.422             -44.587 FSM_SPW:FSM|state_fsm.connecting 
+    Info (332119):    -2.307             -37.982 FSM_SPW:FSM_B|state_fsm.connecting 
+    Info (332119):    -1.805             -63.321 detector_tokens:A|counter_neg[0] 
+    Info (332119):    -1.800             -56.943 detector_tokens:B|counter_neg[0] 
+    Info (332119):     6.433               0.000 FPGA_CLK1_50 
+Info (332146): Worst-case removal slack is -1.535
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -1.535             -16.404 FSM_SPW:FSM_B|state_fsm.connecting 
+    Info (332119):    -1.082             -17.007 FSM_SPW:FSM|state_fsm.connecting 
+    Info (332119):     0.390               0.000 detector_tokens:A|counter_neg[0] 
+    Info (332119):     0.496               0.000 detector_tokens:B|counter_neg[0] 
+    Info (332119):     0.749               0.000 FPGA_CLK1_50 
+    Info (332119):     1.850               0.000 RX_SPW:RX_B|counter_neg[0] 
+    Info (332119):     2.017               0.000 RX_SPW:RX|counter_neg[0] 
+Info (332146): Worst-case minimum pulse width slack is -1.042
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -1.042             -87.479 FSM_SPW:FSM_B|state_fsm.connecting 
+    Info (332119):    -0.778             -74.905 FSM_SPW:FSM|state_fsm.connecting 
+    Info (332119):    -0.187              -3.181 RX_SPW:RX_B|counter_neg[0] 
+    Info (332119):    -0.035              -0.898 detector_tokens:A|counter_neg[0] 
+    Info (332119):    -0.025              -0.239 RX_SPW:RX|counter_neg[0] 
+    Info (332119):     0.015               0.000 detector_tokens:B|counter_neg[0] 
+    Info (332119):     1.250               0.000 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0] 
+    Info (332119):     1.489               0.000 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk 
+    Info (332119):     4.076               0.000 FPGA_CLK1_50 
+    Info (332119):     4.347               0.000 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk 
+    Info (332119):     9.318               0.000 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk 
+    Info (332119):    49.455               0.000 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk 
+    Info (332119):    97.493               0.000 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
+Info (332114): Report Metastability: Found 69 synchronizer chains.
+    Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
+    Info (332114): Number of Synchronizer Chains Found: 69
+    Info (332114): Shortest Synchronizer Chain: 2 Registers
+    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
+    Info (332114): Worst Case Available Settling Time: 13.488 ns
+    Info (332114): 
+Info: Analyzing Fast 1100mV 0C Model
+Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
+    Info (332098): From: AXI_INTERFACE|hps_0|fpga_interfaces|hps2fpga|clk  to: spw_ulight_nofifo:AXI_INTERFACE|spw_ulight_nofifo_hps_0:hps_0|spw_ulight_nofifo_hps_0_fpga_interfaces:fpga_interfaces|hps2fpga~FF_3457
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|REFCLK_SELECT  from: clkin[0]  to: clkout
+    Info (332098): Cell: AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll  from: refclkin  to: fbclk
+    Info (332098): Cell: A|info[4]  from: datac  to: combout
+    Info (332098): Cell: A|info[4]  from: dataf  to: combout
+    Info (332098): Cell: B|info[4]  from: datad  to: combout
+    Info (332098): Cell: B|info[4]  from: dataf  to: combout
+    Info (332098): Cell: Equal0~0  from: datad  to: combout
+    Info (332098): Cell: Equal0~0  from: dataf  to: combout
+    Info (332098): Cell: RX_B|rx_got_bit  from: datac  to: combout
+    Info (332098): Cell: RX_B|rx_got_bit  from: dataf  to: combout
+    Info (332098): Cell: RX|rx_got_bit  from: datac  to: combout
+    Info (332098): Cell: RX|rx_got_bit  from: dataf  to: combout
+    Info (332098): Cell: TX_B|always1~1  from: dataa  to: combout
+    Info (332098): Cell: TX_B|always1~1  from: datac  to: combout
+    Info (332098): Cell: TX_B|always1~1  from: datad  to: combout
+    Info (332098): Cell: TX_B|always1~1  from: dataf  to: combout
+    Info (332098): Cell: TX_B|tx_dout~43  from: datad  to: combout
+    Info (332098): Cell: TX_B|tx_sout~0  from: dataf  to: combout
+    Info (332098): Cell: TX_B|tx_sout~2  from: dataa  to: combout
+    Info (332098): Cell: TX_B|tx_sout~2  from: datac  to: combout
+    Info (332098): Cell: TX_B|tx_sout~2  from: datad  to: combout
+    Info (332098): Cell: TX_B|tx_sout~2  from: dataf  to: combout
+    Info (332098): Cell: TX|always1~1  from: dataa  to: combout
+    Info (332098): Cell: TX|always1~1  from: datab  to: combout
+    Info (332098): Cell: TX|always1~1  from: datae  to: combout
+    Info (332098): Cell: TX|always1~1  from: dataf  to: combout
+    Info (332098): Cell: TX|tx_dout~43  from: dataf  to: combout
+    Info (332098): Cell: TX|tx_sout~0  from: dataf  to: combout
+    Info (332098): Cell: TX|tx_sout~2  from: dataa  to: combout
+    Info (332098): Cell: TX|tx_sout~2  from: datad  to: combout
+    Info (332098): Cell: TX|tx_sout~2  from: datae  to: combout
+    Info (332098): Cell: TX|tx_sout~2  from: dataf  to: combout
+    Info (332098): Cell: ppllclk~4  from: datab  to: combout
+Info (332152): The following assignments are ignored by the derive_clock_uncertainty command
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the TimeQuest Timing Analyzer.
+Info (332146): Worst-case setup slack is -10.304
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):   -10.304             -87.457 FSM_SPW:FSM|state_fsm.connecting 
+    Info (332119):   -10.284             -91.324 FSM_SPW:FSM_B|state_fsm.connecting 
+    Info (332119):    -6.031             -33.061 FPGA_CLK1_50 
+    Info (332119):    -5.820            -233.982 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk 
+    Info (332119):    -5.453            -127.077 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
+    Info (332119):    -5.279            -199.414 RX_SPW:RX|counter_neg[0] 
+    Info (332119):    -5.237            -199.114 RX_SPW:RX_B|counter_neg[0] 
+    Info (332119):    -4.870            -158.135 detector_tokens:A|counter_neg[0] 
+    Info (332119):    -4.735            -156.286 detector_tokens:B|counter_neg[0] 
+    Info (332119):    -4.724             -90.918 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk 
+    Info (332119):    -4.674             -88.568 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk 
+    Info (332119):    -4.388             -78.191 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk 
+Info (332146): Worst-case hold slack is -5.405
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -5.405            -302.597 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
+    Info (332119):    -5.352            -298.622 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk 
+    Info (332119):    -5.049            -394.066 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk 
+    Info (332119):    -4.624            -244.022 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk 
+    Info (332119):    -4.404            -227.522 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk 
+    Info (332119):    -3.414             -54.050 FSM_SPW:FSM|state_fsm.connecting 
+    Info (332119):    -3.378             -55.784 FSM_SPW:FSM_B|state_fsm.connecting 
+    Info (332119):    -1.507             -34.775 FPGA_CLK1_50 
+    Info (332119):    -0.894              -8.701 detector_tokens:B|counter_neg[0] 
+    Info (332119):    -0.829             -10.207 detector_tokens:A|counter_neg[0] 
+    Info (332119):    -0.742              -7.914 RX_SPW:RX|counter_neg[0] 
+    Info (332119):    -0.723             -10.414 RX_SPW:RX_B|counter_neg[0] 
+Info (332146): Worst-case recovery slack is -3.305
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -3.305            -177.762 RX_SPW:RX_B|counter_neg[0] 
+    Info (332119):    -3.225            -174.190 RX_SPW:RX|counter_neg[0] 
+    Info (332119):    -2.357             -44.381 FSM_SPW:FSM|state_fsm.connecting 
+    Info (332119):    -2.297             -38.783 FSM_SPW:FSM_B|state_fsm.connecting 
+    Info (332119):    -1.644             -58.463 detector_tokens:A|counter_neg[0] 
+    Info (332119):    -1.643             -52.555 detector_tokens:B|counter_neg[0] 
+    Info (332119):     6.619               0.000 FPGA_CLK1_50 
+Info (332146): Worst-case removal slack is -1.343
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -1.343             -12.358 FSM_SPW:FSM_B|state_fsm.connecting 
+    Info (332119):    -0.907             -13.294 FSM_SPW:FSM|state_fsm.connecting 
+    Info (332119):     0.370               0.000 detector_tokens:A|counter_neg[0] 
+    Info (332119):     0.492               0.000 detector_tokens:B|counter_neg[0] 
+    Info (332119):     0.688               0.000 FPGA_CLK1_50 
+    Info (332119):     1.847               0.000 RX_SPW:RX_B|counter_neg[0] 
+    Info (332119):     1.994               0.000 RX_SPW:RX|counter_neg[0] 
+Info (332146): Worst-case minimum pulse width slack is -0.931
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -0.931             -75.971 FSM_SPW:FSM_B|state_fsm.connecting 
+    Info (332119):    -0.616             -53.503 FSM_SPW:FSM|state_fsm.connecting 
+    Info (332119):    -0.130              -1.724 RX_SPW:RX_B|counter_neg[0] 
+    Info (332119):     0.006               0.000 detector_tokens:A|counter_neg[0] 
+    Info (332119):     0.027               0.000 RX_SPW:RX|counter_neg[0] 
+    Info (332119):     0.068               0.000 detector_tokens:B|counter_neg[0] 
+    Info (332119):     1.250               0.000 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0] 
+    Info (332119):     1.600               0.000 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[4].output_counter|divclk 
+    Info (332119):     4.040               0.000 FPGA_CLK1_50 
+    Info (332119):     4.424               0.000 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk 
+    Info (332119):     9.407               0.000 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk 
+    Info (332119):    49.524               0.000 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk 
+    Info (332119):    97.701               0.000 AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
+Info (332114): Report Metastability: Found 69 synchronizer chains.
+    Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
+    Info (332114): Number of Synchronizer Chains Found: 69
+    Info (332114): Shortest Synchronizer Chain: 2 Registers
+    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
+    Info (332114): Worst Case Available Settling Time: 14.194 ns
+    Info (332114): 
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 1357 megabytes
+    Info: Processing ended: Sun Apr 30 21:26:29 2017
+    Info: Elapsed time: 00:00:53
+    Info: Total CPU time (on all processors): 00:01:08
+
+
