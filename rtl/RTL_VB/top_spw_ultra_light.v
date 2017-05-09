@@ -84,6 +84,8 @@ module top_spw_ultra_light(
 	wire send_null_tx;
 	wire send_fct_tx;
 
+	wire got_fct_flag_fsm;
+
 
 	FSM_SPW FSM(
 			.pclk(pclk),
@@ -99,7 +101,7 @@ module top_spw_ultra_light(
 			.rx_got_null(got_null_rx),
 			.rx_got_nchar(got_nchar_rx),
 			.rx_got_time_code(got_time_code_rx),
-			.rx_got_fct(got_fct_rx),
+			.rx_got_fct(got_fct_flag_fsm),
 			.rx_resetn(resetn_rx),
 
 			.enable_tx(enable_tx),
@@ -123,6 +125,7 @@ module top_spw_ultra_light(
 			.rx_got_nchar(got_nchar_rx),
 			.rx_got_time_code(got_time_code_rx),
 			.rx_got_fct(got_fct_rx),
+			.rx_got_fct_fsm(got_fct_flag_fsm),
 
 			.rx_data_flag(datarx_flag),
 			.rx_buffer_write(buffer_write),

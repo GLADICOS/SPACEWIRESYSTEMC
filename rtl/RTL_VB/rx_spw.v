@@ -39,18 +39,19 @@ module RX_SPW (
 
 			input  rx_resetn,
 
-			output rx_error,
+			output reg rx_error,
 
 			output rx_got_bit,
-			output rx_got_null,
-			output rx_got_nchar,
-			output rx_got_time_code,
+			output reg rx_got_null,
+			output reg rx_got_nchar,
+			output reg rx_got_time_code,
 			output reg rx_got_fct,
+			output reg rx_got_fct_fsm,
 
-			output reg [8:0] rx_data_flag,
+			output [8:0] rx_data_flag,
 			output reg rx_buffer_write,
 
-			output reg [7:0] rx_time_out,
+			output [7:0] rx_time_out,
 			output reg rx_tick_out
 		 );
 
@@ -97,28 +98,35 @@ module RX_SPW (
 
 	reg [9:0] dta_timec;
 
-	reg parity_error;
-	wire check_c_d;
+	//reg parity_error;
+	//wire check_c_d;
 
 	reg rx_data_take;
+	reg rx_data_take_0;
 
 	reg first_time;
+
+	reg ready_control;
+	reg ready_data;
 
 	//CLOCK RECOVERY
 	assign posedge_clk 	= (rx_din ^ rx_sin)?1'b1:1'b0;
 	assign negedge_clk 	= (!first_time)?1'b0:(!(rx_din ^ rx_sin))?1'b1:1'b0;
 
-	assign check_c_d 	= ((is_control & counter_neg == 5'd2) == 1'b1 | (control[2:0] != 3'd7 & is_data & counter_neg == 5'd5) == 1'b1 | (control[2:0] == 3'd7 & is_data & counter_neg == 5'd5) == 1'b1)? 1'b1: 1'b0;
+	//assign check_c_d 	= ((is_control & counter_neg == 5'd2) == 1'b1 | (control[2:0] != 3'd7 & is_data & counter_neg == 5'd5) == 1'b1 | (control[2:0] == 3'd7 & is_data & counter_neg == 5'd5) == 1'b1)? 1'b1: 1'b0;
 
-	assign rx_got_null      = (control_l_r[2:0] == 3'd7 & control[2:0] == 3'd4)?1'b1:1'b0;
-	//assign rx_got_fct       = (control_l_r[2:0] != 3'd7 & control[2:0] == 3'd4 & check_c_d)?1'b1:1'b0;
+	//assign rx_got_null      = (control_l_r[2:0] == 3'd7 & control[2:0] == 3'd4 & ready_control)?1'b1:1'b0;
+	//assign rx_got_fct       = (control_l_r[2:0] != 3'd7 & control[2:0] == 3'd4 & ready_control)?1'b1:1'b0;
 
 	assign rx_got_bit       = (posedge_clk)?1'b1:1'b0;
 
-	assign rx_error         =  parity_error;
+	assign rx_data_flag     = data[8:0];
+	assign rx_time_out 	= timecode[7:0];
 
-	assign rx_got_nchar     = (control[2:0] != 3'd7 & is_data)?1'b1:1'b0;
-	assign rx_got_time_code = (control[2:0] == 3'd7 & is_data)?1'b1:1'b0;
+	//assign rx_error         =  parity_error;
+
+	//assign rx_got_nchar     = (control[2:0] != 3'd7 & is_data & ready_data)?1'b1:1'b0;
+	//assign rx_got_time_code = (control[2:0] == 3'd7 & is_data & ready_data)?1'b1:1'b0;
 
 always@(posedge posedge_clk or negedge rx_resetn)
 begin
@@ -167,40 +175,21 @@ begin
 	end
 	else
 	begin
-		bit_c_0 <= rx_din;
-		bit_c_2 <= bit_c_0;
+		if(!first_time)
+		begin
+		end
+		else
+		begin
+			bit_c_0 <= rx_din;
+			bit_c_2 <= bit_c_0;
 
-		bit_d_0 <= rx_din;
-		bit_d_2 <= bit_d_0;
-		bit_d_4 <= bit_d_2;
-		bit_d_6 <= bit_d_4;
-		bit_d_8 <= bit_d_6;
+			bit_d_0 <= rx_din;
+			bit_d_2 <= bit_d_0;
+			bit_d_4 <= bit_d_2;
+			bit_d_6 <= bit_d_4;
+			bit_d_8 <= bit_d_6;
+		end
 		
-	end
-end
-
-always@(*)
-begin
-	rx_got_fct = 1'b0;
-	
-	if(control_l_r[2:0] != 3'd7 && control[2:0] == 3'd4 && check_c_d)
-	begin
-		rx_got_fct = 1'b1;
-	end
-end
-
-always@(*)
-begin
-	dta_timec  = 10'd0;
-	control_r  = 4'd0;
-
-	if(counter_neg == 5'd2)
-	begin
-		control_r     = {bit_c_3,bit_c_2,bit_c_1,bit_c_0};
-	end
-	else if(counter_neg == 5'd5)
-	begin
-		dta_timec   = {bit_d_9,bit_d_8,bit_d_0,bit_d_1,bit_d_2,bit_d_3,bit_d_4,bit_d_5,bit_d_6,bit_d_7};
 	end
 end
 
@@ -217,147 +206,211 @@ begin
 	else
 	begin
 		
-		if(counter_neg == 5'd1)
+		if(!first_time)
 		begin
-			if(bit_c_0)
-			begin
-				is_control <= 1'b1;
-				is_data    <= 1'b0;
-			end
-			else
-			begin
-				is_control <= 1'b0;
-				is_data    <= 1'b1;
-			end
-
-			counter_neg <= counter_neg + 5'd1;
-
 		end
 		else
 		begin
-			if(is_control)
+			if(counter_neg == 5'd1)
 			begin
-				if(counter_neg == 5'd2)
+				if(bit_c_0)
 				begin
-					counter_neg <= 5'd1;
-					is_control  <= 1'b0;
+					is_control <= 1'b1;
+					is_data    <= 1'b0;
 				end
 				else
-					counter_neg <= counter_neg + 5'd1;
-			end
-			else if(is_data)
-			begin
-				if(counter_neg == 5'd5)
 				begin
-					counter_neg <= 5'd1;
-					is_data     <= 1'b0;
+					is_control <= 1'b0;
+					is_data    <= 1'b1;
 				end
-				else
-					counter_neg <= counter_neg + 5'd1;
+
+				counter_neg <= counter_neg + 5'd1;
+
 			end
 			else
 			begin
-				counter_neg <= counter_neg + 5'd1;
-			end
-		end	
+				if(is_control)
+				begin
+					if(counter_neg == 5'd2)
+					begin
+						counter_neg <= 5'd1;
+						is_control  <= 1'b0;
+					end
+					else
+						counter_neg <= counter_neg + 5'd1;
+				end
+				else if(is_data)
+				begin
+					if(counter_neg == 5'd5)
+					begin
+						counter_neg <= 5'd1;
+						is_data     <= 1'b0;
+					end
+					else
+						counter_neg <= counter_neg + 5'd1;
+				end
+				else
+				begin
+					counter_neg <= counter_neg + 5'd1;
+				end
+			end	
+		end
 	end
 end
 
-
-always@(*)
+always@(counter_neg)
 begin
 
-	parity_error = 1'b0;
+	dta_timec     = 10'd0;
+	control_r     = 4'd0;
+	ready_control = 1'b0;
+	ready_data    = 1'b0;
 
-	if(last_is_control)
-	begin
-		if(last_was_control)
+	if(negedge_clk)
 		begin
-			if(!(control[2]^control_l_r[0]^control_l_r[1]) != control[3])
-			begin
-				parity_error = 1'b1;
-			end
+		if(counter_neg == 5'd2 && bit_c_2)
+		begin
+			control_r     = {bit_c_3,bit_c_2,bit_c_1,bit_c_0};
+			ready_control = 1'b1;
+			ready_data    = 1'b0;
 		end
-		else if(last_was_timec)
+		else if(counter_neg == 5'd5)
 		begin
-			if(!(control[2]^timecode[0]^timecode[1]^timecode[2]^timecode[3]^timecode[4]^timecode[5]^timecode[6]^timecode[7])  != control[3])
-			begin
-				parity_error = 1'b1;
-			end
-		end
-		else if(last_was_data)
-		begin
-			if(!(control[2]^data[0]^data[1]^data[2]^data[3]^data[4]^data[5]^data[6]^data[7]) != control[3])
-			begin
-				parity_error = 1'b1;
-			end
+			dta_timec     = {bit_d_9,bit_d_8,bit_d_0,bit_d_1,bit_d_2,bit_d_3,bit_d_4,bit_d_5,bit_d_6,bit_d_7};
+			ready_control = 1'b0;
+			ready_data    = 1'b1;
 		end
 	end
-	else if(last_is_data)
-	begin
-		if(last_was_control)
-		begin
-			if(!(data[8]^control[1]^control[0]) != data[9])
-			begin
-				parity_error = 1'b1;
-			end
-		end
-		else if(last_was_timec)
-		begin
-			if(!(data[8]^timecode[0]^timecode[1]^timecode[2]^timecode[3]^timecode[4]^timecode[5]^timecode[6]^timecode[7])  != data[9])
-			begin
-				parity_error = 1'b1;
-			end
-		end
-		else if(last_was_data)
-		begin
-			if(!(data[8]^data[0]^data_l_r[1]^data_l_r[2]^data_l_r[3]^data_l_r[4]^data_l_r[5]^data_l_r[6]^data_l_r[7]) != data[9])
-			begin
-				parity_error = 1'b1;
-			end
-		end
-	end
-	
+
 end
 
-always@(posedge check_c_d or negedge rx_resetn )
+always@(ready_control)
+begin
+
+	rx_got_fct = 1'b0;
+
+	if(control_l_r[2:0] != 3'd7 && control[2:0] == 3'd4 && ready_control)
+	begin
+		rx_got_fct = 1'b1;
+	end
+	else
+	begin
+		rx_got_fct = 1'b0;
+	end
+
+end
+
+always@(posedge posedge_clk or negedge rx_resetn )
 begin
 
 	if(!rx_resetn)
 	begin
 
-		control_l_r <= 4'd0;
-		control	   <= 4'd0;
-		data 	        <= 10'd0;
-		data_l_r        <= 10'd0;
-		rx_data_flag    <= 9'd0; 
-		rx_buffer_write <= 1'b0;
-		rx_data_take    <= 1'b0;
+		control_l_r     <= 4'd0;
+		control	   	<= 4'd0;
+		data 	        <=  10'd0;
+		data_l_r        <=  10'd0;
+		//rx_data_flag    <=  9'd0; 
+		rx_buffer_write <=  1'b0;
+		rx_data_take    <=  1'b0;
+		rx_data_take_0  <=  1'b0;
 
-		timecode    <= 10'd0;
-		rx_time_out <= 8'd0;
-		rx_tick_out <= 1'b0;
+		timecode    	<=  10'd0;
+		//rx_time_out 	<=  8'd0;
+		rx_tick_out 	<=  1'b0;
 
-		last_is_control <=1'b0;
-		last_is_data 	<=1'b0;
-		last_is_timec 	<=1'b0;
+		last_is_control <=  1'b0;
+		last_is_data 	<=  1'b0;
+		last_is_timec 	<=  1'b0;
 
-		last_was_control <=1'b0;
-		last_was_data    <=1'b0;
-		last_was_timec   <=1'b0;
+		last_was_control <= 1'b0;
+		last_was_data    <= 1'b0;
+		last_was_timec   <= 1'b0;
+
+		rx_error  	 <= 1'b0;
+		rx_got_fct_fsm   <= 1'b0;
+		rx_got_null 	 <= 1'b0;
+		rx_got_nchar 	 <= 1'b0;
+		rx_got_time_code <= 1'b0;
+		//rx_got_fct 	 <= 1'b0;
 
 	end
 	else
 	begin
 
-		rx_buffer_write <= rx_data_take;
-		rx_data_flag <= data[8:0];
-		
-		rx_time_out <= timecode[7:0];
+		 rx_data_take_0 <= rx_data_take;
+		rx_buffer_write  <= rx_data_take_0;
 
-		if((control_r[2:0] != 3'd7 & is_data) == 1'b1)
+		if(control_l_r[2:0] != 3'd7 && control[2:0] == 3'd4 && ready_control)
+			rx_got_fct_fsm <= 1'b1;
+
+	 	if(control[2:0] != 3'd7 && is_data )
 		begin
+			rx_got_nchar <= 1'b1;
+		end
+	
+		if(control[2:0] == 3'd7 && is_data)
+		begin
+			rx_got_time_code <= 1'b1;
+		end
 
+		if(control_l_r[2:0] == 3'd7 && control[2:0] == 3'd4 && ready_control)
+		begin
+			rx_got_null <= 1'b1;
+		end
+
+		if(last_is_control)
+		begin
+			if(last_was_control)
+			begin
+				if(!(control[2]^control_l_r[0]^control_l_r[1]) != control[3])
+				begin
+					rx_error <= 1'b1;
+				end
+			end
+			else if(last_was_timec)
+			begin
+				if(!(control[2]^timecode[0]^timecode[1]^timecode[2]^timecode[3]^timecode[4]^timecode[5]^timecode[6]^timecode[7])  != control[3])
+				begin
+					rx_error <= 1'b1;
+				end
+			end
+			else if(last_was_data)
+			begin
+				if(!(control[2]^data[0]^data[1]^data[2]^data[3]^data[4]^data[5]^data[6]^data[7]) != control[3])
+				begin
+					rx_error <= 1'b1;
+				end
+			end
+			
+		end
+		else if(last_is_data)
+		begin
+			if(last_was_control)
+			begin
+				if(!(data[8]^control[1]^control[0]) != data[9])
+				begin
+					rx_error <= 1'b1;
+				end
+			end
+			else if(last_was_timec)
+			begin
+				if(!(data[8]^timecode[0]^timecode[1]^timecode[2]^timecode[3]^timecode[4]^timecode[5]^timecode[6]^timecode[7])  != data[9])
+				begin
+					rx_error <= 1'b1;
+				end
+			end
+			else if(last_was_data)
+			begin
+				if(!(data[8]^data[0]^data_l_r[1]^data_l_r[2]^data_l_r[3]^data_l_r[4]^data_l_r[5]^data_l_r[6]^data_l_r[7]) != data[9])
+				begin
+					rx_error <= 1'b1;
+				end
+			end
+		end
+
+		if((control_r[2:0] != 3'd7 && ready_data) == 1'b1)
+		begin
 			data        	 	<= dta_timec;
 			data_l_r    	 	<= data;
 			
@@ -371,7 +424,7 @@ begin
 			last_was_data    	<= last_is_data ;
 			last_was_timec 		<= last_is_timec;
 		end
-		else if((control_r[2:0] == 3'd7 && is_data) == 1'b1)
+		else if((control_r[2:0] == 3'd7 && ready_data) == 1'b1)
 		begin
 
 			timecode    		 <= dta_timec;
@@ -385,18 +438,18 @@ begin
 			last_was_data    	<= last_is_data ;
 			last_was_timec   	<= last_is_timec;
 		end
-		else if(control_r == 4'd6 || control_r == 4'd13 || control_r == 4'd5 || control_r == 4'd15 || control_r == 4'd7 || control_r == 4'd4 || control_r == 4'd12)
+		else if((control_r == 4'd6 || control_r == 4'd13 || control_r == 4'd5 || control_r == 4'd15 || control_r == 4'd7 || control_r == 4'd4 || control_r == 4'd12) && ready_control)
 		begin
 
 			control	   	 <= control_r;
 			control_l_r 	 <= control[3:0];
 
-			if((control_r[2:0] == 3'd6 & is_control) == 1'b1 )
+			if((control_r[2:0] == 3'd6) == 1'b1 )
 			begin
 				data <= 10'b0100000001;
 				rx_data_take <= 1'b1;
 			end
-			else if(  (control_r[2:0] == 3'd5 & is_control) == 1'b1 )
+			else if(  (control_r[2:0] == 3'd5) == 1'b1 )
 			begin
 				data <= 10'b0100000000;
 				rx_data_take <= 1'b1;
