@@ -105,7 +105,7 @@
          type = "int";
       }
    }
-   element data_rx_ready
+   element data_rx_rd_en
    {
       datum _sortIndex
       {
@@ -395,7 +395,7 @@
    dir="end" />
  <interface
    name="data_rx_ready_external_connection"
-   internal="data_rx_ready.external_connection"
+   internal="data_rx_rd_en.external_connection"
    type="conduit"
    dir="end" />
  <interface
@@ -739,7 +739,7 @@
   <parameter name="width" value="9" />
  </module>
  <module
-   name="data_rx_ready"
+   name="data_rx_rd_en"
    kind="altera_avalon_pio"
    version="16.1"
    enabled="1">
@@ -747,7 +747,7 @@
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
   <parameter name="clockRate" value="50000000" />
-  <parameter name="direction" value="Input" />
+  <parameter name="direction" value="Output" />
   <parameter name="edgeType" value="RISING" />
   <parameter name="generateIRQ" value="false" />
   <parameter name="irqType" value="LEVEL" />
@@ -1028,7 +1028,7 @@
   <parameter name="H2F_AXI_CLOCK_FREQ" value="50000000" />
   <parameter name="H2F_CTI_CLOCK_FREQ" value="100" />
   <parameter name="H2F_DEBUG_APB_CLOCK_FREQ" value="100" />
-  <parameter name="H2F_LW_AXI_CLOCK_FREQ" value="50000000" />
+  <parameter name="H2F_LW_AXI_CLOCK_FREQ" value="100" />
   <parameter name="H2F_TPIU_CLOCK_IN_FREQ" value="100" />
   <parameter name="HARD_EMIF" value="true" />
   <parameter name="HCX_COMPAT_MODE" value="false" />
@@ -1051,7 +1051,7 @@
   <parameter name="LOANIO_Enable">No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No</parameter>
   <parameter name="LOCAL_ID_WIDTH" value="8" />
   <parameter name="LRDIMM_EXTENDED_CONFIG">0x000000000000000000</parameter>
-  <parameter name="LWH2F_Enable" value="true" />
+  <parameter name="LWH2F_Enable" value="false" />
   <parameter name="MARGIN_VARIATION_TEST" value="false" />
   <parameter name="MAX_PENDING_RD_CMD" value="32" />
   <parameter name="MAX_PENDING_WR_CMD" value="16" />
@@ -1684,7 +1684,7 @@
   <parameter name="gui_ps_units9" value="ps" />
   <parameter name="gui_refclk1_frequency" value="100.0" />
   <parameter name="gui_refclk_switch" value="true" />
-  <parameter name="gui_reference_clock_frequency" value="100.0" />
+  <parameter name="gui_reference_clock_frequency" value="50.0" />
   <parameter name="gui_switchover_delay" value="0" />
   <parameter name="gui_switchover_mode">Automatic Switchover</parameter>
   <parameter name="gui_use_locked" value="true" />
@@ -2013,7 +2013,7 @@
    kind="avalon"
    version="16.1"
    start="hps_0.h2f_axi_master"
-   end="data_rx_ready.s1">
+   end="data_rx_rd_en.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x00c0" />
   <parameter name="defaultConnection" value="false" />
@@ -2226,7 +2226,7 @@
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection kind="clock" version="16.1" start="clk_0.clk" end="data_rx_r.clk" />
- <connection kind="clock" version="16.1" start="clk_0.clk" end="data_rx_ready.clk" />
+ <connection kind="clock" version="16.1" start="clk_0.clk" end="data_rx_rd_en.clk" />
  <connection kind="clock" version="16.1" start="clk_0.clk" end="timec_rx_r.clk" />
  <connection
    kind="clock"
@@ -2326,11 +2326,6 @@
    version="16.1"
    start="clk_0.clk"
    end="hps_0.h2f_axi_clock" />
- <connection
-   kind="clock"
-   version="16.1"
-   start="clk_0.clk"
-   end="hps_0.h2f_lw_axi_clock" />
  <connection kind="clock" version="16.1" start="clk_0.clk" end="pll_tx.refclk" />
  <connection kind="clock" version="16.1" start="clk_0.clk" end="pll_tx.refclk1" />
  <connection
@@ -2342,7 +2337,7 @@
    kind="reset"
    version="16.1"
    start="clk_0.clk_reset"
-   end="data_rx_ready.reset" />
+   end="data_rx_rd_en.reset" />
  <connection
    kind="reset"
    version="16.1"

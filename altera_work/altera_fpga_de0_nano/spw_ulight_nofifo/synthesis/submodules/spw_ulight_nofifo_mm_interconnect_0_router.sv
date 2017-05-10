@@ -301,15 +301,15 @@ module spw_ulight_nofifo_mm_interconnect_0_router
     end
 
     // ( 0xc0 .. 0xd0 )
-    if ( {address[RG:PAD12],{PAD12{1'b0}}} == 19'hc0  && read_transaction  ) begin
+    if ( {address[RG:PAD12],{PAD12{1'b0}}} == 19'hc0   ) begin
             src_channel = 36'b000000000000000000000001000000000000;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 12;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 11;
     end
 
     // ( 0xd0 .. 0xe0 )
     if ( {address[RG:PAD13],{PAD13{1'b0}}} == 19'hd0  && read_transaction  ) begin
             src_channel = 36'b000000000000000000000010000000000000;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 11;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 12;
     end
 
     // ( 0xe0 .. 0xf0 )

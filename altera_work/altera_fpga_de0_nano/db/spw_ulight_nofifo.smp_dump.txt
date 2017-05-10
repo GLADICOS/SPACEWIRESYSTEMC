@@ -160,7 +160,7 @@ state.ST_COMP_TRANS 1 0 0 1
 state.ST_UNCOMP_TRANS 1 0 1 0 
 state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
 
-State Machine - |spw_ulight_con|spw_ulight_nofifo:AXI_INTERFACE|spw_ulight_nofifo_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:data_rx_ready_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+State Machine - |spw_ulight_con|spw_ulight_nofifo:AXI_INTERFACE|spw_ulight_nofifo_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:data_rx_rd_en_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
 Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
 state.ST_IDLE 0 0 0 0 
 state.ST_COMP_TRANS 1 0 0 1 
@@ -251,15 +251,6 @@ state.ST_COMP_TRANS 1 0 0 1
 state.ST_UNCOMP_TRANS 1 0 1 0 
 state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
 
-State Machine - |spw_ulight_con|spw_ulight_nofifo:AXI_INTERFACE|spw_ulight_nofifo_pll_tx:pll_tx|altera_pll:altera_pll_i|dps_extra_kick:dps_extra_inst|dps_current_state
-Name dps_current_state.PHASE_DONE_LOW_0 dps_current_state.PHASE_DONE_LOW_4 dps_current_state.PHASE_DONE_LOW_3 dps_current_state.PHASE_DONE_LOW_2 dps_current_state.PHASE_DONE_LOW_1 dps_current_state.PHASE_DONE_HIGH 
-dps_current_state.PHASE_DONE_HIGH 0 0 0 0 0 0 
-dps_current_state.PHASE_DONE_LOW_1 0 0 0 0 1 1 
-dps_current_state.PHASE_DONE_LOW_2 0 0 0 1 0 1 
-dps_current_state.PHASE_DONE_LOW_3 0 0 1 0 0 1 
-dps_current_state.PHASE_DONE_LOW_4 0 1 0 0 0 1 
-dps_current_state.PHASE_DONE_LOW_0 1 0 0 0 0 1 
-
 State Machine - |spw_ulight_con|TX_SPW:TX|state_tx
 Name state_tx.tx_spw_start state_tx.tx_spw_full state_tx.tx_spw_null_fct state_tx.tx_spw_null 
 state_tx.tx_spw_start 0 0 0 0 
@@ -284,6 +275,15 @@ state_fsm.ready 1 0 0 0 1 0
 state_fsm.started 1 0 0 1 0 0 
 state_fsm.connecting 1 0 1 0 0 0 
 state_fsm.run 1 1 0 0 0 0 
+
+State Machine - |spw_ulight_con|spw_ulight_nofifo:AXI_INTERFACE|spw_ulight_nofifo_pll_tx:pll_tx|altera_pll:altera_pll_i|dps_extra_kick:dps_extra_inst|dps_current_state
+Name dps_current_state.PHASE_DONE_LOW_0 dps_current_state.PHASE_DONE_LOW_4 dps_current_state.PHASE_DONE_LOW_3 dps_current_state.PHASE_DONE_LOW_2 dps_current_state.PHASE_DONE_LOW_1 dps_current_state.PHASE_DONE_HIGH 
+dps_current_state.PHASE_DONE_HIGH 0 0 0 0 0 0 
+dps_current_state.PHASE_DONE_LOW_1 0 0 0 0 1 1 
+dps_current_state.PHASE_DONE_LOW_2 0 0 0 1 0 1 
+dps_current_state.PHASE_DONE_LOW_3 0 0 1 0 0 1 
+dps_current_state.PHASE_DONE_LOW_4 0 1 0 0 0 1 
+dps_current_state.PHASE_DONE_LOW_0 1 0 0 0 0 1 
 
 State Machine - |spw_ulight_con|TX_SPW:TX_B|state_tx
 Name state_tx.tx_spw_start state_tx.tx_spw_full state_tx.tx_spw_null_fct state_tx.tx_spw_null 

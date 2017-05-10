@@ -66,6 +66,8 @@ module spw_ulight_con(
 	wire send_null_tx;
 	wire send_fct_tx;
 	
+	wire got_fct_flag_fsm;
+	
 	/**************************/
 	
 	wire top_tx_write_0;
@@ -111,17 +113,21 @@ module spw_ulight_con(
 	wire send_null_tx_0;
 	wire send_fct_tx_0;
 	
+	wire got_fct_flag_fsm_0;
+	
 	wire [13:0] monitor_a;
 	wire [13:0] monitor_b;
 	
 	wire reset_spw_n;
 	
-	assign  ppllclk = (clock_sel == 3'd0)?ppll_2_MHZ:
+	wire pll_tx_locked_export;
+		
+	assign  ppllclk = (reset_spw_n)?1'b0:(clock_sel == 3'd0)?ppll_2_MHZ:
 			  (clock_sel == 3'd1)?ppll_5_MHZ:
-			  (clock_sel == 3'd2)?ppll_10_MHZ:
-			  (clock_sel == 3'd3)?ppll_50_MHZ:
-			  (clock_sel == 3'd4)?ppll_100_MHZ:
-			  (clock_sel == 3'd5)?ppll_200_MHZ:ppll_5_MHZ;
+			  (clock_sel == 3'd2)?ppll_10_MHZ:ppll_5_MHZ;
+			 // (clock_sel == 3'd3)?ppll_50_MHZ:ppll_5_MHZ;
+			  //(clock_sel == 3'd4)?ppll_100_MHZ:ppll_5_MHZ;
+			  //(clock_sel == 3'd5)?ppll_200_MHZ:ppll_5_MHZ;
 			  //(clock_sel == 8'd5)?ppll_200_MHZ:
 			  //(clock_sel == 8'd6)?ppll_300_MHZ:ppll_5_MHZ;	  
 			  
@@ -130,7 +136,9 @@ module spw_ulight_con(
 		
 	assign top_sin_0 = top_sout;
 	assign top_din_0 = top_dout;
-		
+	
+	assign LED[7:7] = pll_tx_locked_export;
+	
 	spw_ulight_nofifo  AXI_INTERFACE (
 		.auto_start_external_connection_export(top_auto_start),      //      auto_start_external_connection.export
 		.clock_sel_external_connection_export(clock_sel),
@@ -157,7 +165,7 @@ module spw_ulight_con(
 		.timec_rx_ready_external_connection_export(tick_out),  //  timec_rx_ready_external_connection.export
 		.timec_tx_ready_external_connection_export(top_tx_ready_tick),  //  timec_tx_ready_external_connection.export
 		.timec_tx_to_w_external_connection_export(top_tx_time),    //   timec_tx_to_w_external_connection.export
-		.pll_tx_locked_export(LED[7:7]),
+		.pll_tx_locked_export(pll_tx_locked_export),
 
 		.auto_start_0_external_connection_export(top_auto_start_0),      //      auto_start_external_connection.export
 		.link_disable_0_external_connection_export(top_link_disable_0),    //    link_disable_external_connection.export
@@ -196,7 +204,7 @@ module spw_ulight_con(
 			.rx_got_null(got_null_rx),
 			.rx_got_nchar(got_nchar_rx),
 			.rx_got_time_code(got_time_code_rx),
-			.rx_got_fct(got_fct_rx),
+			.rx_got_fct(got_fct_flag_fsm),
 			.rx_resetn(resetn_rx),
 
 			.enable_tx(enable_tx),
@@ -206,7 +214,6 @@ module spw_ulight_con(
 			.fsm_state(top_fsm_i)
 	
 			);
-
 
 	RX_SPW RX(
 			.rx_din(top_din),
@@ -220,6 +227,7 @@ module spw_ulight_con(
 			.rx_got_nchar(got_nchar_rx),
 			.rx_got_time_code(got_time_code_rx),
 			.rx_got_fct(got_fct_rx),
+			.rx_got_fct_fsm(got_fct_flag_fsm),
 
 			.rx_data_flag(datarx_flag),
 			.rx_buffer_write(buffer_write),
@@ -232,11 +240,11 @@ module spw_ulight_con(
 	TX_SPW        TX(
 			.pclk_tx(ppllclk),
 
-			.data_tx_i(top_tx_data),
-			.txwrite_tx(top_tx_write),
+			.data_tx_i(9'd0),//top_tx_data),
+			.txwrite_tx(1'b0),//top_tx_write),
 		
-			.timecode_tx_i(top_tx_time),
-			.tickin_tx(top_tx_tick),
+			.timecode_tx_i(8'd0),//top_tx_time),
+			.tickin_tx(1'b0),//top_tx_tick),
 		
 			.enable_tx(enable_tx),
 			.send_null_tx(send_null_tx),
@@ -268,7 +276,7 @@ module spw_ulight_con(
 			.rx_got_null(got_null_rx_0),
 			.rx_got_nchar(got_nchar_rx_0),
 			.rx_got_time_code(got_time_code_rx_0),
-			.rx_got_fct(got_fct_rx_0),
+			.rx_got_fct(got_fct_flag_fsm_0),
 			.rx_resetn(resetn_rx_0),
 
 			.enable_tx(enable_tx_0),
@@ -292,6 +300,7 @@ module spw_ulight_con(
 			.rx_got_nchar(got_nchar_rx_0),
 			.rx_got_time_code(got_time_code_rx_0),
 			.rx_got_fct(got_fct_rx_0),
+			.rx_got_fct_fsm(got_fct_flag_fsm_0),
 
 			.rx_data_flag(datarx_flag_0),
 			.rx_buffer_write(buffer_write_0),
@@ -304,11 +313,11 @@ module spw_ulight_con(
 	TX_SPW        TX_B(
 			.pclk_tx(ppllclk),
 
-			.data_tx_i(top_tx_data_0),
-			.txwrite_tx(top_tx_write_0),
+			.data_tx_i(9'd0),//top_tx_data_0),
+			.txwrite_tx(1'b0),//top_tx_write_0),
 		
-			.timecode_tx_i(top_tx_time_0),
-			.tickin_tx(top_tx_tick_0),
+			.timecode_tx_i(8'd0),//top_tx_time_0),
+			.tickin_tx(1'b0),//top_tx_tick_0),
 		
 			.enable_tx(enable_tx_0),
 			.send_null_tx(send_null_tx_0),

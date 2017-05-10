@@ -53,13 +53,6 @@ agreement for further details.
 		(line (pt 0 472)(pt 272 472)(line_width 1))
 	)
 	(port
-		(pt 0 512)
-		(input)
-		(text "data_rx_ready_external_connection_export" (rect 0 0 174 12)(font "Arial" (font_size 8)))
-		(text "data_rx_ready_external_connection_export" (rect 4 501 244 512)(font "Arial" (font_size 8)))
-		(line (pt 0 512)(pt 272 512)(line_width 1))
-	)
-	(port
 		(pt 0 552)
 		(input)
 		(text "data_tx_ready_0_external_connection_export" (rect 0 0 184 12)(font "Arial" (font_size 8)))
@@ -198,6 +191,13 @@ agreement for further details.
 		(text "data_en_to_w_external_connection_export" (rect 0 0 171 12)(font "Arial" (font_size 8)))
 		(text "data_en_to_w_external_connection_export" (rect 4 341 238 352)(font "Arial" (font_size 8)))
 		(line (pt 0 352)(pt 272 352)(line_width 1))
+	)
+	(port
+		(pt 0 512)
+		(output)
+		(text "data_rx_ready_external_connection_export" (rect 0 0 174 12)(font "Arial" (font_size 8)))
+		(text "data_rx_ready_external_connection_export" (rect 4 501 244 512)(font "Arial" (font_size 8)))
+		(line (pt 0 512)(pt 272 512)(line_width 1))
 	)
 	(port
 		(pt 0 632)

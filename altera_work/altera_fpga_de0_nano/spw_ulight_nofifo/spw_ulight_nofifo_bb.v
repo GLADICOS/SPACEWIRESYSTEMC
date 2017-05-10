@@ -56,7 +56,7 @@ module spw_ulight_nofifo (
 	input	[8:0]	data_rx_r_0_external_connection_export;
 	input	[8:0]	data_rx_r_external_connection_export;
 	input		data_rx_ready_0_external_connection_export;
-	input		data_rx_ready_external_connection_export;
+	output		data_rx_ready_external_connection_export;
 	input		data_tx_ready_0_external_connection_export;
 	input		data_tx_ready_external_connection_export;
 	output	[8:0]	data_tx_to_w_0_external_connection_export;

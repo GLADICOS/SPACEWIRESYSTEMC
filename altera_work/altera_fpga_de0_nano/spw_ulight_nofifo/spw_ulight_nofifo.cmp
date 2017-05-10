@@ -11,7 +11,7 @@
 			data_rx_r_0_external_connection_export       : in  std_logic_vector(8 downto 0)  := (others => 'X'); -- export
 			data_rx_r_external_connection_export         : in  std_logic_vector(8 downto 0)  := (others => 'X'); -- export
 			data_rx_ready_0_external_connection_export   : in  std_logic                     := 'X';             -- export
-			data_rx_ready_external_connection_export     : in  std_logic                     := 'X';             -- export
+			data_rx_ready_external_connection_export     : out std_logic;                                        -- export
 			data_tx_ready_0_external_connection_export   : in  std_logic                     := 'X';             -- export
 			data_tx_ready_external_connection_export     : in  std_logic                     := 'X';             -- export
 			data_tx_to_w_0_external_connection_export    : out std_logic_vector(8 downto 0);                     -- export
