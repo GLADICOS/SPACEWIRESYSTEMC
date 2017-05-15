@@ -30,58 +30,28 @@
 //Synthesizable (y/n)	:
 //Other			:
 //-FHDR------------------------------------------------------------------------
-#ifndef CONTROL_SC_H
-#define CONTROL_SC_H
 
-class Control_SC
+#ifndef SPW_RX_CLOCK_RECOVERY_H
+#define SPW_RX_CLOCK_RECOVERY_H
+
+class SPW_RX_CLOCK_RECOVERY_SC;
+
+SC_MODULE(SPW_RX_CLOCK_RECOVERY_SC)
 {
-	public:
-	/*Constructor*/
-	Control_SC();
-	
-	/*initialize systemC model*/
-	virtual void init();
+	sc_in<uint>  DIN_REC;
+	sc_in<uint>  SIN_REC;
 
-	/*Reset the model*/
-	virtual bool reset_set();
+	sc_out<bool> RX_CLOCK_OUT;
 
-	/*Run the Env for ammount off time*/
-	virtual void run_sim();
+	void RX_CLOCK_XOR()
+	{
+		RX_CLOCK_OUT = DIN_REC ^ SIN_REC;
+	}
 
-	/*Tell to SystemC to finish*/
-	virtual void stop_sim();
-
-	/*get dout */
-	virtual unsigned int get_value_dout();
-	/*get sout*/
-	virtual unsigned int get_value_sout();
-
-	/*set sin*/
-	virtual void set_rx_sin(unsigned int strobe);
-	/*set din*/
-	virtual void set_rx_din(unsigned int data);
-
-	virtual unsigned int get_spw_fsm();
-
-	virtual unsigned int finish_simulation();
-
-	//verilog variables 
-	virtual bool verilog_linkenable();
-	virtual bool verilog_autostart();
-	virtual bool verilog_linkdisable();
-	virtual float verilog_frequency();
-
-	//tests 
-	virtual bool start_tx_test();
-	virtual bool enable_time_code_tx_test();
-	virtual void end_tx_test();
-	virtual unsigned int take_data(unsigned int a);
-	virtual int size_data_test();
-
-	virtual void data_o(unsigned int data, unsigned int pos);
-
-	virtual unsigned int clock_tx();
-
-
+	SC_CTOR(SPW_RX_CLOCK_RECOVERY_SC)
+	{
+		SC_METHOD(RX_CLOCK_XOR);
+		sensitive << DIN_REC << SIN_REC;
+	}
 };
 #endif
