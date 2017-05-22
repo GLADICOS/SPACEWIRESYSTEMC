@@ -129,7 +129,7 @@ begin
 		begin
 			next_state_fsm = error_reset;
 		end
-		else if((!link_disable) && (link_start |(auto_start && rx_got_null)))
+		else if((!link_disable) & (link_start |(auto_start && rx_got_null)))
 		begin
 			next_state_fsm = started;
 		end
@@ -138,11 +138,11 @@ begin
 	started:
 	begin
 
-		if(rx_error | rx_got_fct | rx_got_nchar | rx_got_time_code | after128us == 12'd1279 )
+		if(rx_error | rx_got_fct | rx_got_nchar | rx_got_time_code | after128us == 12'd1279)
 		begin
 			next_state_fsm = error_reset;
 		end
-		else if(rx_got_null && rx_got_bit)
+		else if(rx_got_null & rx_got_bit)
 		begin
 			next_state_fsm = connecting;
 		end
@@ -151,7 +151,7 @@ begin
 	connecting:
 	begin
 
-		if(rx_error | rx_got_nchar | rx_got_time_code | after128us == 12'd1279 )
+		if(rx_error | rx_got_nchar | rx_got_time_code | after128us == 12'd1279)
 		begin
 			next_state_fsm = error_reset;
 		end
@@ -221,7 +221,12 @@ begin
 	end
 	else
 	begin
-		if(state_fsm == error_wait | state_fsm == started | state_fsm == connecting)
+
+		if(next_state_fsm == connecting && state_fsm == started)
+		begin
+			after128us <= 12'd0;
+		end
+		else if(state_fsm == error_wait || state_fsm == started || state_fsm == connecting)
 		begin
 			if(after128us < 12'd1279)
 				after128us <= after128us + 12'd1;
@@ -269,16 +274,23 @@ begin
 	end
 	else
 	begin
-		if(rx_got_bit)
+		if(state_fsm != run)
 		begin
 			after850ns <= 12'd0;
 		end
 		else
 		begin
-			if(after850ns < 12'd85 && state_fsm == run)
-				after850ns <= after850ns + 12'd1;
-			else
+			if(rx_got_bit)
+			begin
 				after850ns <= 12'd0;
+			end
+			else
+			begin
+				if(after850ns < 12'd85 && state_fsm == run)
+					after850ns <= after850ns + 12'd1;
+				else
+					after850ns <= 12'd0;
+			end
 		end
 	end
 
