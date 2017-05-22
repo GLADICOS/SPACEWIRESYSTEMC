@@ -1,0 +1,16 @@
+<sld_project_info>
+  <project>
+    <hash md5_digest_80b="c8ca59299cc42c96c023"/>
+  </project>
+  <file_info>
+    <file device="5CSEMA4U23C6" path="spw_ulight_nofifo.sof" usercode="0xFFFFFFFF"/>
+  </file_info>
+  <sld_infos>
+    <sld_info hpath="spw_ulight_nofifo:AXI_INTERFACE" name="AXI_INTERFACE">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME spw_ulight_nofifo HAS_SOPCINFO 1 GENERATION_ID 1494970692"/>
+      </assignment_values>
+      <parameters/>
+    </sld_info>
+  </sld_infos>
+</sld_project_info>

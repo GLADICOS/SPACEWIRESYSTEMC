@@ -1,0 +1,373 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'FPGA_CLK1_50'
+Slack : 4.852
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk'
+Slack : 78.824
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 178.342
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'FPGA_CLK1_50'
+Slack : 0.305
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 0.733
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk'
+Slack : 0.733
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'detector_tokens:B|rx_buffer_write'
+Slack : 5.038
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'detector_tokens:A|rx_buffer_write'
+Slack : 5.043
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'FPGA_CLK1_50'
+Slack : 14.642
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'FPGA_CLK1_50'
+Slack : 0.770
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'detector_tokens:A|rx_buffer_write'
+Slack : 3.572
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'detector_tokens:B|rx_buffer_write'
+Slack : 3.587
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'FSM_SPW:FSM|state_fsm.connecting'
+Slack : 0.632
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'FSM_SPW:FSM_B|state_fsm.connecting'
+Slack : 0.678
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]'
+Slack : 1.250
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'RX_SPW:RX_B|counter_neg[0]'
+Slack : 4.283
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk'
+Slack : 4.297
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'RX_SPW:RX|counter_neg[0]'
+Slack : 4.332
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'detector_tokens:B|rx_buffer_write'
+Slack : 4.418
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'detector_tokens:A|rx_buffer_write'
+Slack : 4.430
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'FPGA_CLK1_50'
+Slack : 9.223
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk'
+Slack : 49.261
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 98.852
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'FPGA_CLK1_50'
+Slack : 5.049
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk'
+Slack : 79.363
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 178.888
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'FPGA_CLK1_50'
+Slack : 0.284
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 0.708
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk'
+Slack : 0.708
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'detector_tokens:A|rx_buffer_write'
+Slack : 4.994
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'detector_tokens:B|rx_buffer_write'
+Slack : 4.999
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'FPGA_CLK1_50'
+Slack : 14.713
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'FPGA_CLK1_50'
+Slack : 0.708
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'detector_tokens:A|rx_buffer_write'
+Slack : 3.635
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'detector_tokens:B|rx_buffer_write'
+Slack : 3.667
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'FSM_SPW:FSM|state_fsm.connecting'
+Slack : 0.623
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'FSM_SPW:FSM_B|state_fsm.connecting'
+Slack : 0.757
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]'
+Slack : 1.250
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'RX_SPW:RX_B|counter_neg[0]'
+Slack : 4.231
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk'
+Slack : 4.233
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'RX_SPW:RX|counter_neg[0]'
+Slack : 4.335
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'detector_tokens:B|rx_buffer_write'
+Slack : 4.407
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'detector_tokens:A|rx_buffer_write'
+Slack : 4.413
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'FPGA_CLK1_50'
+Slack : 9.292
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk'
+Slack : 49.281
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 98.860
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'FPGA_CLK1_50'
+Slack : 5.805
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk'
+Slack : 87.732
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 187.468
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'FPGA_CLK1_50'
+Slack : 0.175
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 0.370
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk'
+Slack : 0.370
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'detector_tokens:A|rx_buffer_write'
+Slack : 7.157
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'detector_tokens:B|rx_buffer_write'
+Slack : 7.177
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'FPGA_CLK1_50'
+Slack : 16.895
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'FPGA_CLK1_50'
+Slack : 0.427
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'detector_tokens:B|rx_buffer_write'
+Slack : 1.749
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'detector_tokens:A|rx_buffer_write'
+Slack : 1.769
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]'
+Slack : 1.250
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'FSM_SPW:FSM|state_fsm.connecting'
+Slack : 2.546
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'FSM_SPW:FSM_B|state_fsm.connecting'
+Slack : 2.556
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'RX_SPW:RX|counter_neg[0]'
+Slack : 4.516
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'RX_SPW:RX_B|counter_neg[0]'
+Slack : 4.518
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk'
+Slack : 4.557
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'detector_tokens:B|rx_buffer_write'
+Slack : 4.651
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'detector_tokens:A|rx_buffer_write'
+Slack : 4.658
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'FPGA_CLK1_50'
+Slack : 9.092
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk'
+Slack : 49.504
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 99.259
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'FPGA_CLK1_50'
+Slack : 6.522
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk'
+Slack : 88.824
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 188.578
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'FPGA_CLK1_50'
+Slack : 0.165
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 0.339
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk'
+Slack : 0.339
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'detector_tokens:A|rx_buffer_write'
+Slack : 7.258
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'detector_tokens:B|rx_buffer_write'
+Slack : 7.273
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'FPGA_CLK1_50'
+Slack : 17.062
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'FPGA_CLK1_50'
+Slack : 0.383
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'detector_tokens:B|rx_buffer_write'
+Slack : 1.698
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'detector_tokens:A|rx_buffer_write'
+Slack : 1.712
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]'
+Slack : 1.250
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'FSM_SPW:FSM|state_fsm.connecting'
+Slack : 2.727
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'FSM_SPW:FSM_B|state_fsm.connecting'
+Slack : 2.741
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'RX_SPW:RX_B|counter_neg[0]'
+Slack : 4.532
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'RX_SPW:RX|counter_neg[0]'
+Slack : 4.548
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[3].output_counter|divclk'
+Slack : 4.551
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'detector_tokens:B|rx_buffer_write'
+Slack : 4.651
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'detector_tokens:A|rx_buffer_write'
+Slack : 4.655
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'FPGA_CLK1_50'
+Slack : 9.057
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[1].output_counter|divclk'
+Slack : 49.535
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'AXI_INTERFACE|pll_tx|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 99.303
+TNS   : 0.000
+
+------------------------------------------------------------

@@ -1,0 +1,47 @@
+	spw_ulight_nofifo u0 (
+		.auto_start_0_external_connection_export      (<connected-to-auto_start_0_external_connection_export>),      //      auto_start_0_external_connection.export
+		.auto_start_external_connection_export        (<connected-to-auto_start_external_connection_export>),        //        auto_start_external_connection.export
+		.clk_clk                                      (<connected-to-clk_clk>),                                      //                                   clk.clk
+		.clock_sel_external_connection_export         (<connected-to-clock_sel_external_connection_export>),         //         clock_sel_external_connection.export
+		.credit_error_rx_0_external_connection_export (<connected-to-credit_error_rx_0_external_connection_export>), // credit_error_rx_0_external_connection.export
+		.credit_error_rx_external_connection_export   (<connected-to-credit_error_rx_external_connection_export>),   //   credit_error_rx_external_connection.export
+		.data_en_to_w_0_external_connection_export    (<connected-to-data_en_to_w_0_external_connection_export>),    //    data_en_to_w_0_external_connection.export
+		.data_en_to_w_external_connection_export      (<connected-to-data_en_to_w_external_connection_export>),      //      data_en_to_w_external_connection.export
+		.data_rx_r_0_external_connection_export       (<connected-to-data_rx_r_0_external_connection_export>),       //       data_rx_r_0_external_connection.export
+		.data_rx_r_external_connection_export         (<connected-to-data_rx_r_external_connection_export>),         //         data_rx_r_external_connection.export
+		.data_rx_ready_0_external_connection_export   (<connected-to-data_rx_ready_0_external_connection_export>),   //   data_rx_ready_0_external_connection.export
+		.data_rx_ready_external_connection_export     (<connected-to-data_rx_ready_external_connection_export>),     //     data_rx_ready_external_connection.export
+		.data_tx_ready_0_external_connection_export   (<connected-to-data_tx_ready_0_external_connection_export>),   //   data_tx_ready_0_external_connection.export
+		.data_tx_ready_external_connection_export     (<connected-to-data_tx_ready_external_connection_export>),     //     data_tx_ready_external_connection.export
+		.data_tx_to_w_0_external_connection_export    (<connected-to-data_tx_to_w_0_external_connection_export>),    //    data_tx_to_w_0_external_connection.export
+		.data_tx_to_w_external_connection_export      (<connected-to-data_tx_to_w_external_connection_export>),      //      data_tx_to_w_external_connection.export
+		.fsm_info_0_external_connection_export        (<connected-to-fsm_info_0_external_connection_export>),        //        fsm_info_0_external_connection.export
+		.fsm_info_external_connection_export          (<connected-to-fsm_info_external_connection_export>),          //          fsm_info_external_connection.export
+		.led_fpga_external_connection_export          (<connected-to-led_fpga_external_connection_export>),          //          led_fpga_external_connection.export
+		.link_disable_0_external_connection_export    (<connected-to-link_disable_0_external_connection_export>),    //    link_disable_0_external_connection.export
+		.link_disable_external_connection_export      (<connected-to-link_disable_external_connection_export>),      //      link_disable_external_connection.export
+		.link_start_0_external_connection_export      (<connected-to-link_start_0_external_connection_export>),      //      link_start_0_external_connection.export
+		.link_start_external_connection_export        (<connected-to-link_start_external_connection_export>),        //        link_start_external_connection.export
+		.monitor_a_external_connection_export         (<connected-to-monitor_a_external_connection_export>),         //         monitor_a_external_connection.export
+		.monitor_b_external_connection_export         (<connected-to-monitor_b_external_connection_export>),         //         monitor_b_external_connection.export
+		.pll_tx_locked_export                         (<connected-to-pll_tx_locked_export>),                         //                         pll_tx_locked.export
+		.pll_tx_outclk0_clk                           (<connected-to-pll_tx_outclk0_clk>),                           //                        pll_tx_outclk0.clk
+		.pll_tx_outclk1_clk                           (<connected-to-pll_tx_outclk1_clk>),                           //                        pll_tx_outclk1.clk
+		.pll_tx_outclk2_clk                           (<connected-to-pll_tx_outclk2_clk>),                           //                        pll_tx_outclk2.clk
+		.pll_tx_outclk3_clk                           (<connected-to-pll_tx_outclk3_clk>),                           //                        pll_tx_outclk3.clk
+		.pll_tx_outclk4_clk                           (<connected-to-pll_tx_outclk4_clk>),                           //                        pll_tx_outclk4.clk
+		.reset_reset_n                                (<connected-to-reset_reset_n>),                                //                                 reset.reset_n
+		.send_fct_now_0_external_connection_export    (<connected-to-send_fct_now_0_external_connection_export>),    //    send_fct_now_0_external_connection.export
+		.send_fct_now_external_connection_export      (<connected-to-send_fct_now_external_connection_export>),      //      send_fct_now_external_connection.export
+		.timec_en_to_tx_0_external_connection_export  (<connected-to-timec_en_to_tx_0_external_connection_export>),  //  timec_en_to_tx_0_external_connection.export
+		.timec_en_to_tx_external_connection_export    (<connected-to-timec_en_to_tx_external_connection_export>),    //    timec_en_to_tx_external_connection.export
+		.timec_rx_r_0_external_connection_export      (<connected-to-timec_rx_r_0_external_connection_export>),      //      timec_rx_r_0_external_connection.export
+		.timec_rx_r_external_connection_export        (<connected-to-timec_rx_r_external_connection_export>),        //        timec_rx_r_external_connection.export
+		.timec_rx_ready_0_external_connection_export  (<connected-to-timec_rx_ready_0_external_connection_export>),  //  timec_rx_ready_0_external_connection.export
+		.timec_rx_ready_external_connection_export    (<connected-to-timec_rx_ready_external_connection_export>),    //    timec_rx_ready_external_connection.export
+		.timec_tx_ready_0_external_connection_export  (<connected-to-timec_tx_ready_0_external_connection_export>),  //  timec_tx_ready_0_external_connection.export
+		.timec_tx_ready_external_connection_export    (<connected-to-timec_tx_ready_external_connection_export>),    //    timec_tx_ready_external_connection.export
+		.timec_tx_to_w_0_external_connection_export   (<connected-to-timec_tx_to_w_0_external_connection_export>),   //   timec_tx_to_w_0_external_connection.export
+		.timec_tx_to_w_external_connection_export     (<connected-to-timec_tx_to_w_external_connection_export>)      //     timec_tx_to_w_external_connection.export
+	);
+
