@@ -1,1 +1,0 @@
-set_instance_assignment -name PLL_COMPENSATION_MODE DIRECT -to "*spw_ulight_nofifo_pll_tx*|altera_pll:altera_pll_i*|*"
