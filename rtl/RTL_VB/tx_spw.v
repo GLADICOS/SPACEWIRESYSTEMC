@@ -70,13 +70,22 @@ localparam [5:0] NULL     = 6'b000001,
 		 DATA     = 6'b010000,
 		 TIMEC    = 6'b100000;
 
+
+localparam [7:0] null_s = 8'b01110100;
+localparam [2:0] fct_s  = 3'b100;
+localparam [3:0] eop_s  = 4'b0101;
+localparam [3:0] eep_s  = 4'b0110;
+localparam [13:0] timecode_ss    = 14'b01110000000000;
+
+
+
 	reg [2:0] state_tx;
 	reg [2:0] next_state_tx;
 
-	reg [7:0]  null_s;
-	reg [3:0]  fct_s;
-	reg [3:0]  eop_s;
-	reg [3:0]  eep_s;
+	//reg [7:0]  null_s;
+	//reg [2:0]  fct_s;
+	//reg [3:0]  eop_s;
+	//reg [3:0]  eep_s;
 	reg [13:0] timecode_s;
 
 	reg [5:0]  last_type;
@@ -578,16 +587,12 @@ begin
 
 end
 
-always@(posedge pclk_tx)
+always@(posedge pclk_tx or negedge enable_tx)
 begin
 	if(!enable_tx)
 	begin
-		null_s        <= 8'b01110100;
-		fct_s         <= 4'b0100;
-		eop_s         <= 4'b0101;
-		eep_s         <= 4'b0110;
-		timecode_s    <= 14'b01110000000000;
-		
+
+		timecode_s    <= 14'b01110000000000;	
 		fct_flag      <= 3'd7;
 
 		first_time 	  <= 1'b1;
@@ -618,6 +623,13 @@ begin
 	else
 	begin
 	
+		//null_s        <= null_s;
+		//fct_s         <= fct_s;
+		//eop_s         <= eop_s;
+		//eep_s         <= eep_s;
+		//timecode_s    <= timecode_s;	
+		//fct_flag      <= fct_flag;
+
 		state_tx <= next_state_tx;
 		last_tx_dout <= tx_dout;
 		last_tx_sout <= tx_sout;
@@ -627,6 +639,11 @@ begin
 
 			ready_tx_data <= 1'b0;
 			ready_tx_timecode <= 1'b0;
+			//hold_null	<= 1'b0;
+			hold_fct	<= 1'b0;
+			hold_data	<= 1'b0;
+			hold_time_code	<= 1'b0;
+
 			//
 			if(gotfct_tx && !block_sum)
 			begin
@@ -666,6 +683,7 @@ begin
 			else
 			begin
 				hold_null <= 1'b0;
+				last_type  <= NULL;
 				global_counter_transfer <= 4'd0;
 			end
 		end
@@ -674,6 +692,12 @@ begin
 
 			ready_tx_data <= 1'b0;
 			ready_tx_timecode <= 1'b0;
+
+			hold_null	<= 1'b0;
+			//hold_fct	<= 1'b0;
+			hold_data	<= 1'b0;
+			hold_time_code	<= 1'b0;
+
 
 			if(gotfct_tx && !block_sum)
 			begin
@@ -710,11 +734,16 @@ begin
 				hold_fct <= 1'b0;
 				global_counter_transfer <= 4'd0;
 				fct_flag <= fct_flag - 3'd1;
+				last_type  <=FCT;
 			end
 		end
 		else if(enable_time_code)
 		begin
-								
+			hold_null	<= 1'b0;
+			hold_fct	<= 1'b0;
+			hold_data	<= 1'b0;
+			//hold_time_code	<= 1'b0;
+							
 			ready_tx_data <= 1'b0;
 
 			if(gotfct_tx && !block_sum)
@@ -750,19 +779,24 @@ begin
 			if(global_counter_transfer < 4'd13)
 			begin
 				global_counter_transfer <= global_counter_transfer + 4'd1;
-				timecode_s <= {timecode_s[13:10],2'd2,timecode_tx_i[7:0]};
+				timecode_s <= {timecode_ss[13:10],2'd2,timecode_tx_i[7:0]};
 			end
 			else
 			begin
 				last_timein_control_flag_tx <= timecode_tx_i;
 				global_counter_transfer <= 4'd0;
+				last_type  <= TIMEC;
 			end
 		end
 		else if(enable_n_char)
 		begin
 			
 			ready_tx_timecode <= 1'b0;
-
+			hold_null	<= 1'b0;
+			hold_fct	<= 1'b0;
+			//hold_data	<= 1'b0;
+			hold_time_code	<= 1'b0;
+			
 			//
 			if(send_fct_now && !block_sum_fct_send)
 			begin
@@ -811,6 +845,7 @@ begin
 					hold_data <= 1'b0;
 					global_counter_transfer <= 4'd0;
 					fct_counter_receive <= fct_counter_receive - 6'd1;
+					last_type  <= DATA;
 				end
 
 			end
@@ -850,6 +885,7 @@ begin
 					hold_data <= 1'b0;
 					global_counter_transfer <= 4'd0;
 					fct_counter_receive <= fct_counter_receive - 6'd1;
+					last_type  <=EOP;
 				end
 			end
 
