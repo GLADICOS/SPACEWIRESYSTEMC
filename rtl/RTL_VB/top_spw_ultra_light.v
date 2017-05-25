@@ -116,7 +116,6 @@ module top_spw_ultra_light(
 	RX_SPW RX(
 			.rx_din(top_din),
 			.rx_sin(top_sin),
-
 			.rx_resetn(resetn_rx),
 
 			.rx_error(error_rx),
