@@ -57,6 +57,7 @@ module RX_SPW (
 
 
 	reg  [4:0] counter_neg;
+	reg control_bit_found;
 
 	wire posedge_clk;
 	wire negedge_clk;
@@ -65,6 +66,7 @@ module RX_SPW (
 	reg bit_c_1;//P
 	reg bit_c_2;//N
 	reg bit_c_3;//P
+	reg bit_c_ex;//P
 
 	reg bit_d_0;//N
 	reg bit_d_1;//P
@@ -107,36 +109,35 @@ module RX_SPW (
 	wire ready_data;
 	
 	//CLOCK RECOVERY
-	assign posedge_clk 	= (!rx_resetn)?1'b0:(rx_din ^ rx_sin)?1'b1:1'b0;
-	assign negedge_clk 	= (!rx_resetn)?1'b0:(!first_time)?1'b0:(!(rx_din ^ rx_sin))?1'b1:1'b0;
+	assign posedge_clk 	= (rx_din ^ rx_sin)?1'b1:1'b0;
+	assign negedge_clk 	= (!first_time)?1'b0:(!(rx_din ^ rx_sin))?1'b1:1'b0;
 
 	assign rx_got_bit       = (posedge_clk)?1'b1:1'b0;
 
 	assign rx_time_out 	= timecode[7:0];
 
-	assign ready_control    = (negedge_clk == 1'b1 & counter_neg == 5'd2 & bit_c_2)?1'b1:1'b0;
-	assign ready_data       = (counter_neg == 5'd5)?1'b1:1'b0;
+	assign ready_control    = is_control;
+	assign ready_data       = (counter_neg == 5'd5)?is_data:1'b0;
 
 always@(posedge posedge_clk or negedge rx_resetn)
 begin
 
 	if(!rx_resetn)
 	begin
-		bit_d_1 <= 1'b0;
-		bit_d_3 <= 1'b0;
-		bit_d_5 <= 1'b0;
-		bit_d_7 <= 1'b0;
-		bit_d_9 <= 1'b0;
-
+		bit_d_1  <= 1'b0;
+		bit_d_3  <= 1'b0;
+		bit_d_5  <= 1'b0;
+		bit_d_7  <= 1'b0;
+		bit_d_9  <= 1'b0;
 		first_time <= 1'b0;
 	end
 	else
 	begin
-		bit_d_1 <= rx_din;
-		bit_d_3 <= bit_d_1;
-		bit_d_5 <= bit_d_3;
-		bit_d_7 <= bit_d_5;
-		bit_d_9 <= bit_d_7;
+		bit_d_1  <= rx_din;
+		bit_d_3  <= bit_d_1;
+		bit_d_5  <= bit_d_3;
+		bit_d_7  <= bit_d_5;
+		bit_d_9  <= bit_d_7;
 		first_time <= 1'b1;
 	end
 
@@ -171,11 +172,13 @@ begin
 	begin
 		bit_c_1   <= 1'b0;
 		bit_c_3   <= 1'b0;
+		bit_c_ex  <= 1'b0;
 	end
 	else
 	begin
 		bit_c_1 <= rx_din;
 		bit_c_3 <= bit_c_1;
+		bit_c_ex <= bit_c_3;
 	end
 
 end
@@ -196,34 +199,6 @@ begin
 end
 
 
-always@(posedge ready_control or negedge rx_resetn)
-begin
-
-	if(!rx_resetn)
-	begin
-		control_r <= 4'd0;
-	end
-	else
-	begin
-		control_r <= {bit_c_3,bit_c_2,bit_c_1,bit_c_0};
-	end		
-end
-
-
-always@(posedge ready_data or negedge rx_resetn)
-begin
-
-	if(!rx_resetn)
-	begin
-		dta_timec <= 10'd0;
-	end
-	else
-	begin
-		dta_timec <= {bit_d_9,bit_d_8,bit_d_0,bit_d_1,bit_d_2,bit_d_3,bit_d_4,bit_d_5,bit_d_6,bit_d_7};
-	end
-			
-end
-
 always@(posedge negedge_clk or negedge rx_resetn)
 begin
 
@@ -231,51 +206,58 @@ begin
 	begin
 		is_control <= 1'b0;
 		is_data    <= 1'b0;
-
+		control_bit_found <= 1'b0;
 		counter_neg <= 5'd0;
 	end
 	else
 	begin
-		
-		if(counter_neg == 5'd1)
+		if(counter_neg == 5'd0)
 		begin
-			if(bit_c_0)
-			begin
-				is_control <= 1'b1;
-				is_data    <= 1'b0;
-			end
-			else
-			begin
-				is_control <= 1'b0;
-				is_data    <= 1'b1;
-			end
+			control_bit_found <= rx_din;
+			is_control  <= 1'b0;
+			is_data     <= 1'b0;
+			counter_neg <= counter_neg + 5'd1;
+		end
+		else if(counter_neg == 5'd1 && control_bit_found)
+		begin
+			is_control <= 1'b1;
+			is_data    <= 1'b0;
+			counter_neg <= counter_neg + 5'd1;	
+		end
+		else if(counter_neg == 5'd1 && !control_bit_found)
+		begin
+			is_control <= 1'b0;
+			is_data    <= 1'b1;
 			counter_neg <= counter_neg + 5'd1;
 		end
 		else
 		begin
+
 			if(is_control)
 			begin
+
+				
 				if(counter_neg == 5'd2)
 				begin
+					control_bit_found <= rx_din;
+					
 					counter_neg <= 5'd1;
 					is_control  <= 1'b0;
+					is_data     <= 1'b0;
 				end
-				else
-					counter_neg <= counter_neg + 5'd1;
 			end
 			else if(is_data)
 			begin
 				if(counter_neg == 5'd5)
 				begin
+					control_bit_found <= rx_din;
+
 					counter_neg <= 5'd1;
 					is_data     <= 1'b0;
+					is_control  <= 1'b0;
 				end
 				else
 					counter_neg <= counter_neg + 5'd1;
-			end
-			else
-			begin
-				counter_neg <= counter_neg + 5'd1;
 			end
 		end	
 
@@ -362,8 +344,6 @@ end
 
 always@(posedge negedge_clk or negedge rx_resetn)
 begin
-	//rx_got_fct_fsm    = 1'b0;
-
 
 	if(!rx_resetn)
 	begin
@@ -414,6 +394,39 @@ begin
 	end
 end
 
+always@(posedge ready_control or negedge rx_resetn )
+begin
+	if(!rx_resetn)
+	begin
+		control_r	   	<= 4'd0;
+	end
+	else
+	begin
+		if(counter_neg == 5'd2)
+			control_r	  <= {bit_c_3,bit_c_2,bit_c_1,bit_c_0};
+		else if(counter_neg == 5'd1 && control == 4'd7)
+			control_r	  <= {bit_c_ex,bit_c_2,bit_c_3,bit_c_0};
+		else
+			control_r	  <= control_r;
+	end
+end
+
+
+always@(posedge ready_data or negedge rx_resetn )
+begin
+	if(!rx_resetn)
+	begin
+		dta_timec	   	<= 10'd0;
+	end
+	else
+	begin
+		if(counter_neg == 5'd5)
+			dta_timec	  <= {bit_d_9,bit_d_8,bit_d_0,bit_d_1,bit_d_2,bit_d_3,bit_d_4,bit_d_5,bit_d_6,bit_d_7};
+		else 
+			dta_timec	  <= dta_timec;
+	end
+end
+
 always@(posedge posedge_clk or negedge rx_resetn )
 begin
 
@@ -425,12 +438,10 @@ begin
 		data 	        <=  10'd0;
 		data_l_r        <=  10'd0;
 		rx_data_flag    <=  9'd0; 
-		//rx_buffer_write <=  1'b0;
 		rx_data_take    <=  1'b0;
-		//rx_data_take_0  <=  1'b0;
+
 
 		timecode    	<=  10'd0;
-		//rx_time_out 	<=  8'd0;
 		rx_tick_out 	<=  1'b0;
 
 		last_is_control <=  1'b0;
@@ -440,10 +451,6 @@ begin
 		last_was_control <= 1'b0;
 		last_was_data    <= 1'b0;
 		last_was_timec   <= 1'b0;
-
-		//meta_hold_setup  <= 1'b0;
-		//meta_hold_setup_n  <= 1'b0;
-		//meta_hold_setup_n_n<= 1'b0;
 		
 	end
 	else
@@ -451,7 +458,7 @@ begin
 
 		if(ready_control)
 		begin
-			control	  <= control_r;
+			control 	 <= control_r;
 			control_l_r 	 <= control;
 
 			last_is_control 	 <= 1'b1;
