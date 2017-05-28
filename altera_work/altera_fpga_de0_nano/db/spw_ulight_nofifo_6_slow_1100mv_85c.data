@@ -1,0 +1,140 @@
+
+
+
+TIMINGDATA
+
+ARCDATA
+pos_KEY[0]__FPGA_CLK1_50__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("0.020");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("0.020");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_KEY[1]__FPGA_CLK1_50__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.960");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.960");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_KEY[0]__FPGA_CLK1_50__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.281");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.281");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_KEY[1]__FPGA_CLK1_50__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.437");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.437");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_FPGA_CLK1_50__LED[0]__delay:
+CELL_RISE( scalar ) {
+VALUES ("8.144");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("8.144");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_FPGA_CLK1_50__LED[1]__delay:
+CELL_RISE( scalar ) {
+VALUES ("8.972");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("8.972");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_FPGA_CLK1_50__LED[2]__delay:
+CELL_RISE( scalar ) {
+VALUES ("8.097");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("8.097");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_FPGA_CLK1_50__LED[3]__delay:
+CELL_RISE( scalar ) {
+VALUES ("8.500");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("8.500");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_FPGA_CLK1_50__LED[4]__delay:
+CELL_RISE( scalar ) {
+VALUES ("8.695");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("8.695");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_FPGA_CLK1_50__LED[5]__delay:
+CELL_RISE( scalar ) {
+VALUES ("8.541");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("8.541");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_FPGA_CLK1_50__LED[6]__delay:
+CELL_RISE( scalar ) {
+VALUES ("7.900");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("7.900");
+}
+
+ENDARCDATA
+
+ENDTIMINGDATA
+
+ENDMODELDATA

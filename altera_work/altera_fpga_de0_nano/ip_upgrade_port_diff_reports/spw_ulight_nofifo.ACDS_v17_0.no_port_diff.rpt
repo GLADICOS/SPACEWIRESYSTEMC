@@ -1,0 +1,23 @@
+IP Ports Diff Report for spw_ulight_nofifo
+Wed May 24 22:49:28 2017
+Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. IP Information
+
+
+
++------------------------------------------------------------------------+
+; IP Information                                                         ;
++----------------------+-------------------------------------------------+
+; IP Variation Name    ; spw_ulight_nofifo                               ;
+; Prior Version        ; ACDS_v16.1                                      ;
+; New Version          ; ACDS_v17.0                                      ;
+; New File             ; spw_ulight_nofifo/synthesis/spw_ulight_nofifo.v ;
+; Has Port Differences ; No                                              ;
++----------------------+-------------------------------------------------+
+
+
