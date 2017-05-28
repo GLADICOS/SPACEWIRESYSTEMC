@@ -1,0 +1,141 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst spw_ulight_nofifo.hps_0.gpio0 -pg 1
+preplace inst spw_ulight_nofifo.timec_tx_to_w_0 -pg 1 -lvl 3 -y 3640
+preplace inst spw_ulight_nofifo.hps_0.wd_timer0 -pg 1
+preplace inst spw_ulight_nofifo.hps_0.gpio1 -pg 1
+preplace inst spw_ulight_nofifo.timec_en_to_tx_0 -pg 1 -lvl 3 -y 3340
+preplace inst spw_ulight_nofifo.auto_start -pg 1 -lvl 3 -y 530
+preplace inst spw_ulight_nofifo.MONITOR_A -pg 1 -lvl 3 -y 30
+preplace inst spw_ulight_nofifo.hps_0.wd_timer1 -pg 1
+preplace inst spw_ulight_nofifo.hps_0.gpio2 -pg 1
+preplace inst spw_ulight_nofifo.hps_0.fpgamgr -pg 1
+preplace inst spw_ulight_nofifo.MONITOR_B -pg 1 -lvl 3 -y 430
+preplace inst spw_ulight_nofifo.hps_0.eosc1 -pg 1
+preplace inst spw_ulight_nofifo -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst spw_ulight_nofifo.hps_0.timer -pg 1
+preplace inst spw_ulight_nofifo.clock_sel -pg 1 -lvl 3 -y 290
+preplace inst spw_ulight_nofifo.hps_0.eosc2 -pg 1
+preplace inst spw_ulight_nofifo.hps_0.fpga_interfaces -pg 1
+preplace inst spw_ulight_nofifo.timec_rx_ready -pg 1 -lvl 3 -y 1840
+preplace inst spw_ulight_nofifo.timec_en_to_tx -pg 1 -lvl 3 -y 1640
+preplace inst spw_ulight_nofifo.hps_0.clkmgr -pg 1
+preplace inst spw_ulight_nofifo.hps_0.spim0 -pg 1
+preplace inst spw_ulight_nofifo.data_rx_r -pg 1 -lvl 3 -y 830
+preplace inst spw_ulight_nofifo.timec_tx_to_w -pg 1 -lvl 3 -y 2540
+preplace inst spw_ulight_nofifo.timec_rx_r -pg 1 -lvl 3 -y 1740
+preplace inst spw_ulight_nofifo.hps_0.sdmmc -pg 1
+preplace inst spw_ulight_nofifo.hps_0.spim1 -pg 1
+preplace inst spw_ulight_nofifo.data_tx_ready -pg 1 -lvl 3 -y 930
+preplace inst spw_ulight_nofifo.hps_0.sysmgr -pg 1
+preplace inst spw_ulight_nofifo.hps_0.i2c0 -pg 1
+preplace inst spw_ulight_nofifo.data_en_to_w -pg 1 -lvl 3 -y 730
+preplace inst spw_ulight_nofifo.timec_rx_r_0 -pg 1 -lvl 3 -y 3740
+preplace inst spw_ulight_nofifo.auto_start_0 -pg 1 -lvl 3 -y 2040
+preplace inst spw_ulight_nofifo.hps_0.i2c1 -pg 1
+preplace inst spw_ulight_nofifo.hps_0.hps_io -pg 1
+preplace inst spw_ulight_nofifo.hps_0.i2c2 -pg 1
+preplace inst spw_ulight_nofifo.hps_0.f2s_periph_ref_clk -pg 1
+preplace inst spw_ulight_nofifo.pll_tx -pg 1 -lvl 2 -y 270
+preplace inst spw_ulight_nofifo.link_start -pg 1 -lvl 3 -y 1440
+preplace inst spw_ulight_nofifo.hps_0.i2c3 -pg 1
+preplace inst spw_ulight_nofifo.timec_rx_ready_0 -pg 1 -lvl 3 -y 3440
+preplace inst spw_ulight_nofifo.hps_0.qspi -pg 1
+preplace inst spw_ulight_nofifo.data_rx_r_0 -pg 1 -lvl 3 -y 2340
+preplace inst spw_ulight_nofifo.hps_0.nand0 -pg 1
+preplace inst spw_ulight_nofifo.hps_0 -pg 1 -lvl 2 -y 1160
+preplace inst spw_ulight_nofifo.hps_0.rstmgr -pg 1
+preplace inst spw_ulight_nofifo.data_tx_to_w_0 -pg 1 -lvl 3 -y 2840
+preplace inst spw_ulight_nofifo.hps_0.l3regs -pg 1
+preplace inst spw_ulight_nofifo.hps_0.arm_a9_0 -pg 1
+preplace inst spw_ulight_nofifo.hps_0.arm_a9_1 -pg 1
+preplace inst spw_ulight_nofifo.hps_0.f2s_sdram_ref_clk -pg 1
+preplace inst spw_ulight_nofifo.data_rx_rd_en -pg 1 -lvl 3 -y 130
+preplace inst spw_ulight_nofifo.hps_0.uart0 -pg 1
+preplace inst spw_ulight_nofifo.hps_0.scu -pg 1
+preplace inst spw_ulight_nofifo.hps_0.uart1 -pg 1
+preplace inst spw_ulight_nofifo.credit_error_rx_0 -pg 1 -lvl 3 -y 2140
+preplace inst spw_ulight_nofifo.credit_error_rx -pg 1 -lvl 3 -y 630
+preplace inst spw_ulight_nofifo.timec_tx_ready_0 -pg 1 -lvl 3 -y 3540
+preplace inst spw_ulight_nofifo.link_start_0 -pg 1 -lvl 3 -y 3140
+preplace inst spw_ulight_nofifo.data_tx_to_w -pg 1 -lvl 3 -y 2640
+preplace inst spw_ulight_nofifo.hps_0.axi_ocram -pg 1
+preplace inst spw_ulight_nofifo.hps_0.sdrctl -pg 1
+preplace inst spw_ulight_nofifo.hps_0.clk_0 -pg 1
+preplace inst spw_ulight_nofifo.data_tx_ready_0 -pg 1 -lvl 3 -y 2740
+preplace inst spw_ulight_nofifo.hps_0.L2 -pg 1
+preplace inst spw_ulight_nofifo.data_en_to_w_0 -pg 1 -lvl 3 -y 2240
+preplace inst spw_ulight_nofifo.link_disable_0 -pg 1 -lvl 3 -y 3040
+preplace inst spw_ulight_nofifo.hps_0.hps_io.border -pg 1
+preplace inst spw_ulight_nofifo.hps_0.usb0 -pg 1
+preplace inst spw_ulight_nofifo.fsm_info_0 -pg 1 -lvl 3 -y 2940
+preplace inst spw_ulight_nofifo.link_disable -pg 1 -lvl 3 -y 1340
+preplace inst spw_ulight_nofifo.hps_0.usb1 -pg 1
+preplace inst spw_ulight_nofifo.hps_0.gmac0 -pg 1
+preplace inst spw_ulight_nofifo.hps_0.arm_gic_0 -pg 1
+preplace inst spw_ulight_nofifo.hps_0.gmac1 -pg 1
+preplace inst spw_ulight_nofifo.hps_0.timer0 -pg 1
+preplace inst spw_ulight_nofifo.send_fct_now -pg 1 -lvl 3 -y 1540
+preplace inst spw_ulight_nofifo.led_fpga -pg 1 -lvl 3 -y 1180
+preplace inst spw_ulight_nofifo.hps_0.timer1 -pg 1
+preplace inst spw_ulight_nofifo.hps_0.timer2 -pg 1
+preplace inst spw_ulight_nofifo.data_rx_ready_0 -pg 1 -lvl 3 -y 2440
+preplace inst spw_ulight_nofifo.hps_0.timer3 -pg 1
+preplace inst spw_ulight_nofifo.hps_0.bridges -pg 1
+preplace inst spw_ulight_nofifo.timec_tx_ready -pg 1 -lvl 3 -y 1940
+preplace inst spw_ulight_nofifo.hps_0.axi_sdram -pg 1
+preplace inst spw_ulight_nofifo.hps_0.dma -pg 1
+preplace inst spw_ulight_nofifo.fsm_info -pg 1 -lvl 3 -y 1030
+preplace inst spw_ulight_nofifo.hps_0.dcan0 -pg 1
+preplace inst spw_ulight_nofifo.send_fct_now_0 -pg 1 -lvl 3 -y 3240
+preplace inst spw_ulight_nofifo.hps_0.dcan1 -pg 1
+preplace inst spw_ulight_nofifo.clk_0 -pg 1 -lvl 1 -y 1210
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(MASTER)spw_ulight_nofifo.pll_tx_outclk2,(MASTER)pll_tx.outclk2) 1 2 2 NJ 280 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)spw_ulight_nofifo.timec_rx_ready_external_connection,(SLAVE)timec_rx_ready.external_connection) 1 0 3 NJ 1870 NJ 1870 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)link_start_0.external_connection,(SLAVE)spw_ulight_nofifo.link_start_0_external_connection) 1 0 3 NJ 3170 NJ 3170 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)timec_en_to_tx_0.external_connection,(SLAVE)spw_ulight_nofifo.timec_en_to_tx_0_external_connection) 1 0 3 NJ 3370 NJ 3370 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)spw_ulight_nofifo.send_fct_now_external_connection,(SLAVE)send_fct_now.external_connection) 1 0 3 NJ 1570 NJ 1570 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)spw_ulight_nofifo.fsm_info_0_external_connection,(SLAVE)fsm_info_0.external_connection) 1 0 3 NJ 2970 NJ 2970 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)spw_ulight_nofifo.link_disable_external_connection,(SLAVE)link_disable.external_connection) 1 0 3 NJ 1370 NJ 1370 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)spw_ulight_nofifo.led_fpga_external_connection,(SLAVE)led_fpga.external_connection) 1 0 3 NJ 1080 NJ 1080 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)data_en_to_w.external_connection,(SLAVE)spw_ulight_nofifo.data_en_to_w_external_connection) 1 0 3 NJ 760 NJ 760 NJ
+preplace netloc FAN_OUT<net_container>spw_ulight_nofifo</net_container>(SLAVE)data_rx_r.clk,(SLAVE)timec_tx_ready.clk,(SLAVE)timec_en_to_tx.clk,(SLAVE)data_rx_rd_en.clk,(SLAVE)timec_rx_ready.clk,(SLAVE)pll_tx.refclk1,(SLAVE)timec_rx_ready_0.clk,(SLAVE)data_en_to_w_0.clk,(SLAVE)link_start.clk,(SLAVE)timec_tx_ready_0.clk,(SLAVE)MONITOR_B.clk,(SLAVE)link_disable_0.clk,(SLAVE)timec_rx_r.clk,(SLAVE)fsm_info_0.clk,(SLAVE)data_tx_to_w_0.clk,(SLAVE)data_tx_ready.clk,(SLAVE)data_rx_r_0.clk,(SLAVE)led_fpga.clk,(SLAVE)timec_rx_r_0.clk,(SLAVE)pll_tx.refclk,(SLAVE)fsm_info.clk,(SLAVE)credit_error_rx_0.clk,(SLAVE)data_rx_ready_0.clk,(SLAVE)MONITOR_A.clk,(SLAVE)link_disable.clk,(SLAVE)link_start_0.clk,(SLAVE)timec_en_to_tx_0.clk,(SLAVE)data_tx_to_w.clk,(SLAVE)auto_start.clk,(SLAVE)clock_sel.clk,(SLAVE)timec_tx_to_w_0.clk,(SLAVE)auto_start_0.clk,(MASTER)clk_0.clk,(SLAVE)hps_0.h2f_axi_clock,(SLAVE)send_fct_now.clk,(SLAVE)timec_tx_to_w.clk,(SLAVE)data_tx_ready_0.clk,(SLAVE)data_en_to_w.clk,(SLAVE)send_fct_now_0.clk,(SLAVE)credit_error_rx.clk) 1 1 2 410 1100 840
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)data_tx_ready_0.external_connection,(SLAVE)spw_ulight_nofifo.data_tx_ready_0_external_connection) 1 0 3 NJ 2770 NJ 2770 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(MASTER)pll_tx.outclk3,(MASTER)spw_ulight_nofifo.pll_tx_outclk3) 1 2 2 NJ 240 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(MASTER)pll_tx.outclk0,(MASTER)spw_ulight_nofifo.pll_tx_outclk0) 1 2 2 NJ 400 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)spw_ulight_nofifo.data_tx_to_w_0_external_connection,(SLAVE)data_tx_to_w_0.external_connection) 1 0 3 NJ 2870 NJ 2870 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)credit_error_rx_0.external_connection,(SLAVE)spw_ulight_nofifo.credit_error_rx_0_external_connection) 1 0 3 NJ 2170 NJ 2170 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)auto_start_0.external_connection,(SLAVE)spw_ulight_nofifo.auto_start_0_external_connection) 1 0 3 NJ 2070 NJ 2070 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)timec_tx_ready_0.external_connection,(SLAVE)spw_ulight_nofifo.timec_tx_ready_0_external_connection) 1 0 3 NJ 3570 NJ 3570 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)spw_ulight_nofifo.auto_start_external_connection,(SLAVE)auto_start.external_connection) 1 0 3 NJ 560 NJ 560 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)spw_ulight_nofifo.pll_tx_locked,(SLAVE)pll_tx.locked) 1 0 2 NJ 280 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)spw_ulight_nofifo.timec_tx_ready_external_connection,(SLAVE)timec_tx_ready.external_connection) 1 0 3 NJ 1970 NJ 1970 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)clock_sel.external_connection,(SLAVE)spw_ulight_nofifo.clock_sel_external_connection) 1 0 3 NJ 260 NJ 260 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)timec_tx_to_w_0.external_connection,(SLAVE)spw_ulight_nofifo.timec_tx_to_w_0_external_connection) 1 0 3 NJ 3670 NJ 3670 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)spw_ulight_nofifo.link_disable_0_external_connection,(SLAVE)link_disable_0.external_connection) 1 0 3 NJ 3070 NJ 3070 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)data_tx_ready.external_connection,(SLAVE)spw_ulight_nofifo.data_tx_ready_external_connection) 1 0 3 NJ 960 NJ 960 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)data_en_to_w_0.external_connection,(SLAVE)spw_ulight_nofifo.data_en_to_w_0_external_connection) 1 0 3 NJ 2270 NJ 2270 NJ
+preplace netloc FAN_OUT<net_container>spw_ulight_nofifo</net_container>(SLAVE)timec_rx_ready.reset,(SLAVE)auto_start_0.reset,(SLAVE)link_start_0.reset,(SLAVE)send_fct_now.reset,(SLAVE)credit_error_rx.reset,(SLAVE)timec_en_to_tx.reset,(SLAVE)pll_tx.reset,(SLAVE)timec_tx_ready_0.reset,(SLAVE)data_en_to_w.reset,(SLAVE)timec_en_to_tx_0.reset,(SLAVE)auto_start.reset,(SLAVE)data_rx_r_0.reset,(SLAVE)data_tx_ready_0.reset,(SLAVE)data_rx_ready_0.reset,(SLAVE)link_disable_0.reset,(SLAVE)link_disable.reset,(SLAVE)clock_sel.reset,(SLAVE)MONITOR_A.reset,(SLAVE)data_tx_to_w.reset,(SLAVE)timec_rx_r_0.reset,(SLAVE)timec_rx_ready_0.reset,(SLAVE)fsm_info_0.reset,(SLAVE)MONITOR_B.reset,(SLAVE)send_fct_now_0.reset,(SLAVE)data_rx_rd_en.reset,(SLAVE)timec_tx_to_w.reset,(SLAVE)timec_tx_to_w_0.reset,(SLAVE)fsm_info.reset,(SLAVE)data_tx_ready.reset,(SLAVE)data_rx_r.reset,(SLAVE)timec_rx_r.reset,(MASTER)clk_0.clk_reset,(SLAVE)credit_error_rx_0.reset,(SLAVE)data_tx_to_w_0.reset,(SLAVE)led_fpga.reset,(SLAVE)timec_tx_ready.reset,(SLAVE)data_en_to_w_0.reset,(SLAVE)link_start.reset) 1 1 2 430 1120 860
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)spw_ulight_nofifo.timec_rx_ready_0_external_connection,(SLAVE)timec_rx_ready_0.external_connection) 1 0 3 NJ 3470 NJ 3470 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)spw_ulight_nofifo.data_tx_to_w_external_connection,(SLAVE)data_tx_to_w.external_connection) 1 0 3 NJ 2670 NJ 2670 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)spw_ulight_nofifo.link_start_external_connection,(SLAVE)link_start.external_connection) 1 0 3 NJ 1470 NJ 1470 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)spw_ulight_nofifo.data_rx_ready_external_connection,(SLAVE)data_rx_rd_en.external_connection) 1 0 3 NJ 160 NJ 160 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)spw_ulight_nofifo.timec_en_to_tx_external_connection,(SLAVE)timec_en_to_tx.external_connection) 1 0 3 NJ 1670 NJ 1670 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(MASTER)pll_tx.outclk4,(MASTER)spw_ulight_nofifo.pll_tx_outclk4) 1 2 2 NJ 420 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)spw_ulight_nofifo.data_rx_r_external_connection,(SLAVE)data_rx_r.external_connection) 1 0 3 NJ 860 NJ 860 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)timec_rx_r_0.external_connection,(SLAVE)spw_ulight_nofifo.timec_rx_r_0_external_connection) 1 0 3 NJ 3770 NJ 3770 NJ
+preplace netloc FAN_OUT<net_container>spw_ulight_nofifo</net_container>(SLAVE)link_start.s1,(SLAVE)data_en_to_w.s1,(SLAVE)data_tx_ready.s1,(SLAVE)link_start_0.s1,(SLAVE)link_disable.s1,(SLAVE)timec_en_to_tx_0.s1,(SLAVE)timec_rx_r.s1,(SLAVE)timec_tx_ready_0.s1,(SLAVE)data_tx_to_w_0.s1,(SLAVE)fsm_info_0.s1,(SLAVE)data_rx_rd_en.s1,(SLAVE)link_disable_0.s1,(SLAVE)credit_error_rx.s1,(SLAVE)data_rx_r_0.s1,(SLAVE)data_rx_ready_0.s1,(SLAVE)credit_error_rx_0.s1,(SLAVE)timec_en_to_tx.s1,(SLAVE)clock_sel.s1,(SLAVE)data_rx_r.s1,(SLAVE)fsm_info.s1,(SLAVE)MONITOR_B.s1,(SLAVE)send_fct_now.s1,(SLAVE)timec_tx_to_w.s1,(SLAVE)led_fpga.s1,(SLAVE)timec_rx_ready_0.s1,(SLAVE)auto_start_0.s1,(SLAVE)data_tx_ready_0.s1,(SLAVE)timec_rx_ready.s1,(MASTER)hps_0.h2f_axi_master,(SLAVE)timec_tx_to_w_0.s1,(SLAVE)auto_start.s1,(SLAVE)MONITOR_A.s1,(SLAVE)timec_rx_r_0.s1,(SLAVE)data_en_to_w_0.s1,(SLAVE)timec_tx_ready.s1,(SLAVE)data_tx_to_w.s1,(SLAVE)send_fct_now_0.s1) 1 2 1 880
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)send_fct_now_0.external_connection,(SLAVE)spw_ulight_nofifo.send_fct_now_0_external_connection) 1 0 3 NJ 3270 NJ 3270 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)spw_ulight_nofifo.data_rx_ready_0_external_connection,(SLAVE)data_rx_ready_0.external_connection) 1 0 3 NJ 2470 NJ 2470 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)spw_ulight_nofifo.fsm_info_external_connection,(SLAVE)fsm_info.external_connection) 1 0 3 NJ 1060 NJ 1060 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)spw_ulight_nofifo.reset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)spw_ulight_nofifo.timec_rx_r_external_connection,(SLAVE)timec_rx_r.external_connection) 1 0 3 NJ 1770 NJ 1770 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)spw_ulight_nofifo.monitor_b_external_connection,(SLAVE)MONITOR_B.external_connection) 1 0 3 NJ 460 NJ 460 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)spw_ulight_nofifo.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)spw_ulight_nofifo.timec_tx_to_w_external_connection,(SLAVE)timec_tx_to_w.external_connection) 1 0 3 NJ 2570 NJ 2570 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(MASTER)spw_ulight_nofifo.pll_tx_outclk1,(MASTER)pll_tx.outclk1) 1 2 2 NJ 260 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)credit_error_rx.external_connection,(SLAVE)spw_ulight_nofifo.credit_error_rx_external_connection) 1 0 3 NJ 660 NJ 660 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)spw_ulight_nofifo.data_rx_r_0_external_connection,(SLAVE)data_rx_r_0.external_connection) 1 0 3 NJ 2370 NJ 2370 NJ
+preplace netloc EXPORT<net_container>spw_ulight_nofifo</net_container>(SLAVE)MONITOR_A.external_connection,(SLAVE)spw_ulight_nofifo.monitor_a_external_connection) 1 0 3 NJ 60 NJ 60 NJ
+levelinfo -pg 1 0 200 1240
+levelinfo -hier spw_ulight_nofifo 210 240 570 970 1120
