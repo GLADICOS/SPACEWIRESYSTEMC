@@ -128,23 +128,23 @@ begin
 	 begin
 	  	tx_dout = 1'b0;
 	 end
-	 else if( enable_null & first_time  & global_counter_transfer == 4'd0)
+	 else if( enable_null && first_time  && global_counter_transfer == 4'd0)
 	 begin
 		tx_dout = null_s[7];
 	 end
-	 else if( enable_null & !first_time & last_type == NULL  & global_counter_transfer == 4'd0)
+	 else if( enable_null && !first_time && last_type == NULL  && global_counter_transfer == 4'd0)
 	 begin
 		tx_dout = !(null_s[6]^null_s[0]^null_s[1]);
 	 end
-	 else if( enable_null & !first_time & last_type == FCT   & global_counter_transfer == 4'd0)
+	 else if( enable_null && !first_time && last_type == FCT   && global_counter_transfer == 4'd0)
 	 begin
 		tx_dout = !(null_s[6]^fct_s[0]^fct_s[1]);
 	 end
-	 else if( enable_null & !first_time & last_type == EOP   & global_counter_transfer == 4'd0)
+	 else if( enable_null && !first_time & last_type == EOP   && global_counter_transfer == 4'd0)
 	 begin
 		tx_dout = !(null_s[6]^eop_s[0]^eop_s[1]);
 	 end
-	 else if( enable_null & !first_time & last_type == EEP   & global_counter_transfer == 4'd0)
+	 else if( enable_null && !first_time & last_type == EEP   && global_counter_transfer == 4'd0)
 	 begin
 		tx_dout = !(null_s[6]^eep_s[0]^eep_s[1]);
 	 end
@@ -439,11 +439,11 @@ begin
 	begin
 		tx_sout = 1'b0;
 	end 
-	else if((enable_null | enable_fct | enable_n_char | enable_time_code) && tx_dout == last_tx_dout)
+	else if((enable_null | enable_fct | enable_n_char | enable_time_code) & tx_dout == last_tx_dout)
 	begin
 		tx_sout = !last_tx_sout;
 	end
-	else if((enable_null | enable_fct | enable_n_char | enable_time_code) && tx_dout != last_tx_dout)
+	else if((enable_null | enable_fct | enable_n_char | enable_time_code) & tx_dout != last_tx_dout)
 	begin
 		tx_sout = last_tx_sout;	
 	end	

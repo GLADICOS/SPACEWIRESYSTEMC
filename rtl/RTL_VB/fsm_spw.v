@@ -50,12 +50,12 @@ module FSM_SPW (
 		input  rx_got_nchar,
 		input  rx_got_time_code,
 		input  rx_got_fct,
-		output rx_resetn,
+		output reg rx_resetn,
 
 		//tx status control
-		output enable_tx,
-		output send_null_tx,
-		output send_fct_tx,
+		output reg enable_tx,
+		output reg send_null_tx,
+		output reg send_fct_tx,
 
 		output [5:0] fsm_state
 
@@ -76,16 +76,16 @@ localparam [5:0]  error_reset   = 6'b00_0000,
 	reg [11:0] after850ns;
 
 //
-assign enable_tx    = (!resetn | state_fsm == error_reset | state_fsm == error_wait)?1'b0:1'b1;
+//assign enable_tx    = (!resetn | state_fsm == error_reset | state_fsm == error_wait)?1'b0:1'b1;
 
 //
-assign rx_resetn    = (state_fsm == error_reset)?1'b0:1'b1;
+//assign rx_resetn    = (state_fsm == error_reset)?1'b0:1'b1;
 
 //
-assign send_null_tx = (state_fsm == started | state_fsm == connecting | state_fsm == run)?1'b1:1'b0;
+//assign send_null_tx = (state_fsm == started | state_fsm == connecting | state_fsm == run)?1'b1:1'b0;
 
 //
-assign send_fct_tx  = (state_fsm == connecting | state_fsm == run)?1'b1:1'b0;
+//assign send_fct_tx  = (state_fsm == connecting | state_fsm == run)?1'b1:1'b0;
 
 //
 assign fsm_state    = state_fsm;
@@ -177,11 +177,17 @@ begin
 	endcase
 end
 
-always@(posedge pclk)
+always@(posedge pclk or negedge resetn)
 begin
 	if(!resetn)
 	begin
 		state_fsm <= error_reset;
+
+		rx_resetn <= 1'b0;
+
+		enable_tx<= 1'b0;
+		send_null_tx<= 1'b0;
+		send_fct_tx<= 1'b0;
 	end
 	else
 	begin
@@ -191,21 +197,45 @@ begin
 		case(state_fsm)
 		error_reset:
 		begin
+			rx_resetn <= 1'b0;
+			enable_tx<= 1'b0;
+			send_null_tx<= 1'b0;
+			send_fct_tx<= 1'b0;
 		end
 		error_wait:
 		begin
+			rx_resetn <= 1'b1;
+			enable_tx<= 1'b0;
+			send_null_tx<= 1'b0;
+			send_fct_tx<= 1'b0;
 		end
 		ready:
 		begin
+			rx_resetn <= 1'b1;
+			enable_tx<= 1'b1;
+			send_null_tx<= 1'b0;
+			send_fct_tx<= 1'b0;
 		end
 		started:
 		begin
+			rx_resetn <= 1'b1;
+			enable_tx<= 1'b1;
+			send_null_tx<= 1'b1;
+			send_fct_tx<= 1'b0;
 		end
 		connecting:
 		begin
+			rx_resetn <= 1'b1;
+			enable_tx<= 1'b1;
+			send_null_tx<= 1'b1;
+			send_fct_tx<= 1'b1;
 		end
 		run:
 		begin
+			rx_resetn <= 1'b1;
+			enable_tx<= 1'b1;
+			send_null_tx<= 1'b1;
+			send_fct_tx<= 1'b1;
 		end
 		endcase
 		
