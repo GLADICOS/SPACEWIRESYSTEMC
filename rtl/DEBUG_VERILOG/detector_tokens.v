@@ -210,20 +210,21 @@ begin
 	end
 	else
 	begin
-		if(counter_neg == 5'd0)
+
+		if(counter_neg[4:0] == 5'd0)
 		begin
 			control_bit_found <= rx_din;
 			is_control  <= 1'b0;
 			is_data     <= 1'b0;
 			counter_neg <= counter_neg + 5'd1;
 		end
-		else if(counter_neg == 5'd1 && control_bit_found)
+		else if((counter_neg[4:0] == 5'd1 && control_bit_found) == 1'b1)
 		begin
 			is_control <= 1'b1;
 			is_data    <= 1'b0;
 			counter_neg <= counter_neg + 5'd1;	
 		end
-		else if(counter_neg == 5'd1 && !control_bit_found)
+		else if((counter_neg[4:0] == 5'd1 && !control_bit_found) == 1'b1)
 		begin
 			is_control <= 1'b0;
 			is_data    <= 1'b1;
@@ -232,20 +233,19 @@ begin
 		else
 		begin
 
-			if(is_control)
-			begin
-				control_bit_found <= rx_din;
-				
-				if(counter_neg == 5'd2)
+			if(is_control == 1'b1)
+			begin				
+				if(counter_neg[4:0] == 5'd2)
 				begin
+					control_bit_found <= rx_din;
 					counter_neg <= 5'd1;
 					is_control  <= 1'b0;
 					is_data     <= 1'b0;
 				end
 			end
-			else if(is_data)
+			else if(is_data == 1'b1)
 			begin
-				if(counter_neg == 5'd5)
+				if(counter_neg[4:0] == 5'd5)
 				begin
 					control_bit_found <= rx_din;
 					counter_neg <= 5'd1;
@@ -277,6 +277,10 @@ begin
 				begin
 					rx_error <= 1'b1;
 				end
+				else
+				begin
+					rx_error <= 1'b0;
+				end
 			end
 			else if(last_was_timec)
 			begin
@@ -284,12 +288,20 @@ begin
 				begin
 					rx_error <= 1'b1;
 				end
+				else
+				begin
+					rx_error <= 1'b0;
+				end
 			end
 			else if(last_was_data)
 			begin
 				if(!(control[2]^data[0]^data[1]^data[2]^data[3]^data[4]^data[5]^data[6]^data[7]) != control[3])
 				begin
 						rx_error <= 1'b1;
+				end
+				else
+				begin
+					rx_error <= 1'b0;
 				end
 			end
 
@@ -302,6 +314,10 @@ begin
 					begin
 						rx_error <= 1'b1;
 					end
+					else
+					begin
+						rx_error <= 1'b0;
+					end
 				end
 				else if(last_was_timec)
 				begin
@@ -309,12 +325,20 @@ begin
 					begin
 						rx_error <= 1'b1;
 					end
+					else
+					begin
+						rx_error <= 1'b0;
+					end
 				end
 				else if(last_was_data)
 				begin
 					if(!(data[8]^data[0]^data_l_r[1]^data_l_r[2]^data_l_r[3]^data_l_r[4]^data_l_r[5]^data_l_r[6]^data_l_r[7]) != data[9])
 					begin
 						rx_error <= 1'b1;
+					end
+					else
+					begin
+						rx_error <= 1'b0;
 					end
 				end
 			end
