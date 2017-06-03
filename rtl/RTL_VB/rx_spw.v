@@ -56,7 +56,7 @@ module RX_SPW (
 		 );
 
 
-	reg  [4:0] counter_neg;
+	reg  [5:0] counter_neg;
 	reg control_bit_found;
 
 	wire posedge_clk;
@@ -116,8 +116,8 @@ module RX_SPW (
 
 	assign rx_time_out 	= timecode[7:0];
 
-	assign ready_control    = is_control;
-	assign ready_data       = (counter_neg == 5'd5)?is_data:1'b0;
+	assign ready_control    = (counter_neg[5:0] == 6'd4)?is_control:1'b0;
+	assign ready_data       = (counter_neg[5:0] == 6'd32)?is_data:1'b0;
 
 always@(posedge posedge_clk or negedge rx_resetn)
 begin
@@ -207,56 +207,64 @@ begin
 		is_control <= 1'b0;
 		is_data    <= 1'b0;
 		control_bit_found <= 1'b0;
-		counter_neg <= 5'd0;
+		counter_neg[5:0]  <= 6'd1;
 	end
 	else
 	begin
 
-		if(counter_neg[4:0] == 5'd0)
+		case(counter_neg)
+		6'd1:
 		begin
 			control_bit_found <= rx_din;
-			is_control  <= 1'b0;
-			is_data     <= 1'b0;
-			counter_neg <= counter_neg + 5'd1;
+			counter_neg[5:0]  <=  counter_neg[5:0] << 1;
 		end
-		else if((counter_neg[4:0] == 5'd1 && control_bit_found) == 1'b1)
+		6'd2:
 		begin
-			is_control <= 1'b1;
-			is_data    <= 1'b0;
-			counter_neg <= counter_neg + 5'd1;	
-		end
-		else if((counter_neg[4:0] == 5'd1 && !control_bit_found) == 1'b1)
-		begin
-			is_control <= 1'b0;
-			is_data    <= 1'b1;
-			counter_neg <= counter_neg + 5'd1;
-		end
-		else
-		begin
-
-			if(is_control == 1'b1)
-			begin	
-				if(counter_neg[4:0] == 5'd2)
-				begin			
-					control_bit_found <= rx_din;		
-					counter_neg <= 5'd1;
-					is_control  <= 1'b0;
-					is_data     <= 1'b0;
-				end
-			end
-			else if(is_data == 1'b1)
+			if(control_bit_found == 1'b1)
 			begin
-				if(counter_neg[4:0] == 5'd5)
-				begin
-					control_bit_found <= rx_din;
-					counter_neg <= 5'd1;
-					is_data     <= 1'b0;
-					is_control  <= 1'b0;
-				end
-				else
-					counter_neg <= counter_neg + 5'd1;
+				is_control 	 <= 1'b1;
+				counter_neg[5:0] <= counter_neg[5:0] << 1;	
 			end
-		end	
+			else if((!control_bit_found) == 1'b1)
+			begin
+				is_data   	 <= 1'b1;
+				counter_neg[5:0] <= counter_neg[5:0] << 1;
+			end
+		end
+		6'd4:
+		begin
+	
+			if(is_control == 1'b1)
+			begin			
+				control_bit_found <= rx_din;		
+				counter_neg[5:0] <= counter_neg[5:0] >> 1;
+				is_control  <= 1'b0;
+			end
+			else
+				counter_neg[5:0] <= counter_neg[5:0] << 1;
+		end
+		6'd8:
+		begin
+			counter_neg[5:0] <= counter_neg[5:0] << 1;
+		end
+		6'd16:
+		begin
+			counter_neg[5:0] <= counter_neg[5:0] << 1;
+		end 
+		6'd32:
+		begin
+			if(is_data == 1'b1)
+			begin
+				control_bit_found <= rx_din;
+				counter_neg[5:0] <= counter_neg[5:0] >> 4;
+				is_data     <= 1'b0;
+			end
+		end
+		default:
+		begin
+				counter_neg[5:0] <= 6'd1;
+		end
+		endcase
 
 	end
 end
@@ -291,9 +299,9 @@ begin
 	end
 	else
 	begin
-		if(last_is_control)
+		if(last_is_control == 1'b1)
 		begin
-			if(last_was_control)
+			if(last_was_control == 1'b1)
 			begin
 				if(!(control[2]^control_l_r[0]^control_l_r[1]) != control[3])
 				begin
@@ -304,7 +312,7 @@ begin
 					rx_error <= 1'b0;
 				end
 			end
-			else if(last_was_timec)
+			else if(last_was_timec == 1'b1)
 			begin
 				if(!(control[2]^timecode[0]^timecode[1]^timecode[2]^timecode[3]^timecode[4]^timecode[5]^timecode[6]^timecode[7])  != control[3])
 				begin
@@ -315,7 +323,7 @@ begin
 					rx_error <= 1'b0;
 				end
 			end
-			else if(last_was_data)
+			else if(last_was_data == 1'b1)
 			begin
 				if(!(control[2]^data[0]^data[1]^data[2]^data[3]^data[4]^data[5]^data[6]^data[7]) != control[3])
 				begin
@@ -328,9 +336,9 @@ begin
 			end
 			
 		end
-		else if(last_is_data)
+		else if(last_is_data == 1'b1)
 		begin
-			if(last_was_control)
+			if(last_was_control == 1'b1)
 			begin
 				if(!(data[8]^control[1]^control[0]) != data[9])
 				begin
@@ -341,7 +349,7 @@ begin
 					rx_error <= 1'b0;
 				end
 			end
-			else if(last_was_timec)
+			else if(last_was_timec == 1'b1)
 			begin
 				if(!(data[8]^timecode[0]^timecode[1]^timecode[2]^timecode[3]^timecode[4]^timecode[5]^timecode[6]^timecode[7])  != data[9])
 				begin
@@ -352,7 +360,7 @@ begin
 					rx_error <= 1'b0;
 				end
 			end
-			else if(last_was_data)
+			else if(last_was_data == 1'b1)
 			begin
 				if(!(data[8]^data[0]^data_l_r[1]^data_l_r[2]^data_l_r[3]^data_l_r[4]^data_l_r[5]^data_l_r[6]^data_l_r[7]) != data[9])
 				begin
@@ -379,15 +387,15 @@ begin
 	end
 	else
 	begin
-		if(control[2:0] != 3'd7 && last_is_data )
+		if( (control[2:0] != 3'd7 && last_is_data == 1'b1 ) == 1'b1 )
 		begin
 			rx_got_nchar 	  <= 1'b1;
 		end
-		else if(control[2:0] == 3'd7 && last_is_data)
+		else if((control[2:0] == 3'd7 && last_is_data == 1'b1 ) == 1'b1)
 		begin
 			rx_got_time_code  <= 1'b1;
 		end
-		else if(control_l_r[2:0] == 3'd7 && control[2:0] == 3'd4 && last_is_control)
+		else if((control_l_r[2:0] == 3'd7 && control[2:0] == 3'd4 && last_is_control == 1'b1 ) == 1'b1)
 		begin
 			rx_got_null 	  <= 1'b1;
 		end
@@ -413,7 +421,7 @@ begin
 		rx_data_take_0 <= rx_data_take;
 		rx_buffer_write  <= rx_data_take_0;
 
-		if(control_l_r[2:0] != 3'd7 && control[2:0] == 3'd4 && last_is_control)
+		if((control_l_r[2:0] != 3'd7 && control[2:0] == 3'd4 && last_is_control == 1'b1 ) == 1'b1)
 			rx_got_fct_fsm <= 1'b1;
 		else
 			rx_got_fct_fsm <= rx_got_fct_fsm;
@@ -428,9 +436,9 @@ begin
 	end
 	else
 	begin
-		if(counter_neg == 5'd2)
+		if(counter_neg[5:0] == 6'd4)
 			control_r	  <= {bit_c_3,bit_c_2,bit_c_1,bit_c_0};
-		else if(counter_neg == 5'd1 && control == 4'd7)
+		else if((counter_neg[5:0] == 6'd2 && control == 4'd7) == 1'b1)
 			control_r	  <= {bit_c_ex,bit_c_2,bit_c_3,bit_c_0};
 		else
 			control_r	  <= control_r;
@@ -446,7 +454,7 @@ begin
 	end
 	else
 	begin
-		if(counter_neg == 5'd5)
+		if(counter_neg[5:0] == 6'd32)
 			dta_timec	  <= {bit_d_9,bit_d_8,bit_d_0,bit_d_1,bit_d_2,bit_d_3,bit_d_4,bit_d_5,bit_d_6,bit_d_7};
 		else 
 			dta_timec	  <= dta_timec;
@@ -519,7 +527,7 @@ begin
 				last_was_timec   	<= last_is_timec;
 			end
 		end
-		else if(last_is_timec)
+		else if(last_is_timec == 1'b1)
 		begin
 
 			data_l_r    	 	<= data;
@@ -529,7 +537,7 @@ begin
 
 			//meta_hold_setup 	 <= 1'b0;
 		end
-		else if(last_is_data)
+		else if(last_is_data == 1'b1)
 		begin
 
 			rx_tick_out  <= 1'b1;
@@ -538,7 +546,7 @@ begin
 			//meta_hold_setup 	 <= 1'b0;
 			
 		end
-		else if(last_is_control)
+		else if(last_is_control == 1'b1)
 		begin
 			//if(control == 4'd6 || control == 4'd13 || control == 4'd5 || control == 4'd15 || control == 4'd7 || control == 4'd4 || control == 4'd12) 
 
