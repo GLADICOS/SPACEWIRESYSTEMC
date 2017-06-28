@@ -150,8 +150,8 @@ module top_spw_ultra_light(
 			.gotfct_tx(got_fct_rx),
 			.send_fct_now(top_send_fct_now),
 		
-			.tx_dout(top_dout),
-			.tx_sout(top_sout),
+			.tx_dout_e(top_dout),
+			.tx_sout_e(top_sout),
 
 			.ready_tx_data(top_tx_ready),
 			.ready_tx_timecode(top_tx_ready_tick)

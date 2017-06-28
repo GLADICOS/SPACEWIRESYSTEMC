@@ -75,17 +75,7 @@ localparam [5:0]  error_reset   = 6'b00_0000,
 	reg [11:0] after64us;
 	reg [11:0] after850ns;
 
-//
-//assign enable_tx    = (!resetn | state_fsm == error_reset | state_fsm == error_wait)?1'b0:1'b1;
-
-//
-//assign rx_resetn    = (state_fsm == error_reset)?1'b0:1'b1;
-
-//
-//assign send_null_tx = (state_fsm == started | state_fsm == connecting | state_fsm == run)?1'b1:1'b0;
-
-//
-//assign send_fct_tx  = (state_fsm == connecting | state_fsm == run)?1'b1:1'b0;
+	reg got_bit_internal;
 
 //
 assign fsm_state    = state_fsm;
@@ -129,7 +119,7 @@ begin
 		begin
 			next_state_fsm = error_reset;
 		end
-		else if((!link_disable) & (link_start |(auto_start && rx_got_null)))
+		else if(((!link_disable) & (link_start |(auto_start & rx_got_null)))==1'b1)
 		begin
 			next_state_fsm = started;
 		end
@@ -142,7 +132,7 @@ begin
 		begin
 			next_state_fsm = error_reset;
 		end
-		else if(rx_got_null & rx_got_bit)
+		else if((rx_got_null & rx_got_bit)== 1'b1)
 		begin
 			next_state_fsm = connecting;
 		end
@@ -197,10 +187,14 @@ begin
 		case(state_fsm)
 		error_reset:
 		begin
-			rx_resetn <= 1'b0;
 			enable_tx<= 1'b0;
 			send_null_tx<= 1'b0;
 			send_fct_tx<= 1'b0;
+			
+			if(after64us == 12'd639)
+				rx_resetn <= 1'b1;
+			else
+				rx_resetn <= 1'b0;
 		end
 		error_wait:
 		begin
@@ -245,7 +239,7 @@ end
 always@(posedge pclk)
 begin
 
-	if(!resetn)
+	if(!resetn || state_fsm == error_reset)
 	begin
 		after128us <= 12'd0;
 	end
@@ -297,8 +291,23 @@ end
 
 always@(posedge pclk)
 begin
-
 	if(!resetn)
+	begin
+		got_bit_internal <= 1'b0;
+	end
+	else
+	begin
+		if(rx_got_bit)
+			got_bit_internal <= 1'b1;
+		else 
+			got_bit_internal <= 1'b0;
+	end
+end
+
+always@(posedge pclk)
+begin
+
+	if(!resetn | got_bit_internal)
 	begin
 		after850ns <= 12'd0;
 	end
@@ -310,17 +319,11 @@ begin
 		end
 		else
 		begin
-			if(rx_got_bit)
-			begin
-				after850ns <= 12'd0;
-			end
+			if(after850ns < 12'd85 && state_fsm == run)
+				after850ns <= after850ns + 12'd1;
 			else
-			begin
-				if(after850ns < 12'd85 && state_fsm == run)
-					after850ns <= after850ns + 12'd1;
-				else
-					after850ns <= 12'd0;
-			end
+				after850ns <= 12'd0;
+
 		end
 	end
 
