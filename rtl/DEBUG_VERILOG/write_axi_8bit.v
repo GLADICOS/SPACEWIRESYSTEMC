@@ -17,7 +17,7 @@
 //-----------------------------------------------------------------------------
 //PARAMETERS
 //PARAM NAME		RANGE	: DESCRIPTION : DEFAULT : UNITS
-//e.g.DATA_WIDTH	[32,16]	: width of the DATA : 32:
+//e.g.DATA_WIDTH	[32,16]	: width of the data : 32:
 //-----------------------------------------------------------------------------
 //REUSE ISSUES
 //Reset Strategy	:
@@ -30,58 +30,29 @@
 //Synthesizable (y/n)	:
 //Other			:
 //-FHDR------------------------------------------------------------------------
-module debounce_db(
-		    input CLK,
-		    input PB,  
+module write_axi_8bit(
+		 input clock_recovery,
+		 input clock_50,
+		 input reset_n,
+		 input [7:0] data_rec,
+		 output reg [7:0] data_stand	
+		);
 
-		    output reg PB_state, 
-		    output reg PB_down
-		  );
 
-		  reg aux_pb;
-		  reg [15:0] counter;
-		  //assign PB_state = (counter >= 400)?PB_state:1'b1;
-always@(*)
+always@(posedge clock_50 or negedge reset_n )
 begin
 
-	PB_state = 1'b1;
-	
-	if(CLK)
+	if(!reset_n)
 	begin
-		if(aux_pb)
-			PB_state = 1'b0;
-	end
-	else if(!CLK)
-	begin
-		if(aux_pb)
-			PB_state = 1'b0;
-	end
-end
-
-always@(posedge CLK)
-begin
-
-	if(PB)
-	begin
-		aux_pb  <= 1'b0;
-		counter <= 16'd0;
-		PB_down <= 1'b0;
+		data_stand <= 8'd0;
 	end
 	else
 	begin
-	
-		if(counter >= 400)
-		begin
-			aux_pb  <= 1'b1;
-			PB_down <= 1'b1;
-		end
-		else 
-			counter <= counter + 16'd1;
-	
+		if(clock_recovery)
+			data_stand <= data_rec;
+		else
+			data_stand <= data_stand;
 	end
-
-
 end
-		  
 
 endmodule
