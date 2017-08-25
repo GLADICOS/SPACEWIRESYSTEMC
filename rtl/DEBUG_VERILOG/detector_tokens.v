@@ -35,7 +35,7 @@ module detector_tokens(
 								input  rx_sin,
 								input  rx_resetn,
 								//input clock_sys,
-								output reg rx_buffer_write,
+								//output reg rx_buffer_write,
 								output reg [13:0] info
 							 );
 			
@@ -91,6 +91,7 @@ module detector_tokens(
 	reg [9:0] timecode;
 
 	reg [9:0] dta_timec;
+	reg [9:0] dta_timec_p;
 
 	reg [3:0] control_l_r;
 	reg [9:0] data_l_r;
@@ -456,11 +457,11 @@ begin
 end
 
 
-always@(negedge_clk or rx_resetn or rx_data_take_0 or rx_data_take)
+always@(posedge negedge_clk or negedge rx_resetn)
 begin
 	if(!rx_resetn)
 	begin
-		rx_buffer_write <=  1'b0;
+		//rx_buffer_write <=  1'b0;
 		rx_data_take_0  <=  1'b0;
 		ready_control_p_r <= 1'b0;
 		ready_data_p_r  <=  1'b0;
@@ -470,7 +471,8 @@ begin
 
 		if(ready_control || ready_control_p)
 		begin
-			ready_control_p_r <= 1'b1;
+			if(is_control)
+				ready_control_p_r <= 1'b1;
 		end
 		else
 		begin
@@ -479,7 +481,8 @@ begin
 
 		if(ready_data || ready_data_p)
 		begin
-			ready_data_p_r <= 1'b1;
+			if(!is_control)
+				ready_data_p_r <= 1'b1;
 		end
 		else
 		begin
@@ -487,7 +490,7 @@ begin
 		end
 
 		rx_data_take_0 <= rx_data_take;
-		rx_buffer_write  <= rx_data_take_0;
+		//rx_buffer_write  <= rx_data_take_0;
 	end
 end
 
@@ -499,7 +502,8 @@ begin
 	end
 	else
 	begin
-		control_r	  <= {bit_c_3,bit_c_2,bit_c_1,bit_c_0};
+		if(is_control)
+			control_r	  <= {bit_c_3,bit_c_2,bit_c_1,bit_c_0};
 	end
 end
 
@@ -511,7 +515,8 @@ begin
 	end
 	else
 	begin
-		control_p_r	  <= control_r;
+		if(is_control)
+			control_p_r	  <= control_r;
 	end
 end
 
@@ -523,7 +528,21 @@ begin
 	end
 	else
 	begin
-		dta_timec	  <= {bit_d_9,bit_d_8,bit_d_0,bit_d_1,bit_d_2,bit_d_3,bit_d_4,bit_d_5,bit_d_6,bit_d_7};
+		if(!is_control)
+			dta_timec	  <= {bit_d_9,bit_d_8,bit_d_0,bit_d_1,bit_d_2,bit_d_3,bit_d_4,bit_d_5,bit_d_6,bit_d_7};
+	end
+end
+
+always@(posedge ready_data_p or negedge rx_resetn )
+begin
+	if(!rx_resetn)
+	begin
+		dta_timec_p	   	<= 10'd0;
+	end
+	else
+	begin
+		if(!is_control)
+			dta_timec_p  <= dta_timec;
 	end
 end
 
@@ -573,7 +592,7 @@ begin
 
 		if(ready_control_p_r)
 		begin
-			control     	 <= control_r;
+			control     	 <= control_p_r;
 			control_l_r 	 <= control;
 			rx_data_take <= 1'b0;
 			last_is_control 	 <= 1'b1;
@@ -591,7 +610,7 @@ begin
 			rx_data_take <= 1'b0;
 			if(control[2:0] != 3'd7)
 			begin
-				data        	<= dta_timec;
+				data        	<= dta_timec_p[8:0];
 				last_is_control  	<=1'b0;
 				last_is_data     	<=1'b1;
 				last_is_timec    	<=1'b0;
@@ -600,7 +619,7 @@ begin
 				last_was_timec 		<= last_is_timec;
 			end
 			else if(control[2:0] == 3'd7)
-			begin
+			begin	
 				timecode    	<= dta_timec;
 				last_is_control  	<= 1'b0;
 				last_is_data     	<= 1'b0;
