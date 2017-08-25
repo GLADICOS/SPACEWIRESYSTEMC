@@ -262,7 +262,7 @@ begin
 	end
 	else
 	begin	
-		if(control_l_r[2:0] != 3'd7 && control[2:0] == 3'd4 && (ready_control || ready_control_p))
+		if(control_l_r[2:0] != 3'd7 && control[2:0] == 3'd4 && (ready_control_p_r))
 		begin
 			rx_got_fct <= 1'b1;
 		end
@@ -411,7 +411,8 @@ begin
 
 		if(ready_control || ready_control_p)
 		begin
-			ready_control_p_r <= 1'b1;
+			if(is_control)
+				ready_control_p_r <= 1'b1;
 		end
 		else
 		begin
@@ -420,7 +421,8 @@ begin
 
 		if(ready_data || ready_data_p)
 		begin
-			ready_data_p_r <= 1'b1;
+			if(!is_control)
+				ready_data_p_r <= 1'b1;
 		end
 		else
 		begin
@@ -442,7 +444,8 @@ begin
 	end
 	else
 	begin
-		control_r	  <= {bit_c_3,bit_c_2,bit_c_1,bit_c_0};
+		//if(is_control)
+			control_r	  <= {bit_c_3,bit_c_2,bit_c_1,bit_c_0};
 	end
 end
 
@@ -454,7 +457,8 @@ begin
 	end
 	else
 	begin
-		control_p_r	  <= control_r;
+		//if(is_control)
+			control_p_r	  <= control_r;
 	end
 end
 
@@ -468,7 +472,8 @@ begin
 	end
 	else
 	begin
-		dta_timec	  <= {bit_d_9,bit_d_8,bit_d_0,bit_d_1,bit_d_2,bit_d_3,bit_d_4,bit_d_5,bit_d_6,bit_d_7};
+		//if(!is_control)
+			dta_timec	  <= {bit_d_9,bit_d_8,bit_d_0,bit_d_1,bit_d_2,bit_d_3,bit_d_4,bit_d_5,bit_d_6,bit_d_7};
 	end
 end
 
@@ -481,7 +486,8 @@ begin
 	end
 	else
 	begin
-		dta_timec_p  <= dta_timec;
+		//if(!is_control)
+			dta_timec_p  <= dta_timec;
 	end
 end
 
@@ -598,8 +604,9 @@ begin
 
 			if(control[2:0] != 3'd7)
 			begin
-				rx_data_flag	<= dta_timec_p[8:0];
+				rx_data_flag	<= {dta_timec_p[8],dta_timec_p[7],dta_timec_p[6],dta_timec_p[5],dta_timec_p[4],dta_timec_p[3],dta_timec_p[2],dta_timec_p[1],dta_timec_p[0]};
 				data        	<= dta_timec_p;
+				data_l_r 	<= data; 
 				last_is_control  	<=1'b0;
 				last_is_data     	<=1'b1;
 				last_is_timec    	<=1'b0;
@@ -621,28 +628,28 @@ begin
 		else if(last_is_timec == 1'b1)
 		begin
 
-			data_l_r    	 	<= data;
+			//data_l_r    	 	<= data;
 			
-			rx_data_take <= 1'b1;
-			rx_tick_out  <= 1'b0;
+			rx_data_take <= 1'b0;
+			rx_tick_out  <= 1'b1;
 		end
 		else if(last_is_data == 1'b1)
 		begin
 
-			rx_tick_out  <= 1'b1;
-			rx_data_take <= 1'b0;			
+			rx_tick_out  <= 1'b0;
+			rx_data_take <= 1'b1;			
 		end
 		else if(last_is_control == 1'b1)
 		begin
 
 			if((control[2:0] == 3'd6) == 1'b1 )
 			begin
-				data <= 10'b0100000001;
+				rx_data_flag <= 9'b100000001;
 				rx_data_take <= 1'b1;
 			end
 			else if((control[2:0] == 3'd5) == 1'b1 )
 			begin
-				data <= 10'b0100000000;
+				rx_data_flag <= 9'b100000000;
 				rx_data_take <= 1'b1;
 			end
 			else
