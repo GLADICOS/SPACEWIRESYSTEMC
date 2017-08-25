@@ -1,5 +1,5 @@
 EDA Netlist Writer report for spw_fifo_ulight
-Thu Aug 24 17:25:49 2017
+Thu Aug 24 22:42:14 2017
 Quartus Prime Version 17.0.1 Build 598 06/07/2017 SJ Lite Edition
 
 
@@ -37,7 +37,7 @@ agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Thu Aug 24 17:25:49 2017 ;
+; EDA Netlist Writer Status ; Successful - Thu Aug 24 22:42:14 2017 ;
 ; Revision Name             ; spw_fifo_ulight                       ;
 ; Top-level Entity Name     ; SPW_ULIGHT_FIFO                       ;
 ; Family                    ; Cyclone V                             ;
@@ -67,13 +67,13 @@ agreement for further details.
 +---------------------------------------------------------------------------------------------------+---------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------+
-; Simulation Generated Files                                                                                        ;
-+-------------------------------------------------------------------------------------------------------------------+
-; Generated Files                                                                                                   ;
-+-------------------------------------------------------------------------------------------------------------------+
-; /home/felipe/Documentos/verilog_projects/SPW_SC/TESTSTRESS/spw_fifo_ulight/simulation/modelsim/spw_fifo_ulight.vo ;
-+-------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Simulation Generated Files                                                                                                                  ;
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Generated Files                                                                                                                             ;
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/simulation/modelsim/spw_fifo_ulight.vo ;
++---------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------+
@@ -82,15 +82,15 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
     Info: Version 17.0.1 Build 598 06/07/2017 SJ Lite Edition
-    Info: Processing started: Thu Aug 24 17:25:39 2017
+    Info: Processing started: Thu Aug 24 22:42:07 2017
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off spw_fifo_ulight -c spw_fifo_ulight
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Warning (10905): Generated the EDA functional simulation netlist because it is the only supported netlist type for this device.
-Info (204019): Generated file spw_fifo_ulight.vo in folder "/home/felipe/Documentos/verilog_projects/SPW_SC/TESTSTRESS/spw_fifo_ulight/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file spw_fifo_ulight.vo in folder "/home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/simulation/modelsim/" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 2 warnings
     Info: Peak virtual memory: 1296 megabytes
-    Info: Processing ended: Thu Aug 24 17:25:50 2017
-    Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:10
+    Info: Processing ended: Thu Aug 24 22:42:14 2017
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:07
 
 
