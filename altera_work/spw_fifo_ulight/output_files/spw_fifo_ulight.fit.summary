@@ -1,0 +1,20 @@
+Fitter Status : Successful - Thu Aug 24 17:24:12 2017
+Quartus Prime Version : 17.0.1 Build 598 06/07/2017 SJ Lite Edition
+Revision Name : spw_fifo_ulight
+Top-level Entity Name : SPW_ULIGHT_FIFO
+Family : Cyclone V
+Device : 5CSEMA4U23C6
+Timing Models : Final
+Logic utilization (in ALMs) : 2,724 / 15,880 ( 17 % )
+Total registers : 3603
+Total pins : 19 / 314 ( 6 % )
+Total virtual pins : 0
+Total block memory bits : 1,152 / 2,764,800 ( < 1 % )
+Total RAM Blocks : 2 / 270 ( < 1 % )
+Total DSP Blocks : 0 / 84 ( 0 % )
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 1 / 5 ( 20 % )
+Total DLLs : 0 / 4 ( 0 % )

@@ -1,0 +1,188 @@
+
+State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:counter_rx_fifo_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:counter_tx_fifo_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:fsm_info_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:clock_sel_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:data_info_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:timecode_tx_ready_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:timecode_tx_enable_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:timecode_tx_data_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:fifo_empty_tx_status_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:fifo_full_tx_status_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:write_en_tx_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:write_data_fifo_tx_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:link_disable_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:auto_start_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:link_start_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:fifo_empty_rx_status_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:fifo_full_rx_status_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:data_read_en_rx_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:data_flag_rx_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:timecode_ready_rx_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:timecode_rx_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:led_pio_test_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_pll_0:pll_0|altera_pll:altera_pll_i|dps_extra_kick:dps_extra_inst|dps_current_state
+Name dps_current_state.PHASE_DONE_LOW_0 dps_current_state.PHASE_DONE_LOW_4 dps_current_state.PHASE_DONE_LOW_3 dps_current_state.PHASE_DONE_LOW_2 dps_current_state.PHASE_DONE_LOW_1 dps_current_state.PHASE_DONE_HIGH 
+dps_current_state.PHASE_DONE_HIGH 0 0 0 0 0 0 
+dps_current_state.PHASE_DONE_LOW_1 0 0 0 0 1 1 
+dps_current_state.PHASE_DONE_LOW_2 0 0 0 1 0 1 
+dps_current_state.PHASE_DONE_LOW_3 0 0 1 0 0 1 
+dps_current_state.PHASE_DONE_LOW_4 0 1 0 0 0 1 
+dps_current_state.PHASE_DONE_LOW_0 1 0 0 0 0 1 
+
+State Machine - |SPW_ULIGHT_FIFO|spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|FSM_SPW:FSM|state_fsm
+Name state_fsm.error_reset state_fsm.run state_fsm.connecting state_fsm.started state_fsm.ready state_fsm.error_wait 
+state_fsm.error_reset 0 0 0 0 0 0 
+state_fsm.error_wait 1 0 0 0 0 1 
+state_fsm.ready 1 0 0 0 1 0 
+state_fsm.started 1 0 0 1 0 0 
+state_fsm.connecting 1 0 1 0 0 0 
+state_fsm.run 1 1 0 0 0 0 
+
+State Machine - |SPW_ULIGHT_FIFO|spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|state_tx
+Name state_tx.tx_spw_start state_tx.tx_spw_full state_tx.tx_spw_null_fct state_tx.tx_spw_null 
+state_tx.tx_spw_start 0 0 0 0 
+state_tx.tx_spw_null 1 0 0 1 
+state_tx.tx_spw_null_fct 1 0 1 0 
+state_tx.tx_spw_full 1 1 0 0 
+
+State Machine - |SPW_ULIGHT_FIFO|spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|last_type
+Name last_type.TIMEC last_type.DATA last_type.EEP last_type.EOP last_type.FCT last_type.NULL 
+last_type.NULL 0 0 0 0 0 0 
+last_type.FCT 0 0 0 0 1 1 
+last_type.EOP 0 0 0 1 0 1 
+last_type.EEP 0 0 1 0 0 1 
+last_type.DATA 0 1 0 0 0 1 
+last_type.TIMEC 1 0 0 0 0 1 
