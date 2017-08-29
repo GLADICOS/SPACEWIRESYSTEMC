@@ -1,36 +1,3 @@
-//+FHDR------------------------------------------------------------------------
-//Copyright (c) 2013 Latin Group American Integhrated Circuit, Inc. All rights reserved
-//GLADIC Open Source RTL
-//-----------------------------------------------------------------------------
-//FILE NAME	 :
-//DEPARTMENT	 : IC Design / Verification
-//AUTHOR	 : Felipe Fernandes da Costa
-//AUTHOR’S EMAIL :
-//-----------------------------------------------------------------------------
-//RELEASE HISTORY
-//VERSION DATE AUTHOR DESCRIPTION
-//1.0 YYYY-MM-DD name
-//-----------------------------------------------------------------------------
-//KEYWORDS : General file searching keywords, leave blank if none.
-//-----------------------------------------------------------------------------
-//PURPOSE  : ECSS_E_ST_50_12C_31_july_2008
-//-----------------------------------------------------------------------------
-//PARAMETERS
-//PARAM NAME		RANGE	: DESCRIPTION : DEFAULT : UNITS
-//e.g.DATA_WIDTH	[32,16]	: width of the DATA : 32:
-//-----------------------------------------------------------------------------
-//REUSE ISSUES
-//Reset Strategy	:
-//Clock Domains		:
-//Critical Timing	:
-//Test Features		:
-//Asynchronous I/F	:
-//Scan Methodology	:
-//Instantiations	:
-//Synthesizable (y/n)	:
-//Other			:
-//-FHDR------------------------------------------------------------------------
-
 #ifndef SPW_TX_SEND
 #define SPW_TX_SEND
 
@@ -61,6 +28,7 @@ SC_MODULE(SPW_TX_SEND_DATA)
 		if(!RESET_SEND_DATA)
 		{
 			TXWRITE_TX_SEND_DATA = false;
+			//data_send = data_generated_sc[0];
 			a=0;
 		}
 		else
@@ -70,14 +38,13 @@ SC_MODULE(SPW_TX_SEND_DATA)
 				
 				if(a < data_generated_sc.size()-(unsigned int)1)
 				{
-					data_send = data_generated_sc[a];
+					TXDATA_FLAGCTRL_TX_SEND_DATA = data_generated_sc[a];
 					if(!READY_TX_SEND_DATA)
 					{
 						TXWRITE_TX_SEND_DATA = true;
 					}else
 					{
 						TXWRITE_TX_SEND_DATA = false;
-						TXDATA_FLAGCTRL_TX_SEND_DATA= data_send;
 					}
 				}
 				//cout << TXDATA_FLAGCTRL_TX_SEND_DATA.read().to_string(SC_HEX) << " " << READY_TX_SEND_DATA << " " << TXWRITE_TX_SEND_DATA << endl;

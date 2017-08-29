@@ -1,36 +1,3 @@
-//+FHDR------------------------------------------------------------------------
-//Copyright (c) 2013 Latin Group American Integhrated Circuit, Inc. All rights reserved
-//GLADIC Open Source RTL
-//-----------------------------------------------------------------------------
-//FILE NAME	 :
-//DEPARTMENT	 : IC Design / Verification
-//AUTHOR	 : Felipe Fernandes da Costa
-//AUTHOR’S EMAIL :
-//-----------------------------------------------------------------------------
-//RELEASE HISTORY
-//VERSION DATE AUTHOR DESCRIPTION
-//1.0 YYYY-MM-DD name
-//-----------------------------------------------------------------------------
-//KEYWORDS : General file searching keywords, leave blank if none.
-//-----------------------------------------------------------------------------
-//PURPOSE  : ECSS_E_ST_50_12C_31_july_2008
-//-----------------------------------------------------------------------------
-//PARAMETERS
-//PARAM NAME		RANGE	: DESCRIPTION : DEFAULT : UNITS
-//e.g.DATA_WIDTH	[32,16]	: width of the DATA : 32:
-//-----------------------------------------------------------------------------
-//REUSE ISSUES
-//Reset Strategy	:
-//Clock Domains		:
-//Critical Timing	:
-//Test Features		:
-//Asynchronous I/F	:
-//Scan Methodology	:
-//Instantiations	:
-//Synthesizable (y/n)	:
-//Other			:
-//-FHDR------------------------------------------------------------------------
-
 #ifndef SPW_RX_H
 #define SPW_RX_H
 
@@ -349,12 +316,14 @@ SC_MODULE(SPW_RX_SC)
 					DATA_FOUND = false;
 					last_char = ESC;
 
-					data_col_store.push_back("NULL");
-					data_col_store.push_back(" - ");
-					data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
-					data_col_store.push_back(" - ");
-					data_col_store.push_back(sc_time_stamp().to_string());
-					REC_TX_SPW->storedata(data_col_store);		
+					data_rx_sc_o(0,control,last_control_sys,data,timecode_sys);
+
+					//data_col_store.push_back("NULL");
+					//data_col_store.push_back(" - ");
+					//data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
+					//data_col_store.push_back(" - ");
+					//data_col_store.push_back(sc_time_stamp().to_string());
+					//REC_TX_SPW->storedata(data_col_store);		
 
 					if(counter_fct > 0)
 					{
@@ -370,13 +339,14 @@ SC_MODULE(SPW_RX_SC)
 					connected = true;
 					NULL_FOUND = false;
 
-					data_col_store.push_back("FCT");
-					data_col_store.push_back(" - ");
-					data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
-					data_col_store.push_back(" - ");
-					data_col_store.push_back(sc_time_stamp().to_string());
-					REC_TX_SPW->storedata(data_col_store);
+					data_rx_sc_o(1,control,last_control_sys,data,timecode_sys);
 
+					//data_col_store.push_back("FCT");
+					//data_col_store.push_back(" - ");
+					//data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
+					//data_col_store.push_back(" - ");
+					//data_col_store.push_back(sc_time_stamp().to_string());
+					//REC_TX_SPW->storedata(data_col_store);
 
 				}else if(last_control_sys(2,0) == 4 && control(2,0) == 7)
 				{
@@ -390,12 +360,15 @@ SC_MODULE(SPW_RX_SC)
 					invalid_combination = true;
 					connected = false;
 					//cout << last_control_sys(2,0) <<  control_sys(2,0) << endl;
-					data_col_store.push_back("INVALID CONNECTION");
-					data_col_store.push_back(" - ");
-					data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
-					data_col_store.push_back(" - ");
-					data_col_store.push_back(sc_time_stamp().to_string());
-					REC_TX_SPW->storedata(data_col_store);
+
+					data_rx_sc_o(4,control,last_control_sys,data,timecode_sys);
+
+					//data_col_store.push_back("INVALID CONNECTION");
+					//data_col_store.push_back(" - ");
+					//data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
+					//data_col_store.push_back(" - ");
+					//data_col_store.push_back(sc_time_stamp().to_string());
+					//REC_TX_SPW->storedata(data_col_store);
 				}
 				last_control_sys = control;
 				//control_sys = control;
@@ -429,20 +402,22 @@ SC_MODULE(SPW_RX_SC)
 					
 					if(last_control_sys(2,0) == 7 && control(2,0) == 4)
 					{
-						data_col_store.clear();
+						//data_col_store.clear();
 
 						control_found = true;
 						NULL_FOUND = true;
 						FCT_FOUND  = false;
 						DATA_FOUND = false;
 						last_char = ESC;
+						
+						data_rx_sc_o(0,control,last_control_sys,data,timecode_sys);
 
-						data_col_store.push_back("NULL");
-						data_col_store.push_back(" - ");
-						data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
-						data_col_store.push_back(" - ");
-						data_col_store.push_back(sc_time_stamp().to_string());
-						REC_TX_SPW->storedata(data_col_store);	
+						//data_col_store.push_back("NULL");
+						//data_col_store.push_back(" - ");
+						//data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
+						//data_col_store.push_back(" - ");
+						//data_col_store.push_back(sc_time_stamp().to_string());
+						//REC_TX_SPW->storedata(data_col_store);	
 
 						if(counter_fct > 0)
 						{
@@ -452,7 +427,7 @@ SC_MODULE(SPW_RX_SC)
 
 					}else if(last_control_sys(2,0) != 7 && control(2,0) == 4)
 					{
-						data_col_store.clear();
+						//data_col_store.clear();
 
 						last_char = FCT;
 						counter_fct++;
@@ -461,34 +436,37 @@ SC_MODULE(SPW_RX_SC)
 						NULL_FOUND = false;
 						DATA_FOUND = false;
 
-						data_col_store.push_back("FCT");
-						data_col_store.push_back(" - ");
-						data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
-						data_col_store.push_back(" - ");
-						data_col_store.push_back(sc_time_stamp().to_string());
-						REC_TX_SPW->storedata(data_col_store);
+						data_rx_sc_o(1,control,last_control_sys,data,timecode_sys);
+
+						//data_col_store.push_back("FCT");
+						//data_col_store.push_back(" - ");
+						//data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
+						//data_col_store.push_back(" - ");
+						//data_col_store.push_back(sc_time_stamp().to_string());
+						//REC_TX_SPW->storedata(data_col_store);
 
 					}else if(last_control_sys(2,0) != 7 && control(2,0) == 5)
 					{
-						data_col_store.clear();
+						//data_col_store.clear();
 
 						last_char = EOP;
-						data_col_store.push_back("EOP");
 
 						FCT_FOUND  = false;
 						NULL_FOUND = false;
 						DATA_FOUND = true;
+						
+						data_rx_sc_o(2,control,last_control_sys,data,timecode_sys);
 
-						intermediate_data = data_generated_verilog[data_iteration];
-						data_col_store.push_back(intermediate_data.to_string(SC_HEX));
+						//intermediate_data = data_generated_verilog[data_iteration];
+						//data_col_store.push_back(intermediate_data.to_string(SC_HEX));
 
-						data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
-						data_col_store.push_back(" ");
-						COMPARE_SPW->compare_test(&data_col_store);
-						data_iteration++;
+						//data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
+						//data_col_store.push_back(" ");
+						//COMPARE_SPW->compare_test(&data_col_store);
+						//data_iteration++;
 
-						data_col_store.push_back(sc_time_stamp().to_string());
-						REC_TX_SPW->storedata(data_col_store);
+						//data_col_store.push_back(sc_time_stamp().to_string());
+						//REC_TX_SPW->storedata(data_col_store);
 
 						if(counter_fct > 0)
 						{
@@ -499,25 +477,27 @@ SC_MODULE(SPW_RX_SC)
 					}else if(last_control_sys(2,0) != 7 && control(2,0) == 6)
 					{
 
-						data_col_store.clear();
+						//data_col_store.clear();
 
 						last_char = EEP;
 
 						FCT_FOUND  = false;
 						NULL_FOUND = false;
 						DATA_FOUND = true;
+					
+						data_rx_sc_o(3,control,last_control_sys,data,timecode_sys);
 
-						data_col_store.push_back("EEP");
-						intermediate_data = data_generated_verilog[data_iteration];
-						data_col_store.push_back(intermediate_data.to_string(SC_HEX));
+						//data_col_store.push_back("EEP");
+						//intermediate_data = data_generated_verilog[data_iteration];
+						//data_col_store.push_back(intermediate_data.to_string(SC_HEX));
 
-						data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
-						data_col_store.push_back(" ");
-						COMPARE_SPW->compare_test(&data_col_store);
-						data_iteration++;
+						//data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
+						//data_col_store.push_back(" ");
+						//COMPARE_SPW->compare_test(&data_col_store);
+						//data_iteration++;
 
-						data_col_store.push_back(sc_time_stamp().to_string());
-						REC_TX_SPW->storedata(data_col_store);
+						//data_col_store.push_back(sc_time_stamp().to_string());
+						//REC_TX_SPW->storedata(data_col_store);
 
 						if(counter_fct > 0)
 						{
@@ -548,17 +528,20 @@ SC_MODULE(SPW_RX_SC)
 						}
 					}else
 					{
-						data_col_store.clear();
+						//data_col_store.clear();
 
 						invalid_combination = true;
 						connected = false;
+
+						data_rx_sc_o(4,control,last_control_sys,data,timecode_sys);
+
 						//cout << last_control_sys(2,0) <<  control_sys(2,0) << endl;
-						data_col_store.push_back("INVALID CONNECTION");
-						data_col_store.push_back(" - ");
-						data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control_sys(2,0).to_string());
-						data_col_store.push_back(" - ");
-						data_col_store.push_back(sc_time_stamp().to_string());
-						REC_TX_SPW->storedata(data_col_store);
+						//data_col_store.push_back("INVALID CONNECTION");
+						//data_col_store.push_back(" - ");
+						//data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control_sys(2,0).to_string());
+						//data_col_store.push_back(" - ");
+						//data_col_store.push_back(sc_time_stamp().to_string());
+						//REC_TX_SPW->storedata(data_col_store);
 					}
 					last_control_sys = control;
 
@@ -609,20 +592,23 @@ SC_MODULE(SPW_RX_SC)
 					control_sys = 0;
 					last_control_sys =0;
 
-					data_col_store.push_back("DATA");
+					data_rx_sc_o(5,control,last_control_sys,data,timecode_sys);
 
-					intermediate_data = data_generated_verilog[data_iteration];
-					data_col_store.push_back(intermediate_data.to_string(SC_HEX));
 
-					data_col_store.push_back(data(8,0).to_string(SC_HEX));
-					data_col_store.push_back(" ");
-					COMPARE_SPW->compare_test(&data_col_store);
+					//data_col_store.push_back("DATA");
 
-					data_col_store.push_back(sc_time_stamp().to_string());
-					REC_TX_SPW->storedata(data_col_store);
+					//intermediate_data = data_generated_verilog[data_iteration];
+					//data_col_store.push_back(intermediate_data.to_string(SC_HEX));
+
+					//data_col_store.push_back(data(8,0).to_string(SC_HEX));
+					//data_col_store.push_back(" ");
+					//COMPARE_SPW->compare_test(&data_col_store);
+
+					//data_col_store.push_back(sc_time_stamp().to_string());
+					//REC_TX_SPW->storedata(data_col_store);
 					counter_received_data = counter_received_data + 8;
 
-					data_iteration++;
+					//data_iteration++;
 					last_data = data;
 
 					if(counter_fct > 0)
@@ -645,13 +631,16 @@ SC_MODULE(SPW_RX_SC)
 					last_char = TIME_CODE;
 					control_sys = 0;
 					last_control_sys =0;
-					data_col_store.push_back("TIMECODE");
-					data_col_store.push_back(" - ");
-					data_col_store.push_back(timecode_sys(7,0).to_string());
-					data_col_store.push_back(" - ");
-					data_col_store.push_back(sc_time_stamp().to_string());
-					REC_TX_SPW->storedata(data_col_store);
-					last_timecode = timecode_sys;
+
+					data_rx_sc_o(6,control,last_control_sys,data,timecode_sys);
+
+					//data_col_store.push_back("TIMECODE");
+					//data_col_store.push_back(" - ");
+					//data_col_store.push_back(timecode_sys(7,0).to_string());
+					//data_col_store.push_back(" - ");
+					//data_col_store.push_back(sc_time_stamp().to_string());
+					//REC_TX_SPW->storedata(data_col_store);
+					//last_timecode = timecode_sys;
 
 					if(counter_fct > 0)
 					{

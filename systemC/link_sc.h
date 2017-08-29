@@ -1,35 +1,3 @@
-//+FHDR------------------------------------------------------------------------
-//Copyright (c) 2013 Latin Group American Integhrated Circuit, Inc. All rights reserved
-//GLADIC Open Source RTL
-//-----------------------------------------------------------------------------
-//FILE NAME	 :
-//DEPARTMENT	 : IC Design / Verification
-//AUTHOR	 : Felipe Fernandes da Costa
-//AUTHOR’S EMAIL :
-//-----------------------------------------------------------------------------
-//RELEASE HISTORY
-//VERSION DATE AUTHOR DESCRIPTION
-//1.0 YYYY-MM-DD name
-//-----------------------------------------------------------------------------
-//KEYWORDS : General file searching keywords, leave blank if none.
-//-----------------------------------------------------------------------------
-//PURPOSE  : ECSS_E_ST_50_12C_31_july_2008
-//-----------------------------------------------------------------------------
-//PARAMETERS
-//PARAM NAME		RANGE	: DESCRIPTION : DEFAULT : UNITS
-//e.g.DATA_WIDTH	[32,16]	: width of the DATA : 32:
-//-----------------------------------------------------------------------------
-//REUSE ISSUES
-//Reset Strategy	:
-//Clock Domains		:
-//Critical Timing	:
-//Test Features		:
-//Asynchronous I/F	:
-//Scan Methodology	:
-//Instantiations	:
-//Synthesizable (y/n)	:
-//Other			:
-//-FHDR------------------------------------------------------------------------
 #ifndef CONTROL_SC_H
 #define CONTROL_SC_H
 
@@ -76,9 +44,11 @@ class Control_SC
 	virtual bool enable_time_code_tx_test();
 	virtual void end_tx_test();
 	virtual unsigned int take_data(unsigned int a);
-	virtual int size_data_test();
+	virtual int size_data_test_vlog();
+	virtual int size_data_test_sc();
 
 	virtual void data_o(unsigned int data, unsigned int pos);
+	virtual void data_rx_vlog_loopback_o(unsigned int data, unsigned int pos);
 
 	virtual unsigned int clock_tx();
 

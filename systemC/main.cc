@@ -1,35 +1,3 @@
-//+FHDR------------------------------------------------------------------------
-//Copyright (c) 2013 Latin Group American Integhrated Circuit, Inc. All rights reserved
-//GLADIC Open Source RTL
-//-----------------------------------------------------------------------------
-//FILE NAME	 :
-//DEPARTMENT	 : IC Design / Verification
-//AUTHOR	 : Felipe Fernandes da Costa
-//AUTHOR’S EMAIL :
-//-----------------------------------------------------------------------------
-//RELEASE HISTORY
-//VERSION DATE AUTHOR DESCRIPTION
-//1.0 YYYY-MM-DD name
-//-----------------------------------------------------------------------------
-//KEYWORDS : General file searching keywords, leave blank if none.
-//-----------------------------------------------------------------------------
-//PURPOSE  : ECSS_E_ST_50_12C_31_july_2008
-//-----------------------------------------------------------------------------
-//PARAMETERS
-//PARAM NAME		RANGE	: DESCRIPTION : DEFAULT : UNITS
-//e.g.DATA_WIDTH	[32,16]	: width of the DATA : 32:
-//-----------------------------------------------------------------------------
-//REUSE ISSUES
-//Reset Strategy	:
-//Clock Domains		:
-//Critical Timing	:
-//Test Features		:
-//Asynchronous I/F	:
-//Scan Methodology	:
-//Instantiations	:
-//Synthesizable (y/n)	:
-//Other			:
-//-FHDR------------------------------------------------------------------------
 #include <systemc.h>
 #include <stdio.h>
 #include <vector>
@@ -100,10 +68,13 @@ unsigned int data_iteration = 0;
 unsigned int data_iteration_vlog = 0;
 sc_uint<9> intermediate_data;
 
+
+void data_rx_sc_o(unsigned int type_char, sc_uint<4> control, sc_uint<4> last_control_sys , sc_uint<10> data , sc_uint<10> timecode_sys);
+
 #include "top_spw.h"
 
 //Data generation
-unsigned long int max_data = 100; 
+unsigned long int max_data = 256; 
 
 std::random_device rd;
 std::uniform_int_distribution<unsigned long int> data_in(0,255);
@@ -870,9 +841,14 @@ void Control_SC::end_tx_test()
 	start_send_data_verilog = enable_time_code_verilog = false;
 }
 
-int Control_SC::size_data_test()
+int Control_SC::size_data_test_vlog()
 {
 	return data_generated_verilog.size()-1;
+}
+
+int Control_SC::size_data_test_sc()
+{
+	return data_generated_sc.size()-1;
 }
 
 unsigned int Control_SC::take_data(unsigned int a)
@@ -905,6 +881,103 @@ void Control_SC::data_o(unsigned int data, unsigned int pos)
 		{
 			data_iteration_sc = 0;
 		}
+}
+
+
+void  Control_SC::data_rx_vlog_loopback_o(unsigned int data, unsigned int pos)
+{
+
+	sc_uint<9> intermediate = data;
+
+	data_col_store.push_back("DATA");
+	intermediate_data = data_generated_verilog[pos];
+	data_col_store.push_back(intermediate_data.to_string(SC_HEX));
+
+	data_col_store.push_back(intermediate(8,0).to_string(SC_HEX));
+	data_col_store.push_back(" ");
+	COMPARE_SPW->compare_test(&data_col_store);
+
+	data_col_store.push_back(sc_time_stamp().to_string());
+	REC_TX_SPW->storedata(data_col_store);
+}
+
+void data_rx_sc_o(unsigned int type_char, sc_uint<4> control, sc_uint<4> last_control_sys , sc_uint<10> data , sc_uint<10> timecode_sys)
+{
+	data_col_store.clear();
+
+	switch(type_char)
+	{
+		case 0:
+			data_col_store.push_back("NULL");
+			data_col_store.push_back(" - ");
+			data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
+			data_col_store.push_back(" - ");
+			data_col_store.push_back(sc_time_stamp().to_string());
+			REC_TX_SPW->storedata(data_col_store);	
+		break;
+		case 1:
+			data_col_store.push_back("FCT");
+			data_col_store.push_back(" - ");
+			data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
+			data_col_store.push_back(" - ");
+			data_col_store.push_back(sc_time_stamp().to_string());
+			REC_TX_SPW->storedata(data_col_store);
+		break;
+		case 2:
+			data_col_store.push_back("EOP");
+			intermediate_data = data_generated_verilog[data_iteration];
+			data_col_store.push_back(intermediate_data.to_string(SC_HEX));
+			data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
+			data_col_store.push_back(" ");
+			COMPARE_SPW->compare_test(&data_col_store);
+			data_iteration++;
+			data_col_store.push_back(sc_time_stamp().to_string());
+			REC_TX_SPW->storedata(data_col_store);
+		break;
+		case 3:
+			data_col_store.push_back("EEP");
+			intermediate_data = data_generated_verilog[data_iteration];
+			data_col_store.push_back(intermediate_data.to_string(SC_HEX));
+
+			data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
+			data_col_store.push_back(" ");
+			COMPARE_SPW->compare_test(&data_col_store);
+			data_iteration++;
+
+			data_col_store.push_back(sc_time_stamp().to_string());
+			REC_TX_SPW->storedata(data_col_store);
+		break;
+		case 4:
+			data_col_store.push_back("INVALID CONNECTION");
+			data_col_store.push_back(" - ");
+			data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
+			data_col_store.push_back(" - ");
+			data_col_store.push_back(sc_time_stamp().to_string());
+			REC_TX_SPW->storedata(data_col_store);
+		break;
+		case 5:
+			data_col_store.push_back("DATA");
+			intermediate_data = data_generated_verilog[data_iteration];
+			data_col_store.push_back(intermediate_data.to_string(SC_HEX));
+
+			data_col_store.push_back(data(8,0).to_string(SC_HEX));
+			data_col_store.push_back(" ");
+			COMPARE_SPW->compare_test(&data_col_store);
+
+			data_col_store.push_back(sc_time_stamp().to_string());
+			REC_TX_SPW->storedata(data_col_store);
+			data_iteration++;
+		break;
+		case 6:
+			data_col_store.push_back("TIMECODE");
+			data_col_store.push_back(" - ");
+			data_col_store.push_back(timecode_sys(7,0).to_string());
+			data_col_store.push_back(" - ");
+			data_col_store.push_back(sc_time_stamp().to_string());
+			REC_TX_SPW->storedata(data_col_store);
+		break;
+	}
+
 }
 
 unsigned int Control_SC::clock_tx()
