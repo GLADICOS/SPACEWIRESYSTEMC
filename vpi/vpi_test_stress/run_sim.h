@@ -1,10 +1,12 @@
 static int run_sim_calltf(char*user_data)
 {
-	vpiHandle DOUT         = vpi_handle_by_name("module_tb.TOP_DOUT", NULL);
-	vpiHandle SOUT         = vpi_handle_by_name("module_tb.TOP_SOUT", NULL);
-	vpiHandle DIN          = vpi_handle_by_name("module_tb.TOP_DIN", NULL);
-	vpiHandle SIN          = vpi_handle_by_name("module_tb.TOP_SIN", NULL);
-
+	#ifndef LOOPBACK_VLOG
+	#define LOOPBACK_VLOG
+		vpiHandle DOUT         = vpi_handle_by_name("module_tb.TOP_DOUT", NULL);
+		vpiHandle SOUT         = vpi_handle_by_name("module_tb.TOP_SOUT", NULL);
+		vpiHandle DIN          = vpi_handle_by_name("module_tb.TOP_DIN", NULL);
+		vpiHandle SIN          = vpi_handle_by_name("module_tb.TOP_SIN", NULL);
+	#endif
 	vpiHandle DTA        = vpi_handle_by_name("module_tb.SPW_SC_FSM", NULL);
 	//vpiHandle TX_CLOCK_OUT        = vpi_handle_by_name("module_tb.TX_CLOCK_OUT", NULL);
 
@@ -33,28 +35,35 @@ static int run_sim_calltf(char*user_data)
 	}
 	else
 	{
+
+
 		SC_TOP->run_sim();
 
-		sin_value.value.integer = SC_TOP->get_value_sout();
-		din_value.value.integer = SC_TOP->get_value_dout();
-		vpi_put_value(DIN, &din_value, NULL, vpiNoDelay);
-		vpi_put_value(SIN, &sin_value, NULL, vpiNoDelay);
+		#ifndef LOOPBACK_VLOG
+		#define LOOPBACK_VLOG
 
-		vpi_get_value(SOUT, &sout_value);
-		vpi_get_value(DOUT, &dout_value);
-		SC_TOP->set_rx_sin(sout_value.value.integer);
-		SC_TOP->set_rx_din(dout_value.value.integer);
+			sin_value.value.integer = SC_TOP->get_value_sout();
+			din_value.value.integer = SC_TOP->get_value_dout();
+			vpi_put_value(DIN, &din_value, NULL, vpiNoDelay);
+			vpi_put_value(SIN, &sin_value, NULL, vpiNoDelay);
 
-		fsm_value.value.integer = SC_TOP->get_spw_fsm();
-		vpi_put_value(DTA, &fsm_value, NULL, vpiNoDelay);
+			vpi_get_value(SOUT, &sout_value);
+			vpi_get_value(DOUT, &dout_value);
 
-		vpi_get_value(tx_clock, &sout_value);
+			SC_TOP->set_rx_sin(sout_value.value.integer);
+			SC_TOP->set_rx_din(dout_value.value.integer);
 
-		if(sout_value.value.integer != SC_TOP->verilog_frequency())
-		{
-			sin_value.value.integer = SC_TOP->verilog_frequency();
-			vpi_put_value(tx_clock, &sin_value, NULL, vpiNoDelay);
-		}
+			fsm_value.value.integer = SC_TOP->get_spw_fsm();
+			vpi_put_value(DTA, &fsm_value, NULL, vpiNoDelay);
+
+			vpi_get_value(tx_clock, &sout_value);
+
+			if(sout_value.value.integer != SC_TOP->verilog_frequency())
+			{
+				sin_value.value.integer = SC_TOP->verilog_frequency();
+				vpi_put_value(tx_clock, &sin_value, NULL, vpiNoDelay);
+			}
+		#endif
 		//fsm_value.value.integer = SC_TOP->clock_tx();
 		//vpi_put_value(TX_CLOCK_OUT, &fsm_value, NULL, vpiNoDelay);
 

@@ -6,8 +6,8 @@ static int global_init_calltf(char*user_data)
 	vpiHandle TX_TICK      = vpi_handle_by_name("module_tb.TOP_TX_TICK",NULL);
 	vpiHandle TX_TIME      = vpi_handle_by_name("module_tb.TOP_TX_TIME",NULL);
 
-	vpiHandle CREDITERRORRX    = vpi_handle_by_name("module_tb.CREDIT_ERROR_RX",NULL);
-	vpiHandle TOPSENDFCTNOW    = vpi_handle_by_name("module_tb.TOP_SEND_FCT_NOW",NULL);
+	vpiHandle BUFFER_READ   = vpi_handle_by_name("module_tb.BUFFER_READ",NULL);
+	//vpiHandle TOPSENDFCTNOW    = vpi_handle_by_name("module_tb.TOP_SEND_FCT_NOW",NULL);
 
 	vpiHandle LINKSTART    = vpi_handle_by_name("module_tb.LINK_START",NULL);
 	vpiHandle LINKDISABLE  = vpi_handle_by_name("module_tb.LINK_DISABLE",NULL);
@@ -52,8 +52,8 @@ static int global_init_calltf(char*user_data)
 	vpi_put_value(LINKDISABLE, &dout_value, NULL, vpiNoDelay);
 	vpi_put_value(AUTOSTART, &dout_value, NULL  ,vpiNoDelay);
 
-	vpi_put_value(CREDITERRORRX, &dout_value, NULL , vpiNoDelay);
-	vpi_put_value(TOPSENDFCTNOW, &dout_value, NULL , vpiNoDelay);
+	//vpi_put_value(CREDITERRORRX, &dout_value, NULL , vpiNoDelay);
+	vpi_put_value(BUFFER_READ, &dout_value, NULL, vpiNoDelay);
 
 	vpi_put_value(TX_DATA, &dout_value, NULL , vpiNoDelay);
 	vpi_put_value(TX_WRITE, &dout_value, NULL, vpiNoDelay);

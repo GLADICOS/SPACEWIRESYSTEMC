@@ -9,7 +9,7 @@ static int global_reset_calltf(char*user_data)
 		reset.value.integer = 0;
 		vpi_put_value(RESETnSPWUL, &reset, NULL, vpiNoDelay);
 		state_test = 0;
-		state_test_rx=1;
+		state_test_rx=0;
 		position = counter = 0;
 		SC_TOP->end_tx_test();
 	}else
