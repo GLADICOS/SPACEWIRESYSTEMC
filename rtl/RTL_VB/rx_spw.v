@@ -627,9 +627,6 @@ begin
 		end
 		else if(last_is_timec == 1'b1)
 		begin
-
-			//data_l_r    	 	<= data;
-			
 			rx_data_take <= 1'b0;
 			rx_tick_out  <= 1'b1;
 		end
@@ -642,14 +639,14 @@ begin
 		else if(last_is_control == 1'b1)
 		begin
 
-			if((control[2:0] == 3'd6) == 1'b1 )
+			if(control[2:0] == 3'd6)
 			begin
-				rx_data_flag <= 9'b100000001;
+				rx_data_flag <= 9'd257;
 				rx_data_take <= 1'b1;
 			end
-			else if((control[2:0] == 3'd5) == 1'b1 )
+			else if(control[2:0] == 3'd5)
 			begin
-				rx_data_flag <= 9'b100000000;
+				rx_data_flag <= 9'd256;
 				rx_data_take <= 1'b1;
 			end
 			else
