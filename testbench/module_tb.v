@@ -4,6 +4,7 @@
 module module_tb;
 
 	reg CLK_SIM;
+	reg CLK_SYS_RX;
 
 	`ifdef VERILOG_A
 
@@ -96,6 +97,8 @@ module module_tb;
 	`endif
 
 	`ifdef VERILOG_B
+		assign TOP_SIN = TOP_SOUT;
+		assign TOP_DIN = TOP_DOUT;
 	 `endif		
 
 		integer time_clk_ns;
@@ -122,7 +125,7 @@ module module_tb;
 		wire TOP_SEND_FCT_NOW;
 
 		wire [8:0] DATARX_FLAG;
-		wire BUFFER_WRITE;
+		wire BUFFER_READ;
 
 		wire [7:0] TIME_OUT;
 		wire TICK_OUT;
@@ -134,10 +137,14 @@ module module_tb;
 		wire TOP_TX_READY_TICK;
 
 		wire [5:0] TOP_FSM;
+		wire [5:0] COUNTER_FIFO_RX;
+		wire [5:0] COUNTER_FIFO_TX;
 
 		wire TX_CLOCK_RECOVERY_VLOG;
 		wire [3:0] SPW_SC_FSM;
 		wire [3:0] SPW_SC_FSM_OUT;
+
+		wire F_FULL,F_EMPTY,F_FULL_RX,F_EMPTY_RX; 
 
 		assign TX_CLOCK_RECOVERY_VLOG = TOP_DOUT ^ TOP_SOUT;
 		assign SPW_SC_FSM_OUT = SPW_SC_FSM;
@@ -162,11 +169,14 @@ module module_tb;
 		initial CLK_SIM = 1'b0;
 		always #(1) CLK_SIM = ~CLK_SIM;
 
+		initial CLK_SYS_RX = 1'b0;
+		always #(2.5) CLK_SYS_RX = ~CLK_SYS_RX;
 		
-		top_spw_ultra_light DUT_ULIGHT(
-					.pclk(PCLK),
+		spw_ulight_con_top_x DUT_ULIGHT(
+					.ppll_100_MHZ(PCLK),
 					.ppllclk(PPLLCLK),
-					.resetn(RESETN),
+					//.clk_sys_rx(CLK_SYS_RX),
+					.reset_spw_n_b(RESETN),
 
 					.top_sin(TOP_SIN),
 					.top_din(TOP_DIN),
@@ -181,11 +191,8 @@ module module_tb;
 					.top_tx_tick(TOP_TX_TICK),
 					.top_tx_time(TOP_TX_TIME),
 
-					.credit_error_rx(CREDIT_ERROR_RX),
-					.top_send_fct_now(TOP_SEND_FCT_NOW),
-
 					.datarx_flag(DATARX_FLAG),
-					.buffer_write(BUFFER_WRITE),
+					.read_rx_fifo_en(BUFFER_READ),
 
 					.time_out(TIME_OUT),
 					.tick_out(TICK_OUT),
@@ -193,10 +200,15 @@ module module_tb;
 					.top_dout(TOP_DOUT),
 					.top_sout(TOP_SOUT),
 
-					.top_tx_ready(TOP_TX_READY),
+					.f_full(F_FULL),
+					.f_empty(F_EMPTY),
+					.f_full_rx(F_FULL_RX),
+					.f_empty_rx(F_EMPTY_RX),
 					.top_tx_ready_tick(TOP_TX_READY_TICK),
 
-					.top_fsm(TOP_FSM)
+					.top_fsm(TOP_FSM),
+					.counter_fifo_tx(COUNTER_FIFO_TX),
+					.counter_fifo_rx(COUNTER_FIFO_RX)
 				      );
 
 	//
@@ -204,14 +216,14 @@ module module_tb;
 		$write_tx_fsm_spw_ultra_light;
 
 	//
-	always@(posedge PCLK or posedge TOP_TX_READY)
+	always@(posedge PCLK)
 		$write_tx_data_spw_ultra_light;
 
 	always@(posedge PCLK)
 		$write_tx_time_code_spw_ultra_light;
 
 	//
-	always@(posedge BUFFER_WRITE)
+	always@(posedge PCLK)
 		$receive_rx_data_spw_ultra_light;
 		
 	always@(posedge TICK_OUT)
