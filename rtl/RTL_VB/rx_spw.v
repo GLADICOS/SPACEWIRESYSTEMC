@@ -168,7 +168,7 @@ always@(*)
 begin
 	posedge_p = 1'b0;
 
-	if((rx_din ^ rx_sin) == 1'b1)
+	if(rx_din ^ rx_sin)
 	begin
 		posedge_p = 1'b1;
 	end
@@ -605,7 +605,7 @@ begin
 			if(control[2:0] != 3'd7)
 			begin
 				rx_data_flag	<= {dta_timec_p[8],dta_timec_p[7],dta_timec_p[6],dta_timec_p[5],dta_timec_p[4],dta_timec_p[3],dta_timec_p[2],dta_timec_p[1],dta_timec_p[0]};
-				data        	<= dta_timec_p;
+				data        	<= {dta_timec_p[9],dta_timec_p[8],dta_timec_p[7],dta_timec_p[6],dta_timec_p[5],dta_timec_p[4],dta_timec_p[3],dta_timec_p[2],dta_timec_p[1],dta_timec_p[0]};
 				data_l_r 	<= data; 
 				last_is_control  	<=1'b0;
 				last_is_data     	<=1'b1;

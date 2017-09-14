@@ -609,7 +609,7 @@ begin
 		begin
 			enable_fct  = 1'b1;
 		end
-		else if((txwrite_tx && fct_counter_receive > 6'd0 && !hold_null && !hold_time_code && !hold_fct) == 1'b1 )
+		else if((txwrite_tx && !ready_tx_data && fct_counter_receive > 6'd0 && !hold_null && !hold_time_code && !hold_fct) == 1'b1 )
 		begin
 			enable_n_char = 1'b1;				
 		end
@@ -723,7 +723,7 @@ begin
 		if(enable_null)
 		begin
 
-			ready_tx_data <= 1'b0;
+			//ready_tx_data <= 1'b0;
 			ready_tx_timecode <= 1'b0;
 			//hold_null	<= 1'b0;
 			hold_fct	<= 1'b0;
@@ -755,27 +755,37 @@ begin
 			else
 				block_sum_fct_send <= block_sum_fct_send;
 
+			if(global_counter_transfer == 4'd7)
+			begin
+				hold_null <= 1'b0;
+			end
+			else
+			begin
+				hold_null <= 1'b1;
+			end
+
 			if(first_time)
 			begin
 				first_time <= 1'b0;
-				hold_null  <= 1'b1;
+				//hold_null  <= 1'b1;
 				global_counter_transfer <= global_counter_transfer + 4'd1;
 			end
 			else if(global_counter_transfer != 4'd7)
 			begin
-				hold_null <= 1'b1;
+				//hold_null  <= 1'b1;
 				global_counter_transfer <= global_counter_transfer + 4'd1;
 			end
 			else
 			begin
-				hold_null <= 1'b0;
+				//hold_null <= 1'b0;
+				ready_tx_data <= 1'b0;
 				last_type  <= NULL;
 				global_counter_transfer <= 4'd0;
 			end
 		end
 		else if(enable_fct)
 		begin
-			ready_tx_data <= 1'b0;
+			//ready_tx_data <= 1'b0;
 			ready_tx_timecode <= 1'b0;
 
 			hold_null	<= 1'b0;
@@ -796,10 +806,23 @@ begin
 			else
 				block_sum <= block_sum;
 
+			if(global_counter_transfer == 4'd2)
+				ready_tx_data <= 1'b0;
+			else
+				ready_tx_data <= ready_tx_data;
+
+			if(global_counter_transfer == 4'd3)
+			begin
+				hold_fct <= 1'b0;
+			end
+			else
+			begin
+				hold_fct <= 1'b1;
+			end
 
 			if(global_counter_transfer != 4'd3)
 			begin
-				hold_fct <= 1'b1;
+				//hold_fct <= 1'b1;
 				global_counter_transfer <= global_counter_transfer + 4'd1;
 				//
 				if(send_fct_now && !block_sum_fct_send)
@@ -816,7 +839,7 @@ begin
 			end
 			else
 			begin
-				hold_fct <= 1'b0;
+				//hold_fct <= 1'b0;
 				global_counter_transfer <= 4'd0;
 				fct_flag <= fct_flag - 3'd1;
 				last_type  <=FCT;
@@ -830,7 +853,7 @@ begin
 			hold_data	<= 1'b0;
 			//hold_time_code	<= 1'b0;
 							
-			ready_tx_data <= 1'b0;
+			//ready_tx_data <= 1'b0;
 
 			if(gotfct_tx && !block_sum)
 			begin
@@ -849,6 +872,15 @@ begin
 				ready_tx_timecode <= 1'b1;
 			end
 
+			if(global_counter_transfer == 4'd13)
+			begin
+				hold_time_code <= 1'b0;
+			end
+			else
+			begin
+				hold_time_code <= 1'b0;
+			end
+
 			//
 			if(send_fct_now && !block_sum_fct_send)
 			begin
@@ -862,13 +894,14 @@ begin
 			else
 				block_sum_fct_send <= block_sum_fct_send;
 
-			if(global_counter_transfer < 4'd13)
+			if(global_counter_transfer != 4'd13)
 			begin
 				global_counter_transfer <= global_counter_transfer + 4'd1;
 				timecode_s <= {timecode_ss[13:10],2'd2,timecode_tx_i[7:0]};
 			end
 			else
 			begin
+				ready_tx_data <= 1'b0;
 				last_timein_control_flag_tx <= timecode_tx_i;
 				global_counter_transfer <= 4'd0;
 				last_type  <= TIMEC;
@@ -900,16 +933,18 @@ begin
 
 				if(global_counter_transfer == 4'd9)
 				begin
+					hold_data <= 1'b0;
 					ready_tx_data <= 1'b1;
 				end
 				else
 				begin
 					ready_tx_data <= 1'b0;
+					hold_data <= 1'b1;
 				end
 
 				if(global_counter_transfer != 4'd9)
 				begin
-					hold_data <= 1'b1;
+
 					global_counter_transfer <= global_counter_transfer + 4'd1;
 					txdata_flagctrl_tx_last <= data_tx_i;
 
@@ -927,7 +962,6 @@ begin
 				end
 				else
 				begin
-					hold_data <= 1'b0;
 					global_counter_transfer <= 4'd0;
 					fct_counter_receive <= fct_counter_receive - 6'd1;
 					last_type  <= DATA;
@@ -939,18 +973,20 @@ begin
 
 				if(global_counter_transfer == 4'd3)
 				begin
+					hold_data <= 1'b0;
 					ready_tx_data <= 1'b1;
 				end
 				else
 				begin
+					hold_data <= 1'b1;
 					ready_tx_data <= 1'b0;
 				end
 
 				if(global_counter_transfer != 4'd3)
 				begin
-					hold_data <= 1'b1;
+
 					global_counter_transfer <= global_counter_transfer + 4'd1;
-					txdata_flagctrl_tx_last <= data_tx_i;
+					txdata_flagctrl_tx_last <= txdata_flagctrl_tx_last;
 
 					if(gotfct_tx && !block_sum)
 					begin
@@ -966,11 +1002,17 @@ begin
 				end
 				else
 				begin
-
-					hold_data <= 1'b0;
 					global_counter_transfer <= 4'd0;
 					fct_counter_receive <= fct_counter_receive - 6'd1;
-					last_type  <=EOP;
+
+					if(data_tx_i[1:0] == 2'b00)
+					begin
+						last_type  <=EOP;
+					end
+					else if(data_tx_i[1:0] == 2'b01)
+					begin
+						last_type  <=EEP;
+					end
 				end
 			end
 
