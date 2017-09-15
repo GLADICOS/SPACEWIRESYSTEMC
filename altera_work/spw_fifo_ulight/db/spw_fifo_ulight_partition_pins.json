@@ -4,15 +4,15 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "LED[5]",
-					"strict" : false
-				},
-				{
 					"name" : "dout_a",
 					"strict" : false
 				},
 				{
 					"name" : "sout_a",
+					"strict" : false
+				},
+				{
+					"name" : "LED[5]",
 					"strict" : false
 				},
 				{

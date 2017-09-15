@@ -80,7 +80,7 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED[2]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED[0]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED
 set_global_assignment -name ROUTER_TIMING_OPTIMIZATION_LEVEL MAXIMUM
-set_global_assignment -name PLACEMENT_EFFORT_MULTIPLIER 40.0
+set_global_assignment -name PLACEMENT_EFFORT_MULTIPLIER 90.0
 set_global_assignment -name OPTIMIZE_POWER_DURING_FITTING "EXTRA EFFORT"
 set_global_assignment -name OPTIMIZE_IOC_REGISTER_PLACEMENT_FOR_TIMING OFF
 set_global_assignment -name ROUTER_REGISTER_DUPLICATION OFF
@@ -124,4 +124,5 @@ set_global_assignment -name VERILOG_FILE ../../rtl/RTL_VB/tx_spw.v
 set_global_assignment -name SDC_FILE sdc/spw_fifo_ulight.out.sdc
 set_global_assignment -name QIP_FILE ulight_fifo/synthesis/ulight_fifo.qip
 set_global_assignment -name VERILOG_FILE top_rtl/spw_fifo_ulight.v
+set_global_assignment -name SEED 893763639
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

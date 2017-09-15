@@ -162,15 +162,6 @@ dps_current_state.PHASE_DONE_LOW_3 0 0 1 0 0 1
 dps_current_state.PHASE_DONE_LOW_4 0 1 0 0 0 1 
 dps_current_state.PHASE_DONE_LOW_0 1 0 0 0 0 1 
 
-State Machine - |SPW_ULIGHT_FIFO|spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|FSM_SPW:FSM|state_fsm
-Name state_fsm.error_reset state_fsm.run state_fsm.connecting state_fsm.started state_fsm.ready state_fsm.error_wait 
-state_fsm.error_reset 0 0 0 0 0 0 
-state_fsm.error_wait 1 0 0 0 0 1 
-state_fsm.ready 1 0 0 0 1 0 
-state_fsm.started 1 0 0 1 0 0 
-state_fsm.connecting 1 0 1 0 0 0 
-state_fsm.run 1 1 0 0 0 0 
-
 State Machine - |SPW_ULIGHT_FIFO|spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|state_tx
 Name state_tx.tx_spw_start state_tx.tx_spw_full state_tx.tx_spw_null_fct state_tx.tx_spw_null 
 state_tx.tx_spw_start 0 0 0 0 
@@ -186,3 +177,12 @@ last_type.EOP 0 0 0 1 0 1
 last_type.EEP 0 0 1 0 0 1 
 last_type.DATA 0 1 0 0 0 1 
 last_type.TIMEC 1 0 0 0 0 1 
+
+State Machine - |SPW_ULIGHT_FIFO|spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|FSM_SPW:FSM|state_fsm
+Name state_fsm.error_reset state_fsm.run state_fsm.connecting state_fsm.started state_fsm.ready state_fsm.error_wait 
+state_fsm.error_reset 0 0 0 0 0 0 
+state_fsm.error_wait 1 0 0 0 0 1 
+state_fsm.ready 1 0 0 0 1 0 
+state_fsm.started 1 0 0 1 0 0 
+state_fsm.connecting 1 0 1 0 0 0 
+state_fsm.run 1 1 0 0 0 0 
