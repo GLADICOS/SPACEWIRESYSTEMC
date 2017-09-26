@@ -52,7 +52,6 @@ module fifo_tx
 	reg block_read;
 	reg block_write;
 
-
 //Write pointer
 	always@(posedge clock or negedge reset)
 	begin
@@ -225,8 +224,7 @@ module fifo_tx
 			else if(rd_en && !f_empty)
 			begin
 				block_read<= 1'b1;
-				rd_ptr <= rd_ptr+ 6'd1;
-				
+				rd_ptr <= rd_ptr+ 6'd1;	
 			end
 
 			data_out  <= mem[rd_ptr];
@@ -244,9 +242,5 @@ module fifo_tx
 
 		end
 	end
-
-	//assign f_empty   = ((wr_ptr - rd_ptr) == 6'd0)?1'b1:1'b0;
-	//assign wr        = (wr_en && !f_full)?wr_ptr + 6'd1:wr_ptr + 6'd0;
-	//assign rd        = (rd_en && !f_empty)?rd_ptr+ 6'd1:rd_ptr + 6'd0;
 
 endmodule

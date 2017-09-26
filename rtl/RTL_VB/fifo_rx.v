@@ -144,13 +144,11 @@ module fifo_rx
 					block_write <= 1'b0;
 					wr_ptr <= wr_ptr + 6'd1;	
 				end				
-				//mem[wr_ptr-6'd1]<=data_in;
 			end
 			else if (wr_en && !f_full)
 			begin
 				block_write <= 1'b1;
 				mem[wr_ptr]<=data_in;
-
 			end
 
 			if(wr_en && credit_counter > 6'd55)
@@ -177,7 +175,7 @@ module fifo_rx
 
 			if((wr_en && !f_full && !block_write) && (rd_en && !f_empty && !block_read))
 			begin
-				if(rd_ptr == 6'd8 || rd_ptr == 6'd16 || rd_ptr == 6'd24 || rd_ptr == 6'd32 || rd_ptr == 6'd40 || rd_ptr == 6'd48 || rd_ptr == 6'd56 || rd_ptr == 6'd63)
+				if(rd_ptr == 6'd7 || rd_ptr == 6'd15 || rd_ptr == 6'd23 || rd_ptr == 6'd31 || rd_ptr == 6'd39 || rd_ptr == 6'd47 || rd_ptr == 6'd55 || rd_ptr == 6'd63)
 					credit_counter   <= credit_counter - 6'd1 + 6'd8;
 				else
 					credit_counter   <= credit_counter - 6'd1;
@@ -188,7 +186,7 @@ module fifo_rx
 			end
 			else if(rd_en && !f_empty && !block_read)
 			begin
-				if(rd_ptr == 6'd8 || rd_ptr == 6'd16 || rd_ptr == 6'd24 || rd_ptr == 6'd32 || rd_ptr == 6'd40 || rd_ptr == 6'd48 || rd_ptr == 6'd56 || rd_ptr == 6'd63)
+				if(rd_ptr == 6'd7 || rd_ptr == 6'd15 || rd_ptr == 6'd23 || rd_ptr == 6'd31 || rd_ptr == 6'd39 || rd_ptr == 6'd47 || rd_ptr == 6'd55 || rd_ptr == 6'd63)
 				begin					
 					credit_counter <= credit_counter + 6'd8;
 				end
@@ -246,7 +244,7 @@ module fifo_rx
 		else
 		begin
 
-			if(rd_ptr == 6'd8 || rd_ptr == 6'd16 || rd_ptr == 6'd24 || rd_ptr == 6'd32 || rd_ptr == 6'd40 || rd_ptr == 6'd48 || rd_ptr == 6'd56 || rd_ptr == 6'd63)
+			if(rd_ptr == 6'd7 || rd_ptr == 6'd15 || rd_ptr == 6'd23 || rd_ptr == 6'd31 || rd_ptr == 6'd39 || rd_ptr == 6'd47 || rd_ptr == 6'd55 || rd_ptr == 6'd63)
 			begin
 				open_slot_fct<= 1'b1;
 			end
@@ -273,9 +271,5 @@ module fifo_rx
 
 		end
 	end
-
-	//assign f_empty   = ((wr_ptr - rd_ptr) == 6'd0)?1'b1:1'b0;
-	//assign wr        = (wr_en && !f_full)?wr_ptr + 6'd1:wr_ptr + 6'd0;
-	//assign rd        = (rd_en && !f_empty)?rd_ptr+ 6'd1:rd_ptr + 6'd0;
 
 endmodule
