@@ -142,13 +142,20 @@ module fifo_rx
 				if(!wr_en)
 				begin
 					block_write <= 1'b0;
-					wr_ptr <= wr_ptr + 6'd1;	
+					mem[wr_ptr] <= mem[wr_ptr];
 				end				
 			end
 			else if (wr_en && !f_full)
 			begin
 				block_write <= 1'b1;
-				mem[wr_ptr]<=data_in;
+				wr_ptr      <= wr_ptr + 6'd1;
+				mem[wr_ptr] <= data_in;
+			end
+			else
+			begin
+				block_write <= block_write;
+				wr_ptr      <= wr_ptr;
+				mem[wr_ptr] <= mem[wr_ptr];
 			end
 
 			if(wr_en && credit_counter > 6'd55)
@@ -156,6 +163,8 @@ module fifo_rx
 				
 				overflow_credit_error<=1'b1;
 			end
+			else 
+				overflow_credit_error <= overflow_credit_error;
 		end
 	end
 
@@ -243,7 +252,7 @@ module fifo_rx
 		end
 		else
 		begin
-
+		
 			if(rd_ptr == 6'd7 || rd_ptr == 6'd15 || rd_ptr == 6'd23 || rd_ptr == 6'd31 || rd_ptr == 6'd39 || rd_ptr == 6'd47 || rd_ptr == 6'd55 || rd_ptr == 6'd63)
 			begin
 				open_slot_fct<= 1'b1;
@@ -258,16 +267,25 @@ module fifo_rx
 				if(!rd_en)
 				begin
 					block_read<= 1'b0;
+					rd_ptr <= rd_ptr;
+					data_out  <= data_out;
 				end
+				else
+					data_out  <= data_out;
 			end	
 			else 
 			if(rd_en && !f_empty)
 			begin
 				block_read<= 1'b1;
-				rd_ptr <= rd_ptr+ 6'd1;
+				rd_ptr    <= rd_ptr+ 6'd1;
+				data_out  <= mem[rd_ptr];
 			end
-				
-			data_out  <= mem[rd_ptr];
+			else
+			begin
+				block_read<= block_read;
+				rd_ptr       <= rd_ptr;
+				data_out     <= mem[rd_ptr];
+			end
 
 		end
 	end

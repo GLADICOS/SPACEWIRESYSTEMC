@@ -139,13 +139,20 @@ module fifo_tx
 				if(!wr_en)
 				begin
 					block_write <= 1'b0;	
-					wr_ptr <= wr_ptr + 6'd1;
+					mem[wr_ptr]<=mem[wr_ptr];
 				end
 			end
 			else if (wr_en && !f_full)
 			begin
 				block_write <= 1'b1;
+				wr_ptr <= wr_ptr + 6'd1;
 				mem[wr_ptr]<=data_in;
+			end
+			else
+			begin
+				block_write <= block_write;
+				wr_ptr <= wr_ptr;
+				mem[wr_ptr]<=mem[wr_ptr];
 			end
 		end
 	end
@@ -218,16 +225,23 @@ module fifo_tx
 			begin
 				if(!rd_en)
 				begin
-					block_read<= 1'b0;
+					block_read<= 1'b0;	
+					rd_ptr <= rd_ptr;
+					data_out  <= data_out;
 				end
 			end	
 			else if(rd_en && !f_empty)
 			begin
-				block_read<= 1'b1;
-				rd_ptr <= rd_ptr+ 6'd1;	
+				block_read <= 1'b1;
+				rd_ptr     <= rd_ptr+ 6'd1;
+				data_out   <= mem[rd_ptr];
 			end
-
-			data_out  <= mem[rd_ptr];
+			else
+			begin
+				block_read <= block_read;
+				rd_ptr     <= rd_ptr;
+				data_out   <= mem[rd_ptr];
+			end
 
 			if(rd_en)
 			begin
