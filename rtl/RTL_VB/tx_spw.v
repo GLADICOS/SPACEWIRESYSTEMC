@@ -498,11 +498,7 @@ begin
 			block_decrement_fct_send <= block_decrement_fct_send;
 
 
-		if((send_fct_now && !block_increment_fct_send) && (fct_sent && !block_decrement_fct_send))
-		begin
-			fct_flag <= fct_flag;
-		end
-		else if (send_fct_now && !block_increment_fct_send)
+		if(send_fct_now && !block_increment_fct_send)
 		begin
 			fct_flag <= fct_flag + 3'd1;
 		end
@@ -555,19 +551,7 @@ begin
 
 
 
-		if((gotfct_tx && !block_increment) && (char_sent && !block_decrement))
-		begin
-			if(fct_counter_receive < 6'd48) 
-			begin
-				fct_counter_receive <= fct_counter_receive + 6'd7;
-			end
-			else
-			begin
-				fct_counter_receive <= fct_counter_receive + 6'd6;
-			
-			end
-		end
-		else if (gotfct_tx && !block_increment)
+		if (gotfct_tx && !block_increment)
 		begin
 			if(fct_counter_receive < 6'd48) 
 			begin
@@ -854,7 +838,7 @@ begin
 				last_type  <= last_type;
 				global_counter_transfer <= global_counter_transfer + 4'd1;
 			end
-			fct_sent <= 0;
+			fct_sent <= 1'b0;
 		end
 		tx_spw_fct:
 		begin
@@ -872,13 +856,13 @@ begin
 			begin
 				last_type  <=FCT;
 				global_counter_transfer <= 4'd0;
-				fct_sent <= 0;
+				fct_sent <= 1'b0;
 			end
 			else
 			begin
 
-				if(fct_flag > 0)
-					fct_sent <= 1;
+				if(fct_flag > 3'd0)
+					fct_sent <=  1'b1;
 				else
 					fct_sent <= fct_sent;
 
@@ -915,7 +899,7 @@ begin
 			if(global_counter_transfer == 4'd3)
 			begin
 				char_sent <= 1'b0;
-				fct_sent <= 0;
+				fct_sent <=  1'b0;
 				ready_tx_timecode <= 1'b0;
 				ready_tx_data <= 1'b0;
 			end
@@ -951,13 +935,13 @@ begin
 			begin		
 				char_sent <= 1'b0;	
 				last_type  <=FCT;
-				fct_sent <= 0;
+				fct_sent <=  1'b0;
 				global_counter_transfer <= 4'd0;
 			end
 			else
 			begin
-				if(fct_flag > 0)
-					fct_sent <= 1;
+				if(fct_flag > 3'd0)
+					fct_sent <=  1'b1;
 				else
 					fct_sent <= fct_sent;
 
@@ -973,7 +957,7 @@ begin
 			tx_dout_e <= last_tx_dout;
 			tx_sout_e <= last_tx_sout;
 
-			fct_sent <= 0;
+			fct_sent <=  1'b0;
 
 			if(!tx_data_in[8])
 			begin
@@ -1044,7 +1028,7 @@ begin
 				tx_data_in <= tx_data_in;
 
 
-			fct_sent <= 0;
+			fct_sent <=  1'b0;
 			
 			last_tx_dout <= tx_dout;
 			last_tx_sout <= tx_sout;
