@@ -63,7 +63,8 @@ module RX_SPW (
 	wire posedge_clk;
 	wire negedge_clk;
 
-	//wire calc_parity;
+	reg  [1:0] state_data_process;
+	reg  [1:0] next_state_data_process;
 
 	reg bit_c_0;//N
 	reg bit_c_1;//P
@@ -83,7 +84,6 @@ module RX_SPW (
 
 	reg is_control;
 	reg parity_received;
-	reg parity_gen;
 
 	reg last_is_control;
 	reg last_is_data;
@@ -117,6 +117,9 @@ module RX_SPW (
 	reg ready_control_p_r;
 	reg ready_data_p_r;
 
+	reg parity_gen;
+	reg parity_rec;
+
 	reg posedge_p;
 	
 	//CLOCK RECOVERY
@@ -125,7 +128,6 @@ module RX_SPW (
 
 	assign rx_time_out 	= timecode[7:0];
 
-	//assign calc_parity =  ready_control_p_r | ready_data_p_r;
 
 always@(*)
 begin
@@ -476,229 +478,228 @@ begin
 	end
 end
 
-
-always@(posedge negedge_clk or negedge rx_resetn)
+always@(*)
 begin
 
-	if(!rx_resetn)
+	next_state_data_process = state_data_process;
+
+	case(state_data_process)
+	2'd0:
 	begin
-		rx_data_flag    <=  9'd0; 
-		rx_data_take    <=  1'b0;
-
-		timecode    	<=  10'd0;
-		rx_tick_out 	<=  1'b0;
-
-		rx_error <= 1'b0;
-	end
-	else
-	begin
-
 		if(ready_control_p_r || ready_data_p_r)
 		begin
-			rx_data_flag    <=  rx_data_flag; 
-			rx_data_take    <=  rx_data_take;
-
-			timecode    	<=  timecode;
-			rx_tick_out 	<=  rx_tick_out;
-
-			rx_error <= rx_error;
+			next_state_data_process = 2'd1;
 		end
-		else
+		else 
 		begin
-		if(last_is_timec == 1'b1)
-		begin
-			timecode     <= dta_timec;
-			rx_data_take <= 1'b0;
-			rx_tick_out  <= 1'b1;
+			next_state_data_process = 2'd0;
 		end
-		else if(last_is_data == 1'b1)
-		begin
-			rx_data_flag	<= {data[8],data[7],data[6],data[5],data[4],data[3],data[2],data[1],data[0]};
-			rx_tick_out  <= 1'b0;
-			rx_data_take <= 1'b1;
-		end
-		else if(last_is_control == 1'b1)
-		begin
-
-			if(control[2:0] == 3'd6)
-			begin
-				rx_data_flag <= 9'd257;
-				rx_data_take <= 1'b1;
-			end
-			else if(control[2:0] == 3'd5)
-			begin
-				rx_data_flag <= 9'd256;
-				rx_data_take <= 1'b1;
-			end
-			else
-			begin
-				rx_data_take 	<= 1'b0;
-			end
-
-			rx_tick_out  <= 1'b0;
-		end
-		else
-		begin
-
-			rx_data_flag    <= rx_data_flag; 
-			rx_data_take    <= rx_data_take;
-
-			timecode    	<= timecode;
-			rx_tick_out 	<= rx_tick_out;
-		end
-
-		if(last_is_control == 1'b1)
-		begin
-			if(last_was_control == 1'b1)
-			begin
-				if(!(control[2]^control_l_r[0]^control_l_r[1]) != control[3])
-				begin
-					rx_error <= 1'b1;
-				end
-				else
-				begin
-					rx_error <= 1'b0;
-				end
-			end
-			else if(last_was_timec == 1'b1)
-			begin
-				if(!(control[2]^timecode[0]^timecode[1]^timecode[2]^timecode[3]^timecode[4]^timecode[5]^timecode[6]^timecode[7])  != control[3])
-				begin
-					rx_error <= 1'b1;
-				end
-				else
-				begin
-					rx_error <= 1'b0;
-				end
-			end
-			else if(last_was_data == 1'b1)
-			begin
-				if(!(control[2]^data[0]^data[1]^data[2]^data[3]^data[4]^data[5]^data[6]^data[7]) != control[3])
-				begin
-					rx_error <= 1'b1;
-				end
-				else
-				begin
-					rx_error <= 1'b0;
-				end
-			end
-			
-		end
-		else if(last_is_data == 1'b1)
-		begin
-			if(last_was_control == 1'b1)
-			begin
-				if(!(data[8]^control[1]^control[0]) != data[9])
-				begin
-					rx_error <= 1'b1;
-				end
-				else
-				begin
-					rx_error <= 1'b0;
-				end
-			end
-			else if(last_was_timec == 1'b1)
-			begin
-				if(!(data[8]^timecode[0]^timecode[1]^timecode[2]^timecode[3]^timecode[4]^timecode[5]^timecode[6]^timecode[7])  != data[9])
-				begin
-					rx_error <= 1'b1;
-				end
-				else
-				begin
-					rx_error <= 1'b0;
-				end
-			end
-			else if(last_was_data == 1'b1)
-			begin
-				if(!(data[8]^data[0]^data_l_r[1]^data_l_r[2]^data_l_r[3]^data_l_r[4]^data_l_r[5]^data_l_r[6]^data_l_r[7]) != data[9])
-				begin
-					rx_error <= 1'b1;
-				end
-				else
-				begin
-					rx_error <= 1'b0;
-				end
-			end
-		end
-		end
-
 	end
+	2'd1:
+	begin
+		next_state_data_process = 2'd0;
+	end
+	default:
+	begin
+		next_state_data_process = 2'd0;
+	end
+	endcase
 end
 
-always@(posedge posedge_clk or negedge rx_resetn )
+
+always@(posedge negedge_clk or negedge rx_resetn )
 begin
 
 	if(!rx_resetn)
 	begin
+		control_l_r      <= 4'd0;
+		control	   	 <= 4'd0;
+		data 	         <=  10'd0;
+		data_l_r         <=  10'd0;
 
-		control_l_r     <= 4'd0;
-		control	   	<= 4'd0;
-		data 	        <=  10'd0;
-		data_l_r        <=  10'd0;
-
-		last_is_control <=  1'b0;
-		last_is_data 	<=  1'b0;
-		last_is_timec 	<=  1'b0;
+		last_is_control  <=  1'b0;
+		last_is_data 	 <=  1'b0;
+		last_is_timec 	 <=  1'b0;
 
 		last_was_control <= 1'b0;
 		last_was_data    <= 1'b0;
 		last_was_timec   <= 1'b0;
+
+		rx_error 	 <= 1'b0;
+
+		rx_data_flag     <=  9'd0; 
+		rx_data_take     <=  1'b0;
+
+		timecode    	 <=  10'd0;
+		rx_tick_out 	 <=  1'b0;
+
+		parity_gen 	 <= 1'b0;
+		parity_rec 	 <= 1'b0;
+
+		state_data_process <= 2'd0;
 	end
 	else
 	begin
 
-		if(ready_control_p_r)
-		begin
-			control 	 <= control_p_r;
-			control_l_r 	 <= control;
+		state_data_process <= next_state_data_process;
 
-			last_is_control 	 <= 1'b1;
-			last_is_data    	 <= 1'b0;
-			last_is_timec   	 <= 1'b0;
-			last_was_control	 <= last_is_control;
-			last_was_data    	 <= last_is_data ;
-			last_was_timec   	 <= last_is_timec;
-		end
-		else if(ready_data_p_r)
+		case(state_data_process)
+		2'd0:
 		begin
 
-			if(control[2:0] != 3'd7)
+			rx_data_take <= 1'b0;
+			rx_tick_out  <= 1'b0;
+
+			if(ready_control_p_r)
 			begin
-				data        	<= {dta_timec_p[9],dta_timec_p[8],dta_timec_p[7],dta_timec_p[6],dta_timec_p[5],dta_timec_p[4],dta_timec_p[3],dta_timec_p[2],dta_timec_p[1],dta_timec_p[0]};
-				data_l_r 	<= data; 
-				last_is_control  	<=1'b0;
-				last_is_data     	<=1'b1;
-				last_is_timec    	<=1'b0;
-				last_was_control 	<= last_is_control;
-				last_was_data    	<= last_is_data ;
-				last_was_timec 		<= last_is_timec;
+				control 	 <= control_p_r;
+				control_l_r 	 <= control;
+
+				last_is_control 	 <= 1'b1;
+				last_is_data    	 <= 1'b0;
+				last_is_timec   	 <= 1'b0;
+				last_was_control	 <= last_is_control;
+				last_was_data    	 <= last_is_data ;
+				last_was_timec   	 <= last_is_timec;
+
+				if(parity_gen != parity_rec)
+					rx_error <= 1'b1;
+				else
+					rx_error <= rx_error;
+
 			end
-			else if(control[2:0] == 3'd7)
+			else if(ready_data_p_r)
 			begin
-				last_is_control  	<= 1'b0;
-				last_is_data     	<= 1'b0;
-				last_is_timec    	<= 1'b1;
-				last_was_control 	<= last_is_control;
-				last_was_data    	<= last_is_data ;
-				last_was_timec   	<= last_is_timec;
+				if(control[2:0] != 3'd7)
+				begin
+					data        	<= {dta_timec_p[9],dta_timec_p[8],dta_timec_p[7],dta_timec_p[6],dta_timec_p[5],dta_timec_p[4],dta_timec_p[3],dta_timec_p[2],dta_timec_p[1],dta_timec_p[0]};
+					data_l_r 	<= data; 
+					last_is_control  	<=1'b0;
+					last_is_data     	<=1'b1;
+					last_is_timec    	<=1'b0;
+					last_was_control 	<= last_is_control;
+					last_was_data    	<= last_is_data ;
+					last_was_timec 		<= last_is_timec;
+				end
+				else if(control[2:0] == 3'd7)
+				begin
+					last_is_control  	<= 1'b0;
+					last_is_data     	<= 1'b0;
+					last_is_timec    	<= 1'b1;
+					last_was_control 	<= last_is_control;
+					last_was_data    	<= last_is_data ;
+					last_was_timec   	<= last_is_timec;
+				end
+
+				if(parity_gen != parity_rec)
+					rx_error <= 1'b1;
+				else
+					rx_error <= rx_error;
+
 			end
+			else
+			begin
+				timecode    	<= timecode;
+				parity_gen 	<= parity_gen;
+				parity_rec 	<= parity_rec;
+			end
+			
 		end
-		else
+		2'd1:
 		begin
 
-			last_is_control <= last_is_control;
-			last_is_data 	<= last_is_data;
-			last_is_timec 	<= last_is_timec;
+			if(last_is_timec == 1'b1)
+			begin
+				timecode     <= dta_timec;
+				rx_tick_out  <= 1'b1;
+			end
+			else if(last_is_data == 1'b1)
+			begin
+				rx_data_flag	<= {data[8],data[7],data[6],data[5],data[4],data[3],data[2],data[1],data[0]};
+				rx_data_take <= 1'b1;
+			end
+			else if(last_is_control == 1'b1)
+			begin
+				if(control[2:0] == 3'd6)
+				begin
+					rx_data_flag <= 9'd257;
+					rx_data_take <= 1'b1;
+				end
+				else if(control[2:0] == 3'd5)
+				begin
+					rx_data_flag <= 9'd256;
+					rx_data_take <= 1'b1;
+				end
+				else
+				begin
+					rx_data_take 	<= rx_data_take;
+					rx_tick_out     <= rx_tick_out;
+				end
+					
+			end
+			else
+			begin
 
-			last_was_control <= last_was_control;
-			last_was_data    <= last_was_data;
-			last_was_timec   <= last_was_timec;
+				rx_data_flag	<= rx_data_flag;
+				rx_data_take    <= rx_data_take;
 
-			control_l_r     <= control_l_r;
-			control	   	<= control;
-			data 	        <= data;
-			data_l_r        <= data_l_r;
+				timecode    	<= timecode;
+				rx_tick_out 	<= rx_tick_out;
+			end
+
+			if(last_is_control == 1'b1)
+			begin
+				if(last_was_control == 1'b1)
+				begin
+					parity_gen <= !(control[2]^control_l_r[0]^control_l_r[1]);
+					parity_rec <= control[3];
+				end
+				else if(last_was_timec == 1'b1)
+				begin
+					parity_gen <= !(control[2]^timecode[0]^timecode[1]^timecode[2]^timecode[3]^timecode[4]^timecode[5]^timecode[6]^timecode[7]);
+					parity_rec <= control[3];
+				end
+				else if(last_was_data == 1'b1)
+				begin
+					parity_gen <= !(control[2]^data[0]^data[1]^data[2]^data[3]^data[4]^data[5]^data[6]^data[7]);
+					parity_rec <= control[3];
+				end		
+			end
+			else if(last_is_data == 1'b1)
+			begin
+				if(last_was_control == 1'b1)
+				begin
+					parity_gen <= !(data[8]^control[1]^control[0]);
+					parity_rec <= data[9];
+				end
+				else if(last_was_timec == 1'b1)
+				begin
+					parity_gen <= !(data[8]^timecode[0]^timecode[1]^timecode[2]^timecode[3]^timecode[4]^timecode[5]^timecode[6]^timecode[7]) ;
+					parity_rec <= data[9];
+				end
+				else if(last_was_data == 1'b1)
+				begin
+					parity_gen <= !(data[8]^data[0]^data_l_r[1]^data_l_r[2]^data_l_r[3]^data_l_r[4]^data_l_r[5]^data_l_r[6]^data_l_r[7])  ;
+					parity_rec <= data[9];
+				end
+			end
+			else
+			begin
+				parity_gen 	<= parity_gen;
+				parity_rec 	<= parity_rec;
+			end
 		end
+		default:
+		begin
+				rx_data_flag	<= rx_data_flag;
+				rx_data_take    <= rx_data_take;
+
+				timecode    	<= timecode;
+				rx_tick_out 	<= rx_tick_out;
+				parity_gen 	<= parity_gen;
+				parity_rec 	<= parity_rec;
+		end
+		endcase	
 	end
 end
 
