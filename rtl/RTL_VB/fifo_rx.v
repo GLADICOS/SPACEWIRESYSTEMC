@@ -51,10 +51,95 @@ module fifo_rx
 	reg [AWIDTH-1:0] wr_ptr;
 	reg [AWIDTH-1:0] rd_ptr;
 
-	reg block_read;
-	reg block_write;
-
 	reg [AWIDTH-1:0] credit_counter;
+
+	reg  [1:0] state_data_write;
+	reg  [1:0] next_state_data_write;
+
+	reg  [1:0] state_data_read;
+	reg  [1:0] next_state_data_read;
+
+
+/****************************************/
+
+always@(*)
+begin
+	next_state_data_write = state_data_write;
+
+	case(state_data_write)
+	2'd0:
+	begin
+		if(wr_en && !f_full)
+		begin
+			next_state_data_write = 2'd1;
+		end
+		else 
+		begin
+			next_state_data_write = 2'd0;
+		end
+	end
+	2'd1:
+	begin
+		if(wr_en)
+		begin
+			next_state_data_write = 2'd1;
+		end
+		else 
+		begin
+			next_state_data_write = 2'd2;
+		end
+	end
+	2'd2:
+	begin
+		next_state_data_write = 2'd0;
+	end
+	default:
+	begin
+		next_state_data_write = 2'd0;
+	end
+	endcase
+end
+
+/****************************************/
+
+always@(*)
+begin
+	next_state_data_read = state_data_read;
+
+	case(state_data_read)
+	2'd0:
+	begin
+		if(rd_en && !f_empty)
+		begin
+			next_state_data_read = 2'd1;
+		end
+		else 
+		begin
+			next_state_data_read = 2'd0;
+		end
+	end
+	2'd1:
+	begin
+		if(rd_en)
+		begin
+			next_state_data_read = 2'd1;
+		end
+		else 
+		begin
+			next_state_data_read = 2'd2;
+		end
+	end
+	2'd2:
+	begin
+		next_state_data_read = 2'd0;
+	end
+	default:
+	begin
+		next_state_data_read = 2'd0;
+	end
+	endcase
+end
+
 
 //Write pointer
 	always@(posedge clock or negedge reset)
@@ -132,36 +217,38 @@ module fifo_rx
 			mem[61] <= {(DWIDTH){1'b0}};
 			mem[62] <= {(DWIDTH){1'b0}};
 			mem[63] <= {(DWIDTH){1'b0}};
-			block_write <= 1'b0;
+
 			overflow_credit_error<=1'b0;
+			state_data_write <= 2'd0;
 		end
 		else
 		begin
-			if(block_write)
-			begin
-				if(!wr_en)
-				begin
-					block_write <= 1'b0;
-					mem[wr_ptr] <= mem[wr_ptr];
-				end				
-			end
-			else if (wr_en && !f_full)
-			begin
-				block_write <= 1'b1;
-				wr_ptr      <= wr_ptr + 6'd1;
-				mem[wr_ptr] <= data_in;
-			end
-			else
-			begin
-				block_write <= block_write;
-				wr_ptr      <= wr_ptr;
-				mem[wr_ptr] <= mem[wr_ptr];
-			end
 
+			state_data_write <= next_state_data_write;
+
+			case(state_data_write)
+			2'd0:
+			begin
+				mem[wr_ptr]<=data_in;
+			end
+			2'd1:
+			begin
+				mem[wr_ptr]<=mem[wr_ptr];
+			end
+			2'd2:
+			begin
+				wr_ptr <= wr_ptr + 6'd1;
+			end
+			default:
+			begin
+				mem[wr_ptr]<=mem[wr_ptr];
+				wr_ptr <= wr_ptr;
+			end
+			endcase
+		
 			if(wr_en && credit_counter > 6'd55)
 			begin
-				
-				overflow_credit_error<=1'b1;
+				overflow_credit_error <= 1'b1;
 			end
 			else 
 				overflow_credit_error <= overflow_credit_error;
@@ -182,36 +269,28 @@ module fifo_rx
 		else
 		begin
 
-			if((wr_en && !f_full && !block_write) && (rd_en && !f_empty && !block_read))
-			begin
-				if(rd_ptr == 6'd7 || rd_ptr == 6'd15 || rd_ptr == 6'd23 || rd_ptr == 6'd31 || rd_ptr == 6'd39 || rd_ptr == 6'd47 || rd_ptr == 6'd55 || rd_ptr == 6'd63)
-					credit_counter   <= credit_counter - 6'd1 + 6'd8;
-				else
-					credit_counter   <= credit_counter - 6'd1;
-			end
-			else if (wr_en && !f_full && !block_write)
+			if (state_data_write == 2'd2)
 			begin
 				credit_counter   <= credit_counter - 6'd1;
 			end
-			else if(rd_en && !f_empty && !block_read)
+			else if(state_data_read == 2'd2)
 			begin
 				if(rd_ptr == 6'd7 || rd_ptr == 6'd15 || rd_ptr == 6'd23 || rd_ptr == 6'd31 || rd_ptr == 6'd39 || rd_ptr == 6'd47 || rd_ptr == 6'd55 || rd_ptr == 6'd63)
-				begin					
-					credit_counter <= credit_counter + 6'd8;
+				begin	
+					if(credit_counter < 6'd48)				
+						credit_counter <= credit_counter + 6'd8;
+					else
+						credit_counter <= credit_counter + 6'd7;
 				end
 			end
 			else 
 				credit_counter <= credit_counter;
 
-			if((wr_en && !f_full && !block_write) && (rd_en && !f_empty && !block_read))
-			begin
-				counter <= counter;
-			end
-			else if (wr_en && !f_full && !block_write)
+			if (state_data_write == 2'd2)
 			begin
 				counter <= counter + 6'd1;
 			end
-			else if(rd_en && !f_empty && !block_read)
+			else if(state_data_read == 2'd2)
 			begin
 				counter <= counter - 6'd1;
 			end
@@ -248,44 +327,53 @@ module fifo_rx
 			rd_ptr <= {(AWIDTH){1'b0}};
 			data_out <= 9'd0;
 			open_slot_fct<= 1'b0;
-			block_read <= 1'b0;
+			state_data_read <= 2'd0;
 		end
 		else
 		begin
 		
-			if(rd_ptr == 6'd7 || rd_ptr == 6'd15 || rd_ptr == 6'd23 || rd_ptr == 6'd31 || rd_ptr == 6'd39 || rd_ptr == 6'd47 || rd_ptr == 6'd55 || rd_ptr == 6'd63)
-			begin
-				open_slot_fct<= 1'b1;
-			end
-			else
-			begin
-				open_slot_fct<= 1'b0;
-			end
+			state_data_read <= next_state_data_read;
 
-			if(block_read)
+			case(state_data_read)
+			2'd0:
 			begin
-				if(!rd_en)
+				if(rd_en)
 				begin
-					block_read<= 1'b0;
-					rd_ptr <= rd_ptr;
-					data_out  <= data_out;
+					data_out   <= data_out;
+					open_slot_fct<= open_slot_fct;
+					rd_ptr     <= rd_ptr+ 6'd1;
 				end
 				else
-					data_out  <= data_out;
-			end	
-			else 
-			if(rd_en && !f_empty)
-			begin
-				block_read<= 1'b1;
-				rd_ptr    <= rd_ptr+ 6'd1;
-				data_out  <= mem[rd_ptr];
+				begin
+					open_slot_fct<= open_slot_fct;
+					data_out   <= mem[rd_ptr];
+				end
 			end
-			else
+			2'd1:
 			begin
-				block_read<= block_read;
-				rd_ptr       <= rd_ptr;
-				data_out     <= mem[rd_ptr];
+				if(rd_ptr == 6'd7 || rd_ptr == 6'd15 || rd_ptr == 6'd23 || rd_ptr == 6'd31 || rd_ptr == 6'd39 || rd_ptr == 6'd47 || rd_ptr == 6'd55 || rd_ptr == 6'd63)
+				begin
+					open_slot_fct<= 1'b1;
+				end
+				else
+				begin
+					open_slot_fct<= 1'b0;
+				end
+
+				data_out   <= mem[rd_ptr];
 			end
+			2'd2:
+			begin
+				open_slot_fct<= open_slot_fct;
+				data_out   <= data_out;
+			end
+			default:
+			begin
+				rd_ptr     <= rd_ptr;
+				data_out   <= data_out;
+			end
+			endcase
+
 
 		end
 	end
