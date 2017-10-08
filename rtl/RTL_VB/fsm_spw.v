@@ -322,7 +322,7 @@ begin
 			if(after850ns < 12'd85 && state_fsm == run)
 				after850ns <= after850ns + 12'd1;
 			else
-				after850ns <= 12'd0;
+				after850ns <= after850ns;
 
 		end
 	end
