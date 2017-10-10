@@ -39,7 +39,7 @@ module RX_SPW (
 
 			input  rx_resetn,
 
-			output reg rx_error,
+			output rx_error,
 
 			output reg rx_got_bit,
 			output reg rx_got_null,
@@ -89,9 +89,9 @@ module RX_SPW (
 	reg last_is_data;
 	reg last_is_timec;
 
-	reg last_was_control;
-	reg last_was_data;
-	reg last_was_timec;
+	//reg last_was_control;
+	//reg last_was_data;
+	//reg last_was_timec;
 
 	reg [3:0] control;
 	reg [3:0] control_r;
@@ -100,13 +100,19 @@ module RX_SPW (
 	reg [9:0] timecode;
 
 	reg [3:0] control_l_r;
-	reg [9:0] data_l_r;
+	//reg [9:0] data_l_r;
 
 	reg [9:0] dta_timec;
 	reg [9:0] dta_timec_p;
 
 	reg rx_data_take;
 	reg rx_data_take_0;
+
+	reg rx_got_fct_take;
+	reg rx_got_fct_take_0;
+	reg rx_got_fct_take_1;
+	reg rx_got_fct_take_2;
+	reg rx_got_fct_take_3;
 
 	reg ready_control;
 	reg ready_data;
@@ -117,8 +123,11 @@ module RX_SPW (
 	reg ready_control_p_r;
 	reg ready_data_p_r;
 
-	reg parity_gen;
-	reg parity_rec;
+	reg parity_rec_c;
+	reg parity_rec_d;
+
+	reg rx_error_c;
+	reg rx_error_d;
 
 	reg posedge_p;
 	
@@ -128,6 +137,7 @@ module RX_SPW (
 
 	assign rx_time_out 	= timecode[7:0];
 
+	assign rx_error		= rx_error_c | rx_error_d;
 
 always@(*)
 begin
@@ -265,17 +275,32 @@ begin
 
 	if(!rx_resetn)
 	begin
-		rx_got_fct <= 1'b0;
+		rx_got_fct        <= 1'b0;
+		rx_got_fct_take   <= 1'b0;
+		rx_got_fct_take_0 <= 1'b0;
+		rx_got_fct_take_1 <= 1'b0;
+		rx_got_fct_take_2 <= 1'b0;
+		rx_got_fct_take_3 <= 1'b0;
 	end
 	else
 	begin	
 		if(control_l_r[2:0] != 3'd7 && control[2:0] == 3'd4 && (ready_control_p_r))
 		begin
-			rx_got_fct <= 1'b1;
+			rx_got_fct_take <= 1'b1;
+			rx_got_fct_take_0 <= rx_got_fct_take;
+			rx_got_fct_take_1 <= rx_got_fct_take_0;
+			rx_got_fct_take_2 <= rx_got_fct_take_1;
+			rx_got_fct_take_3 <= rx_got_fct_take_2;
+			rx_got_fct <= rx_got_fct_take | rx_got_fct_take_0 | rx_got_fct_take_1 | rx_got_fct_take_2 | rx_got_fct_take_3;
 		end
 		else
 		begin
-			rx_got_fct <= 1'b0;
+			rx_got_fct_take <= 1'b0;
+			rx_got_fct_take_0 <= rx_got_fct_take;
+			rx_got_fct_take_1 <= rx_got_fct_take_0;
+			rx_got_fct_take_2 <= rx_got_fct_take_1;
+			rx_got_fct_take_3 <= rx_got_fct_take_2;
+			rx_got_fct <= rx_got_fct_take | rx_got_fct_take_0 | rx_got_fct_take_1 | rx_got_fct_take_2 | rx_got_fct_take_3;
 		end
 	end
 end
@@ -365,10 +390,12 @@ begin
 	if(!rx_resetn)
 	begin
 		control_r	   	<= 4'd0;
+		parity_rec_c 	  	<= 1'b0;
 	end
 	else
 	begin
 		control_r	  <= {bit_c_3,bit_c_2,bit_c_1,bit_c_0};
+		parity_rec_c	  <= bit_c_3;
 	end
 end
 
@@ -377,6 +404,7 @@ begin
 	if(!rx_resetn)
 	begin
 		control_p_r	   	<= 4'd0;
+		
 	end
 	else
 	begin
@@ -391,10 +419,12 @@ begin
 	if(!rx_resetn)
 	begin
 		dta_timec	   	<= 10'd0;
+		parity_rec_d 	  	<= 1'b0;
 	end
 	else
 	begin
 		dta_timec	  <= {bit_d_9,bit_d_8,bit_d_0,bit_d_1,bit_d_2,bit_d_3,bit_d_4,bit_d_5,bit_d_6,bit_d_7};
+		parity_rec_d 	  <= bit_d_9;
 	end
 end
 
@@ -408,6 +438,48 @@ begin
 	else
 	begin
 		dta_timec_p  <= dta_timec;
+	end
+end
+
+always@(*)
+begin
+
+	rx_error_d = 1'b0;
+
+	if(last_is_control && ready_data_p)
+	begin
+		if(!(dta_timec[8]^control[0]^control[1]) != parity_rec_d)
+		begin
+			rx_error_d = 1'b1;
+		end
+	end
+	else if(last_is_data && ready_data_p)
+	begin
+		if(!(dta_timec[8]^data[7]^data[6]^data[5]^data[4]^data[3]^data[2]^data[1]^data[0]) != parity_rec_d)
+		begin
+			rx_error_d = 1'b1;
+		end
+	end
+end
+
+always@(*)
+begin
+
+	rx_error_c = 1'b0;
+
+	if(last_is_control && ready_control_p)
+	begin
+		if(!(control_r[2]^control[0]^control[1]) != parity_rec_c)
+		begin
+			rx_error_c = 1'b1;
+		end
+	end
+	else if(last_is_data && ready_control_p)
+	begin
+		if(!(control_r[2]^data[7]^data[6]^data[5]^data[4]^data[3]^data[2]^data[1]^data[0]) != parity_rec_c)
+		begin
+			rx_error_c = 1'b1;
+		end
 	end
 end
 
@@ -515,26 +587,21 @@ begin
 		control_l_r      <= 4'd0;
 		control	   	 <= 4'd0;
 		data 	         <=  10'd0;
-		data_l_r         <=  10'd0;
+		//data_l_r         <=  10'd0;
 
 		last_is_control  <=  1'b0;
 		last_is_data 	 <=  1'b0;
 		last_is_timec 	 <=  1'b0;
 
-		last_was_control <= 1'b0;
-		last_was_data    <= 1'b0;
-		last_was_timec   <= 1'b0;
-
-		rx_error 	 <= 1'b0;
+		//last_was_control <= 1'b0;
+		//last_was_data    <= 1'b0;
+		//last_was_timec   <= 1'b0;
 
 		rx_data_flag     <=  9'd0; 
 		rx_data_take     <=  1'b0;
 
 		timecode    	 <=  10'd0;
 		rx_tick_out 	 <=  1'b0;
-
-		parity_gen 	 <= 1'b0;
-		parity_rec 	 <= 1'b0;
 
 		state_data_process <= 2'd0;
 	end
@@ -547,9 +614,6 @@ begin
 		2'd0:
 		begin
 
-			rx_data_take <= 1'b0;
-			rx_tick_out  <= 1'b0;
-
 			if(ready_control_p_r)
 			begin
 				control 	 <= control_p_r;
@@ -558,14 +622,12 @@ begin
 				last_is_control 	 <= 1'b1;
 				last_is_data    	 <= 1'b0;
 				last_is_timec   	 <= 1'b0;
-				last_was_control	 <= last_is_control;
-				last_was_data    	 <= last_is_data ;
-				last_was_timec   	 <= last_is_timec;
+				//last_was_control	 <= last_is_control;
+				//last_was_data    	 <= last_is_data ;
+				//last_was_timec   	 <= last_is_timec;
 
-				if(parity_gen != parity_rec)
-					rx_error <= 1'b1;
-				else
-					rx_error <= rx_error;
+				rx_data_take <= 1'b0;
+				rx_tick_out  <= 1'b0;
 
 			end
 			else if(ready_data_p_r)
@@ -573,35 +635,30 @@ begin
 				if(control[2:0] != 3'd7)
 				begin
 					data        	<= {dta_timec_p[9],dta_timec_p[8],dta_timec_p[7],dta_timec_p[6],dta_timec_p[5],dta_timec_p[4],dta_timec_p[3],dta_timec_p[2],dta_timec_p[1],dta_timec_p[0]};
-					data_l_r 	<= data; 
+					//data_l_r 	<= data; 
 					last_is_control  	<=1'b0;
 					last_is_data     	<=1'b1;
 					last_is_timec    	<=1'b0;
-					last_was_control 	<= last_is_control;
-					last_was_data    	<= last_is_data ;
-					last_was_timec 		<= last_is_timec;
+					//last_was_control 	<= last_is_control;
+					//last_was_data    	<= last_is_data ;
+					//last_was_timec 		<= last_is_timec;
 				end
 				else if(control[2:0] == 3'd7)
 				begin
 					last_is_control  	<= 1'b0;
 					last_is_data     	<= 1'b0;
 					last_is_timec    	<= 1'b1;
-					last_was_control 	<= last_is_control;
-					last_was_data    	<= last_is_data ;
-					last_was_timec   	<= last_is_timec;
+					//last_was_control 	<= last_is_control;
+					//last_was_data    	<= last_is_data ;
+					//last_was_timec   	<= last_is_timec;
 				end
 
-				if(parity_gen != parity_rec)
-					rx_error <= 1'b1;
-				else
-					rx_error <= rx_error;
-
+				rx_data_take <= 1'b0;
+				rx_tick_out  <= 1'b0;
 			end
 			else
 			begin
 				timecode    	<= timecode;
-				parity_gen 	<= parity_gen;
-				parity_rec 	<= parity_rec;
 			end
 			
 		end
@@ -647,47 +704,6 @@ begin
 				rx_tick_out 	<= rx_tick_out;
 			end
 
-			if(last_is_control == 1'b1)
-			begin
-				if(last_was_control == 1'b1)
-				begin
-					parity_gen <= !(control[2]^control_l_r[0]^control_l_r[1]);
-					parity_rec <= control[3];
-				end
-				else if(last_was_timec == 1'b1)
-				begin
-					parity_gen <= !(control[2]^timecode[0]^timecode[1]^timecode[2]^timecode[3]^timecode[4]^timecode[5]^timecode[6]^timecode[7]);
-					parity_rec <= control[3];
-				end
-				else if(last_was_data == 1'b1)
-				begin
-					parity_gen <= !(control[2]^data[0]^data[1]^data[2]^data[3]^data[4]^data[5]^data[6]^data[7]);
-					parity_rec <= control[3];
-				end		
-			end
-			else if(last_is_data == 1'b1)
-			begin
-				if(last_was_control == 1'b1)
-				begin
-					parity_gen <= !(data[8]^control[1]^control[0]);
-					parity_rec <= data[9];
-				end
-				else if(last_was_timec == 1'b1)
-				begin
-					parity_gen <= !(data[8]^timecode[0]^timecode[1]^timecode[2]^timecode[3]^timecode[4]^timecode[5]^timecode[6]^timecode[7]) ;
-					parity_rec <= data[9];
-				end
-				else if(last_was_data == 1'b1)
-				begin
-					parity_gen <= !(data[8]^data[0]^data_l_r[1]^data_l_r[2]^data_l_r[3]^data_l_r[4]^data_l_r[5]^data_l_r[6]^data_l_r[7])  ;
-					parity_rec <= data[9];
-				end
-			end
-			else
-			begin
-				parity_gen 	<= parity_gen;
-				parity_rec 	<= parity_rec;
-			end
 		end
 		default:
 		begin
@@ -696,8 +712,6 @@ begin
 
 				timecode    	<= timecode;
 				rx_tick_out 	<= rx_tick_out;
-				parity_gen 	<= parity_gen;
-				parity_rec 	<= parity_rec;
 		end
 		endcase	
 	end
