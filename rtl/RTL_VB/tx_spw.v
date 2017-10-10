@@ -85,6 +85,12 @@ localparam [13:0] timecode_ss    = 14'b01110000000000;
 	reg [6:0] state_tx;
 	reg [6:0] next_state_tx;
 
+	reg  [2:0] state_fct_send;
+	reg  [2:0] next_state_fct_send;
+
+	reg  [2:0] state_fct_receive;
+	reg  [2:0] next_state_fct_receive;
+
 	reg [13:0] timecode_s;
 
 	reg [5:0]  last_type;
@@ -100,12 +106,12 @@ localparam [13:0] timecode_ss    = 14'b01110000000000;
 
 	reg [5:0] fct_counter_receive;
 
-	reg block_increment;
+	//reg block_increment;
 	reg block_decrement;
 	reg char_sent;
 
-	reg block_increment_fct_send;
-	reg block_decrement_fct_send;
+	//reg block_increment_fct_send;
+	//reg block_decrement_fct_send;
 	reg fct_sent;
 
 	reg last_tx_dout;
@@ -461,57 +467,190 @@ begin
 	end
 end
 
+always@(*)
+begin
+	next_state_fct_send = state_fct_send;
+
+	case(state_fct_send)
+	3'd0:
+	begin
+		if(send_fct_now)
+		begin
+			next_state_fct_send = 3'd1;
+		end
+		else if(fct_sent)
+		begin
+			next_state_fct_send = 3'd3;
+		end
+		else 
+			next_state_fct_send = 3'd0;
+	end
+	3'd1:
+	begin
+		if(global_counter_transfer == 4'd2)
+		begin
+			next_state_fct_send = 3'd2;
+		end
+		else 
+		begin
+			next_state_fct_send = 3'd1;
+		end
+	end
+	3'd2:
+	begin
+		if(send_fct_now)
+		begin
+			next_state_fct_send = 3'd2;
+		end
+		else 
+		begin
+			next_state_fct_send = 3'd0;
+		end
+	end
+	3'd3:
+	begin
+		if(global_counter_transfer == 4'd2)
+		begin
+			next_state_fct_send = 3'd4;
+		end
+		else 
+		begin
+			next_state_fct_send = 3'd3;
+		end
+	end
+	3'd4:
+	begin
+		if(fct_sent)
+		begin
+			next_state_fct_send = 3'd4;
+		end
+		else 
+		begin
+			next_state_fct_send = 3'd0;
+		end
+	end
+	default:
+	begin
+		next_state_fct_send = 3'd0;
+	end
+	endcase
+end
 
 always@(posedge pclk_tx or negedge enable_tx)
 begin
 	if(!enable_tx)
 	begin
 		fct_flag <= 3'd7;
-		block_increment_fct_send <= 1'b0;
-		block_decrement_fct_send <= 1'b0;
+		state_fct_send<= 3'd0;
 	end
 	else
 	begin
+		state_fct_send <= next_state_fct_send;
 
-		if(block_increment_fct_send)
+		case(state_fct_send)
+		3'd0:
 		begin
-			if(!send_fct_now)
-				block_increment_fct_send <= 1'b0;
-		end
-		else if(send_fct_now && !block_increment_fct_send)
-		begin
-			block_increment_fct_send <= 1'b1;
-		end
-		else
-			block_increment_fct_send <= block_increment_fct_send;
-
-		if(block_decrement_fct_send)
-		begin
-			if(!fct_sent)
-				block_decrement_fct_send <= 1'b0;
-		end
-		else if(fct_sent && !block_decrement_fct_send)
-		begin
-			block_decrement_fct_send <= 1'b1;
-		end
-		else
-			block_decrement_fct_send <= block_decrement_fct_send;
-
-
-		if(send_fct_now && !block_increment_fct_send)
-		begin
-			fct_flag <= fct_flag + 3'd1;
-		end
-		else if(fct_sent && !block_decrement_fct_send)
-		begin
-			fct_flag <= fct_flag - 3'd1;
-		end
-		else 
 			fct_flag <= fct_flag;
+		end
+		3'd1:
+		begin
+			if(global_counter_transfer == 4'd2)
+				fct_flag <= fct_flag + 3'd1;
+			else
+				fct_flag <= fct_flag;
+		end
+		3'd2:
+		begin
+			fct_flag <= fct_flag;
+		end
+		3'd3:
+		begin
+			if(global_counter_transfer == 4'd2)
+				fct_flag <= fct_flag - 3'd1;
+			else
+				fct_flag <= fct_flag;
+		end
+		3'd4:
+		begin
+			fct_flag <= fct_flag;
+		end
+		default:
+		begin
+			fct_flag <= fct_flag;
+		end
+		endcase
 	end
 end
 
 
+always@(*)
+begin
+	next_state_fct_receive = state_fct_receive;
+
+	case(state_fct_receive)
+	3'd0:
+	begin
+		if(gotfct_tx)
+		begin
+			next_state_fct_receive = 3'd1;
+		end
+		else if(char_sent)
+		begin
+			next_state_fct_receive = 3'd3;
+		end
+		else 
+			next_state_fct_receive = 3'd0;
+	end
+	3'd1:
+	begin
+		if(global_counter_transfer == 4'd2)
+		begin
+			next_state_fct_receive = 3'd2;
+		end
+		else 
+		begin
+			next_state_fct_receive = 3'd1;
+		end
+	end
+	3'd2:
+	begin
+		if(gotfct_tx)
+		begin
+			next_state_fct_receive = 3'd2;
+		end
+		else 
+		begin
+			next_state_fct_receive = 3'd0;
+		end
+	end
+	3'd3:
+	begin
+		if(global_counter_transfer == 4'd2)
+		begin
+			next_state_fct_receive = 3'd4;
+		end
+		else 
+		begin
+			next_state_fct_receive = 3'd3;
+		end
+	end
+	3'd4:
+	begin
+		if(char_sent)
+		begin
+			next_state_fct_receive = 3'd4;
+		end
+		else 
+		begin
+			next_state_fct_receive = 3'd0;
+		end
+	end
+	default:
+	begin
+		next_state_fct_receive = 3'd0;
+	end
+	endcase
+end
 
 
 always@(posedge pclk_tx or negedge enable_tx)
@@ -519,55 +658,54 @@ begin
 	if(!enable_tx)
 	begin
 		fct_counter_receive<= 6'd0;
-		block_increment <= 1'b0;
-		block_decrement <= 1'b0;
+		state_fct_receive <= 3'd0;
 	end
 	else
 	begin
 
-		if(block_increment)
-		begin
-			if(!gotfct_tx)
-				block_increment <= 1'b0;
-		end
-		else if(gotfct_tx && !block_increment)
-		begin
-			block_increment <= 1'b1;
-		end
-		else
-			block_increment <= block_increment;
+		state_fct_receive <= next_state_fct_receive;
 
-		if(block_decrement)
+		case(state_fct_receive)
+		3'd0:
 		begin
-			if(!char_sent)
-				block_decrement <= 1'b0;
+			fct_counter_receive <= fct_counter_receive;
 		end
-		else if(char_sent && !block_decrement)
+		3'd1:
 		begin
-			block_decrement <= 1'b1;
-		end
-		else
-			block_decrement <= block_decrement;
-
-
-
-		if (gotfct_tx && !block_increment)
-		begin
-			if(fct_counter_receive < 6'd48) 
+			if(global_counter_transfer == 4'd2)
 			begin
-				fct_counter_receive <= fct_counter_receive + 6'd8;
+				if(fct_counter_receive < 6'd48) 
+				begin
+					fct_counter_receive <= fct_counter_receive + 6'd8;
+				end
+				else
+				begin
+					fct_counter_receive <= fct_counter_receive + 6'd7;
+				end
 			end
 			else
-			begin
-				fct_counter_receive <= fct_counter_receive + 6'd7;
-			end
+				fct_counter_receive <= fct_counter_receive;
 		end
-		else if(char_sent && !block_decrement)
+		3'd2:
 		begin
-			fct_counter_receive <= fct_counter_receive - 6'd1;
-		end
-		else 
 			fct_counter_receive <= fct_counter_receive;
+		end
+		3'd3:
+		begin
+			if(global_counter_transfer == 4'd2)
+				fct_counter_receive <= fct_counter_receive - 6'd1;
+			else
+				fct_counter_receive <= fct_counter_receive;
+		end
+		3'd4:
+		begin
+			fct_counter_receive <= fct_counter_receive;
+		end
+		default:
+		begin
+			fct_counter_receive <= fct_counter_receive;
+		end
+		endcase
 	end
 end
 
@@ -591,7 +729,7 @@ begin
 	begin
 		if(send_null_tx && send_fct_tx && enable_tx)
 		begin
-			if(global_counter_transfer == 4'd0)
+			if(global_counter_transfer == 4'd7)
 				next_state_tx = tx_spw_fct;
 		end
 		else
@@ -599,7 +737,7 @@ begin
 	end
 	tx_spw_fct:
 	begin
-		if(send_fct_tx && fct_flag > 0)
+		if(send_fct_tx && fct_flag > 3'd0)
 		begin
 			next_state_tx = tx_spw_fct;
 		end
@@ -607,17 +745,17 @@ begin
 		begin
 			if(send_fct_tx && fct_counter_receive > 6'd0)
 			begin
-				if(global_counter_transfer == 4'd0)
+				if(global_counter_transfer == 4'd7 || global_counter_transfer == 4'd3)
 				begin
 					if(tickin_tx && !ready_tx_timecode && tcode_rdy_trnsp)
 					begin
 						next_state_tx = tx_spw_time_code_c;
 					end 
-					else if(fct_flag > 3'd0)
+					else if(fct_flag > 3'd0 && !send_fct_now)
 					begin
 						next_state_tx = tx_spw_fct_c;
 					end
-					else if(txwrite_tx && !ready_tx_data && data_rdy_trnsp && fct_counter_receive > 6'd0)
+					else if(txwrite_tx && !gotfct_tx && !gotfct_tx && !ready_tx_data && data_rdy_trnsp && fct_counter_receive > 6'd0)
 					begin
 						next_state_tx = tx_spw_data_c;				
 					end
@@ -637,11 +775,11 @@ begin
 			begin
 				next_state_tx = tx_spw_time_code_c;
 			end 
-			else if(fct_flag > 3'd0)
+			else if(fct_flag > 3'd0 && !send_fct_now)
 			begin
 				next_state_tx = tx_spw_fct_c;
 			end
-			else if(txwrite_tx && !ready_tx_data && data_rdy_trnsp && fct_counter_receive > 6'd0)
+			else if(txwrite_tx && !gotfct_tx && !ready_tx_data && data_rdy_trnsp && fct_counter_receive > 6'd0)
 			begin
 				next_state_tx = tx_spw_data_c;				
 			end
@@ -684,7 +822,7 @@ begin
 				begin
 					next_state_tx = tx_spw_time_code_c;
 				end 
-				else if(fct_flag > 3'd0)
+				else if(fct_flag > 3'd0 && !send_fct_now)
 				begin
 					next_state_tx = tx_spw_fct_c;
 				end
@@ -704,7 +842,7 @@ begin
 				begin
 					next_state_tx = tx_spw_time_code_c;
 				end 
-				else if(fct_flag > 3'd0)
+				else if(fct_flag > 3'd0 && !send_fct_now)
 				begin
 					next_state_tx = tx_spw_fct_c;
 				end
@@ -723,11 +861,11 @@ begin
 	begin
 		if(global_counter_transfer == 4'd13)
 		begin
-			if(fct_flag > 3'd0)
+			if(fct_flag > 3'd0 && !send_fct_now)
 			begin
 				next_state_tx = tx_spw_fct_c;
 			end
-			else if(txwrite_tx && !ready_tx_data && data_rdy_trnsp && fct_counter_receive > 6'd0 )
+			else if(txwrite_tx && !gotfct_tx && !ready_tx_data && data_rdy_trnsp && fct_counter_receive > 6'd0 )
 			begin
 				next_state_tx = tx_spw_data_c;				
 			end
@@ -838,7 +976,6 @@ begin
 				last_type  <= last_type;
 				global_counter_transfer <= global_counter_transfer + 4'd1;
 			end
-			fct_sent <= 1'b0;
 		end
 		tx_spw_fct:
 		begin
@@ -848,7 +985,6 @@ begin
 
 			tx_dout_e <= last_tx_dout;
 			tx_sout_e <= last_tx_sout;
-
 	
 			ready_tx_data <= ready_tx_data;
 
@@ -860,12 +996,10 @@ begin
 			end
 			else
 			begin
-
 				if(fct_flag > 3'd0)
 					fct_sent <=  1'b1;
 				else
 					fct_sent <= fct_sent;
-
 				global_counter_transfer <= global_counter_transfer + 4'd1;
 			end
 		end
