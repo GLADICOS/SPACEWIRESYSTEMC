@@ -288,11 +288,17 @@ end
 
 			if (state_data_write == 2'd2)
 			begin
-				counter <= counter + 6'd1;
+				if(counter == 6'd63)
+					counter <= counter;
+				else
+					counter <= counter + 6'd1;
 			end
 			else if(state_data_read == 2'd2)
 			begin
-				counter <= counter - 6'd1;
+				if(counter == 6'd0)
+					counter <= counter;
+				else
+					counter <= counter - 6'd1;
 			end
 			else
 			begin
