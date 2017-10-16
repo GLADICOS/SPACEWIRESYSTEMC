@@ -310,7 +310,7 @@ begin
 			 end
 			 else if(!tx_data_in[8] &&  global_counter_transfer[3:0] == 4'd1)
 			 begin
-				tx_dout = tx_data_took[8];
+				tx_dout = tx_data_in[8];
 			 end
 			 else if(!tx_data_in[8] && global_counter_transfer[3:0] == 4'd2)
 			 begin
@@ -725,7 +725,7 @@ begin
 	case(state_data_fifo)
 	3'd0:
 	begin
-		if(txwrite_tx)
+		if(!ready_tx_data && txwrite_tx)
 		begin
 			next_state_data_fifo = 3'd1;
 		end
@@ -748,7 +748,7 @@ begin
 	end
 	3'd3:
 	begin
-		if(!ready_tx_data)
+		if(!ready_tx_data && txwrite_tx)
 		begin
 			next_state_data_fifo = 3'd3;
 		end
@@ -780,7 +780,7 @@ begin
 		case(state_data_fifo)
 		3'd0:
 		begin
-			tx_data_took <= tx_data_took;
+			//tx_data_took <= tx_data_took;
 		end
 		3'd1:
 		begin
@@ -788,6 +788,8 @@ begin
 		end
 		3'd2:
 		begin
+			tx_data_took <= data_tx_i;
+
 			if(state_tx == tx_spw_null_c && global_counter_transfer > 4'd0 && global_counter_transfer < 4'd7)
 				data_ready_took <= 1'b1;
 			else if(state_tx == tx_spw_data_c && global_counter_transfer > 4'd0 && global_counter_transfer < 4'd9)
@@ -797,7 +799,7 @@ begin
 		end
 		3'd3:
 		begin
-			if(!ready_tx_data)
+			if(!ready_tx_data && txwrite_tx)
 			begin
 				data_ready_took <= 1'b1;
 			end
