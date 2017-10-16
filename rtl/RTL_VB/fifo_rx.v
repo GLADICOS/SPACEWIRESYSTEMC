@@ -229,11 +229,21 @@ end
 			case(state_data_write)
 			2'd0:
 			begin
+				if(credit_counter > 6'd55)
+				begin
+					overflow_credit_error <= 1'b1;
+				end
+				else 
+					overflow_credit_error <= 1'b0;
+
 				mem[wr_ptr]<=data_in;
 			end
 			2'd1:
 			begin
-				mem[wr_ptr]<=mem[wr_ptr];
+				if(wr_en)
+					mem[wr_ptr]<=data_in;
+				else
+					mem[wr_ptr]<=mem[wr_ptr];
 			end
 			2'd2:
 			begin
@@ -245,13 +255,7 @@ end
 				wr_ptr <= wr_ptr;
 			end
 			endcase
-		
-			if(wr_en && credit_counter > 6'd55)
-			begin
-				overflow_credit_error <= 1'b1;
-			end
-			else 
-				overflow_credit_error <= overflow_credit_error;
+	
 		end
 	end
 
@@ -366,7 +370,15 @@ end
 					open_slot_fct<= 1'b0;
 				end
 
-				data_out   <= mem[rd_ptr];
+				if(rd_en)
+				begin
+					data_out   <= mem[rd_ptr];
+				end
+				else 
+				begin
+					data_out   <= data_out;
+				end
+				
 			end
 			2'd2:
 			begin
