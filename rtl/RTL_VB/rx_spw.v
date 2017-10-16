@@ -89,10 +89,6 @@ module RX_SPW (
 	reg last_is_data;
 	reg last_is_timec;
 
-	//reg last_was_control;
-	//reg last_was_data;
-	//reg last_was_timec;
-
 	reg [3:0] control;
 	reg [3:0] control_r;
 	reg [3:0] control_p_r;
@@ -100,19 +96,9 @@ module RX_SPW (
 	reg [9:0] timecode;
 
 	reg [3:0] control_l_r;
-	//reg [9:0] data_l_r;
 
 	reg [9:0] dta_timec;
 	reg [9:0] dta_timec_p;
-
-	reg rx_data_take;
-	reg rx_data_take_0;
-
-	reg rx_got_fct_take;
-	reg rx_got_fct_take_0;
-	reg rx_got_fct_take_1;
-	reg rx_got_fct_take_2;
-	reg rx_got_fct_take_3;
 
 	reg ready_control;
 	reg ready_data;
@@ -276,31 +262,16 @@ begin
 	if(!rx_resetn)
 	begin
 		rx_got_fct        <= 1'b0;
-		rx_got_fct_take   <= 1'b0;
-		rx_got_fct_take_0 <= 1'b0;
-		rx_got_fct_take_1 <= 1'b0;
-		rx_got_fct_take_2 <= 1'b0;
-		rx_got_fct_take_3 <= 1'b0;
 	end
 	else
 	begin	
 		if(control_l_r[2:0] != 3'd7 && control[2:0] == 3'd4 && (ready_control_p_r))
 		begin
-			rx_got_fct_take <= 1'b1;
-			rx_got_fct_take_0 <= rx_got_fct_take;
-			rx_got_fct_take_1 <= rx_got_fct_take_0;
-			rx_got_fct_take_2 <= rx_got_fct_take_1;
-			rx_got_fct_take_3 <= rx_got_fct_take_2;
-			rx_got_fct <= rx_got_fct_take | rx_got_fct_take_0 | rx_got_fct_take_1 | rx_got_fct_take_2 | rx_got_fct_take_3;
+			rx_got_fct        <= 1'b1;
 		end
 		else
 		begin
-			rx_got_fct_take <= 1'b0;
-			rx_got_fct_take_0 <= rx_got_fct_take;
-			rx_got_fct_take_1 <= rx_got_fct_take_0;
-			rx_got_fct_take_2 <= rx_got_fct_take_1;
-			rx_got_fct_take_3 <= rx_got_fct_take_2;
-			rx_got_fct <= rx_got_fct_take | rx_got_fct_take_0 | rx_got_fct_take_1 | rx_got_fct_take_2 | rx_got_fct_take_3;
+			rx_got_fct        <= 1'b0;
 		end
 	end
 end
@@ -342,17 +313,12 @@ begin
 	if(!rx_resetn)
 	begin
 		rx_got_fct_fsm  <=  1'b0;
-		rx_buffer_write <=  1'b0;
-		rx_data_take_0  <=  1'b0;
 		ready_control_p_r <= 1'b0;
 		ready_data_p_r  <=  1'b0;
 
 	end
 	else
 	begin
-		rx_data_take_0 <= rx_data_take;
-		rx_buffer_write  <= rx_data_take_0;
-
 
 		if(ready_control || ready_control_p)
 		begin
@@ -464,7 +430,6 @@ end
 
 always@(*)
 begin
-
 	rx_error_c = 1'b0;
 
 	if(last_is_control && ready_control_p)
@@ -482,6 +447,48 @@ begin
 		end
 	end
 end
+
+always@(posedge negedge_clk or negedge rx_resetn)
+begin
+	
+	if(!rx_resetn)
+	begin
+		rx_buffer_write <= 1'b0;
+		rx_tick_out 	<= 1'b0;
+	end
+	else
+	begin
+
+		if(!ready_control_p_r && !ready_data_p_r && !ready_control && !ready_data)
+		begin	
+			if(last_is_timec == 1'b1)
+			begin
+				rx_tick_out  <= 1'b1;
+			end
+			else if(last_is_data == 1'b1)
+			begin
+				rx_buffer_write <= 1'b1;
+			end
+			else if(last_is_control == 1'b1)
+			begin
+				if(control[2:0] == 3'd6)
+				begin
+					rx_buffer_write <= 1'b1;
+				end
+				else if(control[2:0] == 3'd5)
+				begin
+					rx_buffer_write <= 1'b1;
+				end				
+			end
+		end
+		else
+		begin
+			rx_buffer_write <= 1'b0;
+			rx_tick_out 	<= 1'b0;
+		end
+	end
+end
+
 
 always@(posedge negedge_clk or negedge rx_resetn)
 begin
@@ -587,21 +594,13 @@ begin
 		control_l_r      <= 4'd0;
 		control	   	 <= 4'd0;
 		data 	         <=  10'd0;
-		//data_l_r         <=  10'd0;
 
 		last_is_control  <=  1'b0;
 		last_is_data 	 <=  1'b0;
 		last_is_timec 	 <=  1'b0;
 
-		//last_was_control <= 1'b0;
-		//last_was_data    <= 1'b0;
-		//last_was_timec   <= 1'b0;
-
 		rx_data_flag     <=  9'd0; 
-		rx_data_take     <=  1'b0;
-
 		timecode    	 <=  10'd0;
-		rx_tick_out 	 <=  1'b0;
 
 		state_data_process <= 2'd0;
 	end
@@ -619,15 +618,22 @@ begin
 				control 	 <= control_p_r;
 				control_l_r 	 <= control;
 
+				if(control_p_r[2:0] == 3'd6)
+				begin
+					rx_data_flag <= 9'd257;
+				end
+				else if(control_p_r[2:0] == 3'd5)
+				begin
+					rx_data_flag <= 9'd256;
+				end
+				else
+				begin
+					rx_data_flag <= rx_data_flag;
+				end
+
 				last_is_control 	 <= 1'b1;
 				last_is_data    	 <= 1'b0;
 				last_is_timec   	 <= 1'b0;
-				//last_was_control	 <= last_is_control;
-				//last_was_data    	 <= last_is_data ;
-				//last_was_timec   	 <= last_is_timec;
-
-				rx_data_take <= 1'b0;
-				rx_tick_out  <= 1'b0;
 
 			end
 			else if(ready_data_p_r)
@@ -635,26 +641,18 @@ begin
 				if(control[2:0] != 3'd7)
 				begin
 					data        	<= {dta_timec_p[9],dta_timec_p[8],dta_timec_p[7],dta_timec_p[6],dta_timec_p[5],dta_timec_p[4],dta_timec_p[3],dta_timec_p[2],dta_timec_p[1],dta_timec_p[0]};
-					//data_l_r 	<= data; 
+					rx_data_flag	<= {dta_timec_p[8],dta_timec_p[7],dta_timec_p[6],dta_timec_p[5],dta_timec_p[4],dta_timec_p[3],dta_timec_p[2],dta_timec_p[1],dta_timec_p[0]};					
 					last_is_control  	<=1'b0;
 					last_is_data     	<=1'b1;
 					last_is_timec    	<=1'b0;
-					//last_was_control 	<= last_is_control;
-					//last_was_data    	<= last_is_data ;
-					//last_was_timec 		<= last_is_timec;
 				end
 				else if(control[2:0] == 3'd7)
 				begin
+					timecode     <=  {dta_timec_p[9],dta_timec_p[8],dta_timec_p[7],dta_timec_p[6],dta_timec_p[5],dta_timec_p[4],dta_timec_p[3],dta_timec_p[2],dta_timec_p[1],dta_timec_p[0]};
 					last_is_control  	<= 1'b0;
 					last_is_data     	<= 1'b0;
 					last_is_timec    	<= 1'b1;
-					//last_was_control 	<= last_is_control;
-					//last_was_data    	<= last_is_data ;
-					//last_was_timec   	<= last_is_timec;
 				end
-
-				rx_data_take <= 1'b0;
-				rx_tick_out  <= 1'b0;
 			end
 			else
 			begin
@@ -664,54 +662,14 @@ begin
 		end
 		2'd1:
 		begin
-
-			if(last_is_timec == 1'b1)
-			begin
-				timecode     <= dta_timec;
-				rx_tick_out  <= 1'b1;
-			end
-			else if(last_is_data == 1'b1)
-			begin
-				rx_data_flag	<= {data[8],data[7],data[6],data[5],data[4],data[3],data[2],data[1],data[0]};
-				rx_data_take <= 1'b1;
-			end
-			else if(last_is_control == 1'b1)
-			begin
-				if(control[2:0] == 3'd6)
-				begin
-					rx_data_flag <= 9'd257;
-					rx_data_take <= 1'b1;
-				end
-				else if(control[2:0] == 3'd5)
-				begin
-					rx_data_flag <= 9'd256;
-					rx_data_take <= 1'b1;
-				end
-				else
-				begin
-					rx_data_take 	<= rx_data_take;
-					rx_tick_out     <= rx_tick_out;
-				end
-					
-			end
-			else
-			begin
-
 				rx_data_flag	<= rx_data_flag;
-				rx_data_take    <= rx_data_take;
-
 				timecode    	<= timecode;
-				rx_tick_out 	<= rx_tick_out;
-			end
-
 		end
 		default:
 		begin
 				rx_data_flag	<= rx_data_flag;
-				rx_data_take    <= rx_data_take;
-
 				timecode    	<= timecode;
-				rx_tick_out 	<= rx_tick_out;
+			
 		end
 		endcase	
 	end
