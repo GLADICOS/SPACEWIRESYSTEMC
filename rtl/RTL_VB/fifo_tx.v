@@ -222,11 +222,11 @@ end
 			case(state_data_write)
 			2'd0:
 			begin
-				mem[wr_ptr]<=data_in;
+				
 			end
 			2'd1:
 			begin
-				mem[wr_ptr]<=mem[wr_ptr];
+				mem[wr_ptr]<=data_in;
 			end
 			2'd2:
 			begin
@@ -312,12 +312,13 @@ begin
 			if(rd_en)
 			begin
 				write_tx<= 1'b0;
-				data_out   <= data_out;
-				rd_ptr     <= rd_ptr+ 6'd1;
+				rd_ptr     <= rd_ptr + 6'd1;
+				data_out   <= mem[rd_ptr+ 6'd1];
 			end
 			else
 			begin
 				data_out   <= mem[rd_ptr];
+
 				if(counter > 6'd0)
 				begin
 					write_tx<= 1'b1;
