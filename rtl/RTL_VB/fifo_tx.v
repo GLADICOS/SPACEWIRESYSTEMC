@@ -222,7 +222,8 @@ end
 			case(state_data_write)
 			2'd0:
 			begin
-				
+				mem[wr_ptr]<=mem[wr_ptr];
+				wr_ptr <= wr_ptr;
 			end
 			2'd1:
 			begin
@@ -246,14 +247,12 @@ always@(posedge clock or negedge reset)
 begin
 	if (!reset)
 	begin
-		f_full  <= 1'b0;
-		f_empty <= 1'b1;
 		counter <= {(AWIDTH){1'b0}};
 	end
 	else
 	begin
 
-		if (state_data_write == 2'd2)
+		if(state_data_write == 2'd2)
 		begin
 			if(counter == 6'd63)
 				counter <= counter;
@@ -272,24 +271,26 @@ begin
 			counter <= counter;
 		end
 
-		if(counter == 6'd63)			
-		begin
-			f_full <= 1'b1;
-		end
-		else
-		begin
-			f_full <= 1'b0;
-		end
-
-		if(counter == 6'd0)
-		begin
-			f_empty <= 1'b1;
-		end
-		else
-		begin
-			f_empty <= 1'b0;
-		end
 	end
+end
+
+
+always@(*)
+begin
+
+	f_full  = 1'b0;
+	f_empty = 1'b0;
+
+	if(counter == 6'd63)
+	begin
+		f_full  = 1'b1;
+	end
+
+	if(counter == 6'd0)
+	begin
+		f_empty = 1'b1;
+	end
+
 end
 
 //Read pointer
@@ -313,7 +314,6 @@ begin
 			begin
 				write_tx<= 1'b0;
 				rd_ptr     <= rd_ptr + 6'd1;
-				data_out   <= mem[rd_ptr+ 6'd1];
 			end
 			else
 			begin
@@ -335,7 +335,7 @@ begin
 		2'd2:
 		begin
 			write_tx<= 1'b0;
-			data_out   <= data_out;
+			data_out   <= mem[rd_ptr];
 		end
 		default:
 		begin

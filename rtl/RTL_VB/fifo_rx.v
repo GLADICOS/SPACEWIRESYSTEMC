@@ -218,7 +218,6 @@ end
 			mem[62] <= {(DWIDTH){1'b0}};
 			mem[63] <= {(DWIDTH){1'b0}};
 
-			overflow_credit_error<=1'b0;
 			state_data_write <= 2'd0;
 		end
 		else
@@ -229,13 +228,6 @@ end
 			case(state_data_write)
 			2'd0:
 			begin
-				if(credit_counter > 6'd55)
-				begin
-					overflow_credit_error <= 1'b1;
-				end
-				else 
-					overflow_credit_error <= 1'b0;
-
 				mem[wr_ptr]<=data_in;
 			end
 			2'd1:
@@ -265,8 +257,7 @@ end
 	begin
 		if (!reset)
 		begin
-			f_full  <= 1'b0;
-			f_empty <= 1'b1;
+			overflow_credit_error<=1'b0;
 			counter <= {(AWIDTH){1'b0}};
 			credit_counter <= 6'd55;
 		end
@@ -275,7 +266,10 @@ end
 
 			if (state_data_write == 2'd2)
 			begin
-				credit_counter   <= credit_counter - 6'd1;
+				if(credit_counter == 6'd0)
+					credit_counter   <= credit_counter;
+				else				
+					credit_counter   <= credit_counter - 6'd1;
 			end
 			else if(state_data_read == 2'd2)
 			begin
@@ -286,9 +280,18 @@ end
 					else
 						credit_counter <= credit_counter + 6'd7;
 				end
+				else
+					credit_counter <= credit_counter;	
 			end
 			else 
-				credit_counter <= credit_counter;
+			begin
+				if(credit_counter > 6'd55)
+				begin
+					overflow_credit_error <= 1'b1;
+				end
+				else 
+					overflow_credit_error <= 1'b0;
+			end
 
 			if (state_data_write == 2'd2)
 			begin
@@ -308,26 +311,26 @@ end
 			begin
 				counter <= counter;
 			end
-
-			if(counter == 6'd63)
-			begin
-				f_full <= 1'b1;
-			end
-			else
-			begin
-				f_full <= 1'b0;
-			end
-
-			if(counter == 6'd0)
-			begin
-				f_empty <= 1'b1;
-			end
-			else
-			begin
-				f_empty <= 1'b0;
-			end
 		end
 	end
+
+always@(*)
+begin
+
+	f_full  = 1'b0;
+	f_empty = 1'b0;
+
+	if(counter == 6'd63)
+	begin
+		f_full  = 1'b1;
+	end
+
+	if(counter == 6'd0)
+	begin
+		f_empty = 1'b1;
+	end
+
+end
 
 //Read pointer
 	always@(posedge clock or negedge reset)
