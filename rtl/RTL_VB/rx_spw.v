@@ -407,45 +407,58 @@ begin
 	end
 end
 
-always@(*)
+always@(posedge ready_data_p or negedge rx_resetn )
 begin
 
-	rx_error_d = 1'b0;
-
-	if(last_is_control && ready_data_p)
+	if(!rx_resetn)
 	begin
-		if(!(dta_timec[8]^control[0]^control[1]) != parity_rec_d)
-		begin
-			rx_error_d = 1'b1;
-		end
+		rx_error_d <= 1'b0;
 	end
-	else if(last_is_data && ready_data_p)
+	else
 	begin
-		if(!(dta_timec[8]^data[7]^data[6]^data[5]^data[4]^data[3]^data[2]^data[1]^data[0]) != parity_rec_d)
+		if(last_is_control)
 		begin
-			rx_error_d = 1'b1;
+			if(!(dta_timec[8]^control[0]^control[1]) != parity_rec_d)
+			begin
+				rx_error_d <= 1'b1;
+			end
+		end
+		else if(last_is_data)
+		begin
+			if(!(dta_timec[8]^data[7]^data[6]^data[5]^data[4]^data[3]^data[2]^data[1]^data[0]) != parity_rec_d)
+			begin
+				rx_error_d <= 1'b1;
+			end
 		end
 	end
 end
 
-always@(*)
+always@(posedge ready_control_p or negedge rx_resetn )
 begin
-	rx_error_c = 1'b0;
 
-	if(last_is_control && ready_control_p)
+	if(!rx_resetn)
 	begin
-		if(!(control_r[2]^control[0]^control[1]) != parity_rec_c)
+		rx_error_c <= 1'b0;
+		
+	end
+	else
+	begin
+		if(last_is_control)
 		begin
-			rx_error_c = 1'b1;
+			if(!(control_r[2]^control[0]^control[1]) != parity_rec_c)
+			begin
+				rx_error_c <= 1'b1;
+			end
+		end
+		else if(last_is_data)
+		begin
+			if(!(control_r[2]^data[7]^data[6]^data[5]^data[4]^data[3]^data[2]^data[1]^data[0]) != parity_rec_c)
+			begin
+				rx_error_c <= 1'b1;
+			end
 		end
 	end
-	else if(last_is_data && ready_control_p)
-	begin
-		if(!(control_r[2]^data[7]^data[6]^data[5]^data[4]^data[3]^data[2]^data[1]^data[0]) != parity_rec_c)
-		begin
-			rx_error_c = 1'b1;
-		end
-	end
+	
 end
 
 always@(posedge negedge_clk or negedge rx_resetn)
