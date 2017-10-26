@@ -1121,8 +1121,8 @@ begin
 			last_tx_dout <= tx_dout;
 			last_tx_sout <= tx_sout;
 
-			tx_dout_e <= last_tx_dout;
-			tx_sout_e <= last_tx_sout;
+			tx_dout_e <= tx_dout;
+			tx_sout_e <= tx_sout;
 
 
   			if(tickin_tx && global_counter_transfer == 4'd5)
@@ -1151,8 +1151,8 @@ begin
 			last_tx_dout <= tx_dout;
 			last_tx_sout <= tx_sout;
 
-			tx_dout_e <= last_tx_dout;
-			tx_sout_e <= last_tx_sout;
+			tx_dout_e <= tx_dout;
+			tx_sout_e <= tx_sout;
 
 			if(global_counter_transfer == 4'd3)
 			begin
@@ -1176,11 +1176,12 @@ begin
 			last_tx_dout <= tx_dout;
 			last_tx_sout <= tx_sout;
 
-			tx_dout_e <= last_tx_dout;
-			tx_sout_e <= last_tx_sout;
+			tx_dout_e <= tx_dout;
+			tx_sout_e <= tx_sout;
 				
 			if(global_counter_transfer == 4'd7)
 			begin
+				fct_sent <=  1'b0;
 				last_type  <= NULL;
 				global_counter_transfer <= 4'd0;
 			end
@@ -1219,8 +1220,8 @@ begin
 			last_tx_dout <= tx_dout;
 			last_tx_sout <= tx_sout;
 
-			tx_dout_e <= last_tx_dout;
-			tx_sout_e <= last_tx_sout;
+			tx_dout_e <= tx_dout;
+			tx_sout_e <= tx_sout;
 
 			if(global_counter_transfer == 4'd3)
 			begin		
@@ -1231,12 +1232,11 @@ begin
 			end
 			else
 			begin
+				char_sent <= 1'b0;
 				process_data   <= process_data;
 				process_data_0 <= process_data_0;
-				if(fct_flag > 3'd0)
-					fct_sent <=  1'b1;
-				else
-					fct_sent <= fct_sent;
+
+				fct_sent <=  1'b1;
 
 				global_counter_transfer <= global_counter_transfer + 4'd1;
 			end
@@ -1247,16 +1247,15 @@ begin
 			last_tx_dout <= tx_dout;
 			last_tx_sout <= tx_sout;
 
-			tx_dout_e <= last_tx_dout;
-			tx_sout_e <= last_tx_sout;
-
-			fct_sent <=  1'b0;
+			tx_dout_e <= tx_dout;
+			tx_sout_e <= tx_sout;
 
 			if(!tx_data_in[8])
 			begin
 
 				if(global_counter_transfer == 4'd9)
 				begin
+					fct_sent <=  1'b0;
 					char_sent <= 1'b1;
 					last_type  <= DATA;
 					global_counter_transfer <= 4'd0;
@@ -1270,8 +1269,8 @@ begin
 					end
 					else
 					begin
+						fct_sent <=  1'b0;
 						ready_tx_data <= 1'b0;
-
 
 						if(global_counter_transfer == 4'd3)
 						begin
@@ -1306,7 +1305,7 @@ begin
 				if(global_counter_transfer == 4'd3)
 				begin
 					char_sent <= 1'b1;
-
+					fct_sent <=  1'b0;
 					if(tx_data_in[1:0] == 2'b00)
 					begin
 						last_type  <=EOP;
@@ -1321,6 +1320,7 @@ begin
 				end
 				else
 				begin
+					fct_sent <=  1'b0;
 					char_sent <= 1'b0;
 					process_data   <= 1'b0;
 					process_data_0 <= 1'b0;
@@ -1338,16 +1338,15 @@ begin
 			last_tx_dout <= tx_dout;
 			last_tx_sout <= tx_sout;
 
-			tx_dout_e <= last_tx_dout;
-			tx_sout_e <= last_tx_sout;
-
-			fct_sent <=  1'b0;
+			tx_dout_e <= tx_dout;
+			tx_sout_e <= tx_sout;
 
 			if(!tx_data_in_0[8])
 			begin
 
 				if(global_counter_transfer == 4'd9)
 				begin
+					fct_sent <=  1'b0;
 					char_sent <= 1'b1;
 					last_type  <= DATA;
 					global_counter_transfer <= 4'd0;
@@ -1382,6 +1381,7 @@ begin
 						end
 					end
 
+					fct_sent <=  1'b0;
 					process_data_0 <= 1'b0;
 					char_sent <= 1'b0;
 					ready_tx_timecode <= 1'b0;
@@ -1395,13 +1395,14 @@ begin
 
 				if(global_counter_transfer == 4'd3)
 				begin
+					fct_sent <=  1'b0;
 					char_sent <= 1'b1;
 
-					if(tx_data_in[1:0] == 2'b00)
+					if(tx_data_in_0[1:0] == 2'b00)
 					begin
 						last_type  <=EOP;
 					end
-					else if(tx_data_in[1:0] == 2'b01)
+					else if(tx_data_in_0[1:0] == 2'b01)
 					begin
 						last_type  <=EEP;
 					end
@@ -1411,6 +1412,7 @@ begin
 				end
 				else
 				begin
+					fct_sent <=  1'b0;
 					process_data   <= 1'b0;
 					process_data_0 <= 1'b0;
 					txdata_flagctrl_tx_last <= txdata_flagctrl_tx_last;
@@ -1424,18 +1426,17 @@ begin
 		end
 		tx_spw_time_code_c:
 		begin
-
-			fct_sent <=  1'b0;
-			
+		
 			last_tx_dout <= tx_dout;
 			last_tx_sout <= tx_sout;
 
-			tx_dout_e <= last_tx_dout;
-			tx_sout_e <= last_tx_sout;
+			tx_dout_e <= tx_dout;
+			tx_sout_e <= tx_sout;
 			
 		
 			if(global_counter_transfer == 4'd13)
 			begin
+				fct_sent <=  1'b0;
 				ready_tx_timecode <= 1'b1;
 				global_counter_transfer <= 4'd0;
 			end
@@ -1460,6 +1461,7 @@ begin
 					end
 					process_data_0 <= 1'b0;
 				end
+				fct_sent <=  1'b0;
 				char_sent <= 1'b0;
 				ready_tx_timecode <= 1'b0;
 				global_counter_transfer <= global_counter_transfer + 4'd1;
@@ -1480,6 +1482,8 @@ begin
 		end
 		default:
 		begin
+			fct_sent <=  1'b0;
+			char_sent <= 1'b0;
 			last_type  		<= last_type;
 			global_counter_transfer <= global_counter_transfer;
 			tx_dout_e 		<= tx_dout_e;
