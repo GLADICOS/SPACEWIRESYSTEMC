@@ -52,6 +52,8 @@ module fifo_rx
 	reg [AWIDTH-1:0] rd_ptr;
 
 	reg [AWIDTH-1:0] credit_counter;
+	reg [AWIDTH-1:0] credit_counter_write;
+	reg [AWIDTH-1:0] credit_counter_reader;
 
 	reg  [1:0] state_data_write;
 	reg  [1:0] next_state_data_write;
@@ -59,6 +61,57 @@ module fifo_rx
 	reg  [1:0] state_data_read;
 	reg  [1:0] next_state_data_read;
 
+	reg  [1:0] state_open_slot;
+	reg  [1:0] next_state_open_slot;
+
+	reg [10:0] counter_wait;
+
+	reg [AWIDTH-1:0] counter_writer;
+	reg [AWIDTH-1:0] counter_reader;
+
+/****************************************/
+
+always@(*)
+begin
+	next_state_open_slot = state_open_slot;
+
+	case(state_open_slot)
+	2'd0:
+	begin
+		if(rd_ptr == 6'd7 || rd_ptr == 6'd15 || rd_ptr == 6'd23 || rd_ptr == 6'd31 || rd_ptr == 6'd39 || rd_ptr == 6'd47 || rd_ptr == 6'd55 || rd_ptr == 6'd63)
+		begin
+			next_state_open_slot = 2'd1;
+		end
+		else 
+		begin
+			next_state_open_slot = 2'd0;
+		end
+	end
+	2'd1:
+	begin
+		if(counter_wait != 11'd300)
+			next_state_open_slot = 2'd1;
+		else
+			next_state_open_slot = 2'd2;
+	end
+	2'd2:
+	begin
+		if(rd_ptr == 6'd7 || rd_ptr == 6'd15 || rd_ptr == 6'd23 || rd_ptr == 6'd31 || rd_ptr == 6'd39 || rd_ptr == 6'd47 || rd_ptr == 6'd55 || rd_ptr == 6'd63)
+		begin
+			next_state_open_slot = 2'd2;
+		end
+		else 
+		begin
+			next_state_open_slot = 2'd0;
+		end
+		
+	end
+	default:
+	begin
+		next_state_open_slot = 2'd0;
+	end
+	endcase
+end
 
 /****************************************/
 
@@ -140,7 +193,53 @@ begin
 	endcase
 end
 
+always@(posedge clock or negedge reset)
+begin
+	if (!reset)
+	begin
+		state_open_slot <= 2'd0;
+		open_slot_fct<= 1'b0;
+		counter_wait <= 11'd0;
+	end
+	else
+	begin
+		state_open_slot <= next_state_open_slot;
 
+		case(state_open_slot)
+		2'd0:
+		begin
+			if(rd_ptr == 6'd7 || rd_ptr == 6'd15 || rd_ptr == 6'd23 || rd_ptr == 6'd31 || rd_ptr == 6'd39 || rd_ptr == 6'd47 || rd_ptr == 6'd55 || rd_ptr == 6'd63)
+			begin
+				open_slot_fct<= 1'b1;
+				counter_wait <= counter_wait + 11'd1;
+			end
+			else 
+			begin
+				open_slot_fct<= 1'b0;
+			end
+		end
+		2'd1:
+		begin
+			if(counter_wait != 11'd300)
+				counter_wait <= counter_wait + 11'd1;
+			else
+				counter_wait <= counter_wait;
+			
+			open_slot_fct<= 1'b1;
+		end
+		2'd2:
+		begin
+			counter_wait <= 11'd0;
+			open_slot_fct<= 1'b0;		
+		end
+		default:
+		begin
+			open_slot_fct<= open_slot_fct;
+		end
+		endcase		
+
+	end
+end
 //Write pointer
 	always@(posedge clock or negedge reset)
 	begin
@@ -232,10 +331,7 @@ end
 			end
 			2'd1:
 			begin
-				if(wr_en)
-					mem[wr_ptr]<=data_in;
-				else
-					mem[wr_ptr]<=mem[wr_ptr];
+				mem[wr_ptr]<=mem[wr_ptr];
 			end
 			2'd2:
 			begin
@@ -253,84 +349,97 @@ end
 
 //FULL - EMPTY COUNTER
 
-	always@(posedge clock or negedge reset)
+always@(posedge clock or negedge reset)
+begin
+		
+	if (!reset)
 	begin
-		if (!reset)
+		f_full  <= 1'b0;
+		f_empty <= 1'b0;
+		overflow_credit_error<=1'b0;
+		counter <= {(AWIDTH){1'b0}};
+		credit_counter <= 6'd0;
+		credit_counter_write <= 6'd0;
+		credit_counter_reader <= 6'd56;			
+		counter_writer <= {(AWIDTH){1'b0}};
+		counter_reader <= {(AWIDTH){1'b0}};
+	end
+	else
+	begin
+
+		if (state_data_write == 2'd2)
 		begin
-			overflow_credit_error<=1'b0;
-			counter <= {(AWIDTH){1'b0}};
-			credit_counter <= 6'd55;
+			credit_counter_write   <= credit_counter_write + 6'd1;
+		end
+		else
+			credit_counter_write   <= credit_counter_write;
+		
+		if(state_data_read == 2'd1 && !rd_en)
+		begin
+			if(rd_ptr == 6'd7 || rd_ptr == 6'd15 || rd_ptr == 6'd23 || rd_ptr == 6'd31 || rd_ptr == 6'd39 || rd_ptr == 6'd47 || rd_ptr == 6'd55 || rd_ptr == 6'd63)
+			begin		
+				if(credit_counter < 6'd49)			
+					credit_counter_reader <= credit_counter_reader + 6'd8;
+				else
+					credit_counter_reader <= credit_counter_reader + 6'd7;
+			end
+			else
+				credit_counter_reader <= credit_counter_reader;	
+			end
+		else 
+		begin
+			credit_counter_reader <= credit_counter_reader;
+		end
+			
+		credit_counter <=  credit_counter_reader - credit_counter_write;
+
+		if(credit_counter > 6'd56)
+		begin
+			overflow_credit_error <= 1'b1;
+		end
+		else 
+			overflow_credit_error <= 1'b0;
+
+		if(state_data_write == 2'd2)
+		begin
+			counter_writer <= counter_writer + 6'd1;
 		end
 		else
 		begin
+			counter_writer <= counter_writer;
+		end
+		
+		if(state_data_read == 2'd1 && !rd_en)
+		begin
+			counter_reader <= counter_reader + 6'd1;
+		end
+		else
+		begin
+			counter_reader <= counter_reader;
+		end
 
-			if (state_data_write == 2'd2)
-			begin
-				if(credit_counter == 6'd0)
-					credit_counter   <= credit_counter;
-				else				
-					credit_counter   <= credit_counter - 6'd1;
-			end
-			else if(state_data_read == 2'd2)
-			begin
-				if(rd_ptr == 6'd7 || rd_ptr == 6'd15 || rd_ptr == 6'd23 || rd_ptr == 6'd31 || rd_ptr == 6'd39 || rd_ptr == 6'd47 || rd_ptr == 6'd55 || rd_ptr == 6'd63)
-				begin	
-					if(credit_counter < 6'd48)				
-						credit_counter <= credit_counter + 6'd8;
-					else
-						credit_counter <= credit_counter + 6'd7;
-				end
-				else
-					credit_counter <= credit_counter;	
-			end
-			else 
-			begin
-				if(credit_counter > 6'd55)
-				begin
-					overflow_credit_error <= 1'b1;
-				end
-				else 
-					overflow_credit_error <= 1'b0;
-			end
+		counter <= counter_writer - counter_reader;
 
-			if (state_data_write == 2'd2)
-			begin
-				if(counter == 6'd63)
-					counter <= counter;
-				else
-					counter <= counter + 6'd1;
-			end
-			else if(state_data_read == 2'd2)
-			begin
-				if(counter == 6'd0)
-					counter <= counter;
-				else
-					counter <= counter - 6'd1;
-			end
-			else
-			begin
-				counter <= counter;
-			end
+		if(counter == 6'd63)
+		begin
+			f_full  <= 1'b1;
+		end
+		else
+		begin
+			f_full  <= 1'b0;
+		end
+
+		if(counter == 6'd0)
+		begin
+			f_empty <= 1'b1;
+		end
+		else
+		begin
+			f_empty <= 1'b0;
 		end
 	end
-
-always@(*)
-begin
-
-	f_full  = 1'b0;
-	f_empty = 1'b0;
-
-	if(counter == 6'd63)
-	begin
-		f_full  = 1'b1;
-	end
-
-	if(counter == 6'd0)
-	begin
-		f_empty = 1'b1;
-	end
-
 end
+
 
 //Read pointer
 	always@(posedge clock or negedge reset)
@@ -339,59 +448,39 @@ end
 		begin
 			rd_ptr <= {(AWIDTH){1'b0}};
 			data_out <= 9'd0;
-			open_slot_fct<= 1'b0;
 			state_data_read <= 2'd0;
 		end
 		else
 		begin
-		
+
 			state_data_read <= next_state_data_read;
+
+			data_out   <= mem[rd_ptr];
 
 			case(state_data_read)
 			2'd0:
 			begin
 				if(rd_en)
 				begin
-					data_out   <= data_out;
-					open_slot_fct<= open_slot_fct;
 					rd_ptr     <= rd_ptr+ 6'd1;
 				end
 				else
 				begin
-					open_slot_fct<= open_slot_fct;
-					data_out   <= mem[rd_ptr];
+					rd_ptr     <= rd_ptr;
 				end
 			end
 			2'd1:
 			begin
-				if(rd_ptr == 6'd7 || rd_ptr == 6'd15 || rd_ptr == 6'd23 || rd_ptr == 6'd31 || rd_ptr == 6'd39 || rd_ptr == 6'd47 || rd_ptr == 6'd55 || rd_ptr == 6'd63)
-				begin
-					open_slot_fct<= 1'b1;
-				end
-				else
-				begin
-					open_slot_fct<= 1'b0;
-				end
-
-				if(rd_en)
-				begin
-					data_out   <= mem[rd_ptr];
-				end
-				else 
-				begin
-					data_out   <= data_out;
-				end
-				
+				rd_ptr     <= rd_ptr;
 			end
 			2'd2:
 			begin
-				open_slot_fct<= open_slot_fct;
-				data_out   <= data_out;
+				rd_ptr     <= rd_ptr;
 			end
 			default:
 			begin
 				rd_ptr     <= rd_ptr;
-				data_out   <= data_out;
+
 			end
 			endcase
 
