@@ -54,7 +54,11 @@ module fifo_tx
 
 	reg  [1:0] state_data_read;
 	reg  [1:0] next_state_data_read;
-	
+
+	reg [AWIDTH-1:0] counter_writer;
+	reg [AWIDTH-1:0] counter_reader;
+
+
 /****************************************/
 
 always@(*)
@@ -104,7 +108,7 @@ begin
 	case(state_data_read)
 	2'd0:
 	begin
-		if(rd_en && !f_empty)
+		if(counter > 6'd0)
 		begin
 			next_state_data_read = 2'd1;
 		end
@@ -115,16 +119,27 @@ begin
 	end
 	2'd1:
 	begin
-		if(rd_en)
-		begin
-			next_state_data_read = 2'd1;
-		end
-		else 
+		if(rd_en && !f_empty)
 		begin
 			next_state_data_read = 2'd2;
 		end
+		else 
+		begin
+			next_state_data_read = 2'd1;
+		end
 	end
 	2'd2:
+	begin
+		if(rd_en)
+		begin
+			next_state_data_read = 2'd2;
+		end
+		else 
+		begin
+			next_state_data_read = 2'd3;
+		end
+	end
+	2'd3:
 	begin
 		next_state_data_read = 2'd0;
 	end
@@ -247,51 +262,55 @@ always@(posedge clock or negedge reset)
 begin
 	if (!reset)
 	begin
+		f_full  <= 1'b0;
+		f_empty <= 1'b0;
 		counter <= {(AWIDTH){1'b0}};
+		counter_writer <= {(AWIDTH){1'b0}};
+		counter_reader <= {(AWIDTH){1'b0}};
 	end
 	else
 	begin
 
 		if(state_data_write == 2'd2)
 		begin
-			if(counter == 6'd63)
-				counter <= counter;
-			else
-				counter <= counter + 6'd1;
-		end
-		else if(state_data_read == 2'd2)
-		begin
-			if(counter == 6'd0)
-				counter <= counter;
-			else
-				counter <= counter - 6'd1;
+			counter_writer <= counter_writer + 6'd1;
 		end
 		else
 		begin
-			counter <= counter;
+			counter_writer <= counter_writer;
+		end
+		
+		if(state_data_read == 2'd2 && !rd_en)
+		begin
+			counter_reader <= counter_reader + 6'd1;
+		end
+		else
+		begin
+			counter_reader <= counter_reader;
 		end
 
+		counter <= counter_writer - counter_reader;
+
+		if(counter == 6'd63)
+		begin
+			f_full  <= 1'b1;
+		end
+		else
+		begin
+			f_full  <= 1'b0;
+		end
+
+		if(counter == 6'd0)
+		begin
+			f_empty <= 1'b1;
+		end
+		else
+		begin
+			f_empty <= 1'b0;
+		end
 	end
 end
 
-
-always@(*)
-begin
-
-	f_full  = 1'b0;
-	f_empty = 1'b0;
-
-	if(counter == 6'd63)
-	begin
-		f_full  = 1'b1;
-	end
-
-	if(counter == 6'd0)
-	begin
-		f_empty = 1'b1;
-	end
-
-end
 
 //Read pointer
 always@(posedge clock or negedge reset)
@@ -306,41 +325,36 @@ begin
 	else
 	begin
 		state_data_read <= next_state_data_read;
-
+		data_out   <= mem[rd_ptr];
 		case(state_data_read)
 		2'd0:
 		begin
-			if(rd_en)
+			write_tx<= 1'b0;
+		end
+		2'd1:
+		begin
+			if(rd_en && !f_empty)
 			begin
-				write_tx<= 1'b0;
 				rd_ptr     <= rd_ptr + 6'd1;
 			end
 			else
 			begin
-				data_out   <= mem[rd_ptr];
-
-				if(counter > 6'd0)
-				begin
-					write_tx<= 1'b1;
-				end
-				else
-					write_tx<= 1'b0;
+				rd_ptr     <= rd_ptr;				
 			end
-		end
-		2'd1:
-		begin
-			write_tx<= 1'b0;
-			data_out   <= mem[rd_ptr];
+
+			write_tx<= 1'b1;
 		end
 		2'd2:
 		begin
-			write_tx<= 1'b0;
-			data_out   <= mem[rd_ptr];
+			write_tx<= 1'b1;
+		end
+		2'd3:
+		begin
+			write_tx<= 1'b1;
 		end
 		default:
 		begin
 			rd_ptr     <= rd_ptr;
-			data_out   <= data_out;
 		end
 		endcase
 	end
