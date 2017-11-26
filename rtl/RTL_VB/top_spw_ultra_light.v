@@ -86,7 +86,6 @@ module top_spw_ultra_light(
 
 	wire got_fct_flag_fsm;
 
-
 	FSM_SPW FSM(
 			.pclk(pclk),
 			.resetn(resetn),

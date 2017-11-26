@@ -346,11 +346,11 @@ begin
 		end
 		2'd2:
 		begin
-			write_tx<= 1'b1;
+			write_tx<= 1'b0;
 		end
 		2'd3:
 		begin
-			write_tx<= 1'b1;
+			write_tx<= 1'b0;
 		end
 		default:
 		begin

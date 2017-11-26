@@ -140,7 +140,7 @@ localparam [13:0] timecode_ss    = 14'b01110000000000;
 	reg tx_dout_timecode;
 	reg tx_dout_data;
 
-	reg [3:0] global_counter_transfer; 
+	reg [13:0] global_counter_transfer; 
 
 
 
@@ -166,443 +166,443 @@ begin
 		end
 		tx_spw_null,tx_spw_null_c:
 		begin
-			 if(last_type == NULL  && global_counter_transfer[3:0] == 4'd0)
+			 if(last_type == NULL  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(null_s[6]^null_s[0]^null_s[1]);
 			 end
-			 else if(last_type == FCT  && global_counter_transfer[3:0] == 4'd0)
+			 else if(last_type == FCT  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(null_s[6]^fct_s[0]^fct_s[1]);
 			 end
-			 else if(last_type == EOP  && global_counter_transfer[3:0] == 4'd0)
+			 else if(last_type == EOP  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(null_s[6]^eop_s[0]^eop_s[1]);
 			 end
-			 else if(last_type == EEP  && global_counter_transfer[3:0] == 4'd0)
+			 else if(last_type == EEP  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(null_s[6]^eep_s[0]^eep_s[1]);
 			 end
-			 else if(last_type == DATA  && global_counter_transfer[3:0] == 4'd0)
+			 else if(last_type == DATA  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <=  !(null_s[6]^txdata_flagctrl_tx_last[0]^txdata_flagctrl_tx_last[1]^txdata_flagctrl_tx_last[2]^txdata_flagctrl_tx_last[3]^ txdata_flagctrl_tx_last[4]^txdata_flagctrl_tx_last[5]^txdata_flagctrl_tx_last[6]^txdata_flagctrl_tx_last[7]);
 			 end
-			 else if(last_type == TIMEC && global_counter_transfer[3:0] == 4'd0)
+			 else if(last_type == TIMEC && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <=  !(null_s[6]^last_timein_control_flag_tx[7]^last_timein_control_flag_tx[6]^last_timein_control_flag_tx[5]^last_timein_control_flag_tx[4]^last_timein_control_flag_tx[3]^last_timein_control_flag_tx[2]^last_timein_control_flag_tx[1]^last_timein_control_flag_tx[0]);
 			 end
-			 else if(global_counter_transfer[3:0] == 4'd1)
+			 else if(global_counter_transfer[13:0] == 14'd2)
 			 begin
 				tx_dout <= null_s[6];
 			 end
-			 else if(global_counter_transfer[3:0] == 4'd2)
+			 else if(global_counter_transfer[13:0] == 14'd4)
 			 begin
 				tx_dout <= null_s[5];
 			 end
-			 else if(global_counter_transfer[3:0] == 4'd3)
+			 else if(global_counter_transfer[13:0] == 14'd8)
 			 begin
 				tx_dout <= null_s[4];
 			 end
-			 else if(global_counter_transfer[3:0] == 4'd4)
+			 else if(global_counter_transfer[13:0] == 14'd16)
 			 begin
 				tx_dout <= null_s[3];
 			 end
-			 else if(global_counter_transfer[3:0] == 4'd5)
+			 else if(global_counter_transfer[13:0] == 14'd32)
 			 begin
 				tx_dout <= null_s[2];
 			 end
-			 else if(global_counter_transfer[3:0] == 4'd6)
+			 else if(global_counter_transfer[13:0] == 14'd64)
 			 begin
 				tx_dout <= null_s[1];
 			 end
-			 else if(global_counter_transfer[3:0] == 4'd7)
+			 else if(global_counter_transfer[13:0] == 14'd128)
 			 begin
 				tx_dout <= null_s[0];
 			 end
 		end
 		tx_spw_fct,tx_spw_fct_c:
 		begin
-			 if(last_type == NULL  && global_counter_transfer[3:0] == 4'd0)
+			 if(last_type == NULL  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(fct_s[2]^null_s[0]^null_s[1]);
 			 end
-			 else if(last_type == FCT  && global_counter_transfer[3:0] == 4'd0)
+			 else if(last_type == FCT  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(fct_s[2]^fct_s[0]^fct_s[1]);
 			 end
-			 else if(last_type == EOP  && global_counter_transfer[3:0] == 4'd0)
+			 else if(last_type == EOP  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(fct_s[2]^eop_s[0]^eop_s[1]);
 			 end
-			 else if(last_type == EEP  && global_counter_transfer[3:0] == 4'd0)
+			 else if(last_type == EEP  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(fct_s[2]^eep_s[0]^eep_s[1]);
 			 end
-			 else if (last_type == DATA && global_counter_transfer[3:0] == 4'd0)
+			 else if (last_type == DATA && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(fct_s[2]^txdata_flagctrl_tx_last[0]^txdata_flagctrl_tx_last[1]^txdata_flagctrl_tx_last[2]^txdata_flagctrl_tx_last[3]^ txdata_flagctrl_tx_last[4]^txdata_flagctrl_tx_last[5]^txdata_flagctrl_tx_last[6]^txdata_flagctrl_tx_last[7]);
 			 end
-			 else if(last_type == TIMEC && global_counter_transfer[3:0] == 4'd0)
+			 else if(last_type == TIMEC && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(fct_s[2]^last_timein_control_flag_tx[7]^last_timein_control_flag_tx[6]^last_timein_control_flag_tx[5]^last_timein_control_flag_tx[4]^last_timein_control_flag_tx[3]^last_timein_control_flag_tx[2]^last_timein_control_flag_tx[1]^last_timein_control_flag_tx[0]);
 			 end
-			 else if(global_counter_transfer[3:0] == 4'd1)
+			 else if(global_counter_transfer[13:0] == 4'd2)
 			 begin
 				tx_dout <= fct_s[2];
 			 end
-			 else if(global_counter_transfer[3:0] == 4'd2)
+			 else if(global_counter_transfer[13:0] == 4'd4)
 			 begin
 				tx_dout <= fct_s[1];
 			 end
-			 else if(global_counter_transfer[3:0] == 4'd3)
+			 else if(global_counter_transfer[13:0] == 4'd8)
 			 begin
 				tx_dout <= fct_s[0];
 			 end
 		end
 	   	tx_spw_data_c:
 		begin
-			if(!tx_data_in[8] && last_type == NULL  && global_counter_transfer[3:0] == 4'd0)
+			if(!tx_data_in[8] && last_type == NULL  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(tx_data_in[8]^null_s[0]^null_s[1]);
 			 end
-			 else if(!tx_data_in[8] && last_type == FCT && global_counter_transfer[3:0] == 4'd0)
+			 else if(!tx_data_in[8] && last_type == FCT && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(tx_data_in[8]^fct_s[0]^fct_s[1]);
 			 end
-			 else if(!tx_data_in[8] && last_type == EOP  && global_counter_transfer[3:0] == 4'd0)
+			 else if(!tx_data_in[8] && last_type == EOP  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(tx_data_in[8]^eop_s[0]^eop_s[1]);
 			 end
-			 else if(!tx_data_in[8] && last_type == EEP  && global_counter_transfer[3:0] == 4'd0)
+			 else if(!tx_data_in[8] && last_type == EEP  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(tx_data_in[8]^eep_s[0]^eep_s[1]);
 			 end
-			 else if(!tx_data_in[8] && last_type == DATA  && global_counter_transfer[3:0] == 4'd0)
+			 else if(!tx_data_in[8] && last_type == DATA  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(tx_data_in[8]^txdata_flagctrl_tx_last[0]^txdata_flagctrl_tx_last[1]^txdata_flagctrl_tx_last[2]^txdata_flagctrl_tx_last[3]^ txdata_flagctrl_tx_last[4]^txdata_flagctrl_tx_last[5]^txdata_flagctrl_tx_last[6]^txdata_flagctrl_tx_last[7]);
 			 end
-			 else if(!tx_data_in[8] && last_type == TIMEC && global_counter_transfer[3:0] == 4'd0)
+			 else if(!tx_data_in[8] && last_type == TIMEC && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(tx_data_in[8]^last_timein_control_flag_tx[7]^last_timein_control_flag_tx[6]^last_timein_control_flag_tx[5]^last_timein_control_flag_tx[4]^last_timein_control_flag_tx[3]^last_timein_control_flag_tx[2]^last_timein_control_flag_tx[1]^last_timein_control_flag_tx[0]);
 			 end
-			 else if(tx_data_in[8]  && tx_data_in[1:0] == 2'b00 && last_type == NULL  && global_counter_transfer[3:0] == 4'd0)
+			 else if(tx_data_in[8]  && tx_data_in[1:0] == 2'b00 && last_type == NULL  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(eop_s[2]^null_s[0]^null_s[1]);
 			 end
-			 else if(tx_data_in[8] && tx_data_in[1:0] == 2'b00 && last_type == FCT   && global_counter_transfer[3:0] == 4'd0)
+			 else if(tx_data_in[8] && tx_data_in[1:0] == 2'b00 && last_type == FCT   && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(eop_s[2]^fct_s[0]^fct_s[1]);
 			 end
-			 else if(tx_data_in[8] && tx_data_in[1:0] == 2'b00 && last_type == EOP  && global_counter_transfer[3:0] == 4'd0)
+			 else if(tx_data_in[8] && tx_data_in[1:0] == 2'b00 && last_type == EOP  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(eop_s[2]^eop_s[0]^eop_s[1]);
 			 end
-			 else if(tx_data_in[8] && tx_data_in[1:0] == 2'b00 && last_type == EEP  && global_counter_transfer[3:0] == 4'd0)
+			 else if(tx_data_in[8] && tx_data_in[1:0] == 2'b00 && last_type == EEP  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(eop_s[2]^eep_s[0]^eep_s[1]);
 			 end
-			 else if(tx_data_in[8]  && tx_data_in[1:0] == 2'b00 && last_type == DATA  && global_counter_transfer[3:0] == 4'd0)
+			 else if(tx_data_in[8]  && tx_data_in[1:0] == 2'b00 && last_type == DATA  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(eop_s[2]^txdata_flagctrl_tx_last[0]^txdata_flagctrl_tx_last[1]^txdata_flagctrl_tx_last[2]^txdata_flagctrl_tx_last[3]^ txdata_flagctrl_tx_last[4]^txdata_flagctrl_tx_last[5]^txdata_flagctrl_tx_last[6]^txdata_flagctrl_tx_last[7]);
 			 end
-			 else if(tx_data_in[8]  && tx_data_in[1:0] == 2'b00 && last_type == TIMEC && global_counter_transfer[3:0] == 4'd0)
+			 else if(tx_data_in[8]  && tx_data_in[1:0] == 2'b00 && last_type == TIMEC && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(eop_s[2]^last_timein_control_flag_tx[7]^last_timein_control_flag_tx[6]^last_timein_control_flag_tx[5]^last_timein_control_flag_tx[4]^last_timein_control_flag_tx[3]^last_timein_control_flag_tx[2]^last_timein_control_flag_tx[1]^last_timein_control_flag_tx[0]);
 			 end
-			 else if(tx_data_in[8] && tx_data_in[1:0] == 2'b01 && last_type == NULL  && global_counter_transfer[3:0] == 4'd0)
+			 else if(tx_data_in[8] && tx_data_in[1:0] == 2'b01 && last_type == NULL  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(eep_s[2]^null_s[0]^null_s[1]);
 			 end
-			 else if(tx_data_in[8] && tx_data_in[1:0] == 2'b01 && last_type == FCT  && global_counter_transfer[3:0] == 4'd0)
+			 else if(tx_data_in[8] && tx_data_in[1:0] == 2'b01 && last_type == FCT  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(eep_s[2]^fct_s[0]^fct_s[1]);
 			 end
-			 else if(tx_data_in[8] && tx_data_in[1:0] == 2'b01 && last_type == EOP  && global_counter_transfer[3:0] == 4'd0)
+			 else if(tx_data_in[8] && tx_data_in[1:0] == 2'b01 && last_type == EOP  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(eep_s[2]^eop_s[0]^eop_s[1]);
 			 end
-			 else if(tx_data_in[8] && tx_data_in[1:0] == 2'b01 && last_type == EEP && global_counter_transfer[3:0] == 4'd0)
+			 else if(tx_data_in[8] && tx_data_in[1:0] == 2'b01 && last_type == EEP && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(eep_s[2]^eep_s[0]^eep_s[1]);
 			 end
-			 else if(tx_data_in[8]  && tx_data_in[1:0] == 2'b01 && last_type == DATA && global_counter_transfer[3:0] == 4'd0)
+			 else if(tx_data_in[8]  && tx_data_in[1:0] == 2'b01 && last_type == DATA && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(eep_s[2]^txdata_flagctrl_tx_last[0]^txdata_flagctrl_tx_last[1]^txdata_flagctrl_tx_last[2]^txdata_flagctrl_tx_last[3]^ txdata_flagctrl_tx_last[4]^txdata_flagctrl_tx_last[5]^txdata_flagctrl_tx_last[6]^txdata_flagctrl_tx_last[7]);
 			 end
-			 else if(tx_data_in[8]  &&  tx_data_in[1:0] == 2'b01 && last_type == TIMEC && global_counter_transfer[3:0] == 4'd0)
+			 else if(tx_data_in[8]  &&  tx_data_in[1:0] == 2'b01 && last_type == TIMEC && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(eep_s[2]^last_timein_control_flag_tx[7]^last_timein_control_flag_tx[6]^last_timein_control_flag_tx[5]^last_timein_control_flag_tx[4]^last_timein_control_flag_tx[3]^last_timein_control_flag_tx[2]^last_timein_control_flag_tx[1]^last_timein_control_flag_tx[0]);
 			 end
-			 else if(!tx_data_in[8] &&  global_counter_transfer[3:0] == 4'd1)
+			 else if(!tx_data_in[8] &&  global_counter_transfer[13:0] == 14'd2)
 			 begin
 				tx_dout <= tx_data_in[8];
 			 end
-			 else if(!tx_data_in[8] && global_counter_transfer[3:0] == 4'd2)
+			 else if(!tx_data_in[8] && global_counter_transfer[13:0] == 14'd4)
 			 begin
 				tx_dout <= tx_data_in[0];
 			 end
-			 else if(!tx_data_in[8] &&  global_counter_transfer[3:0] == 4'd3)
+			 else if(!tx_data_in[8] &&  global_counter_transfer[13:0] == 14'd8)
 			 begin
 				tx_dout <= tx_data_in[1];
 			 end
-			 else if(!tx_data_in[8] && global_counter_transfer[3:0] == 4'd4)
+			 else if(!tx_data_in[8] && global_counter_transfer[13:0] == 14'd16)
 			 begin
 				tx_dout <= tx_data_in[2];
 			 end
-			 else if(!tx_data_in[8]  && global_counter_transfer[3:0] == 4'd5)
+			 else if(!tx_data_in[8]  && global_counter_transfer[13:0] == 14'd32)
 			 begin
 				tx_dout <= tx_data_in[3];
 			 end
-			 else if(!tx_data_in[8]  && global_counter_transfer[3:0] == 4'd6)
+			 else if(!tx_data_in[8]  && global_counter_transfer[13:0] == 14'd64)
 			 begin
 				tx_dout <= tx_data_in[4];
 			 end
-			 else if(!tx_data_in[8]  && global_counter_transfer[3:0] == 4'd7)
+			 else if(!tx_data_in[8]  && global_counter_transfer[13:0] == 14'd128)
 			 begin
 				tx_dout <= tx_data_in[5];
 			 end
-			 else if(!tx_data_in[8] &&  global_counter_transfer[3:0] == 4'd8)
+			 else if(!tx_data_in[8] &&  global_counter_transfer[13:0] == 14'd256)
 			 begin
 				tx_dout <= tx_data_in[6];
 			 end
-			 else if(!tx_data_in[8] &&  global_counter_transfer[3:0] == 4'd9)
+			 else if(!tx_data_in[8] &&  global_counter_transfer[13:0] == 14'd512)
 			 begin
 				tx_dout <= tx_data_in[7];
 			 end
-			 else if(tx_data_in[8] && tx_data_in[1:0] == 2'b01 && global_counter_transfer[3:0] == 4'd1)
+			 else if(tx_data_in[8] && tx_data_in[1:0] == 2'b01 && global_counter_transfer[13:0] == 14'd2)
 			 begin
 				tx_dout <= eep_s[2];
 			 end
-			 else if( tx_data_in[8] && tx_data_in[1:0] == 2'b01 && global_counter_transfer[3:0] == 4'd2)
+			 else if( tx_data_in[8] && tx_data_in[1:0] == 2'b01 && global_counter_transfer[13:0] == 14'd4)
 			 begin
 				tx_dout <= eep_s[1];
 			 end
-			 else if(tx_data_in[8] && tx_data_in[1:0] == 2'b01 && global_counter_transfer[3:0] == 4'd3)
+			 else if(tx_data_in[8] && tx_data_in[1:0] == 2'b01 && global_counter_transfer[13:0] == 14'd8)
 			 begin
 				tx_dout <= eep_s[0];
 			 end
-			 else if(tx_data_in[8] && tx_data_in[1:0] == 2'b00 && global_counter_transfer[3:0] == 4'd1)
+			 else if(tx_data_in[8] && tx_data_in[1:0] == 2'b00 && global_counter_transfer[13:0] == 14'd2)
 			 begin
 				tx_dout <= eop_s[2];
 			 end
-			 else if(tx_data_in[8] && tx_data_in[1:0] == 2'b00 && global_counter_transfer[3:0] == 4'd2)
+			 else if(tx_data_in[8] && tx_data_in[1:0] == 2'b00 && global_counter_transfer[13:0] == 14'd4)
 			 begin
 				tx_dout <= eop_s[1];
 			 end
-			 else if(tx_data_in[8] && tx_data_in[1:0] == 2'b00 && global_counter_transfer[3:0] == 4'd3)
+			 else if(tx_data_in[8] && tx_data_in[1:0] == 2'b00 && global_counter_transfer[13:0] == 14'd8)
 			 begin
 				tx_dout <= eop_s[0];
 			 end
 		end
 	   	tx_spw_data_c_0:
 		begin
-			if(!tx_data_in_0[8] && last_type == NULL  && global_counter_transfer[3:0] == 4'd0)
+			if(!tx_data_in_0[8] && last_type == NULL  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(tx_data_in_0[8]^null_s[0]^null_s[1]);
 			 end
-			 else if(!tx_data_in_0[8] && last_type == FCT && global_counter_transfer[3:0] == 4'd0)
+			 else if(!tx_data_in_0[8] && last_type == FCT && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(tx_data_in_0[8]^fct_s[0]^fct_s[1]);
 			 end
-			 else if(!tx_data_in_0[8] && last_type == EOP  && global_counter_transfer[3:0] == 4'd0)
+			 else if(!tx_data_in_0[8] && last_type == EOP  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(tx_data_in_0[8]^eop_s[0]^eop_s[1]);
 			 end
-			 else if(!tx_data_in_0[8] && last_type == EEP  && global_counter_transfer[3:0] == 4'd0)
+			 else if(!tx_data_in_0[8] && last_type == EEP  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(tx_data_in_0[8]^eep_s[0]^eep_s[1]);
 			 end
-			 else if(!tx_data_in_0[8] && last_type == DATA  && global_counter_transfer[3:0] == 4'd0)
+			 else if(!tx_data_in_0[8] && last_type == DATA  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(tx_data_in_0[8]^txdata_flagctrl_tx_last[0]^txdata_flagctrl_tx_last[1]^txdata_flagctrl_tx_last[2]^txdata_flagctrl_tx_last[3]^ txdata_flagctrl_tx_last[4]^txdata_flagctrl_tx_last[5]^txdata_flagctrl_tx_last[6]^txdata_flagctrl_tx_last[7]);
 			 end
-			 else if(!tx_data_in_0[8] && last_type == TIMEC && global_counter_transfer[3:0] == 4'd0)
+			 else if(!tx_data_in_0[8] && last_type == TIMEC && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(tx_data_in_0[8]^last_timein_control_flag_tx[7]^last_timein_control_flag_tx[6]^last_timein_control_flag_tx[5]^last_timein_control_flag_tx[4]^last_timein_control_flag_tx[3]^last_timein_control_flag_tx[2]^last_timein_control_flag_tx[1]^last_timein_control_flag_tx[0]);
 			 end
-			 else if(tx_data_in_0[8]  && tx_data_in_0[1:0] == 2'b00 && last_type == NULL  && global_counter_transfer[3:0] == 4'd0)
+			 else if(tx_data_in_0[8]  && tx_data_in_0[1:0] == 2'b00 && last_type == NULL  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(eop_s[2]^null_s[0]^null_s[1]);
 			 end
-			 else if(tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b00 && last_type == FCT   && global_counter_transfer[3:0] == 4'd0)
+			 else if(tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b00 && last_type == FCT   && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(eop_s[2]^fct_s[0]^fct_s[1]);
 			 end
-			 else if(tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b00 && last_type == EOP  && global_counter_transfer[3:0] == 4'd0)
+			 else if(tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b00 && last_type == EOP  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(eop_s[2]^eop_s[0]^eop_s[1]);
 			 end
-			 else if(tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b00 && last_type == EEP  && global_counter_transfer[3:0] == 4'd0)
+			 else if(tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b00 && last_type == EEP  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(eop_s[2]^eep_s[0]^eep_s[1]);
 			 end
-			 else if(tx_data_in_0[8]  && tx_data_in_0[1:0] == 2'b00 && last_type == DATA  && global_counter_transfer[3:0] == 4'd0)
+			 else if(tx_data_in_0[8]  && tx_data_in_0[1:0] == 2'b00 && last_type == DATA  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(eop_s[2]^txdata_flagctrl_tx_last[0]^txdata_flagctrl_tx_last[1]^txdata_flagctrl_tx_last[2]^txdata_flagctrl_tx_last[3]^ txdata_flagctrl_tx_last[4]^txdata_flagctrl_tx_last[5]^txdata_flagctrl_tx_last[6]^txdata_flagctrl_tx_last[7]);
 			 end
-			 else if(tx_data_in_0[8]  && tx_data_in_0[1:0] == 2'b00 && last_type == TIMEC && global_counter_transfer[3:0] == 4'd0)
+			 else if(tx_data_in_0[8]  && tx_data_in_0[1:0] == 2'b00 && last_type == TIMEC && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(eop_s[2]^last_timein_control_flag_tx[7]^last_timein_control_flag_tx[6]^last_timein_control_flag_tx[5]^last_timein_control_flag_tx[4]^last_timein_control_flag_tx[3]^last_timein_control_flag_tx[2]^last_timein_control_flag_tx[1]^last_timein_control_flag_tx[0]);
 			 end
-			 else if(tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b01 && last_type == NULL  && global_counter_transfer[3:0] == 4'd0)
+			 else if(tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b01 && last_type == NULL  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(eep_s[2]^null_s[0]^null_s[1]);
 			 end
-			 else if(tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b01 && last_type == FCT  && global_counter_transfer[3:0] == 4'd0)
+			 else if(tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b01 && last_type == FCT  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(eep_s[2]^fct_s[0]^fct_s[1]);
 			 end
-			 else if(tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b01 && last_type == EOP  && global_counter_transfer[3:0] == 4'd0)
+			 else if(tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b01 && last_type == EOP  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(eep_s[2]^eop_s[0]^eop_s[1]);
 			 end
-			 else if(tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b01 && last_type == EEP && global_counter_transfer[3:0] == 4'd0)
+			 else if(tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b01 && last_type == EEP && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(eep_s[2]^eep_s[0]^eep_s[1]);
 			 end
-			 else if(tx_data_in_0[8]  && tx_data_in_0[1:0] == 2'b01 && last_type == DATA && global_counter_transfer[3:0] == 4'd0)
+			 else if(tx_data_in_0[8]  && tx_data_in_0[1:0] == 2'b01 && last_type == DATA && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(eep_s[2]^txdata_flagctrl_tx_last[0]^txdata_flagctrl_tx_last[1]^txdata_flagctrl_tx_last[2]^txdata_flagctrl_tx_last[3]^ txdata_flagctrl_tx_last[4]^txdata_flagctrl_tx_last[5]^txdata_flagctrl_tx_last[6]^txdata_flagctrl_tx_last[7]);
 			 end
-			 else if(tx_data_in_0[8]  &&  tx_data_in_0[1:0] == 2'b01 && last_type == TIMEC && global_counter_transfer[3:0] == 4'd0)
+			 else if(tx_data_in_0[8]  &&  tx_data_in_0[1:0] == 2'b01 && last_type == TIMEC && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(eep_s[2]^last_timein_control_flag_tx[7]^last_timein_control_flag_tx[6]^last_timein_control_flag_tx[5]^last_timein_control_flag_tx[4]^last_timein_control_flag_tx[3]^last_timein_control_flag_tx[2]^last_timein_control_flag_tx[1]^last_timein_control_flag_tx[0]);
 			 end
-			 else if(!tx_data_in_0[8] &&  global_counter_transfer[3:0] == 4'd1)
+			 else if(!tx_data_in_0[8] &&  global_counter_transfer[13:0] == 14'd2)
 			 begin
 				tx_dout <= tx_data_in_0[8];
 			 end
-			 else if(!tx_data_in_0[8] && global_counter_transfer[3:0] == 4'd2)
+			 else if(!tx_data_in_0[8] && global_counter_transfer[13:0] == 14'd4)
 			 begin
 				tx_dout <= tx_data_in_0[0];
 			 end
-			 else if(!tx_data_in_0[8] &&  global_counter_transfer[3:0] == 4'd3)
+			 else if(!tx_data_in_0[8] &&  global_counter_transfer[13:0] == 14'd8)
 			 begin
 				tx_dout <= tx_data_in_0[1];
 			 end
-			 else if(!tx_data_in_0[8] && global_counter_transfer[3:0] == 4'd4)
+			 else if(!tx_data_in_0[8] && global_counter_transfer[13:0] == 14'd16)
 			 begin
 				tx_dout <= tx_data_in_0[2];
 			 end
-			 else if(!tx_data_in_0[8]  && global_counter_transfer[3:0] == 4'd5)
+			 else if(!tx_data_in_0[8]  && global_counter_transfer[13:0] == 14'd32)
 			 begin
 				tx_dout <= tx_data_in_0[3];
 			 end
-			 else if(!tx_data_in_0[8]  && global_counter_transfer[3:0] == 4'd6)
+			 else if(!tx_data_in_0[8]  && global_counter_transfer[13:0] == 14'd64)
 			 begin
 				tx_dout <= tx_data_in_0[4];
 			 end
-			 else if(!tx_data_in_0[8]  && global_counter_transfer[3:0] == 4'd7)
+			 else if(!tx_data_in_0[8]  && global_counter_transfer[13:0] == 14'd128)
 			 begin
 				tx_dout <= tx_data_in_0[5];
 			 end
-			 else if(!tx_data_in_0[8] &&  global_counter_transfer[3:0] == 4'd8)
+			 else if(!tx_data_in_0[8] &&  global_counter_transfer[13:0] == 14'd256)
 			 begin
 				tx_dout <= tx_data_in_0[6];
 			 end
-			 else if(!tx_data_in_0[8] &&  global_counter_transfer[3:0] == 4'd9)
+			 else if(!tx_data_in_0[8] &&  global_counter_transfer[13:0] == 14'd512)
 			 begin
 				tx_dout <= tx_data_in_0[7];
 			 end
-			 else if(tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b01 && global_counter_transfer[3:0] == 4'd1)
+			 else if(tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b01 && global_counter_transfer[13:0] == 14'd2)
 			 begin
 				tx_dout <= eep_s[2];
 			 end
-			 else if( tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b01 && global_counter_transfer[3:0] == 4'd2)
+			 else if( tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b01 && global_counter_transfer[13:0] == 14'd4)
 			 begin
 				tx_dout <= eep_s[1];
 			 end
-			 else if(tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b01 && global_counter_transfer[3:0] == 4'd3)
+			 else if(tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b01 && global_counter_transfer[13:0] == 14'd8)
 			 begin
 				tx_dout <= eep_s[0];
 			 end
-			 else if(tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b00 && global_counter_transfer[3:0] == 4'd1)
+			 else if(tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b00 && global_counter_transfer[13:0] == 4'd2)
 			 begin
 				tx_dout <= eop_s[2];
 			 end
-			 else if(tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b00 && global_counter_transfer[3:0] == 4'd2)
+			 else if(tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b00 && global_counter_transfer[13:0] == 4'd4)
 			 begin
 				tx_dout <= eop_s[1];
 			 end
-			 else if(tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b00 && global_counter_transfer[3:0] == 4'd3)
+			 else if(tx_data_in_0[8] && tx_data_in_0[1:0] == 2'b00 && global_counter_transfer[13:0] == 4'd8)
 			 begin
 				tx_dout <= eop_s[0];
 			 end
 		end
 	   	tx_spw_time_code_c:
 		begin
-			 if(last_type == NULL  && global_counter_transfer[3:0] == 4'd0)
+			 if(last_type == NULL  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(timecode_s[12]^null_s[0]^null_s[1]);
 			 end
-			 else if(last_type == FCT   && global_counter_transfer[3:0] == 4'd0)
+			 else if(last_type == FCT   && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(timecode_s[12]^fct_s[0]^fct_s[1]);
 			 end
-			 else if (last_type == EOP   && global_counter_transfer[3:0] == 4'd0)
+			 else if (last_type == EOP   && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(timecode_s[12]^eop_s[0]^eop_s[1]);
 			 end
-			 else if( last_type == EEP   && global_counter_transfer[3:0] == 4'd0)
+			 else if( last_type == EEP   && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(timecode_s[12]^eep_s[0]^eep_s[1]);
 			 end
-			 else if( last_type == DATA  && global_counter_transfer[3:0] == 4'd0)
+			 else if( last_type == DATA  && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(timecode_s[12]^txdata_flagctrl_tx_last[0]^txdata_flagctrl_tx_last[1]^txdata_flagctrl_tx_last[2]^txdata_flagctrl_tx_last[3]^ txdata_flagctrl_tx_last[4]^txdata_flagctrl_tx_last[5]^txdata_flagctrl_tx_last[6]^txdata_flagctrl_tx_last[7]);
 			 end
-			 else if( last_type == TIMEC && global_counter_transfer[3:0] == 4'd0)
+			 else if( last_type == TIMEC && global_counter_transfer[13:0] == 14'd1)
 			 begin
 				tx_dout <= !(timecode_s[12]^last_timein_control_flag_tx[7]^last_timein_control_flag_tx[6]^last_timein_control_flag_tx[5]^last_timein_control_flag_tx[4]^last_timein_control_flag_tx[3]^last_timein_control_flag_tx[2]^last_timein_control_flag_tx[1]^last_timein_control_flag_tx[0]);
 			 end
-			 else if( global_counter_transfer[3:0] == 4'd1)
+			 else if( global_counter_transfer[13:0] == 14'd2)
 			 begin
 				tx_dout <= timecode_s[12];
 			 end
-			 else if( global_counter_transfer[3:0] == 4'd2)
+			 else if( global_counter_transfer[13:0] == 14'd4)
 			 begin
 				tx_dout <= timecode_s[11];
 			 end
-			 else if( global_counter_transfer[3:0] == 4'd3)
+			 else if( global_counter_transfer[13:0] == 14'd8)
 			 begin
 				tx_dout <= timecode_s[10];
 			 end
-			 else if( global_counter_transfer[3:0] == 4'd4)
+			 else if( global_counter_transfer[13:0] == 14'd16)
 			 begin
 				tx_dout <= timecode_s[9];
 			 end
-			 else if( global_counter_transfer[3:0] == 4'd5)
+			 else if( global_counter_transfer[13:0] == 14'd32)
 			 begin
 				tx_dout <= timecode_s[8];
 			 end
-			 else if( global_counter_transfer[3:0] == 4'd6)
+			 else if( global_counter_transfer[13:0] == 14'd64)
 			 begin
 				tx_dout <= timecode_s[0];
 			 end
-			 else if( global_counter_transfer[3:0] == 4'd7)
+			 else if( global_counter_transfer[13:0] == 14'd128)
 			 begin
 				tx_dout <= timecode_s[1];
 			 end
-			 else if( global_counter_transfer[3:0] == 4'd8)
+			 else if( global_counter_transfer[13:0] == 14'd256)
 			 begin
 				tx_dout <= timecode_s[2];
 			 end
-			 else if(global_counter_transfer[3:0] == 4'd9)
+			 else if(global_counter_transfer[13:0] == 14'd512)
 			 begin
 				tx_dout <= timecode_s[3];
 			 end
-			 else if(global_counter_transfer[3:0] == 4'd10)
+			 else if(global_counter_transfer[13:0] == 14'd1024)
 			 begin
 				tx_dout <= timecode_s[4];
 			 end
-			 else if(global_counter_transfer[3:0] == 4'd11)
+			 else if(global_counter_transfer[13:0] == 14'd2048)
 			 begin
 				tx_dout <= timecode_s[5];
 			 end
-			 else if( global_counter_transfer[3:0] == 4'd12)
+			 else if( global_counter_transfer[13:0] == 14'd4096)
 			 begin
 				tx_dout <= timecode_s[6];
 			 end
-			 else if(global_counter_transfer[3:0] == 4'd13)
+			 else if(global_counter_transfer[13:0] == 14'd8192)
 			 begin
 				tx_dout <= timecode_s[7];
 			 end
@@ -1051,7 +1051,7 @@ begin
 		tx_spw_null_c:
 		begin
 
-			if(global_counter_transfer == 4'd7)
+			if(global_counter_transfer == 14'd128)
 			begin
 				process_data_0  <= process_data_0;
 				process_data    <= process_data;
@@ -1061,8 +1061,12 @@ begin
 				tx_data_in     <= tx_data_in;
 				tx_data_in_0   <= tx_data_in_0;
 			end
-			else if(global_counter_transfer == 4'd5)
+			else if(global_counter_transfer == 14'd16)
 			begin
+				process_data_0  <= 1'b0;
+				tx_data_in_0    <= 9'd0;
+				tx_tcode_in     <= timecode_tx_i;
+				tx_data_in      <= data_tx_i;
 
 				if(txwrite_tx && fct_counter_p > 6'd0)
 				begin
@@ -1075,11 +1079,10 @@ begin
 			end
 			else
 			begin
-				process_data    <= process_data;
-				process_data_0  <= 1'b0;
-				tx_data_in_0    <= 9'd0;
-				tx_tcode_in     <= timecode_tx_i;
-				tx_data_in      <= data_tx_i;
+
+				tx_tcode_in    <= tx_tcode_in;
+				tx_data_in     <= tx_data_in;
+				tx_data_in_0   <= tx_data_in_0;
 				
 				if(tickin_tx)
 				begin
@@ -1103,8 +1106,7 @@ begin
 		tx_spw_data_c:
 		begin
 
-
-			if(global_counter_transfer == 4'd9)
+			if(global_counter_transfer == 14'd512)
 			begin
 				process_data_0  <= process_data_0;
 				process_data    <= process_data;
@@ -1114,9 +1116,24 @@ begin
 				tx_data_in_0    <= tx_data_in_0;
 				tx_tcode_in     <= tx_tcode_in;
 			end
-			else if(global_counter_transfer == 4'd5)
-			begin		
+			else if(global_counter_transfer == 14'd1)
+			begin	
+
+				tx_data_in      <= tx_data_in;
+				tx_data_in_0    <= tx_data_in_0;
+				tx_tcode_in     <= tx_tcode_in;
+
+				process_data   <= 1'b0;
+				process_data_0 <= 1'b0;
+			end
+			else if(global_counter_transfer == 14'd32)
+			begin	
+				tx_data_in <= tx_data_in;
+				tx_data_in_0 <= data_tx_i;
+				tx_tcode_in <= timecode_tx_i;
+	
 				process_data   <= process_data;			
+
 				if(txwrite_tx && fct_counter_p > 6'd0)
 				begin
 					process_data_0 <= 1'b1;
@@ -1129,28 +1146,21 @@ begin
 			else
 			begin
 
-				tx_data_in <= tx_data_in;
-				tx_data_in_0 <= data_tx_i;
-				tx_tcode_in <= timecode_tx_i;
 
-				if(tickin_tx && global_counter_transfer > 4'd4)
+				tx_data_in      <= tx_data_in;
+				tx_data_in_0    <= tx_data_in_0;
+				tx_tcode_in     <= tx_tcode_in;
+
+				process_data   <= process_data;	
+				process_data_0   <= process_data_0;
+	
+				if(tickin_tx && global_counter_transfer > 14'd8)
 				begin
 					tcode_rdy_trnsp <= 1'b1;
 				end
 				else
 				begin
 					tcode_rdy_trnsp <= 1'b0;
-				end
-
-				if(!txwrite_tx  || char_sent  || tx_data_in[8] || global_counter_transfer < 4'd5)
-				begin
-					process_data   <= 1'b0;
-					process_data_0 <= 1'b0;
-				end
-				else
-				begin
-					process_data   <= process_data;
-					process_data_0 <= process_data_0;
 				end
 			end
 
@@ -1159,7 +1169,7 @@ begin
 		begin
 
 
-			if(global_counter_transfer == 4'd9)
+			if(global_counter_transfer == 14'd512)
 			begin
 				process_data    <= process_data;
 				process_data_0  <= process_data_0;
@@ -1169,8 +1179,21 @@ begin
 				tx_data_in      <= tx_data_in;
 				tx_tcode_in     <= tx_tcode_in;
 			end
-			else if(global_counter_transfer == 4'd5)
+			else if(global_counter_transfer == 14'd1)
 			begin
+				tx_data_in_0   <= tx_data_in_0;
+				tx_data_in     <= tx_data_in;
+				tx_tcode_in    <= timecode_tx_i;
+
+				process_data   <= 1'b0;
+				process_data_0 <= 1'b0;
+			end
+			else if(global_counter_transfer == 14'd32)
+			begin
+				tx_data_in_0   <= tx_data_in_0;
+				tx_data_in     <= data_tx_i;
+				tx_tcode_in    <= timecode_tx_i;
+
 				process_data_0 <= process_data_0;
 
 				if(txwrite_tx && fct_counter_p > 6'd0)
@@ -1185,11 +1208,14 @@ begin
 			else
 			begin
 
-				tx_data_in_0   <= tx_data_in_0;
-				tx_data_in     <= data_tx_i;
-				tx_tcode_in    <= timecode_tx_i;
+				tx_data_in_0    <= tx_data_in_0;
+				tx_data_in      <= tx_data_in;
+				tx_tcode_in     <= tx_tcode_in;
+					
+				process_data   <= process_data;
+				process_data_0 <= process_data_0;
 
-				if(tickin_tx && global_counter_transfer > 4'd4)
+				if(tickin_tx && global_counter_transfer > 14'd8)
 				begin
 					tcode_rdy_trnsp <= 1'b1;
 				end
@@ -1197,31 +1223,23 @@ begin
 				begin
 					tcode_rdy_trnsp <= 1'b0;
 				end
-
-				if(!txwrite_tx || char_sent || tx_data_in_0[8] || global_counter_transfer < 4'd5)
-				begin
-					process_data   <= 1'b0;
-					process_data_0 <= 1'b0;
-				end
-				else 
-				begin
-					process_data   <= process_data;
-					process_data_0 <= process_data_0;
-				end
 			end
 		end
 		tx_spw_time_code_c:
 		begin
 
-			if(global_counter_transfer == 4'd13)
+			if(global_counter_transfer == 14'd8192)
 			begin
 				process_data   <= process_data;
 				process_data_0 <= process_data_0;
 				tx_data_in     <= tx_data_in;
 				tx_data_in_0   <= tx_data_in_0;
 			end
-			else if(global_counter_transfer == 4'd5)
+			else if(global_counter_transfer == 14'd16)
 			begin
+				tx_data_in      <= data_tx_i;
+				tx_data_in_0    <= 9'd0;
+				process_data_0  <= 1'b0;
 
 				if(txwrite_tx && fct_counter_p > 6'd0)
 				begin
@@ -1234,10 +1252,10 @@ begin
 			end
 			else 
 			begin
-				tx_data_in      <= data_tx_i;
+				process_data   <= process_data;
+				tx_data_in     <= tx_data_in;
 				tx_data_in_0    <= 9'd0;
 				process_data_0  <= 1'b0;
-				process_data    <= process_data;
 			end
 
 		end
@@ -1273,7 +1291,7 @@ begin
 	begin
 		if(send_null_tx && send_fct_tx && enable_tx)
 		begin
-			if(global_counter_transfer == 4'd7)
+			if(global_counter_transfer == 14'd128)
 				next_state_tx = tx_spw_fct;
 			else
 				next_state_tx = tx_spw_null;
@@ -1283,7 +1301,7 @@ begin
 	end
 	tx_spw_fct:
 	begin
-		if(send_fct_tx && global_counter_transfer == 4'd3)
+		if(send_fct_tx && global_counter_transfer == 14'd8)
 		begin
 			if(tcode_rdy_trnsp)
 			begin
@@ -1303,7 +1321,7 @@ begin
 	end
 	tx_spw_null_c:
 	begin
-		if(global_counter_transfer == 4'd7)
+		if(global_counter_transfer == 14'd128)
 		begin
 			if(tcode_rdy_trnsp)
 			begin
@@ -1329,12 +1347,16 @@ begin
 	end
 	tx_spw_fct_c:
 	begin
-		if(global_counter_transfer == 4'd3)
+		if(global_counter_transfer == 14'd8)
 		begin
 			if(tcode_rdy_trnsp)
 			begin
 				next_state_tx = tx_spw_time_code_c;
 			end 
+			else if(fct_flag_p > 3'd0)
+			begin
+				next_state_tx = tx_spw_fct_c;
+			end
 			else 
 			begin
 				next_state_tx = tx_spw_null_c;
@@ -1350,7 +1372,7 @@ begin
 
 		if(!tx_data_in[8])
 		begin
-			if(global_counter_transfer == 4'd9)
+			if(global_counter_transfer == 14'd512)
 			begin
 				if(tcode_rdy_trnsp)
 				begin
@@ -1370,7 +1392,7 @@ begin
 		end
 		else if(tx_data_in[8])
 		begin
-			if(global_counter_transfer == 4'd3)
+			if(global_counter_transfer == 14'd8)
 			begin
 				if(tcode_rdy_trnsp)
 				begin
@@ -1392,7 +1414,7 @@ begin
 
 		if(!tx_data_in_0[8])
 		begin
-			if(global_counter_transfer == 4'd9)
+			if(global_counter_transfer == 14'd512)
 			begin
 				if(tcode_rdy_trnsp)
 				begin
@@ -1412,7 +1434,7 @@ begin
 		end
 		else if(tx_data_in_0[8])
 		begin
-			if(global_counter_transfer == 4'd3)
+			if(global_counter_transfer == 14'd8)
 			begin
 				if(tcode_rdy_trnsp)
 				begin
@@ -1431,7 +1453,7 @@ begin
 	end
 	tx_spw_time_code_c:
 	begin
-		if(global_counter_transfer == 4'd13)
+		if(global_counter_transfer == 14'd8192)
 		begin
 			if(fct_flag_p > 3'd0)
 			begin
@@ -1471,7 +1493,7 @@ begin
 
 		last_type  <= NULL;
 
-		global_counter_transfer <= 4'd0;
+		global_counter_transfer <= 14'd1;
 		txdata_flagctrl_tx_last <= 9'd0; 
 
 		last_timein_control_flag_tx <= 8'd0;
@@ -1503,11 +1525,11 @@ begin
 
 			if(send_null_tx && enable_tx)
 			begin
-				global_counter_transfer <= global_counter_transfer + 4'd1;
+				global_counter_transfer <= global_counter_transfer << 14'd1;
 			end
 			else
 			begin
-				global_counter_transfer <= 4'd0;
+				global_counter_transfer <= 14'd1;
 			end
 			
 		end
@@ -1523,19 +1545,19 @@ begin
 			ready_tx_data <= 1'b0;
 			ready_tx_timecode <= 1'b0;
 
-			if(global_counter_transfer == 4'd7)
+			if(global_counter_transfer == 14'd128)
 			begin
 				last_type  <=last_type;
-				global_counter_transfer <= 4'd0;
+				global_counter_transfer <= 14'd1;
 			end
 			else 
 			begin
-				if(global_counter_transfer > 4'd1)
+				if(global_counter_transfer > 14'd1)
 					last_type  <= NULL;
 				else
 					last_type  <= last_type;
 				
-				global_counter_transfer <= global_counter_transfer + 4'd1;
+				global_counter_transfer <= global_counter_transfer << 14'd1;
 			end
 		end
 		tx_spw_fct:
@@ -1550,22 +1572,22 @@ begin
 			ready_tx_data <= 1'b0;
 			ready_tx_timecode <= 1'b0;
 
-			if(global_counter_transfer == 4'd3)
+			if(global_counter_transfer == 14'd8)
 			begin
-				global_counter_transfer <= 4'd0;
+				global_counter_transfer <= 14'd1;
 				last_type  <=last_type;
 				fct_sent <= 1'b0;
 			end
 			else
 			begin
-				if(fct_flag_p > 3'd0 && global_counter_transfer == 4'd0)
+				if(fct_flag_p > 3'd0 && global_counter_transfer == 14'd1)
 					fct_sent <=  1'b1;
 				else
 					fct_sent <= 1'b0;
 
 				last_type  <=FCT;
 
-				global_counter_transfer <= global_counter_transfer + 4'd1;
+				global_counter_transfer <= global_counter_transfer << 14'd1;
 			end
 		end
 		tx_spw_null_c:
@@ -1579,16 +1601,16 @@ begin
 
 			ready_tx_data <= 1'b0;
 
-			if(global_counter_transfer == 4'd7)
+			if(global_counter_transfer == 14'd128)
 			begin
 				fct_sent <=  1'b0;
 				last_type  <=last_type;
 				ready_tx_timecode <= 1'b0;
-				global_counter_transfer <= 4'd0;
+				global_counter_transfer <= 14'd1;
 			end
 			else
 			begin
-				if(global_counter_transfer > 4'd1)
+				if(global_counter_transfer > 14'd1)
 					last_type  <= NULL;
 				else
 					last_type  <= last_type;
@@ -1596,7 +1618,7 @@ begin
 				char_sent <= 1'b0;
 				fct_sent <=  1'b0;
 				ready_tx_timecode <= ready_tx_timecode;
-				global_counter_transfer <= global_counter_transfer + 4'd1;
+				global_counter_transfer <= global_counter_transfer << 14'd1;
 			end
 		end
 		tx_spw_fct_c:
@@ -1607,30 +1629,30 @@ begin
 			tx_dout_e <= tx_dout;
 			tx_sout_e <= tx_sout;
 			
-			if(global_counter_transfer == 4'd3)
+			if(global_counter_transfer == 14'd8)
 			begin		
 				char_sent <= 1'b0;	
 				last_type  <=last_type;
 				fct_sent <=  1'b0;
-				global_counter_transfer <= 4'd0;
+				global_counter_transfer <= 14'd1;
 				ready_tx_timecode <= 1'b0;
 			end
 			else
 			begin
 				char_sent <= 1'b0;
 
-				if(fct_flag_p > 3'd0 && global_counter_transfer == 4'd0)
+				if(fct_flag_p > 3'd0 && global_counter_transfer == 14'd1)
 					fct_sent <=  1'b1;
 				else
 					fct_sent <= 1'b0;
 
-				if(global_counter_transfer > 4'd1)
+				if(global_counter_transfer > 14'd1)
 					last_type  <=FCT;
 				else
 					last_type  <=last_type;
 
 				ready_tx_timecode <= ready_tx_timecode;
-				global_counter_transfer <= global_counter_transfer + 4'd1;
+				global_counter_transfer <= global_counter_transfer << 14'd1;
 			end
 		end
 		tx_spw_data_c:
@@ -1645,21 +1667,29 @@ begin
 			if(!tx_data_in[8])
 			begin
 
-				if(global_counter_transfer == 4'd9)
+				if(global_counter_transfer == 14'd512)
 				begin
 					fct_sent <=  1'b0;
-					global_counter_transfer <= 4'd0;
+					global_counter_transfer <= 14'd1;
 					last_type  <=last_type;
 					ready_tx_timecode <= 1'b0;
+				end
+				else if(global_counter_transfer == 14'd8)
+				begin
+					fct_sent <=  1'b0;
+					txdata_flagctrl_tx_last <= tx_data_in;
+					ready_tx_timecode <= ready_tx_timecode;
+					global_counter_transfer <= global_counter_transfer << 14'd1;
 				end
 				else
 				begin
 
 
-					if(global_counter_transfer < 4'd3)
+					if(global_counter_transfer < 14'd8)
 					begin
 						ready_tx_data <= 1'b1;
 						char_sent <= 1'b1;
+						fct_sent <=  1'b0;
 					end
 					else
 					begin
@@ -1668,16 +1698,12 @@ begin
 						ready_tx_data <= 1'b0;
 						char_sent <= 1'b0;
 
-						if(global_counter_transfer == 4'd3)
-						begin
-							txdata_flagctrl_tx_last <= tx_data_in;
-						end
-						else
-							txdata_flagctrl_tx_last <= txdata_flagctrl_tx_last;
+							
 					end
 
+					txdata_flagctrl_tx_last <= txdata_flagctrl_tx_last;
 					ready_tx_timecode <= ready_tx_timecode;
-					global_counter_transfer <= global_counter_transfer + 4'd1;
+					global_counter_transfer <= global_counter_transfer << 14'd1;
 
 				 end
 
@@ -1685,18 +1711,18 @@ begin
 			else
 			begin
 
-				if(global_counter_transfer == 4'd3)
+				if(global_counter_transfer == 14'd8)
 				begin
 					char_sent <= 1'b0;
 					fct_sent <=  1'b0;
 					last_type  <=last_type;
 					ready_tx_data <= 1'b0;
 					ready_tx_timecode <= 1'b0;
-					global_counter_transfer <= 4'd0;
+					global_counter_transfer <= 14'd1;
 				end
 				else
 				begin
-					if(global_counter_transfer > 4'd1)
+					if(global_counter_transfer > 14'd1)
 					begin
 						if(tx_data_in[1:0] == 2'b00)
 						begin
@@ -1715,7 +1741,7 @@ begin
 					txdata_flagctrl_tx_last <= txdata_flagctrl_tx_last;
 					ready_tx_data <= 1'b1;
 					ready_tx_timecode <= ready_tx_timecode;
-					global_counter_transfer <= global_counter_transfer + 4'd1;
+					global_counter_transfer <= global_counter_transfer << 14'd1;
 				end
 			end
 
@@ -1733,39 +1759,41 @@ begin
 			if(!tx_data_in_0[8])
 			begin
 
-				if(global_counter_transfer == 4'd9)
+				if(global_counter_transfer == 14'd512)
 				begin
 					fct_sent <=  1'b0;
 					last_type  <=last_type;
 					ready_tx_timecode <= 1'b0;
-					global_counter_transfer <= 4'd0;
+					global_counter_transfer <= 14'd1;
+				end
+				else if(global_counter_transfer == 14'd8)
+				begin
+					txdata_flagctrl_tx_last <= tx_data_in_0;
+					fct_sent <=  1'b0;
+					ready_tx_timecode <= ready_tx_timecode;
+					global_counter_transfer <= global_counter_transfer << 14'd1;
 				end
 				else
 				begin
 
-					if(global_counter_transfer < 4'd3)
+					if(global_counter_transfer < 14'd4)
 					begin
 						last_type  <=last_type;
 						ready_tx_data <= 1'b1;
 						char_sent <= 1'b1;
+						fct_sent <=  1'b0;
 					end
 					else
 					begin
+						fct_sent <=  1'b0;
 						last_type  <= DATA;
 						ready_tx_data <= 1'b0;
 						char_sent <= 1'b0;
-
-						if(global_counter_transfer == 4'd3)
-						begin
-							txdata_flagctrl_tx_last <= tx_data_in_0;
-						end
-						else
-							txdata_flagctrl_tx_last <= txdata_flagctrl_tx_last;
 					end
 
-					fct_sent <=  1'b0;
+					txdata_flagctrl_tx_last <= txdata_flagctrl_tx_last;					
 					ready_tx_timecode <= ready_tx_timecode;
-					global_counter_transfer <= global_counter_transfer + 4'd1;
+					global_counter_transfer <= global_counter_transfer << 4'd1;
 
 				 end
 
@@ -1773,18 +1801,18 @@ begin
 			else
 			begin
 
-				if(global_counter_transfer == 4'd3)
+				if(global_counter_transfer == 14'd8)
 				begin
 					fct_sent <=  1'b0;
 					char_sent <= 1'b0;
 					last_type  <=last_type;
 					ready_tx_data <= 1'b0;
 					ready_tx_timecode <= 1'b0;
-					global_counter_transfer <= 4'd0;
+					global_counter_transfer <= 14'd1;
 				end
 				else
 				begin
-					if(global_counter_transfer > 4'd1)
+					if(global_counter_transfer > 14'd1)
 					begin
 						if(tx_data_in_0[1:0] == 2'b00)
 						begin
@@ -1803,7 +1831,7 @@ begin
 					fct_sent <=  1'b0;
 					ready_tx_timecode <= ready_tx_timecode;
 					char_sent <= 1'b1;
-					global_counter_transfer <= global_counter_transfer + 4'd1;
+					global_counter_transfer <= global_counter_transfer << 14'd1;
 				end
 			end
 
@@ -1819,13 +1847,13 @@ begin
 			
 			ready_tx_data <= 1'b0;
 		
-			if(global_counter_transfer == 4'd13)
+			if(global_counter_transfer == 14'd8192)
 			begin
 				fct_sent <=  1'b0;
 				ready_tx_timecode <= 1'b1;
 				last_type  <= last_type;
 				
-				global_counter_transfer <= 4'd0;
+				global_counter_transfer <= 14'd1;
 			end
 			else
 			begin
@@ -1837,12 +1865,12 @@ begin
 				timecode_s <= {timecode_ss[13:10],2'd2,tx_tcode_in[7:0]};
 				last_timein_control_flag_tx <= tx_tcode_in;
 
-				if(global_counter_transfer > 4'd1)
+				if(global_counter_transfer > 14'd1)
 					last_type  <= TIMEC;
 				else
 					last_type  <= last_type;
 
-				global_counter_transfer <= global_counter_transfer + 4'd1;
+				global_counter_transfer <= global_counter_transfer << 14'd1;
 			end
 		end
 		default:

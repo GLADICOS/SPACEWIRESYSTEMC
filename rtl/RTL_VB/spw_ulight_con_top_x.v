@@ -30,11 +30,14 @@
 //Synthesizable (y/n)	:
 //Other			:
 //-FHDR------------------------------------------------------------------------
+
+`timescale 1ns/1ns
+
 module spw_ulight_con_top_x(
 				input ppll_100_MHZ,
 				input ppllclk,
 				input reset_spw_n_b,
-										
+									
 				input top_sin,
 				input top_din,
 										
