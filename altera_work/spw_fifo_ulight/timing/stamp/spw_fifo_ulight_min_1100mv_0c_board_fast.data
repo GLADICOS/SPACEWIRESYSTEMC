@@ -1,0 +1,227 @@
+/*
+ Copyright (C) 2017  Intel Corporation. All rights reserved.
+ Your use of Intel Corporation's design tools, logic functions 
+ and other software and tools, and its AMPP partner logic 
+ functions, and any output files from any of the foregoing 
+ (including device programming or simulation files), and any 
+ associated documentation or information are expressly subject 
+ to the terms and conditions of the Intel Program License 
+ Subscription Agreement, the Intel Quartus Prime License Agreement,
+ the Intel MegaCore Function License Agreement, or other 
+ applicable license agreement, including, without limitation, 
+ that your use is for the sole purpose of programming logic 
+ devices manufactured by Intel and sold by Intel or its 
+ authorized distributors.  Please refer to the applicable 
+ agreement for further details.
+*/
+MODELDATA
+/*MODELDATA HEADER*/
+/*
+ This file contains Fast Corner delays for the design using part 5CSEMA4U23C6
+ with speed grade M, core voltage 1.1V, and temperature 0 Celsius
+
+*/
+DESIGN "spw_fifo_ulight";
+TIMESCALE "1ns";
+
+
+
+
+
+TIMINGDATA
+
+ARCDATA
+pos_KEY[1]__FPGA_CLK1_50__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-0.152");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-0.152");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_sin_a__clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.147");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.147");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_KEY[1]__FPGA_CLK1_50__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("0.920");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("0.920");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_sin_a__clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-0.277");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-0.277");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_FPGA_CLK1_50__LED[0]__delay:
+CELL_RISE( scalar ) {
+VALUES ("3.877");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("3.877");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_FPGA_CLK1_50__LED[1]__delay:
+CELL_RISE( scalar ) {
+VALUES ("3.883");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("3.883");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_FPGA_CLK1_50__LED[2]__delay:
+CELL_RISE( scalar ) {
+VALUES ("3.837");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("3.837");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_FPGA_CLK1_50__LED[3]__delay:
+CELL_RISE( scalar ) {
+VALUES ("3.848");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("3.848");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_FPGA_CLK1_50__LED[4]__delay:
+CELL_RISE( scalar ) {
+VALUES ("3.894");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("3.894");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_FPGA_CLK1_50__LED[5]__delay:
+CELL_RISE( scalar ) {
+VALUES ("4.954");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("4.954");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i__sout_a__delay:
+CELL_RISE( scalar ) {
+VALUES ("2.571");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("2.571");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i__sout_a(n)__delay:
+CELL_RISE( scalar ) {
+VALUES ("2.704");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("2.704");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e__dout_a__delay:
+CELL_RISE( scalar ) {
+VALUES ("2.644");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("2.644");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e__dout_a__delay:
+CELL_RISE( scalar ) {
+VALUES ("");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e__dout_a(n)__delay:
+CELL_RISE( scalar ) {
+VALUES ("");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e__dout_a(n)__delay:
+CELL_RISE( scalar ) {
+VALUES ("3.051");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("3.051");
+}
+
+ENDARCDATA
+
+ENDTIMINGDATA
+
+ENDMODELDATA

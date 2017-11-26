@@ -1,0 +1,9 @@
+* lvds_preemphasis_select.lib
+
+.lib preemp_def
+.param rkick=0
+.endl
+
+.lib zero
+.param rkick=vc
+.endl

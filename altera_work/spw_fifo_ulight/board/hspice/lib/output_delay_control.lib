@@ -1,0 +1,79 @@
+* output_delay_control.lib
+
+.lib def_delay
+.param rpdelay1=0
+.param rpdelay0=0
+.param rndelay1=0
+.param rndelay0=0
+.endl
+
+.lib no_delay
+.param rpdelay1=0
+.param rpdelay0=0
+.param rndelay1=0
+.param rndelay0=0
+.endl
+
+.lib fall_50ps
+.param rpdelay1=0
+.param rpdelay0=vc
+.param rndelay1=0
+.param rndelay0=vc
+.endl
+
+.lib fall_100ps
+.param rpdelay1=vc
+.param rpdelay0=0
+.param rndelay1=0
+.param rndelay0=vc
+.endl
+*
+.lib fall_150ps
+.param rpdelay1=vc
+.param rpdelay0=vc
+.param rndelay1=0
+.param rndelay0=vc
+.endl
+*
+.lib rise_50ps
+.param rpdelay1=0
+.param rpdelay0=vc
+.param rndelay1=vc
+.param rndelay0=0
+.endl
+*
+.lib rise_100ps
+.param rpdelay1=vc
+.param rpdelay0=0
+.param rndelay1=vc
+.param rndelay0=0
+.endl
+*
+.lib rise_150ps
+.param rpdelay1=vc
+.param rpdelay0=vc
+.param rndelay1=vc
+.param rndelay0=0
+.endl
+*
+.lib both_50ps
+.param rpdelay1=0
+.param rpdelay0=vc
+.param rndelay1=vc
+.param rndelay0=vc
+.endl
+*
+.lib both_100ps
+.param rpdelay1=vc
+.param rpdelay0=0
+.param rndelay1=vc
+.param rndelay0=vc
+.endl
+*
+.lib both_150ps
+.param rpdelay1=vc
+.param rpdelay0=vc
+.param rndelay1=vc
+.param rndelay0=vc
+.endl
+*

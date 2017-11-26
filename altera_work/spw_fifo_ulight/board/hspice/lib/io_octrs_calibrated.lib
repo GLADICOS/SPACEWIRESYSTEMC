@@ -1,0 +1,721 @@
+* io_octrs_calibrated.lib
+.lib 50_3p0_tt
+.param rp0 = 0
+.param rp1 = 0
+.param rp2 = 0
+.param rp3 = 0
+.param rp4 = 0
+.param rp5 = vc
+.param rp6 = 0
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = vc
+.param rn1 = 0
+.param rn2 = 0
+.param rn3 = 0
+.param rn4 = 0
+.param rn5 = 0
+.param rn6 = vc
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 50_2p5_tt
+.param rp0 = 0
+.param rp1 = vc
+.param rp2 = 0
+.param rp3 = 0
+.param rp4 = 0
+.param rp5 = vc
+.param rp6 = 0
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = 0
+.param rn1 = vc
+.param rn2 = 0
+.param rn3 = 0
+.param rn4 = 0
+.param rn5 = 0
+.param rn6 = vc
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 50_1p8_tt
+.param rp0 = 0
+.param rp1 = 0
+.param rp2 = vc
+.param rp3 = vc
+.param rp4 = 0
+.param rp5 = vc
+.param rp6 = 0
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = 0
+.param rn1 = vc
+.param rn2 = vc
+.param rn3 = 0
+.param rn4 = vc
+.param rn5 = vc
+.param rn6 = 0
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 50_1p5_tt
+.param rp0 = 0
+.param rp1 = 0
+.param rp2 = vc
+.param rp3 = 0
+.param rp4 = vc
+.param rp5 = vc
+.param rp6 = 0
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = 0
+.param rn1 = vc
+.param rn2 = 0
+.param rn3 = 0
+.param rn4 = vc
+.param rn5 = vc
+.param rn6 = 0
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 50_1p2_tt
+.param rp0 = 0
+.param rp1 = 0
+.param rp2 = vc
+.param rp3 = 0
+.param rp4 = 0
+.param rp5 = 0
+.param rp6 = vc
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = vc
+.param rn1 = 0
+.param rn2 = vc
+.param rn3 = vc
+.param rn4 = 0
+.param rn5 = vc
+.param rn6 = 0
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 50_3p0_ss
+.param rp0 = 0
+.param rp1 = vc
+.param rp2 = 0
+.param rp3 = 0
+.param rp4 = 0
+.param rp5 = vc
+.param rp6 = 0
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = vc
+.param rn1 = 0
+.param rn2 = vc
+.param rn3 = 0
+.param rn4 = 0
+.param rn5 = 0
+.param rn6 = vc
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 50_2p5_ss
+.param rp0 = 0
+.param rp1 = 0
+.param rp2 = 0
+.param rp3 = vc
+.param rp4 = 0
+.param rp5 = vc
+.param rp6 = 0
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = 0
+.param rn1 = vc
+.param rn2 = vc
+.param rn3 = vc
+.param rn4 = 0
+.param rn5 = 0
+.param rn6 = vc
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 50_1p8_ss
+.param rp0 = 0
+.param rp1 = 0
+.param rp2 = vc
+.param rp3 = 0
+.param rp4 = vc
+.param rp5 = vc
+.param rp6 = 0
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = vc
+.param rn1 = 0
+.param rn2 = vc
+.param rn3 = vc
+.param rn4 = vc
+.param rn5 = vc
+.param rn6 = 0
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 50_1p5_ss
+.param rp0 = 0
+.param rp1 = 0
+.param rp2 = 0
+.param rp3 = 0
+.param rp4 = 0
+.param rp5 = 0
+.param rp6 = vc
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = 0
+.param rn1 = 0
+.param rn2 = 0
+.param rn3 = vc
+.param rn4 = vc
+.param rn5 = vc
+.param rn6 = 0
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 50_1p2_ss
+.param rp0 = 0
+.param rp1 = 0
+.param rp2 = 0
+.param rp3 = vc
+.param rp4 = vc
+.param rp5 = 0
+.param rp6 = vc
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = 0
+.param rn1 = vc
+.param rn2 = 0
+.param rn3 = 0
+.param rn4 = vc
+.param rn5 = vc
+.param rn6 = 0
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 50_3p0_ff
+.param rp0 = 0
+.param rp1 = 0
+.param rp2 = vc
+.param rp3 = vc
+.param rp4 = vc
+.param rp5 = 0
+.param rp6 = 0
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = 0
+.param rn1 = vc
+.param rn2 = 0
+.param rn3 = vc
+.param rn4 = vc
+.param rn5 = vc
+.param rn6 = 0
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 50_2p5_ff
+.param rp0 = 0
+.param rp1 = vc
+.param rp2 = vc
+.param rp3 = vc
+.param rp4 = vc
+.param rp5 = 0
+.param rp6 = 0
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = vc
+.param rn1 = vc
+.param rn2 = 0
+.param rn3 = vc
+.param rn4 = vc
+.param rn5 = vc
+.param rn6 = 0
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 50_1p8_ff
+.param rp0 = 0
+.param rp1 = 0
+.param rp2 = vc
+.param rp3 = 0
+.param rp4 = 0
+.param rp5 = vc
+.param rp6 = 0
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = vc
+.param rn1 = vc
+.param rn2 = vc
+.param rn3 = vc
+.param rn4 = 0
+.param rn5 = vc
+.param rn6 = 0
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 50_1p5_ff
+.param rp0 = 0
+.param rp1 = vc
+.param rp2 = 0
+.param rp3 = vc
+.param rp4 = 0
+.param rp5 = vc
+.param rp6 = 0
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = 0
+.param rn1 = 0
+.param rn2 = vc
+.param rn3 = vc
+.param rn4 = 0
+.param rn5 = vc
+.param rn6 = 0
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 50_1p2_ff
+.param rp0 = 0
+.param rp1 = 0
+.param rp2 = vc
+.param rp3 = 0
+.param rp4 = vc
+.param rp5 = vc
+.param rp6 = 0
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = vc
+.param rn1 = 0
+.param rn2 = 0
+.param rn3 = vc
+.param rn4 = 0
+.param rn5 = vc
+.param rn6 = 0
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 25_3p0_tt
+.param rp0 = 0
+.param rp1 = 0
+.param rp2 = vc
+.param rp3 = vc
+.param rp4 = vc
+.param rp5 = vc
+.param rp6 = 0
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = 0
+.param rn1 = vc
+.param rn2 = 0
+.param rn3 = vc
+.param rn4 = vc
+.param rn5 = vc
+.param rn6 = vc
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 25_2p5_tt
+.param rp0 = 0
+.param rp1 = vc
+.param rp2 = vc
+.param rp3 = 0
+.param rp4 = 0
+.param rp5 = 0
+.param rp6 = vc
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = 0
+.param rn1 = 0
+.param rn2 = 0
+.param rn3 = vc
+.param rn4 = 0
+.param rn5 = 0
+.param rn6 = 0
+.param rn7 = vc
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 25_1p8_tt
+.param rp0 = 0
+.param rp1 = vc
+.param rp2 = 0
+.param rp3 = vc
+.param rp4 = vc
+.param rp5 = 0
+.param rp6 = vc
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = vc
+.param rn1 = vc
+.param rn2 = vc
+.param rn3 = vc
+.param rn4 = 0
+.param rn5 = vc
+.param rn6 = vc
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 25_1p5_tt
+.param rp0 = 0
+.param rp1 = vc
+.param rp2 = vc
+.param rp3 = vc
+.param rp4 = 0
+.param rp5 = vc
+.param rp6 = vc
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = vc
+.param rn1 = 0
+.param rn2 = 0
+.param rn3 = vc
+.param rn4 = 0
+.param rn5 = vc
+.param rn6 = vc
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 25_1p2_tt
+.param rp0 = 0
+.param rp1 = 0
+.param rp2 = vc
+.param rp3 = vc
+.param rp4 = 0
+.param rp5 = 0
+.param rp6 = 0
+.param rp7 = vc
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = vc
+.param rn1 = 0
+.param rn2 = vc
+.param rn3 = vc
+.param rn4 = vc
+.param rn5 = 0
+.param rn6 = vc
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 25_3p0_ss
+.param rp0 = 0
+.param rp1 = vc
+.param rp2 = vc
+.param rp3 = 0
+.param rp4 = 0
+.param rp5 = 0
+.param rp6 = vc
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = 0
+.param rn1 = vc
+.param rn2 = vc
+.param rn3 = vc
+.param rn4 = 0
+.param rn5 = 0
+.param rn6 = 0
+.param rn7 = vc
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 25_2p5_ss
+.param rp0 = 0
+.param rp1 = 0
+.param rp2 = 0
+.param rp3 = 0
+.param rp4 = vc
+.param rp5 = 0
+.param rp6 = vc
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = 0
+.param rn1 = 0
+.param rn2 = vc
+.param rn3 = vc
+.param rn4 = vc
+.param rn5 = 0
+.param rn6 = 0
+.param rn7 = vc
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 25_1p8_ss
+.param rp0 = 0
+.param rp1 = vc
+.param rp2 = vc
+.param rp3 = vc
+.param rp4 = 0
+.param rp5 = vc
+.param rp6 = vc
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = vc
+.param rn1 = 0
+.param rn2 = 0
+.param rn3 = 0
+.param rn4 = 0
+.param rn5 = 0
+.param rn6 = 0
+.param rn7 = vc
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 25_1p5_ss
+.param rp0 = 0
+.param rp1 = vc
+.param rp2 = 0
+.param rp3 = 0
+.param rp4 = 0
+.param rp5 = 0
+.param rp6 = 0
+.param rp7 = vc
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = 0
+.param rn1 = vc
+.param rn2 = 0
+.param rn3 = 0
+.param rn4 = vc
+.param rn5 = vc
+.param rn6 = vc
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 25_1p2_ss
+.param rp0 = 0
+.param rp1 = vc
+.param rp2 = vc
+.param rp3 = vc
+.param rp4 = vc
+.param rp5 = vc
+.param rp6 = 0
+.param rp7 = vc
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = 0
+.param rn1 = 0
+.param rn2 = vc
+.param rn3 = vc
+.param rn4 = 0
+.param rn5 = vc
+.param rn6 = vc
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 25_3p0_ff
+.param rp0 = 0
+.param rp1 = vc
+.param rp2 = 0
+.param rp3 = 0
+.param rp4 = vc
+.param rp5 = vc
+.param rp6 = 0
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = 0
+.param rn1 = 0
+.param rn2 = 0
+.param rn3 = vc
+.param rn4 = 0
+.param rn5 = vc
+.param rn6 = vc
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 25_2p5_ff
+.param rp0 = 0
+.param rp1 = 0
+.param rp2 = vc
+.param rp3 = vc
+.param rp4 = vc
+.param rp5 = vc
+.param rp6 = 0
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = vc
+.param rn1 = vc
+.param rn2 = vc
+.param rn3 = 0
+.param rn4 = vc
+.param rn5 = vc
+.param rn6 = vc
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 25_1p8_ff
+.param rp0 = 0
+.param rp1 = vc
+.param rp2 = vc
+.param rp3 = 0
+.param rp4 = 0
+.param rp5 = 0
+.param rp6 = vc
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = vc
+.param rn1 = vc
+.param rn2 = 0
+.param rn3 = vc
+.param rn4 = vc
+.param rn5 = 0
+.param rn6 = vc
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 25_1p5_ff
+.param rp0 = 0
+.param rp1 = vc
+.param rp2 = 0
+.param rp3 = vc
+.param rp4 = vc
+.param rp5 = 0
+.param rp6 = vc
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = 0
+.param rn1 = vc
+.param rn2 = vc
+.param rn3 = vc
+.param rn4 = vc
+.param rn5 = 0
+.param rn6 = vc
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+
+.lib 25_1p2_ff
+.param rp0 = 0
+.param rp1 = vc
+.param rp2 = vc
+.param rp3 = vc
+.param rp4 = 0
+.param rp5 = vc
+.param rp6 = vc
+.param rp7 = 0
+.param rp8 = 0
+.param rp9 = 0
+
+.param rn0 = 0
+.param rn1 = vc
+.param rn2 = vc
+.param rn3 = 0
+.param rn4 = vc
+.param rn5 = 0
+.param rn6 = vc
+.param rn7 = 0
+.param rn8 = 0
+.param rn9 = 0
+.endl
+

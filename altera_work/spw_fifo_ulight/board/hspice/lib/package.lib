@@ -1,0 +1,9 @@
+* package.lib
+
+.lib io
+.subckt io_pkg bump ball
+rpkg bump int  0.231
+lpkg int  ball 0.91nh
+cpkg ball vss  0.367pf
+.ends
+.endl

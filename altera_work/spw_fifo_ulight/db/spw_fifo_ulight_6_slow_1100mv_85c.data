@@ -1,0 +1,200 @@
+
+
+
+TIMINGDATA
+
+ARCDATA
+pos_KEY[1]__FPGA_CLK1_50__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-0.211");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-0.211");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_sin_a__clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.912");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.912");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_KEY[1]__FPGA_CLK1_50__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.716");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.716");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_sin_a__clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-0.280");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-0.280");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_FPGA_CLK1_50__LED[0]__delay:
+CELL_RISE( scalar ) {
+VALUES ("6.805");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("6.805");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_FPGA_CLK1_50__LED[1]__delay:
+CELL_RISE( scalar ) {
+VALUES ("6.849");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("6.849");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_FPGA_CLK1_50__LED[2]__delay:
+CELL_RISE( scalar ) {
+VALUES ("6.759");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("6.759");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_FPGA_CLK1_50__LED[3]__delay:
+CELL_RISE( scalar ) {
+VALUES ("6.777");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("6.777");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_FPGA_CLK1_50__LED[4]__delay:
+CELL_RISE( scalar ) {
+VALUES ("6.850");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("6.850");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_FPGA_CLK1_50__LED[5]__delay:
+CELL_RISE( scalar ) {
+VALUES ("8.598");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("8.598");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i__sout_a__delay:
+CELL_RISE( scalar ) {
+VALUES ("4.643");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("4.643");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i__sout_a(n)__delay:
+CELL_RISE( scalar ) {
+VALUES ("4.752");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("4.752");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e__dout_a__delay:
+CELL_RISE( scalar ) {
+VALUES ("4.331");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("4.331");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e__dout_a__delay:
+CELL_RISE( scalar ) {
+VALUES ("");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e__dout_a(n)__delay:
+CELL_RISE( scalar ) {
+VALUES ("");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e__dout_a(n)__delay:
+CELL_RISE( scalar ) {
+VALUES ("4.892");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("4.892");
+}
+
+ENDARCDATA
+
+ENDTIMINGDATA
+
+ENDMODELDATA

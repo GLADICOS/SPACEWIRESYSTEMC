@@ -1,0 +1,19 @@
+* lvds_vod_select.lib
+
+.lib vod_def
+.param rvod2=0
+.param rvod1=vc
+.param rvod0=0
+.endl
+
+.lib low
+.param rvod2=0
+.param rvod1=0
+.param rvod0=0
+.endl
+
+.lib high
+.param rvod2=vc
+.param rvod1=0
+.param rvod0=0
+.endl

@@ -1,0 +1,42 @@
+* slew_rate_control.lib
+
+.lib fast
+.param rslewp=0
+.param rslewn=0
+.endl
+
+.lib slow
+.param rslewp=vc
+.param rslewn=vc
+.endl
+
+.lib ttl_def
+.param rslewp=0
+.param rslewn=0
+.endl
+
+.lib cmos_def
+.param rslewp=0
+.param rslewn=0
+.endl
+
+.lib sstl_def
+.param rslewp=0
+.param rslewn=0
+.endl
+
+.lib hstl_def
+.param rslewp=0
+.param rslewn=0
+.endl
+
+.lib hsul_def
+.param rslewp=0
+.param rslewn=0
+.endl
+
+.lib oct_rs
+.param rslewp=0
+.param rslewn=0
+.endl
+

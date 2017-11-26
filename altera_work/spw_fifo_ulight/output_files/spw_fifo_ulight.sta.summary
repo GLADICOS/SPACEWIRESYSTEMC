@@ -1,0 +1,437 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i'
+Slack : 1.967
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control'
+Slack : 2.239
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data'
+Slack : 2.261
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'detector_tokens:m_x|ready_data'
+Slack : 2.319
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'detector_tokens:m_x|ready_control'
+Slack : 2.566
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'FPGA_CLK1_50'
+Slack : 4.938
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'FPGA_CLK1_50'
+Slack : 0.266
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i'
+Slack : 0.375
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'detector_tokens:m_x|ready_control'
+Slack : 0.385
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'detector_tokens:m_x|ready_data'
+Slack : 0.626
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control'
+Slack : 0.635
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data'
+Slack : 0.676
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i'
+Slack : 4.802
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'FPGA_CLK1_50'
+Slack : 12.511
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'FPGA_CLK1_50'
+Slack : 0.907
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i'
+Slack : 1.495
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'din_a'
+Slack : 0.339
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i'
+Slack : 0.505
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e'
+Slack : 0.552
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 0.563
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]'
+Slack : 1.250
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control'
+Slack : 1.402
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'detector_tokens:m_x|ready_data'
+Slack : 1.403
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'detector_tokens:m_x|ready_control'
+Slack : 1.406
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data'
+Slack : 1.417
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i'
+Slack : 3.898
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'FPGA_CLK1_50'
+Slack : 9.215
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i'
+Slack : 2.020
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data'
+Slack : 2.249
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control'
+Slack : 2.270
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'detector_tokens:m_x|ready_data'
+Slack : 2.315
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'detector_tokens:m_x|ready_control'
+Slack : 2.571
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'FPGA_CLK1_50'
+Slack : 5.404
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'FPGA_CLK1_50'
+Slack : 0.274
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i'
+Slack : 0.331
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'detector_tokens:m_x|ready_control'
+Slack : 0.337
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'detector_tokens:m_x|ready_data'
+Slack : 0.594
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control'
+Slack : 0.639
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data'
+Slack : 0.651
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i'
+Slack : 4.799
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'FPGA_CLK1_50'
+Slack : 12.852
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'FPGA_CLK1_50'
+Slack : 0.828
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i'
+Slack : 1.615
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'din_a'
+Slack : 0.347
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 0.498
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i'
+Slack : 0.530
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e'
+Slack : 0.548
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]'
+Slack : 1.250
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'detector_tokens:m_x|ready_data'
+Slack : 1.393
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'detector_tokens:m_x|ready_control'
+Slack : 1.417
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data'
+Slack : 1.417
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control'
+Slack : 1.419
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i'
+Slack : 3.946
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'FPGA_CLK1_50'
+Slack : 9.289
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control'
+Slack : 2.812
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data'
+Slack : 2.839
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'detector_tokens:m_x|ready_data'
+Slack : 2.857
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'detector_tokens:m_x|ready_control'
+Slack : 2.997
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i'
+Slack : 4.946
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'FPGA_CLK1_50'
+Slack : 6.028
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'FPGA_CLK1_50'
+Slack : 0.155
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i'
+Slack : 0.172
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'detector_tokens:m_x|ready_control'
+Slack : 0.179
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control'
+Slack : 0.326
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'detector_tokens:m_x|ready_data'
+Slack : 0.338
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data'
+Slack : 0.342
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i'
+Slack : 6.697
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'FPGA_CLK1_50'
+Slack : 14.791
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'FPGA_CLK1_50'
+Slack : 0.529
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i'
+Slack : 0.534
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'din_a'
+Slack : 0.593
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i'
+Slack : 0.742
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e'
+Slack : 0.749
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 0.815
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]'
+Slack : 1.250
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'detector_tokens:m_x|ready_control'
+Slack : 1.618
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control'
+Slack : 1.619
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data'
+Slack : 1.632
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'detector_tokens:m_x|ready_data'
+Slack : 1.644
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i'
+Slack : 4.165
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'FPGA_CLK1_50'
+Slack : 9.082
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control'
+Slack : 2.863
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data'
+Slack : 2.878
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'detector_tokens:m_x|ready_data'
+Slack : 2.899
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'detector_tokens:m_x|ready_control'
+Slack : 3.029
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i'
+Slack : 5.380
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'FPGA_CLK1_50'
+Slack : 6.645
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i'
+Slack : 0.139
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'detector_tokens:m_x|ready_control'
+Slack : 0.146
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'FPGA_CLK1_50'
+Slack : 0.159
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control'
+Slack : 0.299
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'detector_tokens:m_x|ready_data'
+Slack : 0.309
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data'
+Slack : 0.316
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i'
+Slack : 6.955
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'FPGA_CLK1_50'
+Slack : 15.437
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'FPGA_CLK1_50'
+Slack : 0.476
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i'
+Slack : 0.553
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'din_a'
+Slack : 0.652
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i'
+Slack : 0.784
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e'
+Slack : 0.797
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk'
+Slack : 0.807
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]'
+Slack : 1.250
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'detector_tokens:m_x|ready_control'
+Slack : 1.632
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control'
+Slack : 1.635
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data'
+Slack : 1.636
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'detector_tokens:m_x|ready_data'
+Slack : 1.645
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i'
+Slack : 4.282
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'FPGA_CLK1_50'
+Slack : 9.042
+TNS   : 0.000
+
+------------------------------------------------------------
