@@ -80,11 +80,11 @@ module spw_ulight_con_top_x(
 	wire [8:0] datarx_flag_w;
 	wire buffer_write_w;
 	
-	wire [7:0] time_out_axi;
+	//wire [7:0] time_out_axi;
 	
-	wire [13:0] monitor_x_axi;
-	wire [13:0] data_x;
-	wire rx_buffer_write_mon_x;
+	//wire [13:0] monitor_x_axi;
+	//wire [13:0] data_x;
+	//wire rx_buffer_write_mon_x;
 
 	wire credit_error_rx_w,top_send_fct_now_w;
 	
