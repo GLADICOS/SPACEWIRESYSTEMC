@@ -80,12 +80,11 @@ module TX_SPW (
 	wire [2:0] fct_flag_p;
 
 	wire [13:0] global_counter_transfer; 
-	wire [13:0] global_counter_transfer_data_take; 
 
 	wire char_sent;
 	wire fct_sent;
 
-tx_fsm_m  tx_(
+tx_fsm_m  tx_fsm(
 		.pclk_tx(pclk_tx),
 	
 		.enable_tx(enable_tx),
@@ -93,8 +92,6 @@ tx_fsm_m  tx_(
 		.send_fct_tx(send_fct_tx),
 
 		.global_counter_transfer(global_counter_transfer),
-
-		.fct_flag_p(fct_flag_p),
 
 		.tx_data_in(tx_data_in),
 		.tx_data_in_0(tx_data_in_0),
@@ -107,8 +104,11 @@ tx_fsm_m  tx_(
 		.ready_tx_data(ready_tx_data),
 		.ready_tx_timecode(ready_tx_timecode),
 
-		.char_sent(char_sent),
-		.fct_sent(fct_sent),
+		.fct_counter_p(fct_counter_p),
+		//.fct_flag_p(fct_flag_p),
+
+		.gotfct_tx(gotfct_tx),
+		.send_fct_now(send_fct_now),
 
 		.state_tx(state_tx),
 		.last_type(last_type),
@@ -119,74 +119,12 @@ tx_fsm_m  tx_(
 		.last_timein_control_flag_tx(last_timein_control_flag_tx)
 	);
 
-transfer_data_take cnt_transfer_data(
-				.pclk_tx(pclk_tx),
-				.state_tx(state_tx),
-				.enable_tx(enable_tx),
-				.send_null_tx(send_null_tx),
-
-				.tx_data_in(tx_data_in[8]),
-				.tx_data_in_0(tx_data_in_0[8]),
-
-				.global_counter_transfer_data_take(global_counter_transfer_data_take)
-			 );
-
-counter_transfer cnt_transfer_transpt_layer(
-			.pclk_tx(pclk_tx),
-			.state_tx(state_tx),
-			.enable_tx(enable_tx),
-			.send_null_tx(send_null_tx),
-
-			.tx_data_in(tx_data_in[8]),
-			.tx_data_in_0(tx_data_in_0[8]),
-
-			.global_counter_transfer(global_counter_transfer)
-		       );
-
-tx_transport trasnport_layer(
-
-			.pclk_tx(pclk_tx),
-			.enable_tx(enable_tx),
-			.send_null_tx(send_null_tx),
-
-			.state_tx_in(state_tx),
-			.last_type_in(last_type),
-			.global_counter_transfer_in(global_counter_transfer),
-
-			.tx_data_in(tx_data_in),
-			.tx_data_in_0(tx_data_in_0),
-			.txdata_flagctrl_tx_last(txdata_flagctrl_tx_last),
-			.last_timein_control_flag_tx(last_timein_control_flag_tx),
-			.timecode_s(timecode_s),
-
-			.tx_dout_e(tx_dout_e),
-			.tx_sout_e(tx_sout_e)
-		   );
-
-tx_fct_counter  tx_fct_cnt( 
-			.pclk_tx(pclk_tx),
-			.enable_tx(enable_tx),
-
-			.gotfct_tx(gotfct_tx),
-			.char_sent(char_sent),
-
-			.fct_counter_p(fct_counter_p)
-		     );
-
-tx_fct_send	tx_fct_snd(
-			.pclk_tx(pclk_tx),
-			.enable_tx(enable_tx),
-			.send_fct_now(send_fct_now),
-			.fct_sent(fct_sent),
-			.fct_flag_p(fct_flag_p)
-		  );
-
 tx_data_send tx_data_snd(
 			.pclk_tx(pclk_tx),
 			.enable_tx(enable_tx),
 
 			.state_tx(state_tx),
-			.global_counter_transfer(global_counter_transfer_data_take),
+			.global_counter_transfer(global_counter_transfer),
 
 			.timecode_tx_i(timecode_tx_i),
 			.tickin_tx(tickin_tx),
@@ -204,6 +142,27 @@ tx_data_send tx_data_snd(
 
 			.tx_tcode_in(tx_tcode_in),
 			.tcode_rdy_trnsp(tcode_rdy_trnsp)
-		   );
+);
+
+
+tx_transport trasnport_layer(
+
+			.pclk_tx(pclk_tx),
+			.enable_tx(enable_tx),
+
+			.state_tx(state_tx),
+			.last_type(last_type),
+			.global_counter_transfer(global_counter_transfer),
+
+			.tx_data_in(tx_data_in),
+			.tx_data_in_0(tx_data_in_0),
+
+			.txdata_flagctrl_tx_last(txdata_flagctrl_tx_last),
+			.last_timein_control_flag_tx(last_timein_control_flag_tx),
+			.timecode_s(timecode_s),
+
+			.tx_dout_e(tx_dout_e),
+			.tx_sout_e(tx_sout_e)
+);
 
 endmodule

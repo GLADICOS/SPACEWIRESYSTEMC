@@ -53,25 +53,25 @@ localparam [6:0] tx_spw_start              = 7'b0000000,
 	   	 tx_spw_data_c_0           = 7'b0100000,
 	   	 tx_spw_time_code_c        = 7'b1000000/* synthesis dont_replicate */;
 
+
 always@(posedge pclk_tx or negedge enable_tx)
 begin
 	if(!enable_tx)
 	begin
-		global_counter_transfer <= 14'd1;
+		global_counter_transfer <= 14'd0;
 	end
 	else
 	begin
-
 		case(state_tx)
 		tx_spw_start:
 		begin
 			if(send_null_tx && enable_tx)
 			begin
-				global_counter_transfer <= global_counter_transfer << 14'd1;
+				global_counter_transfer <= 14'd1;
 			end
 			else
 			begin
-				global_counter_transfer   <= 14'd1;
+				global_counter_transfer   <= 14'd0;
 			end	
 		end
 		tx_spw_null:

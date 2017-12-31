@@ -109,15 +109,30 @@ module RX_SPW (
 	wire rx_error_d;
 
 	wire posedge_p/* synthesis syn_replicate = 0 */;
+
+	reg f_time;
 	
 	//CLOCK RECOVERY
 	assign posedge_clk 	= posedge_p;
-	assign negedge_clk 	= !posedge_p;
+	assign negedge_clk 	= (f_time)?!posedge_p:1'b0;
 
 	assign rx_time_out 	= timecode;
 
 	buf (posedge_p,rx_din ^ rx_sin);
 
+
+always@(posedge posedge_clk or negedge rx_resetn)
+begin
+
+	if(!rx_resetn)
+	begin
+		f_time 	  	<= 1'b0;
+	end
+	else
+	begin
+		f_time 	  	<= 1'b1;
+	end
+end
 
 always@(*)
 begin
@@ -133,7 +148,6 @@ end
 
 always@(*)
 begin
-
 	ready_control = 1'b0;
 	ready_data    = 1'b0;
 
@@ -191,6 +205,7 @@ rx_control_data_rdy control_data_rdy(
 
 				.is_control(is_control),
 				.counter_neg(counter_neg),
+				
 				.last_is_control(last_is_control),
 
 				.rx_error(rx_error),
@@ -201,7 +216,7 @@ rx_control_data_rdy control_data_rdy(
 
 
 rx_data_control_p data_control(
-				.posedge_clk(posedge_clk),
+				.posedge_clk(negedge_clk),
 				.rx_resetn(rx_resetn),
 
 				.bit_c_3(bit_c_3),
@@ -224,7 +239,6 @@ rx_data_control_p data_control(
 				.last_is_data(last_is_data),
 
 				.is_control(is_control),
-
 				.counter_neg(counter_neg),
 
 				.dta_timec_p(dta_timec_p),

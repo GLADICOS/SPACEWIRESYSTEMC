@@ -115,6 +115,7 @@ begin
 	end
 	else
 	begin
+
 		if(is_control && counter_neg == 6'd4)
 		begin
 			control_p_r	  <= {bit_c_2,bit_c_1,bit_c_0};

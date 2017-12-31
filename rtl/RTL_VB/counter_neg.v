@@ -55,13 +55,14 @@ begin
 	begin
 		control_bit_found <= rx_din;
 
-		if(counter_neg == 6'd1)
+		case(counter_neg)
+		6'd1:
 		begin
 			counter_neg <= 6'd2;
 		end
-		else if(counter_neg == 6'd2)
+		6'd2:
 		begin
-			if(control_bit_found == 1'b1)
+			if(control_bit_found)
 			begin
 				is_control  <= 1'b1;	
 			end
@@ -72,34 +73,36 @@ begin
 
 			counter_neg <= 6'd4;
 		end
-		else if(counter_neg == 6'd4)
+		6'd4:
 		begin
-			if(is_control == 1'b1)
+
+			is_control <= 1'b0;
+
+			if(is_control)
 			begin	
-				is_control <= 1'b0;
 				counter_neg <= 6'd2;
 			end
 			else
 			begin
-				is_control <= 1'b0;
 				counter_neg <= 6'd8;
 			end
 		end
-		else if(counter_neg == 6'd8)
+		6'd8:
 		begin
 			is_control    <= 1'b0;
 			counter_neg <= 6'd16;
 		end
-		else if(counter_neg == 6'd16)
+		6'd16:
 		begin
 			is_control    <= 1'b1;
 			counter_neg <= 6'd32;
 		end
-		else if(counter_neg == 6'd32)
+		6'd32:
 		begin
 			is_control    <= 1'b0;
 			counter_neg <= 6'd2;
 		end
+		endcase
 	end
 end
 

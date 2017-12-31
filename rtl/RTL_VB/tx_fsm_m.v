@@ -38,26 +38,26 @@ module tx_fsm_m (
 			input send_null_tx,
 			input send_fct_tx,
 
-			input [13:0] global_counter_transfer,
-
-			input [2:0] fct_flag_p,
-
 			input [8:0]  tx_data_in,
 			input [8:0]  tx_data_in_0,
 			input process_data,
 			input process_data_0,
 
+			input gotfct_tx,
+			input send_fct_now,
+			
 			input [7:0]  tx_tcode_in,
 			input tcode_rdy_trnsp,
 			//
 			output  reg ready_tx_data,
 			output  reg ready_tx_timecode,
 
-			output reg char_sent,
-			output reg fct_sent,
+			output [5:0] fct_counter_p,
 
-			output reg [6:0] state_tx /* synthesis syn_replicate = 1 */,
-			output reg [5:0]  last_type /* synthesis syn_replicate = 1 */,
+			output [13:0] global_counter_transfer,
+
+			output reg [6:0] state_tx,
+			output reg [5:0] last_type,
 
 			output reg [13:0] timecode_s,
 			output reg [8:0]  txdata_flagctrl_tx_last,
@@ -90,6 +90,11 @@ localparam [13:0] timecode_ss    = 14'b01110000000000/* synthesis dont_replicate
 
 
 	reg [6:0] next_state_tx/* synthesis dont_replicate */;
+
+	reg char_sent;
+	reg fct_sent;
+
+	wire [2:0] fct_flag_p;
 
 always@(*)
 begin
@@ -338,26 +343,17 @@ begin
 			ready_tx_data <= 1'b0;
 			ready_tx_timecode <= 1'b0;
 
-			if(global_counter_transfer == 14'd128)
-			begin
-				last_type  <=last_type;
-			end
-			else 
-			begin
-				if(global_counter_transfer > 14'd1)
-					last_type  <= NULL;
-				else
-					last_type  <= last_type;
-			end
+			last_type  <= NULL;
 		end
 		tx_spw_fct:
 		begin
 			ready_tx_data <= 1'b0;
 			ready_tx_timecode <= 1'b0;
 
+			last_type  <=FCT;
+
 			if(global_counter_transfer == 14'd8)
 			begin
-				last_type  <=last_type;
 				fct_sent <= 1'b0;
 			end
 			else
@@ -366,27 +362,19 @@ begin
 					fct_sent <=  1'b1;
 				else
 					fct_sent <= 1'b0;
-
-				last_type  <=FCT;
 			end
 		end
 		tx_spw_null_c:
 		begin
 			ready_tx_data <= 1'b0;
+			last_type  <= NULL;
 
 			if(global_counter_transfer == 14'd128)
 			begin
-				fct_sent <=  1'b0;
-				last_type  <=last_type;
 				ready_tx_timecode <= 1'b0;
 			end
 			else
 			begin
-				if(global_counter_transfer > 14'd1)
-					last_type  <= NULL;
-				else
-					last_type  <= last_type;
-
 				char_sent <= 1'b0;
 				fct_sent <=  1'b0;
 				ready_tx_timecode <= ready_tx_timecode;
@@ -394,11 +382,12 @@ begin
 		end
 		tx_spw_fct_c:
 		begin
-			
+
+			last_type  <=FCT;
+
 			if(global_counter_transfer == 14'd8)
 			begin		
 				char_sent <= 1'b0;	
-				last_type  <=last_type;
 				fct_sent <=  1'b0;
 				ready_tx_timecode <= 1'b0;
 			end
@@ -410,11 +399,6 @@ begin
 					fct_sent <=  1'b1;
 				else
 					fct_sent <= 1'b0;
-
-				if(global_counter_transfer > 14'd1)
-					last_type  <=FCT;
-				else
-					last_type  <=last_type;
 
 				ready_tx_timecode <= ready_tx_timecode;
 			end
@@ -425,10 +409,11 @@ begin
 			if(!tx_data_in[8])
 			begin
 
+				last_type  <= DATA;
+
 				if(global_counter_transfer == 14'd512)
 				begin
 					fct_sent <=  1'b0;
-					last_type  <=last_type;
 					ready_tx_timecode <= 1'b0;
 				end
 				else if(global_counter_transfer == 14'd8)
@@ -447,7 +432,6 @@ begin
 					end
 					else
 					begin
-						last_type  <= DATA;
 						fct_sent <=  1'b0;
 						ready_tx_data <= 1'b0;
 						char_sent <= 1'b0;
@@ -501,10 +485,12 @@ begin
 			if(!tx_data_in_0[8])
 			begin
 
+
+				last_type  <= DATA;
+
 				if(global_counter_transfer == 14'd512)
 				begin
 					fct_sent <=  1'b0;
-					last_type  <=last_type;
 					ready_tx_timecode <= 1'b0;
 				end
 				else if(global_counter_transfer == 14'd8)
@@ -515,10 +501,8 @@ begin
 				end
 				else
 				begin
-
 					if(global_counter_transfer < 14'd4)
 					begin
-						last_type  <=last_type;
 						ready_tx_data <= 1'b1;
 						char_sent <= 1'b1;
 						fct_sent <=  1'b0;
@@ -526,7 +510,6 @@ begin
 					else
 					begin
 						fct_sent <=  1'b0;
-						last_type  <= DATA;
 						ready_tx_data <= 1'b0;
 						char_sent <= 1'b0;
 					end
@@ -574,13 +557,13 @@ begin
 		tx_spw_time_code_c:
 		begin
 
-			ready_tx_data <= 1'b0;
-				
+			ready_tx_data <= 1'b0;				
+			last_type  <= TIMEC;
+
 			if(global_counter_transfer == 14'd8192)
 			begin
 				fct_sent <=  1'b0;
 				ready_tx_timecode <= 1'b1;
-				last_type  <= last_type;
 			end
 			else
 			begin
@@ -590,11 +573,6 @@ begin
 
 				timecode_s <= {timecode_ss[13:10],2'd2,tx_tcode_in[7:0]};
 				last_timein_control_flag_tx <= tx_tcode_in;
-
-				if(global_counter_transfer > 14'd1)
-					last_type  <= TIMEC;
-				else
-					last_type  <= last_type;
 			end
 
 		end
@@ -607,6 +585,37 @@ begin
 		endcase
 	end
 end
+
+counter_transfer cnt_transfer_transpt_layer(
+			.pclk_tx(pclk_tx),
+			.state_tx(state_tx),
+			.enable_tx(enable_tx),
+			.send_null_tx(send_null_tx),
+
+			.tx_data_in(tx_data_in[8]),
+			.tx_data_in_0(tx_data_in_0[8]),
+
+			.global_counter_transfer(global_counter_transfer)
+);
+
+
+tx_fct_counter  tx_fct_cnt( 
+			.pclk_tx(pclk_tx),
+			.enable_tx(enable_tx),
+
+			.gotfct_tx(gotfct_tx),
+			.char_sent(char_sent),
+
+			.fct_counter_p(fct_counter_p)
+		     );
+
+tx_fct_send	tx_fct_snd(
+			.pclk_tx(pclk_tx),
+			.enable_tx(enable_tx),
+			.send_fct_now(send_fct_now),
+			.fct_sent(fct_sent),
+			.fct_flag_p(fct_flag_p)
+		  );
 
 
 endmodule
