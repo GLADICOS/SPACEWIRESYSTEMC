@@ -133,37 +133,23 @@ begin
 	end
 end
 
-/*
-always@(counter_neg)
-begin
-	ready_control    = 1'b0;
-	ready_data       = 1'b0;
-
-	if(counter_neg[5:0] == 6'd4 && !posedge_p && is_control)
-	begin
-		ready_control = 1'b1;
-	end
-	else if(counter_neg[5:0] == 6'd32 && !posedge_p && !is_control)
-	begin
-		ready_data       = 1'b1;
-	end
-end
-
 always@(*)
 begin
-	ready_control_p    = 1'b0;
-	ready_data_p       = 1'b0;
 
-	if(counter_neg[5:0] == 6'd4 && posedge_p && is_control)
+	ready_control = 1'b0;
+	ready_data    = 1'b0;
+
+	if(is_control && counter_neg[5:0] == 6'd4 && !posedge_p)
 	begin
-		ready_control_p = 1'b1;
+		ready_control = 1'b1;
+		ready_data    = 1'b0;
 	end
-	else if(counter_neg[5:0] == 6'd32 && posedge_p && !is_control)
+	else if(is_control && counter_neg[5:0] == 6'd32 && !posedge_p)
 	begin
-		ready_data_p       = 1'b1;
+		ready_control = 1'b0;
+		ready_data    = 1'b1;
 	end
 end
-*/
 
 always@(*)
 begin
@@ -263,8 +249,6 @@ begin
 		is_control <= 1'b0;
 		control_bit_found <= 1'b0;
 		counter_neg[5:0]  <= 6'd1;
-		ready_control     <= 1'b0;
-		ready_data        <= 1'b0;
 	end
 	else
 	begin
@@ -282,13 +266,9 @@ begin
 			if(control_bit_found == 1'b1)
 			begin
 				is_control  <= 1'b1;	
-				ready_control     <= 1'b1;
-				ready_data        <= 1'b0;
 			end
 			else 
 			begin
-				ready_control     <= 1'b0;
-				ready_data        <= 1'b1;
 				is_control  <= 1'b0;
 			end
 
@@ -303,6 +283,7 @@ begin
 			end
 			else
 			begin
+				is_control  <= is_control;
 				counter_neg[5:0] <= 6'd8;
 			end
 		end
@@ -312,12 +293,11 @@ begin
 		end
 		6'd16:
 		begin
+			is_control <= 1'b1;
 			counter_neg[5:0] <= 6'd32;
 		end 
 		6'd32:
 		begin
-			ready_control     <= 1'b0;
-			ready_data        <= 1'b0;
 			is_control <= 1'b0;
 			counter_neg[5:0] <= 6'd2;
 		end
@@ -435,7 +415,7 @@ begin
 	end
 end
 
-always@(posedge ready_control or negedge rx_resetn )
+always@(posedge posedge_clk or negedge rx_resetn )
 begin
 	if(!rx_resetn)
 	begin
@@ -473,7 +453,7 @@ begin
 end
 */
 
-always@(posedge ready_data or negedge rx_resetn )
+always@(posedge posedge_clk or negedge rx_resetn )
 begin
 	if(!rx_resetn)
 	begin
