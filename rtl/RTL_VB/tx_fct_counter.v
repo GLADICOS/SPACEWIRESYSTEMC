@@ -51,6 +51,9 @@ module tx_fct_counter(
 
 	reg clear_reg;
 
+	reg rec_a,rec_b;
+
+
 always@(*)
 begin
 	next_state_fct_receive = state_fct_receive;
@@ -58,7 +61,7 @@ begin
 	case(state_fct_receive)
 	3'd0:
 	begin
-		if(gotfct_tx)
+		if(rec_b)
 		begin
 			next_state_fct_receive = 3'd1;
 		end
@@ -76,7 +79,7 @@ begin
 	end
 	3'd2:
 	begin
-		if(gotfct_tx)
+		if(rec_b)
 		begin
 			next_state_fct_receive = 3'd2;
 		end
@@ -114,9 +117,16 @@ begin
 	begin
 		fct_counter_receive<= 6'd0;
 		state_fct_receive <= 3'd0;
+
+		rec_a <= 1'b0;
+		rec_b <= 1'b0;
 	end
 	else
 	begin
+
+
+		rec_a <= gotfct_tx;
+		rec_b <= rec_a;
 
 		state_fct_receive <= next_state_fct_receive;
 

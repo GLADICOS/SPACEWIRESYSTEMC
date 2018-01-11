@@ -77,6 +77,14 @@ localparam [5:0]  error_reset   = 6'b00_0000,
 
 	reg got_bit_internal;
 
+	reg get_rx_got_fct_a, get_rx_got_fct_b;
+	reg get_rx_error_a, get_rx_error_b;
+	reg get_rx_got_null_a, get_rx_got_null_b;
+
+	reg get_rx_got_nchar_a, get_rx_got_nchar_b;
+	reg get_rx_got_time_code_a, get_rx_got_time_code_b;
+	reg get_rx_credit_error_a, get_rx_credit_error_b;
+
 //
 assign fsm_state    = state_fsm;
 
@@ -106,7 +114,7 @@ begin
 		begin
 			next_state_fsm = ready;
 		end
-		else if(rx_error | rx_got_fct | rx_got_nchar | rx_got_time_code)
+		else if(get_rx_error_a | get_rx_got_fct_a | get_rx_got_nchar_a | rx_got_time_code)
 		begin
 			next_state_fsm = error_reset;
 		end
@@ -115,11 +123,11 @@ begin
 	ready:
 	begin
 
-		if(rx_error | rx_got_fct | rx_got_nchar | rx_got_time_code)
+		if(get_rx_error_a | get_rx_got_fct_a | get_rx_got_nchar_a | get_rx_got_time_code_a)
 		begin
 			next_state_fsm = error_reset;
 		end
-		else if(((!link_disable) & (link_start |(auto_start & rx_got_null)))==1'b1)
+		else if(((!link_disable) & (link_start |(auto_start & get_rx_got_null_a)))==1'b1)
 		begin
 			next_state_fsm = started;
 		end
@@ -128,11 +136,11 @@ begin
 	started:
 	begin
 
-		if(rx_error | rx_got_fct | rx_got_nchar | rx_got_time_code | after128us == 12'd1279)
+		if(get_rx_error_a | get_rx_got_fct_a | get_rx_got_nchar_a | get_rx_got_time_code_a | after128us == 12'd1279)
 		begin
 			next_state_fsm = error_reset;
 		end
-		else if((rx_got_null & rx_got_bit)== 1'b1)
+		else if((get_rx_got_null_a & rx_got_bit)== 1'b1)
 		begin
 			next_state_fsm = connecting;
 		end
@@ -141,11 +149,11 @@ begin
 	connecting:
 	begin
 
-		if(rx_error | rx_got_nchar | rx_got_time_code | after128us == 12'd1279)
+		if(get_rx_error_a | get_rx_got_nchar_a | get_rx_got_time_code_a | after128us == 12'd1279)
 		begin
 			next_state_fsm = error_reset;
 		end
-		else if(rx_got_fct)
+		else if(get_rx_got_fct_a)
 		begin
 			next_state_fsm = run;
 		end
@@ -154,7 +162,7 @@ begin
 	run:
 	begin
 
-		if(rx_error | rx_credit_error | link_disable  | after850ns == 12'd85)
+		if(get_rx_error_a | get_rx_credit_error_a | link_disable  | after850ns == 12'd85)
 		begin
 			next_state_fsm = error_reset;
 		end
@@ -175,12 +183,46 @@ begin
 
 		rx_resetn <= 1'b0;
 
-		enable_tx<= 1'b0;
-		send_null_tx<= 1'b0;
-		send_fct_tx<= 1'b0;
+		enable_tx    <= 1'b0;
+		send_null_tx <= 1'b0;
+		send_fct_tx  <= 1'b0;
+
+		get_rx_got_fct_a  <= 1'b0; 
+		get_rx_got_fct_b  <= 1'b0;
+		get_rx_error_a    <= 1'b0; 
+		get_rx_error_b    <= 1'b0;
+		get_rx_got_null_a <= 1'b0;
+		get_rx_got_null_b <= 1'b0;
+
+
+		get_rx_got_nchar_a     <= 1'b0; 
+		get_rx_got_nchar_b     <= 1'b0;
+		get_rx_got_time_code_a <= 1'b0;
+		get_rx_got_time_code_b <= 1'b0;
+		get_rx_credit_error_a  <= 1'b0; 
+		get_rx_credit_error_b  <= 1'b0;
+
 	end
 	else
 	begin
+
+		get_rx_got_fct_b <= rx_got_fct;
+		get_rx_got_fct_a <= get_rx_got_fct_b;
+
+		get_rx_error_b <= rx_error;
+		get_rx_error_a <= get_rx_error_b;
+
+		get_rx_got_null_b <= rx_got_null;
+		get_rx_got_null_a <= get_rx_got_null_b;
+
+		get_rx_got_nchar_b <= rx_got_nchar;
+		get_rx_got_nchar_a <= get_rx_got_nchar_b;
+
+		get_rx_got_time_code_b <= rx_got_time_code;
+		get_rx_got_time_code_a <= get_rx_got_time_code_b;
+
+		get_rx_credit_error_b <= rx_credit_error;
+		get_rx_credit_error_a <= get_rx_credit_error_b;
 
 		state_fsm <= next_state_fsm;
 

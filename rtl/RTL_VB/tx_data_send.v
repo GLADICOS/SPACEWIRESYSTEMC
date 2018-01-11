@@ -34,8 +34,8 @@ module tx_data_send(
 			input pclk_tx,
 			input enable_tx,
 
-			input [6:0] state_tx,
-			input [13:0] global_counter_transfer,
+			input [2:0] state_tx,
+			input [3:0] global_counter_transfer,
 
 			input [7:0] timecode_tx_i,
 			input tickin_tx,
@@ -56,14 +56,14 @@ module tx_data_send(
 
 		   );
 
-localparam [6:0] tx_spw_start              = 7'b0000000,
-	   	 tx_spw_null               = 7'b0000001,
-	   	 tx_spw_fct                = 7'b0000010,
-	   	 tx_spw_null_c             = 7'b0000100,
-	   	 tx_spw_fct_c              = 7'b0001000,
-	   	 tx_spw_data_c             = 7'b0010000,
-	   	 tx_spw_data_c_0           = 7'b0100000,
-	   	 tx_spw_time_code_c        = 7'b1000000/* synthesis dont_replicate */;
+localparam [6:0] tx_spw_start              = 3'b000,
+	   	 tx_spw_null               = 3'b001,
+	   	 tx_spw_fct                = 3'b010,
+	   	 tx_spw_null_c             = 3'b011,
+	   	 tx_spw_fct_c              = 3'b100,
+	   	 tx_spw_data_c             = 3'b101,
+	   	 tx_spw_data_c_0           = 3'b110,
+	   	 tx_spw_time_code_c        = 3'b111/* synthesis dont_replicate */;
 
 always@(posedge pclk_tx or negedge enable_tx)
 begin
@@ -89,13 +89,13 @@ begin
 		begin
 
 			case(global_counter_transfer)
-			14'd128:
+			4'd8:
 			begin
 				process_data_0  <= process_data_0;
 				process_data    <= process_data;
 				tcode_rdy_trnsp <= tcode_rdy_trnsp;
 			end
-			14'd16:
+			4'd5:
 			begin
 				process_data_0  <= 1'b0;
 
@@ -131,12 +131,12 @@ begin
 		begin
 
 			case(global_counter_transfer)
-			14'd1:
+			4'd1:
 			begin
 				process_data   <= 1'b0;
 				process_data_0 <= 1'b0;
 			end
-			14'd32:
+			4'd5:
 			begin	
 				process_data   <= process_data;			
 
@@ -149,7 +149,7 @@ begin
 					process_data_0 <= 1'b0;
 				end
 			end
-			14'd512:
+			4'd10:
 			begin
 				process_data_0  <= process_data_0;
 				process_data    <= process_data;
@@ -160,7 +160,7 @@ begin
 				process_data   <= process_data;	
 				process_data_0   <= process_data_0;
 	
-				if(tickin_tx && global_counter_transfer > 14'd8)
+				if(tickin_tx && global_counter_transfer > 4'd8)
 				begin
 					tcode_rdy_trnsp <= 1'b1;
 				end
@@ -175,12 +175,12 @@ begin
 		begin
 
 			case(global_counter_transfer)
-			14'd1:
+			4'd1:
 			begin
 				process_data   <= 1'b0;
 				process_data_0 <= 1'b0;
 			end
-			14'd32:
+			4'd5:
 			begin
 
 				process_data_0 <= process_data_0;
@@ -194,7 +194,7 @@ begin
 					process_data   <= 1'b0;
 				end
 			end
-			14'd512:
+			4'd10:
 			begin
 				process_data    <= process_data;
 				process_data_0  <= process_data_0;
@@ -205,7 +205,7 @@ begin
 				process_data   <= process_data;
 				process_data_0 <= process_data_0;
 
-				if(tickin_tx && global_counter_transfer > 14'd8)
+				if(tickin_tx && global_counter_transfer > 4'd8)
 				begin
 					tcode_rdy_trnsp <= 1'b1;
 				end
@@ -221,7 +221,7 @@ begin
 		begin
 
 			case(global_counter_transfer)
-			14'd16:
+			4'd4:
 			begin
 				process_data_0  <= 1'b0;
 
@@ -234,7 +234,7 @@ begin
 					process_data   <= 1'b0;
 				end
 			end
-			14'd8192:
+			4'd14:
 			begin
 				process_data   <= process_data;
 				process_data_0 <= process_data_0;
@@ -275,7 +275,7 @@ begin
 		tx_spw_null_c:
 		begin
 			case(global_counter_transfer)
-			14'd16:
+			4'd4:
 			begin
 				tx_data_in_0   <= tx_data_in_0;
 				tx_data_in     <= data_tx_i;
@@ -299,7 +299,7 @@ begin
 		begin
 
 			case(global_counter_transfer)
-			14'd32:
+			4'd5:
 			begin
 				tx_data_in <= tx_data_in;
 				tx_data_in_0 <= data_tx_i;
@@ -316,7 +316,7 @@ begin
 		tx_spw_data_c_0:
 		begin
 			case(global_counter_transfer)
-			14'd32:
+			4'd5:
 			begin
 				tx_data_in_0   <= tx_data_in_0;
 				tx_data_in     <= data_tx_i;
@@ -334,7 +334,7 @@ begin
 		begin
 
 			case(global_counter_transfer)
-			14'd16:
+			4'd4:
 			begin
 				tx_data_in_0   <= tx_data_in_0;
 				tx_data_in     <= data_tx_i;

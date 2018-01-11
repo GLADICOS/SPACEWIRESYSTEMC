@@ -62,12 +62,13 @@ module rx_data_control_p(
 				output reg parity_rec_d_gen,
 
 				output reg [2:0] control_p_r,
+				output reg [2:0] control_l_r,
 				output reg parity_rec_c,
 				output reg parity_rec_c_gen
 			);
 
 
-
+	
 always@(posedge posedge_clk or negedge rx_resetn)
 begin
 
@@ -110,6 +111,7 @@ begin
 	if(!rx_resetn)
 	begin
 		control_p_r  	<= 3'd0;
+		control_l_r	<= 3'd0;
 		parity_rec_c	<= 1'b0;
 		parity_rec_c_gen<= 1'b0;
 	end
@@ -119,6 +121,7 @@ begin
 		if(is_control && counter_neg == 6'd4)
 		begin
 			control_p_r	  <= {bit_c_2,bit_c_1,bit_c_0};
+			control_l_r	  <= control_p_r;
 			parity_rec_c	  <= bit_c_3;
 
 			if(last_is_control)

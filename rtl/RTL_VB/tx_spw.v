@@ -59,19 +59,19 @@ module TX_SPW (
 
 		);
 
-	wire [6:0] state_tx/* synthesis dont_replicate */;
+	wire [2:0] state_tx/* synthesis dont_replicate */;
 
 	wire [13:0] timecode_s;
 
 	wire [5:0]  last_type;
-	wire [8:0]  txdata_flagctrl_tx_last;
+	wire txdata_flagctrl_tx_last;
 
 	wire [8:0]  tx_data_in;
 	wire [8:0]  tx_data_in_0;
 	wire process_data;
 	wire process_data_0;
 
-	wire [7:0]  last_timein_control_flag_tx;
+	wire last_timein_control_flag_tx;
 
 	wire [7:0]  tx_tcode_in;
 	wire tcode_rdy_trnsp;
@@ -79,10 +79,13 @@ module TX_SPW (
 	wire [5:0] fct_counter_p;
 	wire [2:0] fct_flag_p;
 
-	wire [13:0] global_counter_transfer; 
+	wire [3:0] global_counter_transfer; 
 
 	wire char_sent;
 	wire fct_sent;
+
+	wire tx_dout;
+	wire tx_sout;
 
 tx_fsm_m  tx_fsm(
 		.pclk_tx(pclk_tx),
@@ -111,12 +114,9 @@ tx_fsm_m  tx_fsm(
 		.send_fct_now(send_fct_now),
 
 		.state_tx(state_tx),
-		.last_type(last_type),
 
-		.timecode_s(timecode_s),
-		.txdata_flagctrl_tx_last(txdata_flagctrl_tx_last),
-
-		.last_timein_control_flag_tx(last_timein_control_flag_tx)
+		.tx_dout(tx_dout),
+		.tx_sout(tx_sout)
 	);
 
 tx_data_send tx_data_snd(
@@ -149,17 +149,10 @@ tx_transport trasnport_layer(
 
 			.pclk_tx(pclk_tx),
 			.enable_tx(enable_tx),
+			.send_null_tx(send_null_tx),//error disppear under 
 
-			.state_tx(state_tx),
-			.last_type(last_type),
-			.global_counter_transfer(global_counter_transfer),
-
-			.tx_data_in(tx_data_in),
-			.tx_data_in_0(tx_data_in_0),
-
-			.txdata_flagctrl_tx_last(txdata_flagctrl_tx_last),
-			.last_timein_control_flag_tx(last_timein_control_flag_tx),
-			.timecode_s(timecode_s),
+			.tx_dout(tx_dout),
+			.tx_sout(tx_sout),
 
 			.tx_dout_e(tx_dout_e),
 			.tx_sout_e(tx_sout_e)

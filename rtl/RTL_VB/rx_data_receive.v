@@ -46,10 +46,9 @@ module rx_data_receive(
 				input parity_rec_d_gen,
 
 				input [2:0] control_p_r,
+				input [2:0] control_l_r,
 				input [8:0] dta_timec_p,
 
-				output reg [2:0] control,
-				output reg [2:0] control_l_r,
 				output reg [1:0] state_data_process,
 
 				output reg last_is_control,
@@ -109,9 +108,6 @@ begin
 
 	if(!rx_resetn)
 	begin
-		control_l_r      <= 3'd0;
-		control	   	 <= 3'd0;
-
 		last_is_control  <=  1'b0;
 		last_is_data 	 <=  1'b0;
 		last_is_timec 	 <=  1'b0;
@@ -140,10 +136,8 @@ begin
 
 			if(ready_control_p_r)
 			begin
-				control 	 <= control_p_r;
-				control_l_r 	 <= control;
-
-				if(control_l_r[2:0] != 3'd7 && control[2:0] == 3'd4)
+				
+				if(control_l_r[2:0] != 3'd7 && control_p_r[2:0] == 3'd4)
 				begin
 					rx_got_fct        <= 1'b1;
 				end
@@ -174,14 +168,14 @@ begin
 			begin
 				rx_got_fct        <= 1'b0;
 
-				if(control[2:0] != 3'd7)
+				if(control_p_r[2:0] != 3'd7)
 				begin
 					rx_data_flag	<= {dta_timec_p[8],dta_timec_p[7],dta_timec_p[6],dta_timec_p[5],dta_timec_p[4],dta_timec_p[3],dta_timec_p[2],dta_timec_p[1],dta_timec_p[0]};					
 					last_is_control  	<=1'b0;
 					last_is_data     	<=1'b1;
 					last_is_timec    	<=1'b0;
 				end
-				else if(control[2:0] == 3'd7)
+				else if(control_p_r[2:0] == 3'd7)
 				begin
 					timecode     <=  {dta_timec_p[7],dta_timec_p[6],dta_timec_p[5],dta_timec_p[4],dta_timec_p[3],dta_timec_p[2],dta_timec_p[1],dta_timec_p[0]};
 					last_is_control  	<= 1'b0;

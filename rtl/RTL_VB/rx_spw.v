@@ -182,7 +182,7 @@ rx_data_buffer_data_w  buffer_data_flag(
 			.rx_resetn(rx_resetn),
 
 			.state_data_process(state_data_process),
-			.control(control[2:0]),
+			.control(control_p_r),
 			.last_is_timec(last_is_timec),
 			.last_is_data(last_is_data),
 			.last_is_control(last_is_control),
@@ -200,7 +200,7 @@ rx_control_data_rdy control_data_rdy(
 				.rx_error_c(rx_error_c),
 				.rx_error_d(rx_error_d),
 
-				.control(control[2:0]),
+				.control(control_p_r),
 				.control_l_r(control_l_r[2:0]),
 
 				.is_control(is_control),
@@ -216,7 +216,7 @@ rx_control_data_rdy control_data_rdy(
 
 
 rx_data_control_p data_control(
-				.posedge_clk(negedge_clk),
+				.posedge_clk(posedge_clk),
 				.rx_resetn(rx_resetn),
 
 				.bit_c_3(bit_c_3),
@@ -246,6 +246,7 @@ rx_data_control_p data_control(
 				.parity_rec_d_gen(parity_rec_d_gen),
 
 				.control_p_r(control_p_r),
+				.control_l_r(control_l_r),
 				.parity_rec_c(parity_rec_c),
 				.parity_rec_c_gen(parity_rec_c_gen)
 			);
@@ -309,7 +310,6 @@ rx_data_receive rx_dtarcv (
 				.control_p_r(control_p_r),
 				.dta_timec_p(dta_timec_p),
 
-				.control(control),
 				.control_l_r(control_l_r),
 				.state_data_process(state_data_process),
 
