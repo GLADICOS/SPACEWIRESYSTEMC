@@ -62,7 +62,7 @@ module tx_fsm_m (
 			output tx_sout
 		);
 
-localparam [6:0] tx_spw_start              = 3'b000,
+localparam [2:0] tx_spw_start              = 3'b000,
 	   	 tx_spw_null               = 3'b001,
 	   	 tx_spw_fct                = 3'b010,
 	   	 tx_spw_null_c             = 3'b011,
@@ -87,7 +87,7 @@ localparam [5:0] NULL     = 6'b000001,
 	reg [8:0] txdata_flagctrl_tx_last;
 	reg [7:0]  last_timein_control_flag_tx;
 
-	reg [6:0] next_state_tx/* synthesis dont_replicate */;
+	reg [2:0] next_state_tx/* synthesis dont_replicate */;
 
 	reg char_sent;
 	reg fct_sent;
@@ -116,8 +116,8 @@ localparam [5:0] NULL     = 6'b000001,
 
 	assign tx_dout = (global_counter_transfer == 4'd0 & (last_type == NULL | last_type == FCT))?~(result_shift[0]^1'b0):
 			 (global_counter_transfer == 4'd0 & (last_type == EOP | last_type == EEP))?~(result_shift[0]^1'b1):
-			 (global_counter_transfer == 4'd0 & (last_type == DATA))?~(result_shift[0]^txdata_flagctrl_tx_last):
-			 (global_counter_transfer == 4'd0 & (last_type == TIMEC))?~(result_shift[0]^last_timein_control_flag_tx):result_shift[0];
+			 (global_counter_transfer == 4'd0 & (last_type == DATA))?~(result_shift[0]^tx_data_flagctrl_tx_last):
+			 (global_counter_transfer == 4'd0 & (last_type == TIMEC))?~(result_shift[0]^last_time_in_control_flag_tx):result_shift[0];
 
 	assign tx_sout = (tx_dout == last_tx_dout)?~last_tx_sout:last_tx_sout;
 

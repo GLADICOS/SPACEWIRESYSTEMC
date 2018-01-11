@@ -56,7 +56,7 @@ module tx_data_send(
 
 		   );
 
-localparam [6:0] tx_spw_start              = 3'b000,
+localparam [2:0] tx_spw_start              = 3'b000,
 	   	 tx_spw_null               = 3'b001,
 	   	 tx_spw_fct                = 3'b010,
 	   	 tx_spw_null_c             = 3'b011,
