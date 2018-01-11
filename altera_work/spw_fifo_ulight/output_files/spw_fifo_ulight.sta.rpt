@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for spw_fifo_ulight
-Sun Nov 26 18:42:16 2017
+Thu Jan 11 15:03:26 2018
 Quartus Prime Version 17.0.2 Build 602 07/19/2017 SJ Lite Edition
 
 
@@ -103,12 +103,12 @@ agreement for further details.
 ; Number detected on machine ; 4           ;
 ; Maximum allowed            ; 2           ;
 ;                            ;             ;
-; Average used               ; 1.27        ;
+; Average used               ; 1.18        ;
 ; Maximum used               ; 2           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;  26.7%      ;
+;     Processor 2            ;  17.9%      ;
 +----------------------------+-------------+
 
 
@@ -117,42 +117,36 @@ agreement for further details.
 +--------------------------------------------------------------+--------+--------------------------+
 ; SDC File Path                                                ; Status ; Read at                  ;
 +--------------------------------------------------------------+--------+--------------------------+
-; sdc/spw_fifo_ulight.out.sdc                                  ; OK     ; Sun Nov 26 18:40:12 2017 ;
-; ulight_fifo/synthesis/submodules/altera_reset_controller.sdc ; OK     ; Sun Nov 26 18:40:12 2017 ;
+; sdc/spw_fifo_ulight.out.sdc                                  ; OK     ; Thu Jan 11 15:02:20 2018 ;
+; ulight_fifo/synthesis/submodules/altera_reset_controller.sdc ; OK     ; Thu Jan 11 15:02:20 2018 ;
 +--------------------------------------------------------------+--------+--------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Clocks                                                                                                                                                                                                                                                                                                                                                                                                                                               ;
-+--------------------------------------------------------------------------------+-----------+--------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+---------------------------------------------------------+------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-; Clock Name                                                                     ; Type      ; Period ; Frequency ; Rise  ; Fall   ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master                                                  ; Source                                                                 ; Targets                                                                            ;
-+--------------------------------------------------------------------------------+-----------+--------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+---------------------------------------------------------+------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; Base      ; 10.000 ; 100.0 MHz ; 0.000 ; 5.000  ;            ;           ;             ;       ;        ;           ;            ;          ;                                                         ;                                                                        ; { clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i }                  ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; Base      ; 2.500  ; 400.0 MHz ; 0.000 ; 1.250  ;            ;           ;             ;       ;        ;           ;            ;          ;                                                         ;                                                                        ; { clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i }                      ;
-; detector_tokens:m_x|ready_control                                              ; Base      ; 4.000  ; 250.0 MHz ; 0.000 ; 2.000  ;            ;           ;             ;       ;        ;           ;            ;          ;                                                         ;                                                                        ; { detector_tokens:m_x|ready_control }                                              ;
-; detector_tokens:m_x|ready_data                                                 ; Base      ; 4.000  ; 250.0 MHz ; 0.000 ; 2.000  ;            ;           ;             ;       ;        ;           ;            ;          ;                                                         ;                                                                        ; { detector_tokens:m_x|ready_data }                                                 ;
-; din_a                                                                          ; Base      ; 2.500  ; 400.0 MHz ; 0.000 ; 1.250  ;            ;           ;             ;       ;        ;           ;            ;          ;                                                         ;                                                                        ; { din_a }                                                                          ;
-; FPGA_CLK1_50                                                                   ; Base      ; 20.000 ; 50.0 MHz  ; 0.000 ; 10.000 ;            ;           ;             ;       ;        ;           ;            ;          ;                                                         ;                                                                        ; { FPGA_CLK1_50 }                                                                   ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; Base      ; 4.000  ; 250.0 MHz ; 0.000 ; 2.000  ;            ;           ;             ;       ;        ;           ;            ;          ;                                                         ;                                                                        ; { spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control } ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; Base      ; 4.000  ; 250.0 MHz ; 0.000 ; 2.000  ;            ;           ;             ;       ;        ;           ;            ;          ;                                                         ;                                                                        ; { spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data }    ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; Base      ; 2.500  ; 400.0 MHz ; 0.000 ; 1.250  ;            ;           ;             ;       ;        ;           ;            ;          ;                                                         ;                                                                        ; { spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e }     ;
-; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk            ; Generated ; 2.500  ; 400.0 MHz ; 0.000 ; 1.250  ; 50.00      ; 1         ; 1           ;       ;        ;           ;            ; false    ; u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0] ; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|vco0ph[0] ; { u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk }            ;
-; u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]                        ; Generated ; 2.500  ; 400.0 MHz ; 0.000 ; 1.250  ; 50.00      ; 1         ; 8           ;       ;        ;           ;            ; false    ; FPGA_CLK1_50                                            ; u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|refclkin                ; { u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0] }                        ;
-+--------------------------------------------------------------------------------+-----------+--------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+---------------------------------------------------------+------------------------------------------------------------------------+------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ;
++---------------------------------------------------------------------------------------------------------+-----------+--------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+---------------------------------------------------------+------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+
+; Clock Name                                                                                              ; Type      ; Period ; Frequency ; Rise  ; Fall   ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master                                                  ; Source                                                                 ; Targets                                                                                                     ;
++---------------------------------------------------------------------------------------------------------+-----------+--------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+---------------------------------------------------------+------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; Base      ; 10.000 ; 100.0 MHz ; 0.000 ; 5.000  ;            ;           ;             ;       ;        ;           ;            ;          ;                                                         ;                                                                        ; { clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i }                                           ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; Base      ; 2.500  ; 400.0 MHz ; 0.000 ; 1.250  ;            ;           ;             ;       ;        ;           ;            ;          ;                                                         ;                                                                        ; { clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i }                                               ;
+; din_a                                                                                                   ; Base      ; 4.000  ; 250.0 MHz ; 0.000 ; 2.000  ;            ;           ;             ;       ;        ;           ;            ;          ;                                                         ;                                                                        ; { din_a }                                                                                                   ;
+; FPGA_CLK1_50                                                                                            ; Base      ; 20.000 ; 50.0 MHz  ; 0.000 ; 10.000 ;            ;           ;             ;       ;        ;           ;            ;          ;                                                         ;                                                                        ; { FPGA_CLK1_50 }                                                                                            ;
+; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e ; Base      ; 4.000  ; 250.0 MHz ; 0.000 ; 2.000  ;            ;           ;             ;       ;        ;           ;            ;          ;                                                         ;                                                                        ; { spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e } ;
+; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk                                     ; Generated ; 2.500  ; 400.0 MHz ; 0.000 ; 1.250  ; 50.00      ; 1         ; 1           ;       ;        ;           ;            ; false    ; u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0] ; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|vco0ph[0] ; { u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk }                                     ;
+; u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]                                                 ; Generated ; 2.500  ; 400.0 MHz ; 0.000 ; 1.250  ; 50.00      ; 2         ; 16          ;       ;        ;           ;            ; false    ; FPGA_CLK1_50                                            ; u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|refclkin                ; { u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0] }                                                 ;
++---------------------------------------------------------------------------------------------------------+-----------+--------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+---------------------------------------------------------+------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------+
-; Slow 1100mV 85C Model Fmax Summary                                                                                   ;
-+------------+-----------------+--------------------------------------------------------------------------------+------+
-; Fmax       ; Restricted Fmax ; Clock Name                                                                     ; Note ;
-+------------+-----------------+--------------------------------------------------------------------------------+------+
-; 85.19 MHz  ; 85.19 MHz       ; FPGA_CLK1_50                                                                   ;      ;
-; 124.49 MHz ; 124.49 MHz      ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ;      ;
-; 567.86 MHz ; 567.86 MHz      ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ;      ;
-; 575.04 MHz ; 575.04 MHz      ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ;      ;
-; 594.88 MHz ; 594.88 MHz      ; detector_tokens:m_x|ready_data                                                 ;      ;
-; 697.35 MHz ; 697.35 MHz      ; detector_tokens:m_x|ready_control                                              ;      ;
-+------------+-----------------+--------------------------------------------------------------------------------+------+
++-----------------------------------------------------------------------------------------------------------+
+; Slow 1100mV 85C Model Fmax Summary                                                                        ;
++------------+-----------------+---------------------------------------------------------------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name                                                          ; Note ;
++------------+-----------------+---------------------------------------------------------------------+------+
+; 81.27 MHz  ; 81.27 MHz       ; FPGA_CLK1_50                                                        ;      ;
+; 156.86 MHz ; 156.86 MHz      ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i       ;      ;
+; 211.51 MHz ; 211.51 MHz      ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i           ;      ;
+; 218.77 MHz ; 218.77 MHz      ; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ;      ;
++------------+-----------------+---------------------------------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
@@ -162,32 +156,28 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 HTML report is unavailable in plain text report export.
 
 
-+--------------------------------------------------------------------------------------------------------+
-; Slow 1100mV 85C Model Setup Summary                                                                    ;
-+--------------------------------------------------------------------------------+-------+---------------+
-; Clock                                                                          ; Slack ; End Point TNS ;
-+--------------------------------------------------------------------------------+-------+---------------+
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; 1.967 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; 2.239 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; 2.261 ; 0.000         ;
-; detector_tokens:m_x|ready_data                                                 ; 2.319 ; 0.000         ;
-; detector_tokens:m_x|ready_control                                              ; 2.566 ; 0.000         ;
-; FPGA_CLK1_50                                                                   ; 4.938 ; 0.000         ;
-+--------------------------------------------------------------------------------+-------+---------------+
++----------------------------------------------------------------------------------------------+
+; Slow 1100mV 85C Model Setup Summary                                                          ;
++---------------------------------------------------------------------+--------+---------------+
+; Clock                                                               ; Slack  ; End Point TNS ;
++---------------------------------------------------------------------+--------+---------------+
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i           ; -2.228 ; -101.287      ;
+; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; -2.071 ; -22.616       ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i       ; -0.725 ; -9.341        ;
+; FPGA_CLK1_50                                                        ; -0.518 ; -0.897        ;
++---------------------------------------------------------------------+--------+---------------+
 
 
-+--------------------------------------------------------------------------------------------------------+
-; Slow 1100mV 85C Model Hold Summary                                                                     ;
-+--------------------------------------------------------------------------------+-------+---------------+
-; Clock                                                                          ; Slack ; End Point TNS ;
-+--------------------------------------------------------------------------------+-------+---------------+
-; FPGA_CLK1_50                                                                   ; 0.266 ; 0.000         ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; 0.375 ; 0.000         ;
-; detector_tokens:m_x|ready_control                                              ; 0.385 ; 0.000         ;
-; detector_tokens:m_x|ready_data                                                 ; 0.626 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; 0.635 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; 0.676 ; 0.000         ;
-+--------------------------------------------------------------------------------+-------+---------------+
++---------------------------------------------------------------------------------------------+
+; Slow 1100mV 85C Model Hold Summary                                                          ;
++---------------------------------------------------------------------+-------+---------------+
+; Clock                                                               ; Slack ; End Point TNS ;
++---------------------------------------------------------------------+-------+---------------+
+; FPGA_CLK1_50                                                        ; 0.265 ; 0.000         ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i           ; 0.307 ; 0.000         ;
+; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 0.404 ; 0.000         ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i       ; 0.502 ; 0.000         ;
++---------------------------------------------------------------------+-------+---------------+
 
 
 +----------------------------------------------------------------------------------------+
@@ -195,8 +185,8 @@ HTML report is unavailable in plain text report export.
 +---------------------------------------------------------------+--------+---------------+
 ; Clock                                                         ; Slack  ; End Point TNS ;
 +---------------------------------------------------------------+--------+---------------+
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; 4.802  ; 0.000         ;
-; FPGA_CLK1_50                                                  ; 12.511 ; 0.000         ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; 3.814  ; 0.000         ;
+; FPGA_CLK1_50                                                  ; 13.871 ; 0.000         ;
 +---------------------------------------------------------------+--------+---------------+
 
 
@@ -205,83 +195,68 @@ HTML report is unavailable in plain text report export.
 +---------------------------------------------------------------+-------+---------------+
 ; Clock                                                         ; Slack ; End Point TNS ;
 +---------------------------------------------------------------+-------+---------------+
-; FPGA_CLK1_50                                                  ; 0.907 ; 0.000         ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; 1.495 ; 0.000         ;
+; FPGA_CLK1_50                                                  ; 0.585 ; 0.000         ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; 1.777 ; 0.000         ;
 +---------------------------------------------------------------+-------+---------------+
 
 
-+--------------------------------------------------------------------------------------------------------+
-; Slow 1100mV 85C Model Minimum Pulse Width Summary                                                      ;
-+--------------------------------------------------------------------------------+-------+---------------+
-; Clock                                                                          ; Slack ; End Point TNS ;
-+--------------------------------------------------------------------------------+-------+---------------+
-; din_a                                                                          ; 0.339 ; 0.000         ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; 0.505 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; 0.552 ; 0.000         ;
-; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk            ; 0.563 ; 0.000         ;
-; u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]                        ; 1.250 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; 1.402 ; 0.000         ;
-; detector_tokens:m_x|ready_data                                                 ; 1.403 ; 0.000         ;
-; detector_tokens:m_x|ready_control                                              ; 1.406 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; 1.417 ; 0.000         ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; 3.898 ; 0.000         ;
-; FPGA_CLK1_50                                                                   ; 9.215 ; 0.000         ;
-+--------------------------------------------------------------------------------+-------+---------------+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Slow 1100mV 85C Model Minimum Pulse Width Summary                                                                               ;
++---------------------------------------------------------------------------------------------------------+-------+---------------+
+; Clock                                                                                                   ; Slack ; End Point TNS ;
++---------------------------------------------------------------------------------------------------------+-------+---------------+
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; 0.338 ; 0.000         ;
+; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk                                     ; 0.572 ; 0.000         ;
+; din_a                                                                                                   ; 1.112 ; 0.000         ;
+; u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]                                                 ; 1.250 ; 0.000         ;
+; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e ; 1.267 ; 0.000         ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; 3.955 ; 0.000         ;
+; FPGA_CLK1_50                                                                                            ; 9.213 ; 0.000         ;
++---------------------------------------------------------------------------------------------------------+-------+---------------+
 
 
 -----------------------------------------------
 ; Slow 1100mV 85C Model Metastability Summary ;
 -----------------------------------------------
-The design MTBF is not calculated because there are no specified synchronizers in the design.
-Number of Synchronizer Chains Found: 48
-Shortest Synchronizer Chain: 2 Registers
-Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-Worst Case Available Settling Time: 29.219 ns
+Design MTBF is not calculated because the design doesn't meet its timing requirements.
 
 
 
-
-+----------------------------------------------------------------------------------------------------------------------+
-; Slow 1100mV 0C Model Fmax Summary                                                                                    ;
-+------------+-----------------+--------------------------------------------------------------------------------+------+
-; Fmax       ; Restricted Fmax ; Clock Name                                                                     ; Note ;
-+------------+-----------------+--------------------------------------------------------------------------------+------+
-; 86.91 MHz  ; 86.91 MHz       ; FPGA_CLK1_50                                                                   ;      ;
-; 125.31 MHz ; 125.31 MHz      ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ;      ;
-; 571.1 MHz  ; 571.1 MHz       ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ;      ;
-; 578.03 MHz ; 578.03 MHz      ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ;      ;
-; 593.47 MHz ; 593.47 MHz      ; detector_tokens:m_x|ready_data                                                 ;      ;
-; 699.79 MHz ; 699.79 MHz      ; detector_tokens:m_x|ready_control                                              ;      ;
-+------------+-----------------+--------------------------------------------------------------------------------+------+
++-----------------------------------------------------------------------------------------------------------+
+; Slow 1100mV 0C Model Fmax Summary                                                                         ;
++------------+-----------------+---------------------------------------------------------------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name                                                          ; Note ;
++------------+-----------------+---------------------------------------------------------------------+------+
+; 83.38 MHz  ; 83.38 MHz       ; FPGA_CLK1_50                                                        ;      ;
+; 161.52 MHz ; 161.52 MHz      ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i       ;      ;
+; 215.47 MHz ; 215.47 MHz      ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i           ;      ;
+; 220.65 MHz ; 220.65 MHz      ; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ;      ;
++------------+-----------------+---------------------------------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
-+--------------------------------------------------------------------------------------------------------+
-; Slow 1100mV 0C Model Setup Summary                                                                     ;
-+--------------------------------------------------------------------------------+-------+---------------+
-; Clock                                                                          ; Slack ; End Point TNS ;
-+--------------------------------------------------------------------------------+-------+---------------+
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; 2.020 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; 2.249 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; 2.270 ; 0.000         ;
-; detector_tokens:m_x|ready_data                                                 ; 2.315 ; 0.000         ;
-; detector_tokens:m_x|ready_control                                              ; 2.571 ; 0.000         ;
-; FPGA_CLK1_50                                                                   ; 5.404 ; 0.000         ;
-+--------------------------------------------------------------------------------+-------+---------------+
++----------------------------------------------------------------------------------------------+
+; Slow 1100mV 0C Model Setup Summary                                                           ;
++---------------------------------------------------------------------+--------+---------------+
+; Clock                                                               ; Slack  ; End Point TNS ;
++---------------------------------------------------------------------+--------+---------------+
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i           ; -2.141 ; -95.081       ;
+; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; -2.032 ; -22.245       ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i       ; -0.710 ; -8.324        ;
+; FPGA_CLK1_50                                                        ; -0.172 ; -0.241        ;
++---------------------------------------------------------------------+--------+---------------+
 
 
-+--------------------------------------------------------------------------------------------------------+
-; Slow 1100mV 0C Model Hold Summary                                                                      ;
-+--------------------------------------------------------------------------------+-------+---------------+
-; Clock                                                                          ; Slack ; End Point TNS ;
-+--------------------------------------------------------------------------------+-------+---------------+
-; FPGA_CLK1_50                                                                   ; 0.274 ; 0.000         ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; 0.331 ; 0.000         ;
-; detector_tokens:m_x|ready_control                                              ; 0.337 ; 0.000         ;
-; detector_tokens:m_x|ready_data                                                 ; 0.594 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; 0.639 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; 0.651 ; 0.000         ;
-+--------------------------------------------------------------------------------+-------+---------------+
++----------------------------------------------------------------------------------------------+
+; Slow 1100mV 0C Model Hold Summary                                                            ;
++---------------------------------------------------------------------+--------+---------------+
+; Clock                                                               ; Slack  ; End Point TNS ;
++---------------------------------------------------------------------+--------+---------------+
+; FPGA_CLK1_50                                                        ; -0.049 ; -0.081        ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i           ; 0.312  ; 0.000         ;
+; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 0.396  ; 0.000         ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i       ; 0.507  ; 0.000         ;
++---------------------------------------------------------------------+--------+---------------+
 
 
 +----------------------------------------------------------------------------------------+
@@ -289,8 +264,8 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +---------------------------------------------------------------+--------+---------------+
 ; Clock                                                         ; Slack  ; End Point TNS ;
 +---------------------------------------------------------------+--------+---------------+
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; 4.799  ; 0.000         ;
-; FPGA_CLK1_50                                                  ; 12.852 ; 0.000         ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; 3.866  ; 0.000         ;
+; FPGA_CLK1_50                                                  ; 14.124 ; 0.000         ;
 +---------------------------------------------------------------+--------+---------------+
 
 
@@ -299,68 +274,55 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +---------------------------------------------------------------+-------+---------------+
 ; Clock                                                         ; Slack ; End Point TNS ;
 +---------------------------------------------------------------+-------+---------------+
-; FPGA_CLK1_50                                                  ; 0.828 ; 0.000         ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; 1.615 ; 0.000         ;
+; FPGA_CLK1_50                                                  ; 0.537 ; 0.000         ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; 1.851 ; 0.000         ;
 +---------------------------------------------------------------+-------+---------------+
 
 
-+--------------------------------------------------------------------------------------------------------+
-; Slow 1100mV 0C Model Minimum Pulse Width Summary                                                       ;
-+--------------------------------------------------------------------------------+-------+---------------+
-; Clock                                                                          ; Slack ; End Point TNS ;
-+--------------------------------------------------------------------------------+-------+---------------+
-; din_a                                                                          ; 0.347 ; 0.000         ;
-; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk            ; 0.498 ; 0.000         ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; 0.530 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; 0.548 ; 0.000         ;
-; u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]                        ; 1.250 ; 0.000         ;
-; detector_tokens:m_x|ready_data                                                 ; 1.393 ; 0.000         ;
-; detector_tokens:m_x|ready_control                                              ; 1.417 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; 1.417 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; 1.419 ; 0.000         ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; 3.946 ; 0.000         ;
-; FPGA_CLK1_50                                                                   ; 9.289 ; 0.000         ;
-+--------------------------------------------------------------------------------+-------+---------------+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Slow 1100mV 0C Model Minimum Pulse Width Summary                                                                                ;
++---------------------------------------------------------------------------------------------------------+-------+---------------+
+; Clock                                                                                                   ; Slack ; End Point TNS ;
++---------------------------------------------------------------------------------------------------------+-------+---------------+
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; 0.351 ; 0.000         ;
+; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk                                     ; 0.498 ; 0.000         ;
+; din_a                                                                                                   ; 1.108 ; 0.000         ;
+; u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]                                                 ; 1.250 ; 0.000         ;
+; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e ; 1.266 ; 0.000         ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; 3.960 ; 0.000         ;
+; FPGA_CLK1_50                                                                                            ; 9.287 ; 0.000         ;
++---------------------------------------------------------------------------------------------------------+-------+---------------+
 
 
 ----------------------------------------------
 ; Slow 1100mV 0C Model Metastability Summary ;
 ----------------------------------------------
-The design MTBF is not calculated because there are no specified synchronizers in the design.
-Number of Synchronizer Chains Found: 48
-Shortest Synchronizer Chain: 2 Registers
-Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-Worst Case Available Settling Time: 29.551 ns
+Design MTBF is not calculated because the design doesn't meet its timing requirements.
 
 
 
-
-+--------------------------------------------------------------------------------------------------------+
-; Fast 1100mV 85C Model Setup Summary                                                                    ;
-+--------------------------------------------------------------------------------+-------+---------------+
-; Clock                                                                          ; Slack ; End Point TNS ;
-+--------------------------------------------------------------------------------+-------+---------------+
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; 2.812 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; 2.839 ; 0.000         ;
-; detector_tokens:m_x|ready_data                                                 ; 2.857 ; 0.000         ;
-; detector_tokens:m_x|ready_control                                              ; 2.997 ; 0.000         ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; 4.946 ; 0.000         ;
-; FPGA_CLK1_50                                                                   ; 6.028 ; 0.000         ;
-+--------------------------------------------------------------------------------+-------+---------------+
++----------------------------------------------------------------------------------------------+
+; Fast 1100mV 85C Model Setup Summary                                                          ;
++---------------------------------------------------------------------+--------+---------------+
+; Clock                                                               ; Slack  ; End Point TNS ;
++---------------------------------------------------------------------+--------+---------------+
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i           ; -0.425 ; -2.511        ;
+; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; -0.138 ; -0.481        ;
+; FPGA_CLK1_50                                                        ; 0.085  ; 0.000         ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i       ; 0.412  ; 0.000         ;
++---------------------------------------------------------------------+--------+---------------+
 
 
-+--------------------------------------------------------------------------------------------------------+
-; Fast 1100mV 85C Model Hold Summary                                                                     ;
-+--------------------------------------------------------------------------------+-------+---------------+
-; Clock                                                                          ; Slack ; End Point TNS ;
-+--------------------------------------------------------------------------------+-------+---------------+
-; FPGA_CLK1_50                                                                   ; 0.155 ; 0.000         ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; 0.172 ; 0.000         ;
-; detector_tokens:m_x|ready_control                                              ; 0.179 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; 0.326 ; 0.000         ;
-; detector_tokens:m_x|ready_data                                                 ; 0.338 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; 0.342 ; 0.000         ;
-+--------------------------------------------------------------------------------+-------+---------------+
++---------------------------------------------------------------------------------------------+
+; Fast 1100mV 85C Model Hold Summary                                                          ;
++---------------------------------------------------------------------+-------+---------------+
+; Clock                                                               ; Slack ; End Point TNS ;
++---------------------------------------------------------------------+-------+---------------+
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i           ; 0.104 ; 0.000         ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i       ; 0.173 ; 0.000         ;
+; FPGA_CLK1_50                                                        ; 0.176 ; 0.000         ;
+; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 0.225 ; 0.000         ;
++---------------------------------------------------------------------+-------+---------------+
 
 
 +----------------------------------------------------------------------------------------+
@@ -368,8 +330,8 @@ Worst Case Available Settling Time: 29.551 ns
 +---------------------------------------------------------------+--------+---------------+
 ; Clock                                                         ; Slack  ; End Point TNS ;
 +---------------------------------------------------------------+--------+---------------+
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; 6.697  ; 0.000         ;
-; FPGA_CLK1_50                                                  ; 14.791 ; 0.000         ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; 5.963  ; 0.000         ;
+; FPGA_CLK1_50                                                  ; 15.707 ; 0.000         ;
 +---------------------------------------------------------------+--------+---------------+
 
 
@@ -378,68 +340,60 @@ Worst Case Available Settling Time: 29.551 ns
 +---------------------------------------------------------------+-------+---------------+
 ; Clock                                                         ; Slack ; End Point TNS ;
 +---------------------------------------------------------------+-------+---------------+
-; FPGA_CLK1_50                                                  ; 0.529 ; 0.000         ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; 0.534 ; 0.000         ;
+; FPGA_CLK1_50                                                  ; 0.306 ; 0.000         ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; 0.689 ; 0.000         ;
 +---------------------------------------------------------------+-------+---------------+
 
 
-+--------------------------------------------------------------------------------------------------------+
-; Fast 1100mV 85C Model Minimum Pulse Width Summary                                                      ;
-+--------------------------------------------------------------------------------+-------+---------------+
-; Clock                                                                          ; Slack ; End Point TNS ;
-+--------------------------------------------------------------------------------+-------+---------------+
-; din_a                                                                          ; 0.593 ; 0.000         ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; 0.742 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; 0.749 ; 0.000         ;
-; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk            ; 0.815 ; 0.000         ;
-; u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]                        ; 1.250 ; 0.000         ;
-; detector_tokens:m_x|ready_control                                              ; 1.618 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; 1.619 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; 1.632 ; 0.000         ;
-; detector_tokens:m_x|ready_data                                                 ; 1.644 ; 0.000         ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; 4.165 ; 0.000         ;
-; FPGA_CLK1_50                                                                   ; 9.082 ; 0.000         ;
-+--------------------------------------------------------------------------------+-------+---------------+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Fast 1100mV 85C Model Minimum Pulse Width Summary                                                                               ;
++---------------------------------------------------------------------------------------------------------+-------+---------------+
+; Clock                                                                                                   ; Slack ; End Point TNS ;
++---------------------------------------------------------------------------------------------------------+-------+---------------+
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; 0.608 ; 0.000         ;
+; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk                                     ; 0.833 ; 0.000         ;
+; u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]                                                 ; 1.250 ; 0.000         ;
+; din_a                                                                                                   ; 1.320 ; 0.000         ;
+; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e ; 1.474 ; 0.000         ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; 4.249 ; 0.000         ;
+; FPGA_CLK1_50                                                                                            ; 9.079 ; 0.000         ;
++---------------------------------------------------------------------------------------------------------+-------+---------------+
 
 
 -----------------------------------------------
 ; Fast 1100mV 85C Model Metastability Summary ;
 -----------------------------------------------
 The design MTBF is not calculated because there are no specified synchronizers in the design.
-Number of Synchronizer Chains Found: 48
+Number of Synchronizer Chains Found: 54
 Shortest Synchronizer Chain: 2 Registers
 Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-Worst Case Available Settling Time: 32.806 ns
+Worst Case Available Settling Time: 1.215 ns
 
 
 
 
-+--------------------------------------------------------------------------------------------------------+
-; Fast 1100mV 0C Model Setup Summary                                                                     ;
-+--------------------------------------------------------------------------------+-------+---------------+
-; Clock                                                                          ; Slack ; End Point TNS ;
-+--------------------------------------------------------------------------------+-------+---------------+
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; 2.863 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; 2.878 ; 0.000         ;
-; detector_tokens:m_x|ready_data                                                 ; 2.899 ; 0.000         ;
-; detector_tokens:m_x|ready_control                                              ; 3.029 ; 0.000         ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; 5.380 ; 0.000         ;
-; FPGA_CLK1_50                                                                   ; 6.645 ; 0.000         ;
-+--------------------------------------------------------------------------------+-------+---------------+
++----------------------------------------------------------------------------------------------+
+; Fast 1100mV 0C Model Setup Summary                                                           ;
++---------------------------------------------------------------------+--------+---------------+
+; Clock                                                               ; Slack  ; End Point TNS ;
++---------------------------------------------------------------------+--------+---------------+
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i           ; -0.180 ; -0.553        ;
+; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 0.068  ; 0.000         ;
+; FPGA_CLK1_50                                                        ; 0.430  ; 0.000         ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i       ; 0.576  ; 0.000         ;
++---------------------------------------------------------------------+--------+---------------+
 
 
-+--------------------------------------------------------------------------------------------------------+
-; Fast 1100mV 0C Model Hold Summary                                                                      ;
-+--------------------------------------------------------------------------------+-------+---------------+
-; Clock                                                                          ; Slack ; End Point TNS ;
-+--------------------------------------------------------------------------------+-------+---------------+
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; 0.139 ; 0.000         ;
-; detector_tokens:m_x|ready_control                                              ; 0.146 ; 0.000         ;
-; FPGA_CLK1_50                                                                   ; 0.159 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; 0.299 ; 0.000         ;
-; detector_tokens:m_x|ready_data                                                 ; 0.309 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; 0.316 ; 0.000         ;
-+--------------------------------------------------------------------------------+-------+---------------+
++---------------------------------------------------------------------------------------------+
+; Fast 1100mV 0C Model Hold Summary                                                           ;
++---------------------------------------------------------------------+-------+---------------+
+; Clock                                                               ; Slack ; End Point TNS ;
++---------------------------------------------------------------------+-------+---------------+
+; FPGA_CLK1_50                                                        ; 0.087 ; 0.000         ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i           ; 0.090 ; 0.000         ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i       ; 0.165 ; 0.000         ;
+; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk ; 0.207 ; 0.000         ;
++---------------------------------------------------------------------+-------+---------------+
 
 
 +----------------------------------------------------------------------------------------+
@@ -447,8 +401,8 @@ Worst Case Available Settling Time: 32.806 ns
 +---------------------------------------------------------------+--------+---------------+
 ; Clock                                                         ; Slack  ; End Point TNS ;
 +---------------------------------------------------------------+--------+---------------+
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; 6.955  ; 0.000         ;
-; FPGA_CLK1_50                                                  ; 15.437 ; 0.000         ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; 6.338  ; 0.000         ;
+; FPGA_CLK1_50                                                  ; 16.248 ; 0.000         ;
 +---------------------------------------------------------------+--------+---------------+
 
 
@@ -457,72 +411,60 @@ Worst Case Available Settling Time: 32.806 ns
 +---------------------------------------------------------------+-------+---------------+
 ; Clock                                                         ; Slack ; End Point TNS ;
 +---------------------------------------------------------------+-------+---------------+
-; FPGA_CLK1_50                                                  ; 0.476 ; 0.000         ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; 0.553 ; 0.000         ;
+; FPGA_CLK1_50                                                  ; 0.273 ; 0.000         ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; 0.677 ; 0.000         ;
 +---------------------------------------------------------------+-------+---------------+
 
 
-+--------------------------------------------------------------------------------------------------------+
-; Fast 1100mV 0C Model Minimum Pulse Width Summary                                                       ;
-+--------------------------------------------------------------------------------+-------+---------------+
-; Clock                                                                          ; Slack ; End Point TNS ;
-+--------------------------------------------------------------------------------+-------+---------------+
-; din_a                                                                          ; 0.652 ; 0.000         ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; 0.784 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; 0.797 ; 0.000         ;
-; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk            ; 0.807 ; 0.000         ;
-; u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]                        ; 1.250 ; 0.000         ;
-; detector_tokens:m_x|ready_control                                              ; 1.632 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; 1.635 ; 0.000         ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; 1.636 ; 0.000         ;
-; detector_tokens:m_x|ready_data                                                 ; 1.645 ; 0.000         ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; 4.282 ; 0.000         ;
-; FPGA_CLK1_50                                                                   ; 9.042 ; 0.000         ;
-+--------------------------------------------------------------------------------+-------+---------------+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Fast 1100mV 0C Model Minimum Pulse Width Summary                                                                                ;
++---------------------------------------------------------------------------------------------------------+-------+---------------+
+; Clock                                                                                                   ; Slack ; End Point TNS ;
++---------------------------------------------------------------------------------------------------------+-------+---------------+
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; 0.660 ; 0.000         ;
+; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk                                     ; 0.821 ; 0.000         ;
+; u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]                                                 ; 1.250 ; 0.000         ;
+; din_a                                                                                                   ; 1.353 ; 0.000         ;
+; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e ; 1.507 ; 0.000         ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; 4.330 ; 0.000         ;
+; FPGA_CLK1_50                                                                                            ; 9.042 ; 0.000         ;
++---------------------------------------------------------------------------------------------------------+-------+---------------+
 
 
 ----------------------------------------------
 ; Fast 1100mV 0C Model Metastability Summary ;
 ----------------------------------------------
 The design MTBF is not calculated because there are no specified synchronizers in the design.
-Number of Synchronizer Chains Found: 48
+Number of Synchronizer Chains Found: 54
 Shortest Synchronizer Chain: 2 Registers
 Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-Worst Case Available Settling Time: 33.606 ns
+Worst Case Available Settling Time: 1.542 ns
 
 
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------+
-; Multicorner Timing Analysis Summary                                                                                                        ;
-+---------------------------------------------------------------------------------+-------+-------+----------+---------+---------------------+
-; Clock                                                                           ; Setup ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
-+---------------------------------------------------------------------------------+-------+-------+----------+---------+---------------------+
-; Worst-case Slack                                                                ; 1.967 ; 0.139 ; 4.799    ; 0.476   ; 0.339               ;
-;  FPGA_CLK1_50                                                                   ; 4.938 ; 0.155 ; 12.511   ; 0.476   ; 9.042               ;
-;  clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; 1.967 ; 0.139 ; 4.799    ; 0.534   ; 3.898               ;
-;  clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; N/A   ; N/A   ; N/A      ; N/A     ; 0.505               ;
-;  detector_tokens:m_x|ready_control                                              ; 2.566 ; 0.146 ; N/A      ; N/A     ; 1.406               ;
-;  detector_tokens:m_x|ready_data                                                 ; 2.315 ; 0.309 ; N/A      ; N/A     ; 1.393               ;
-;  din_a                                                                          ; N/A   ; N/A   ; N/A      ; N/A     ; 0.339               ;
-;  spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; 2.239 ; 0.299 ; N/A      ; N/A     ; 1.402               ;
-;  spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; 2.249 ; 0.316 ; N/A      ; N/A     ; 1.417               ;
-;  spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; N/A   ; N/A   ; N/A      ; N/A     ; 0.548               ;
-;  u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk            ; N/A   ; N/A   ; N/A      ; N/A     ; 0.498               ;
-;  u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]                        ; N/A   ; N/A   ; N/A      ; N/A     ; 1.250               ;
-; Design-wide TNS                                                                 ; 0.0   ; 0.0   ; 0.0      ; 0.0     ; 0.0                 ;
-;  FPGA_CLK1_50                                                                   ; 0.000 ; 0.000 ; 0.000    ; 0.000   ; 0.000               ;
-;  clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; 0.000 ; 0.000 ; 0.000    ; 0.000   ; 0.000               ;
-;  clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; N/A   ; N/A   ; N/A      ; N/A     ; 0.000               ;
-;  detector_tokens:m_x|ready_control                                              ; 0.000 ; 0.000 ; N/A      ; N/A     ; 0.000               ;
-;  detector_tokens:m_x|ready_data                                                 ; 0.000 ; 0.000 ; N/A      ; N/A     ; 0.000               ;
-;  din_a                                                                          ; N/A   ; N/A   ; N/A      ; N/A     ; 0.000               ;
-;  spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; 0.000 ; 0.000 ; N/A      ; N/A     ; 0.000               ;
-;  spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; 0.000 ; 0.000 ; N/A      ; N/A     ; 0.000               ;
-;  spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; N/A   ; N/A   ; N/A      ; N/A     ; 0.000               ;
-;  u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk            ; N/A   ; N/A   ; N/A      ; N/A     ; 0.000               ;
-;  u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]                        ; N/A   ; N/A   ; N/A      ; N/A     ; 0.000               ;
-+---------------------------------------------------------------------------------+-------+-------+----------+---------+---------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                                                                                                                     ;
++----------------------------------------------------------------------------------------------------------+----------+--------+----------+---------+---------------------+
+; Clock                                                                                                    ; Setup    ; Hold   ; Recovery ; Removal ; Minimum Pulse Width ;
++----------------------------------------------------------------------------------------------------------+----------+--------+----------+---------+---------------------+
+; Worst-case Slack                                                                                         ; -2.228   ; -0.049 ; 3.814    ; 0.273   ; 0.338               ;
+;  FPGA_CLK1_50                                                                                            ; -0.518   ; -0.049 ; 13.871   ; 0.273   ; 9.042               ;
+;  clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; -0.725   ; 0.165  ; 3.814    ; 0.677   ; 3.955               ;
+;  clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; -2.228   ; 0.090  ; N/A      ; N/A     ; 0.338               ;
+;  din_a                                                                                                   ; N/A      ; N/A    ; N/A      ; N/A     ; 1.108               ;
+;  spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e ; N/A      ; N/A    ; N/A      ; N/A     ; 1.266               ;
+;  u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk                                     ; -2.071   ; 0.207  ; N/A      ; N/A     ; 0.498               ;
+;  u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]                                                 ; N/A      ; N/A    ; N/A      ; N/A     ; 1.250               ;
+; Design-wide TNS                                                                                          ; -134.141 ; -0.081 ; 0.0      ; 0.0     ; 0.0                 ;
+;  FPGA_CLK1_50                                                                                            ; -0.897   ; -0.081 ; 0.000    ; 0.000   ; 0.000               ;
+;  clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; -9.341   ; 0.000  ; 0.000    ; 0.000   ; 0.000               ;
+;  clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; -101.287 ; 0.000  ; N/A      ; N/A     ; 0.000               ;
+;  din_a                                                                                                   ; N/A      ; N/A    ; N/A      ; N/A     ; 0.000               ;
+;  spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e ; N/A      ; N/A    ; N/A      ; N/A     ; 0.000               ;
+;  u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk                                     ; -22.616  ; 0.000  ; N/A      ; N/A     ; 0.000               ;
+;  u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]                                                 ; N/A      ; N/A    ; N/A      ; N/A     ; 0.000               ;
++----------------------------------------------------------------------------------------------------------+----------+--------+----------+---------+---------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -640,117 +582,85 @@ Worst Case Available Settling Time: 33.606 ns
 +-----------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Setup Transfers                                                                                                                                                                                                     ;
-+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+------------+------------+------------+------------+
-; From Clock                                                                     ; To Clock                                                                       ; RR Paths   ; FR Paths   ; RF Paths   ; FF Paths   ;
-+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+------------+------------+------------+------------+
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; 137580     ; 0          ; 0          ; 0          ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; false path ; 0          ; 0          ; 0          ;
-; din_a                                                                          ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; false path ; false path ; 0          ; 0          ;
-; FPGA_CLK1_50                                                                   ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; 669        ; 0          ; 0          ; 0          ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; false path ; 0          ; 0          ; 0          ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; false path ; 0          ; 0          ; 0          ;
-; din_a                                                                          ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; false path ; 0          ; 0          ; 0          ;
-; FPGA_CLK1_50                                                                   ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; false path ; 0          ; false path ; 0          ;
-; detector_tokens:m_x|ready_control                                              ; detector_tokens:m_x|ready_control                                              ; 1          ; 0          ; 0          ; 0          ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; detector_tokens:m_x|ready_control                                              ; false path ; false path ; 0          ; false path ;
-; detector_tokens:m_x|ready_data                                                 ; detector_tokens:m_x|ready_data                                                 ; 1          ; 0          ; 0          ; 0          ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; detector_tokens:m_x|ready_data                                                 ; false path ; false path ; 0          ; false path ;
-; din_a                                                                          ; din_a                                                                          ; false path ; false path ; false path ; false path ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; din_a                                                                          ; false path ; false path ; false path ; false path ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; din_a                                                                          ; false path ; false path ; false path ; false path ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; FPGA_CLK1_50                                                                   ; 30         ; 0          ; 0          ; 0          ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; FPGA_CLK1_50                                                                   ; false path ; 0          ; 0          ; 0          ;
-; din_a                                                                          ; FPGA_CLK1_50                                                                   ; false path ; false path ; 0          ; 0          ;
-; FPGA_CLK1_50                                                                   ; FPGA_CLK1_50                                                                   ; 207289     ; 0          ; 0          ; 0          ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; FPGA_CLK1_50                                                                   ; false path ; 0          ; 0          ; 0          ;
-; din_a                                                                          ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; false path ; false path ; 0          ; false path ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; 1          ; 0          ; 0          ; 0          ;
-; din_a                                                                          ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; false path ; false path ; 0          ; false path ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; 1          ; 0          ; 0          ; 0          ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; false path ; 0          ; false path ; 0          ;
-; detector_tokens:m_x|ready_control                                              ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; false path ; 0          ; false path ; false path ;
-; detector_tokens:m_x|ready_data                                                 ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; false path ; 0          ; false path ; false path ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; false path ; false path ; false path ; false path ;
-; FPGA_CLK1_50                                                                   ; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk            ; false path ; 0          ; 0          ; 0          ;
-; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk            ; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk            ; false path ; 0          ; 0          ; 0          ;
-+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+------------+------------+------------+------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup Transfers                                                                                                                                                                                                                                                       ;
++---------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+
+; From Clock                                                                                              ; To Clock                                                                                                ; RR Paths   ; FR Paths   ; RF Paths   ; FF Paths   ;
++---------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; 10922      ; 0          ; 0          ; 0          ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; 15         ; 0          ; 0          ; 0          ;
+; din_a                                                                                                   ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; false path ; false path ; 0          ; 0          ;
+; FPGA_CLK1_50                                                                                            ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; 669        ; 0          ; 0          ; 0          ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; false path ; 0          ; 0          ; 0          ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; 2238       ; 0          ; 0          ; 0          ;
+; din_a                                                                                                   ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; false path ; 0          ; 0          ; 0          ;
+; FPGA_CLK1_50                                                                                            ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; false path ; 0          ; false path ; 0          ;
+; din_a                                                                                                   ; din_a                                                                                                   ; false path ; false path ; false path ; false path ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; FPGA_CLK1_50                                                                                            ; 30         ; 0          ; 0          ; 0          ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; FPGA_CLK1_50                                                                                            ; 1          ; 0          ; 0          ; 0          ;
+; din_a                                                                                                   ; FPGA_CLK1_50                                                                                            ; 8          ; 1          ; 0          ; 0          ;
+; FPGA_CLK1_50                                                                                            ; FPGA_CLK1_50                                                                                            ; 221234     ; 0          ; 0          ; 0          ;
+; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e ; FPGA_CLK1_50                                                                                            ; 3          ; 0          ; 0          ; 0          ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e ; false path ; 0          ; false path ; 0          ;
+; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e ; false path ; false path ; false path ; false path ;
+; FPGA_CLK1_50                                                                                            ; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk                                     ; false path ; 0          ; 0          ; 0          ;
+; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk                                     ; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk                                     ; 1600       ; 0          ; 0          ; 0          ;
++---------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Hold Transfers                                                                                                                                                                                                      ;
-+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+------------+------------+------------+------------+
-; From Clock                                                                     ; To Clock                                                                       ; RR Paths   ; FR Paths   ; RF Paths   ; FF Paths   ;
-+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+------------+------------+------------+------------+
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; 137580     ; 0          ; 0          ; 0          ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; false path ; 0          ; 0          ; 0          ;
-; din_a                                                                          ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; false path ; false path ; 0          ; 0          ;
-; FPGA_CLK1_50                                                                   ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; 669        ; 0          ; 0          ; 0          ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; false path ; 0          ; 0          ; 0          ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; false path ; 0          ; 0          ; 0          ;
-; din_a                                                                          ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; false path ; 0          ; 0          ; 0          ;
-; FPGA_CLK1_50                                                                   ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; false path ; 0          ; false path ; 0          ;
-; detector_tokens:m_x|ready_control                                              ; detector_tokens:m_x|ready_control                                              ; 1          ; 0          ; 0          ; 0          ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; detector_tokens:m_x|ready_control                                              ; false path ; false path ; 0          ; false path ;
-; detector_tokens:m_x|ready_data                                                 ; detector_tokens:m_x|ready_data                                                 ; 1          ; 0          ; 0          ; 0          ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; detector_tokens:m_x|ready_data                                                 ; false path ; false path ; 0          ; false path ;
-; din_a                                                                          ; din_a                                                                          ; false path ; false path ; false path ; false path ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; din_a                                                                          ; false path ; false path ; false path ; false path ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; din_a                                                                          ; false path ; false path ; false path ; false path ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; FPGA_CLK1_50                                                                   ; 30         ; 0          ; 0          ; 0          ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; FPGA_CLK1_50                                                                   ; false path ; 0          ; 0          ; 0          ;
-; din_a                                                                          ; FPGA_CLK1_50                                                                   ; false path ; false path ; 0          ; 0          ;
-; FPGA_CLK1_50                                                                   ; FPGA_CLK1_50                                                                   ; 207289     ; 0          ; 0          ; 0          ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; FPGA_CLK1_50                                                                   ; false path ; 0          ; 0          ; 0          ;
-; din_a                                                                          ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; false path ; false path ; 0          ; false path ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; 1          ; 0          ; 0          ; 0          ;
-; din_a                                                                          ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; false path ; false path ; 0          ; false path ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; 1          ; 0          ; 0          ; 0          ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; false path ; 0          ; false path ; 0          ;
-; detector_tokens:m_x|ready_control                                              ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; false path ; 0          ; false path ; false path ;
-; detector_tokens:m_x|ready_data                                                 ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; false path ; 0          ; false path ; false path ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; false path ; false path ; false path ; false path ;
-; FPGA_CLK1_50                                                                   ; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk            ; false path ; 0          ; 0          ; 0          ;
-; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk            ; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk            ; false path ; 0          ; 0          ; 0          ;
-+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+------------+------------+------------+------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold Transfers                                                                                                                                                                                                                                                        ;
++---------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+
+; From Clock                                                                                              ; To Clock                                                                                                ; RR Paths   ; FR Paths   ; RF Paths   ; FF Paths   ;
++---------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; 10922      ; 0          ; 0          ; 0          ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; 15         ; 0          ; 0          ; 0          ;
+; din_a                                                                                                   ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; false path ; false path ; 0          ; 0          ;
+; FPGA_CLK1_50                                                                                            ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; 669        ; 0          ; 0          ; 0          ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; false path ; 0          ; 0          ; 0          ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; 2238       ; 0          ; 0          ; 0          ;
+; din_a                                                                                                   ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; false path ; 0          ; 0          ; 0          ;
+; FPGA_CLK1_50                                                                                            ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; false path ; 0          ; false path ; 0          ;
+; din_a                                                                                                   ; din_a                                                                                                   ; false path ; false path ; false path ; false path ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; FPGA_CLK1_50                                                                                            ; 30         ; 0          ; 0          ; 0          ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; FPGA_CLK1_50                                                                                            ; 1          ; 0          ; 0          ; 0          ;
+; din_a                                                                                                   ; FPGA_CLK1_50                                                                                            ; 8          ; 1          ; 0          ; 0          ;
+; FPGA_CLK1_50                                                                                            ; FPGA_CLK1_50                                                                                            ; 221234     ; 0          ; 0          ; 0          ;
+; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e ; FPGA_CLK1_50                                                                                            ; 3          ; 0          ; 0          ; 0          ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e ; false path ; 0          ; false path ; 0          ;
+; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e ; false path ; false path ; false path ; false path ;
+; FPGA_CLK1_50                                                                                            ; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk                                     ; false path ; 0          ; 0          ; 0          ;
+; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk                                     ; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk                                     ; 1600       ; 0          ; 0          ; 0          ;
++---------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Recovery Transfers                                                                                                                                                                           ;
-+---------------------------------------------------------------+--------------------------------------------------------------------------------+------------+----------+----------+----------+
-; From Clock                                                    ; To Clock                                                                       ; RR Paths   ; FR Paths ; RF Paths ; FF Paths ;
-+---------------------------------------------------------------+--------------------------------------------------------------------------------+------------+----------+----------+----------+
-; FPGA_CLK1_50                                                  ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; 1292       ; 0        ; 0        ; 0        ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; false path ; 0        ; 0        ; 0        ;
-; FPGA_CLK1_50                                                  ; detector_tokens:m_x|ready_control                                              ; 2          ; 0        ; 0        ; 0        ;
-; FPGA_CLK1_50                                                  ; detector_tokens:m_x|ready_data                                                 ; 2          ; 0        ; 0        ; 0        ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; din_a                                                                          ; 48         ; 0        ; 22       ; 0        ;
-; FPGA_CLK1_50                                                  ; FPGA_CLK1_50                                                                   ; 3051       ; 0        ; 0        ; 0        ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; 5          ; 0        ; 0        ; 0        ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; 11         ; 0        ; 0        ; 0        ;
-; FPGA_CLK1_50                                                  ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; 15         ; 0        ; 20       ; 0        ;
-+---------------------------------------------------------------+--------------------------------------------------------------------------------+------------+----------+----------+----------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Recovery Transfers                                                                                                                                                                                                    ;
++---------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+------------+----------+----------+----------+
+; From Clock                                                    ; To Clock                                                                                                ; RR Paths   ; FR Paths ; RF Paths ; FF Paths ;
++---------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+------------+----------+----------+----------+
+; FPGA_CLK1_50                                                  ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; 1304       ; 0        ; 0        ; 0        ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; false path ; 0        ; 0        ; 0        ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; din_a                                                                                                   ; 58         ; 0        ; 17       ; 0        ;
+; FPGA_CLK1_50                                                  ; FPGA_CLK1_50                                                                                            ; 3051       ; 0        ; 0        ; 0        ;
+; FPGA_CLK1_50                                                  ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e ; 19         ; 0        ; 18       ; 0        ;
++---------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+------------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removal Transfers                                                                                                                                                                            ;
-+---------------------------------------------------------------+--------------------------------------------------------------------------------+------------+----------+----------+----------+
-; From Clock                                                    ; To Clock                                                                       ; RR Paths   ; FR Paths ; RF Paths ; FF Paths ;
-+---------------------------------------------------------------+--------------------------------------------------------------------------------+------------+----------+----------+----------+
-; FPGA_CLK1_50                                                  ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; 1292       ; 0        ; 0        ; 0        ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; false path ; 0        ; 0        ; 0        ;
-; FPGA_CLK1_50                                                  ; detector_tokens:m_x|ready_control                                              ; 2          ; 0        ; 0        ; 0        ;
-; FPGA_CLK1_50                                                  ; detector_tokens:m_x|ready_data                                                 ; 2          ; 0        ; 0        ; 0        ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; din_a                                                                          ; 48         ; 0        ; 22       ; 0        ;
-; FPGA_CLK1_50                                                  ; FPGA_CLK1_50                                                                   ; 3051       ; 0        ; 0        ; 0        ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; 5          ; 0        ; 0        ; 0        ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; 11         ; 0        ; 0        ; 0        ;
-; FPGA_CLK1_50                                                  ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; 15         ; 0        ; 20       ; 0        ;
-+---------------------------------------------------------------+--------------------------------------------------------------------------------+------------+----------+----------+----------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removal Transfers                                                                                                                                                                                                     ;
++---------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+------------+----------+----------+----------+
+; From Clock                                                    ; To Clock                                                                                                ; RR Paths   ; FR Paths ; RF Paths ; FF Paths ;
++---------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+------------+----------+----------+----------+
+; FPGA_CLK1_50                                                  ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; 1304       ; 0        ; 0        ; 0        ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; false path ; 0        ; 0        ; 0        ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ; din_a                                                                                                   ; 58         ; 0        ; 17       ; 0        ;
+; FPGA_CLK1_50                                                  ; FPGA_CLK1_50                                                                                            ; 3051       ; 0        ; 0        ; 0        ;
+; FPGA_CLK1_50                                                  ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e ; 19         ; 0        ; 18       ; 0        ;
++---------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+------------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
@@ -774,29 +684,25 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
 ; Unconstrained Input Ports       ; 2     ; 2    ;
-; Unconstrained Input Port Paths  ; 33    ; 33   ;
+; Unconstrained Input Port Paths  ; 34    ; 34   ;
 ; Unconstrained Output Ports      ; 10    ; 10   ;
 ; Unconstrained Output Port Paths ; 10    ; 10   ;
 +---------------------------------+-------+------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Clock Status Summary                                                                                                                                                                      ;
-+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+-----------+-------------+
-; Target                                                                         ; Clock                                                                          ; Type      ; Status      ;
-+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+-----------+-------------+
-; FPGA_CLK1_50                                                                   ; FPGA_CLK1_50                                                                   ; Base      ; Constrained ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                  ; Base      ; Constrained ;
-; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                      ; Base      ; Constrained ;
-; detector_tokens:m_x|ready_control                                              ; detector_tokens:m_x|ready_control                                              ; Base      ; Constrained ;
-; detector_tokens:m_x|ready_data                                                 ; detector_tokens:m_x|ready_data                                                 ; Base      ; Constrained ;
-; din_a                                                                          ; din_a                                                                          ; Base      ; Constrained ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control ; Base      ; Constrained ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data    ; Base      ; Constrained ;
-; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e     ; Base      ; Constrained ;
-; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk            ; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk            ; Generated ; Constrained ;
-; u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]                        ; u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]                        ; Generated ; Constrained ;
-+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+-----------+-------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Status Summary                                                                                                                                                                                                                        ;
++---------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-----------+-------------+
+; Target                                                                                                  ; Clock                                                                                                   ; Type      ; Status      ;
++---------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-----------+-------------+
+; FPGA_CLK1_50                                                                                            ; FPGA_CLK1_50                                                                                            ; Base      ; Constrained ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i                                           ; Base      ; Constrained ;
+; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i                                               ; Base      ; Constrained ;
+; din_a                                                                                                   ; din_a                                                                                                   ; Base      ; Constrained ;
+; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e ; spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e ; Base      ; Constrained ;
+; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk                                     ; u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk                                     ; Generated ; Constrained ;
+; u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]                                                 ; u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]                                                 ; Generated ; Constrained ;
++---------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-----------+-------------+
 
 
 +---------------------------------------------------------------------------------------------------+
@@ -861,7 +767,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime TimeQuest Timing Analyzer
     Info: Version 17.0.2 Build 602 07/19/2017 SJ Lite Edition
-    Info: Processing started: Sun Nov 26 18:39:56 2017
+    Info: Processing started: Thu Jan 11 15:02:13 2018
 Info: Command: quartus_sta spw_fifo_ulight -c spw_fifo_ulight
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -869,40 +775,10 @@ Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
 Info (332104): Reading SDC File: 'sdc/spw_fifo_ulight.out.sdc'
-Warning (332174): Ignored filter at spw_fifo_ulight.out.sdc(42): altera_reserved_tck could not be matched with a port File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 42
-Warning (332049): Ignored create_clock at spw_fifo_ulight.out.sdc(42): Argument <targets> is an empty collection File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 42
-    Info (332050): create_clock -name {altera_reserved_tck} -period 33.333 -waveform { 0.000 16.666 } [get_ports {altera_reserved_tck}] File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 42
-Warning (332174): Ignored filter at spw_fifo_ulight.out.sdc(252): altera_reserved_tck could not be matched with a clock File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 252
-Warning (332049): Ignored set_clock_uncertainty at spw_fifo_ulight.out.sdc(252): Argument -rise_from with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 252
-    Info (332050): set_clock_uncertainty -rise_from [get_clocks {altera_reserved_tck}] -rise_to [get_clocks {altera_reserved_tck}] -setup 0.310   File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 252
-Warning (332049): Ignored set_clock_uncertainty at spw_fifo_ulight.out.sdc(252): Argument -rise_to with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 252
-Warning (332049): Ignored set_clock_uncertainty at spw_fifo_ulight.out.sdc(253): Argument -rise_from with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 253
-    Info (332050): set_clock_uncertainty -rise_from [get_clocks {altera_reserved_tck}] -rise_to [get_clocks {altera_reserved_tck}] -hold 0.270   File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 253
-Warning (332049): Ignored set_clock_uncertainty at spw_fifo_ulight.out.sdc(253): Argument -rise_to with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 253
-Warning (332049): Ignored set_clock_uncertainty at spw_fifo_ulight.out.sdc(254): Argument -rise_from with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 254
-    Info (332050): set_clock_uncertainty -rise_from [get_clocks {altera_reserved_tck}] -fall_to [get_clocks {altera_reserved_tck}] -setup 0.310   File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 254
-Warning (332049): Ignored set_clock_uncertainty at spw_fifo_ulight.out.sdc(254): Argument -fall_to with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 254
-Warning (332049): Ignored set_clock_uncertainty at spw_fifo_ulight.out.sdc(255): Argument -rise_from with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 255
-    Info (332050): set_clock_uncertainty -rise_from [get_clocks {altera_reserved_tck}] -fall_to [get_clocks {altera_reserved_tck}] -hold 0.270   File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 255
-Warning (332049): Ignored set_clock_uncertainty at spw_fifo_ulight.out.sdc(255): Argument -fall_to with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 255
-Warning (332049): Ignored set_clock_uncertainty at spw_fifo_ulight.out.sdc(256): Argument -fall_from with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 256
-    Info (332050): set_clock_uncertainty -fall_from [get_clocks {altera_reserved_tck}] -rise_to [get_clocks {altera_reserved_tck}] -setup 0.310   File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 256
-Warning (332049): Ignored set_clock_uncertainty at spw_fifo_ulight.out.sdc(256): Argument -rise_to with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 256
-Warning (332049): Ignored set_clock_uncertainty at spw_fifo_ulight.out.sdc(257): Argument -fall_from with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 257
-    Info (332050): set_clock_uncertainty -fall_from [get_clocks {altera_reserved_tck}] -rise_to [get_clocks {altera_reserved_tck}] -hold 0.270   File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 257
-Warning (332049): Ignored set_clock_uncertainty at spw_fifo_ulight.out.sdc(257): Argument -rise_to with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 257
-Warning (332049): Ignored set_clock_uncertainty at spw_fifo_ulight.out.sdc(258): Argument -fall_from with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 258
-    Info (332050): set_clock_uncertainty -fall_from [get_clocks {altera_reserved_tck}] -fall_to [get_clocks {altera_reserved_tck}] -setup 0.310   File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 258
-Warning (332049): Ignored set_clock_uncertainty at spw_fifo_ulight.out.sdc(258): Argument -fall_to with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 258
-Warning (332049): Ignored set_clock_uncertainty at spw_fifo_ulight.out.sdc(259): Argument -fall_from with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 259
-    Info (332050): set_clock_uncertainty -fall_from [get_clocks {altera_reserved_tck}] -fall_to [get_clocks {altera_reserved_tck}] -hold 0.270   File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 259
-Warning (332049): Ignored set_clock_uncertainty at spw_fifo_ulight.out.sdc(259): Argument -fall_to with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 259
-Warning (332049): Ignored set_clock_groups at spw_fifo_ulight.out.sdc(278): Argument -group with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 278
-    Info (332050): set_clock_groups -asynchronous -group [get_clocks {altera_reserved_tck}]  File: /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/sdc/spw_fifo_ulight.out.sdc Line: 278
 Info (332104): Reading SDC File: 'ulight_fifo/synthesis/submodules/altera_reset_controller.sdc'
 Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
-    Info (332098): Cell: A_SPW_TOP|SPW|RX|always1~0  from: datad  to: combout
-    Info (332098): Cell: m_x|always1~0  from: dataf  to: combout
+    Info (332098): Cell: A_SPW_TOP|SPW|RX|comb  from: dataf  to: combout
+    Info (332098): Cell: m_x|always2~0  from: datae  to: combout
     Info (332098): From: u0|hps_0|fpga_interfaces|hps2fpga|clk  to: ulight_fifo:u0|ulight_fifo_hps_0:hps_0|ulight_fifo_hps_0_fpga_interfaces:fpga_interfaces|hps2fpga~FF_3457
     Info (332098): Cell: u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter  from: vco0ph[0]  to: divclk
     Info (332098): Cell: u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|REFCLK_SELECT  from: clkin[0]  to: clkout
@@ -910,239 +786,205 @@ Info (332097): The following timing edges are non-unate.  TimeQuest will assume 
 Info (332152): The following assignments are ignored by the derive_clock_uncertainty command
 Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1100mV 85C Model
-Info (332146): Worst-case setup slack is 1.967
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the TimeQuest Timing Analyzer.
+Info (332146): Worst-case setup slack is -2.228
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     1.967               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
-    Info (332119):     2.239               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control 
-    Info (332119):     2.261               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data 
-    Info (332119):     2.319               0.000 detector_tokens:m_x|ready_data 
-    Info (332119):     2.566               0.000 detector_tokens:m_x|ready_control 
-    Info (332119):     4.938               0.000 FPGA_CLK1_50 
-Info (332146): Worst-case hold slack is 0.266
+    Info (332119):    -2.228            -101.287 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i 
+    Info (332119):    -2.071             -22.616 u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
+    Info (332119):    -0.725              -9.341 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
+    Info (332119):    -0.518              -0.897 FPGA_CLK1_50 
+Info (332146): Worst-case hold slack is 0.265
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.266               0.000 FPGA_CLK1_50 
-    Info (332119):     0.375               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
-    Info (332119):     0.385               0.000 detector_tokens:m_x|ready_control 
-    Info (332119):     0.626               0.000 detector_tokens:m_x|ready_data 
-    Info (332119):     0.635               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control 
-    Info (332119):     0.676               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data 
-Info (332146): Worst-case recovery slack is 4.802
+    Info (332119):     0.265               0.000 FPGA_CLK1_50 
+    Info (332119):     0.307               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i 
+    Info (332119):     0.404               0.000 u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
+    Info (332119):     0.502               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
+Info (332146): Worst-case recovery slack is 3.814
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     4.802               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
-    Info (332119):    12.511               0.000 FPGA_CLK1_50 
-Info (332146): Worst-case removal slack is 0.907
+    Info (332119):     3.814               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
+    Info (332119):    13.871               0.000 FPGA_CLK1_50 
+Info (332146): Worst-case removal slack is 0.585
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.907               0.000 FPGA_CLK1_50 
-    Info (332119):     1.495               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
-Info (332146): Worst-case minimum pulse width slack is 0.339
+    Info (332119):     0.585               0.000 FPGA_CLK1_50 
+    Info (332119):     1.777               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
+Info (332146): Worst-case minimum pulse width slack is 0.338
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.339               0.000 din_a 
-    Info (332119):     0.505               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i 
-    Info (332119):     0.552               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e 
-    Info (332119):     0.563               0.000 u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
+    Info (332119):     0.338               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i 
+    Info (332119):     0.572               0.000 u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
+    Info (332119):     1.112               0.000 din_a 
     Info (332119):     1.250               0.000 u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0] 
-    Info (332119):     1.402               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control 
-    Info (332119):     1.403               0.000 detector_tokens:m_x|ready_data 
-    Info (332119):     1.406               0.000 detector_tokens:m_x|ready_control 
-    Info (332119):     1.417               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data 
-    Info (332119):     3.898               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
-    Info (332119):     9.215               0.000 FPGA_CLK1_50 
-Info (332114): Report Metastability: Found 48 synchronizer chains.
-    Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
-    Info (332114): Number of Synchronizer Chains Found: 48
-    Info (332114): Shortest Synchronizer Chain: 2 Registers
-    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-    Info (332114): Worst Case Available Settling Time: 29.219 ns
-    Info (332114): 
+    Info (332119):     1.267               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e 
+    Info (332119):     3.955               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
+    Info (332119):     9.213               0.000 FPGA_CLK1_50 
+Info (332114): Report Metastability: Found 54 synchronizer chains.
+    Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
 Info: Analyzing Slow 1100mV 0C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
-    Info (332098): Cell: A_SPW_TOP|SPW|RX|always1~0  from: datad  to: combout
-    Info (332098): Cell: m_x|always1~0  from: dataf  to: combout
+    Info (332098): Cell: A_SPW_TOP|SPW|RX|comb  from: dataf  to: combout
+    Info (332098): Cell: m_x|always2~0  from: datae  to: combout
     Info (332098): From: u0|hps_0|fpga_interfaces|hps2fpga|clk  to: ulight_fifo:u0|ulight_fifo_hps_0:hps_0|ulight_fifo_hps_0_fpga_interfaces:fpga_interfaces|hps2fpga~FF_3457
     Info (332098): Cell: u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter  from: vco0ph[0]  to: divclk
     Info (332098): Cell: u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|REFCLK_SELECT  from: clkin[0]  to: clkout
     Info (332098): Cell: u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll  from: refclkin  to: fbclk
 Info (332152): The following assignments are ignored by the derive_clock_uncertainty command
-Info (332146): Worst-case setup slack is 2.020
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the TimeQuest Timing Analyzer.
+Info (332146): Worst-case setup slack is -2.141
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     2.020               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
-    Info (332119):     2.249               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data 
-    Info (332119):     2.270               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control 
-    Info (332119):     2.315               0.000 detector_tokens:m_x|ready_data 
-    Info (332119):     2.571               0.000 detector_tokens:m_x|ready_control 
-    Info (332119):     5.404               0.000 FPGA_CLK1_50 
-Info (332146): Worst-case hold slack is 0.274
+    Info (332119):    -2.141             -95.081 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i 
+    Info (332119):    -2.032             -22.245 u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
+    Info (332119):    -0.710              -8.324 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
+    Info (332119):    -0.172              -0.241 FPGA_CLK1_50 
+Info (332146): Worst-case hold slack is -0.049
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.274               0.000 FPGA_CLK1_50 
-    Info (332119):     0.331               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
-    Info (332119):     0.337               0.000 detector_tokens:m_x|ready_control 
-    Info (332119):     0.594               0.000 detector_tokens:m_x|ready_data 
-    Info (332119):     0.639               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control 
-    Info (332119):     0.651               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data 
-Info (332146): Worst-case recovery slack is 4.799
+    Info (332119):    -0.049              -0.081 FPGA_CLK1_50 
+    Info (332119):     0.312               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i 
+    Info (332119):     0.396               0.000 u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
+    Info (332119):     0.507               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
+Info (332146): Worst-case recovery slack is 3.866
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     4.799               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
-    Info (332119):    12.852               0.000 FPGA_CLK1_50 
-Info (332146): Worst-case removal slack is 0.828
+    Info (332119):     3.866               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
+    Info (332119):    14.124               0.000 FPGA_CLK1_50 
+Info (332146): Worst-case removal slack is 0.537
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.828               0.000 FPGA_CLK1_50 
-    Info (332119):     1.615               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
-Info (332146): Worst-case minimum pulse width slack is 0.347
+    Info (332119):     0.537               0.000 FPGA_CLK1_50 
+    Info (332119):     1.851               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
+Info (332146): Worst-case minimum pulse width slack is 0.351
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.347               0.000 din_a 
+    Info (332119):     0.351               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i 
     Info (332119):     0.498               0.000 u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
-    Info (332119):     0.530               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i 
-    Info (332119):     0.548               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e 
+    Info (332119):     1.108               0.000 din_a 
     Info (332119):     1.250               0.000 u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0] 
-    Info (332119):     1.393               0.000 detector_tokens:m_x|ready_data 
-    Info (332119):     1.417               0.000 detector_tokens:m_x|ready_control 
-    Info (332119):     1.417               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data 
-    Info (332119):     1.419               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control 
-    Info (332119):     3.946               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
-    Info (332119):     9.289               0.000 FPGA_CLK1_50 
-Info (332114): Report Metastability: Found 48 synchronizer chains.
-    Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
-    Info (332114): Number of Synchronizer Chains Found: 48
-    Info (332114): Shortest Synchronizer Chain: 2 Registers
-    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-    Info (332114): Worst Case Available Settling Time: 29.551 ns
-    Info (332114): 
+    Info (332119):     1.266               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e 
+    Info (332119):     3.960               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
+    Info (332119):     9.287               0.000 FPGA_CLK1_50 
+Info (332114): Report Metastability: Found 54 synchronizer chains.
+    Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
 Info: Analyzing Fast 1100mV 85C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
-    Info (332098): Cell: A_SPW_TOP|SPW|RX|always1~0  from: datad  to: combout
-    Info (332098): Cell: m_x|always1~0  from: dataf  to: combout
+    Info (332098): Cell: A_SPW_TOP|SPW|RX|comb  from: dataf  to: combout
+    Info (332098): Cell: m_x|always2~0  from: datae  to: combout
     Info (332098): From: u0|hps_0|fpga_interfaces|hps2fpga|clk  to: ulight_fifo:u0|ulight_fifo_hps_0:hps_0|ulight_fifo_hps_0_fpga_interfaces:fpga_interfaces|hps2fpga~FF_3457
     Info (332098): Cell: u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter  from: vco0ph[0]  to: divclk
     Info (332098): Cell: u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|REFCLK_SELECT  from: clkin[0]  to: clkout
     Info (332098): Cell: u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll  from: refclkin  to: fbclk
 Info (332152): The following assignments are ignored by the derive_clock_uncertainty command
-Info (332146): Worst-case setup slack is 2.812
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the TimeQuest Timing Analyzer.
+Info (332146): Worst-case setup slack is -0.425
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     2.812               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control 
-    Info (332119):     2.839               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data 
-    Info (332119):     2.857               0.000 detector_tokens:m_x|ready_data 
-    Info (332119):     2.997               0.000 detector_tokens:m_x|ready_control 
-    Info (332119):     4.946               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
-    Info (332119):     6.028               0.000 FPGA_CLK1_50 
-Info (332146): Worst-case hold slack is 0.155
+    Info (332119):    -0.425              -2.511 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i 
+    Info (332119):    -0.138              -0.481 u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
+    Info (332119):     0.085               0.000 FPGA_CLK1_50 
+    Info (332119):     0.412               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
+Info (332146): Worst-case hold slack is 0.104
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.155               0.000 FPGA_CLK1_50 
-    Info (332119):     0.172               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
-    Info (332119):     0.179               0.000 detector_tokens:m_x|ready_control 
-    Info (332119):     0.326               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control 
-    Info (332119):     0.338               0.000 detector_tokens:m_x|ready_data 
-    Info (332119):     0.342               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data 
-Info (332146): Worst-case recovery slack is 6.697
+    Info (332119):     0.104               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i 
+    Info (332119):     0.173               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
+    Info (332119):     0.176               0.000 FPGA_CLK1_50 
+    Info (332119):     0.225               0.000 u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
+Info (332146): Worst-case recovery slack is 5.963
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     6.697               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
-    Info (332119):    14.791               0.000 FPGA_CLK1_50 
-Info (332146): Worst-case removal slack is 0.529
+    Info (332119):     5.963               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
+    Info (332119):    15.707               0.000 FPGA_CLK1_50 
+Info (332146): Worst-case removal slack is 0.306
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.529               0.000 FPGA_CLK1_50 
-    Info (332119):     0.534               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
-Info (332146): Worst-case minimum pulse width slack is 0.593
+    Info (332119):     0.306               0.000 FPGA_CLK1_50 
+    Info (332119):     0.689               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
+Info (332146): Worst-case minimum pulse width slack is 0.608
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.593               0.000 din_a 
-    Info (332119):     0.742               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i 
-    Info (332119):     0.749               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e 
-    Info (332119):     0.815               0.000 u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
+    Info (332119):     0.608               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i 
+    Info (332119):     0.833               0.000 u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
     Info (332119):     1.250               0.000 u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0] 
-    Info (332119):     1.618               0.000 detector_tokens:m_x|ready_control 
-    Info (332119):     1.619               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control 
-    Info (332119):     1.632               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data 
-    Info (332119):     1.644               0.000 detector_tokens:m_x|ready_data 
-    Info (332119):     4.165               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
-    Info (332119):     9.082               0.000 FPGA_CLK1_50 
-Info (332114): Report Metastability: Found 48 synchronizer chains.
+    Info (332119):     1.320               0.000 din_a 
+    Info (332119):     1.474               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e 
+    Info (332119):     4.249               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
+    Info (332119):     9.079               0.000 FPGA_CLK1_50 
+Info (332114): Report Metastability: Found 54 synchronizer chains.
     Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
-    Info (332114): Number of Synchronizer Chains Found: 48
+    Info (332114): Number of Synchronizer Chains Found: 54
     Info (332114): Shortest Synchronizer Chain: 2 Registers
     Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-    Info (332114): Worst Case Available Settling Time: 32.806 ns
+    Info (332114): Worst Case Available Settling Time: 1.215 ns
     Info (332114): 
 Info: Analyzing Fast 1100mV 0C Model
 Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
-    Info (332098): Cell: A_SPW_TOP|SPW|RX|always1~0  from: datad  to: combout
-    Info (332098): Cell: m_x|always1~0  from: dataf  to: combout
+    Info (332098): Cell: A_SPW_TOP|SPW|RX|comb  from: dataf  to: combout
+    Info (332098): Cell: m_x|always2~0  from: datae  to: combout
     Info (332098): From: u0|hps_0|fpga_interfaces|hps2fpga|clk  to: ulight_fifo:u0|ulight_fifo_hps_0:hps_0|ulight_fifo_hps_0_fpga_interfaces:fpga_interfaces|hps2fpga~FF_3457
     Info (332098): Cell: u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter  from: vco0ph[0]  to: divclk
     Info (332098): Cell: u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|REFCLK_SELECT  from: clkin[0]  to: clkout
     Info (332098): Cell: u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll  from: refclkin  to: fbclk
 Info (332152): The following assignments are ignored by the derive_clock_uncertainty command
-Info (332146): Worst-case setup slack is 2.863
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the TimeQuest Timing Analyzer.
+Info (332146): Worst-case setup slack is -0.180
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     2.863               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control 
-    Info (332119):     2.878               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data 
-    Info (332119):     2.899               0.000 detector_tokens:m_x|ready_data 
-    Info (332119):     3.029               0.000 detector_tokens:m_x|ready_control 
-    Info (332119):     5.380               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
-    Info (332119):     6.645               0.000 FPGA_CLK1_50 
-Info (332146): Worst-case hold slack is 0.139
+    Info (332119):    -0.180              -0.553 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i 
+    Info (332119):     0.068               0.000 u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
+    Info (332119):     0.430               0.000 FPGA_CLK1_50 
+    Info (332119):     0.576               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
+Info (332146): Worst-case hold slack is 0.087
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.139               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
-    Info (332119):     0.146               0.000 detector_tokens:m_x|ready_control 
-    Info (332119):     0.159               0.000 FPGA_CLK1_50 
-    Info (332119):     0.299               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control 
-    Info (332119):     0.309               0.000 detector_tokens:m_x|ready_data 
-    Info (332119):     0.316               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data 
-Info (332146): Worst-case recovery slack is 6.955
+    Info (332119):     0.087               0.000 FPGA_CLK1_50 
+    Info (332119):     0.090               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i 
+    Info (332119):     0.165               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
+    Info (332119):     0.207               0.000 u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
+Info (332146): Worst-case recovery slack is 6.338
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     6.955               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
-    Info (332119):    15.437               0.000 FPGA_CLK1_50 
-Info (332146): Worst-case removal slack is 0.476
+    Info (332119):     6.338               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
+    Info (332119):    16.248               0.000 FPGA_CLK1_50 
+Info (332146): Worst-case removal slack is 0.273
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.476               0.000 FPGA_CLK1_50 
-    Info (332119):     0.553               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
-Info (332146): Worst-case minimum pulse width slack is 0.652
+    Info (332119):     0.273               0.000 FPGA_CLK1_50 
+    Info (332119):     0.677               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
+Info (332146): Worst-case minimum pulse width slack is 0.660
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.652               0.000 din_a 
-    Info (332119):     0.784               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i 
-    Info (332119):     0.797               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e 
-    Info (332119):     0.807               0.000 u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
+    Info (332119):     0.660               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i 
+    Info (332119):     0.821               0.000 u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk 
     Info (332119):     1.250               0.000 u0|pll_0|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0] 
-    Info (332119):     1.632               0.000 detector_tokens:m_x|ready_control 
-    Info (332119):     1.635               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_control 
-    Info (332119):     1.636               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|ready_data 
-    Info (332119):     1.645               0.000 detector_tokens:m_x|ready_data 
-    Info (332119):     4.282               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
+    Info (332119):     1.353               0.000 din_a 
+    Info (332119):     1.507               0.000 spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e 
+    Info (332119):     4.330               0.000 clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i 
     Info (332119):     9.042               0.000 FPGA_CLK1_50 
-Info (332114): Report Metastability: Found 48 synchronizer chains.
+Info (332114): Report Metastability: Found 54 synchronizer chains.
     Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
-    Info (332114): Number of Synchronizer Chains Found: 48
+    Info (332114): Number of Synchronizer Chains Found: 54
     Info (332114): Shortest Synchronizer Chain: 2 Registers
     Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-    Info (332114): Worst Case Available Settling Time: 33.606 ns
+    Info (332114): Worst Case Available Settling Time: 1.542 ns
     Info (332114): 
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
-Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 21 warnings
-    Info: Peak virtual memory: 1580 megabytes
-    Info: Processing ended: Sun Nov 26 18:42:16 2017
-    Info: Elapsed time: 00:02:20
-    Info: Total CPU time (on all processors): 00:02:23
+Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 1557 megabytes
+    Info: Processing ended: Thu Jan 11 15:03:26 2018
+    Info: Elapsed time: 00:01:13
+    Info: Total CPU time (on all processors): 00:01:23
 
 

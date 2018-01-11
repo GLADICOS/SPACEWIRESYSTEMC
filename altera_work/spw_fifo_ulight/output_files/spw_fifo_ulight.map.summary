@@ -1,10 +1,10 @@
-Analysis & Synthesis Status : Successful - Sun Nov 26 18:25:16 2017
+Analysis & Synthesis Status : Successful - Thu Jan 11 14:56:37 2018
 Quartus Prime Version : 17.0.2 Build 602 07/19/2017 SJ Lite Edition
 Revision Name : spw_fifo_ulight
 Top-level Entity Name : SPW_ULIGHT_FIFO
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 4667
+Total registers : 4659
 Total pins : 15
 Total virtual pins : 0
 Total block memory bits : 0

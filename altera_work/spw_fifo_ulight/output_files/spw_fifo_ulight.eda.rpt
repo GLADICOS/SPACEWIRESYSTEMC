@@ -1,5 +1,5 @@
 EDA Netlist Writer report for spw_fifo_ulight
-Sun Nov 26 18:42:33 2017
+Thu Jan 11 15:03:36 2018
 Quartus Prime Version 17.0.2 Build 602 07/19/2017 SJ Lite Edition
 
 
@@ -37,7 +37,7 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                                    ;
 +---------------------------------------+---------------------------------------+
-; EDA Netlist Writer Status             ; Successful - Sun Nov 26 18:42:33 2017 ;
+; EDA Netlist Writer Status             ; Successful - Thu Jan 11 15:03:36 2018 ;
 ; Revision Name                         ; spw_fifo_ulight                       ;
 ; Top-level Entity Name                 ; SPW_ULIGHT_FIFO                       ;
 ; Family                                ; Cyclone V                             ;
@@ -118,7 +118,7 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
     Info: Version 17.0.2 Build 602 07/19/2017 SJ Lite Edition
-    Info: Processing started: Sun Nov 26 18:42:20 2017
+    Info: Processing started: Thu Jan 11 15:03:28 2018
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off spw_fifo_ulight -c spw_fifo_ulight
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (199047): Generated files "/home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/timing/stamp//spw_fifo_ulight_6_1100mv_85c_board_slow.mod" and "/home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/timing/stamp//spw_fifo_ulight_6_1100mv_85c_board_slow.data"
@@ -164,9 +164,9 @@ Info (199053): Generated 36 HSPICE Output files for board level analysis
     Info (199051): Generated HSPICE Output File /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/board/hspice/cir/io_buffer_octrs.inc for board level analysis
     Info (199051): Generated HSPICE Output File /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/board/hspice/lib/cv_ff.inc for board level analysis
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 1260 megabytes
-    Info: Processing ended: Sun Nov 26 18:42:33 2017
-    Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:11
+    Info: Peak virtual memory: 1241 megabytes
+    Info: Processing ended: Thu Jan 11 15:03:36 2018
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:06
 
 

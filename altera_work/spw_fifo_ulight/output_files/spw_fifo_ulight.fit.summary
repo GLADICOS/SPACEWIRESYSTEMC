@@ -1,12 +1,12 @@
-Fitter Status : Successful - Sun Nov 26 18:38:49 2017
+Fitter Status : Successful - Thu Jan 11 15:01:37 2018
 Quartus Prime Version : 17.0.2 Build 602 07/19/2017 SJ Lite Edition
 Revision Name : spw_fifo_ulight
 Top-level Entity Name : SPW_ULIGHT_FIFO
 Family : Cyclone V
 Device : 5CSEMA4U23C6
 Timing Models : Final
-Logic utilization (in ALMs) : 4,443 / 15,880 ( 28 % )
-Total registers : 4672
+Logic utilization (in ALMs) : 3,380 / 15,880 ( 21 % )
+Total registers : 4664
 Total pins : 19 / 314 ( 6 % )
 Total virtual pins : 0
 Total block memory bits : 0 / 2,764,800 ( 0 % )

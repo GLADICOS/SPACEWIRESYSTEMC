@@ -23,7 +23,7 @@ MODEL
 */
 MODEL_VERSION "1.0";
 DESIGN "spw_fifo_ulight";
-DATE "11/26/2017 18:42:31";
+DATE "01/11/2018 15:03:34";
 PROGRAM "Quartus Prime";
 
 
@@ -51,8 +51,10 @@ OUTPUT LED[6];
 /*Arc definitions start here*/
 pos_KEY[1]__FPGA_CLK1_50__setup:		SETUP (POSEDGE) KEY[1] FPGA_CLK1_50 ;
 pos_sin_a__clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i__setup:		SETUP (POSEDGE) sin_a clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ;
+pos_sin_a__din_a__setup:		SETUP (POSEDGE) sin_a din_a ;
 pos_KEY[1]__FPGA_CLK1_50__hold:		HOLD (POSEDGE) KEY[1] FPGA_CLK1_50 ;
 pos_sin_a__clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i__hold:		HOLD (POSEDGE) sin_a clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i ;
+pos_sin_a__din_a__hold:		HOLD (POSEDGE) sin_a din_a ;
 pos_FPGA_CLK1_50__LED[0]__delay:		DELAY (POSEDGE) FPGA_CLK1_50 LED[0] ;
 pos_FPGA_CLK1_50__LED[1]__delay:		DELAY (POSEDGE) FPGA_CLK1_50 LED[1] ;
 pos_FPGA_CLK1_50__LED[2]__delay:		DELAY (POSEDGE) FPGA_CLK1_50 LED[2] ;
@@ -61,9 +63,9 @@ pos_FPGA_CLK1_50__LED[4]__delay:		DELAY (POSEDGE) FPGA_CLK1_50 LED[4] ;
 pos_FPGA_CLK1_50__LED[5]__delay:		DELAY (POSEDGE) FPGA_CLK1_50 LED[5] ;
 pos_clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i__sout_a__delay:		DELAY (POSEDGE) clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i sout_a ;
 pos_clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i__sout_a(n)__delay:		DELAY (POSEDGE) clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i sout_a(n) ;
-pos_spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e__dout_a__delay:		DELAY (POSEDGE) spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e dout_a ;
-pos_spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e__dout_a__delay:		DELAY (POSEDGE) spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e dout_a ;
-pos_spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e__dout_a(n)__delay:		DELAY (POSEDGE) spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e dout_a(n) ;
-pos_spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e__dout_a(n)__delay:		DELAY (POSEDGE) spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_dout_e dout_a(n) ;
+pos_spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e__dout_a__delay:		DELAY (POSEDGE) spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e dout_a ;
+pos_spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e__dout_a__delay:		DELAY (POSEDGE) spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e dout_a ;
+pos_spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e__dout_a(n)__delay:		DELAY (POSEDGE) spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e dout_a(n) ;
+pos_spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e__dout_a(n)__delay:		DELAY (POSEDGE) spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e dout_a(n) ;
 
 ENDMODEL
