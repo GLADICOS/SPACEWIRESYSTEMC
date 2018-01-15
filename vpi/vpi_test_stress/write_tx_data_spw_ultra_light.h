@@ -36,6 +36,7 @@ static int write_tx_data_spw_ultra_light_calltf(char*user_data)
 						value_to_tx.value.integer = 1;						
 						vpi_put_value(TX_WRITE, &value_to_tx, NULL, vpiNoDelay);
 						state_test = WAIT_DATA;
+						position = position + 1;
 					}
 					else
 					{
@@ -53,18 +54,18 @@ static int write_tx_data_spw_ultra_light_calltf(char*user_data)
 						
 					state_test = SEND_DATA;
 
-					if(position <= SC_TOP->size_data_test_vlog())
+					if(position < SC_TOP->size_data_test_vlog())
 					{
-						position = position + 1;
-						value_to_tx.value.integer = 0;
-						vpi_put_value(TX_WRITE, &value_to_tx, NULL, vpiNoDelay);
+						//value_to_tx.value.integer = 0;
+						//vpi_put_value(TX_WRITE, &value_to_tx, NULL, vpiNoDelay);
 						state_test = SEND_DATA;	
 					}
 					else
 					{
-						value_to_tx.value.integer = 0;
-						vpi_put_value(TX_WRITE, &value_to_tx, NULL, vpiNoDelay);
+						//value_to_tx.value.integer = 0;
+						//vpi_put_value(TX_WRITE, &value_to_tx, NULL, vpiNoDelay);
 						state_test = 60;
+						printf("value is %d\n",position);
 					}					
 	
 				break;

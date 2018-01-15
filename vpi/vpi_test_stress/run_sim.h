@@ -39,9 +39,8 @@ static int run_sim_calltf(char*user_data)
 
 		SC_TOP->run_sim();
 
-		#ifndef LOOPBACK_VLOG
-		#define LOOPBACK_VLOG
-
+		if(LOOPBACK_VLOG_EN == 1)	
+		{
 			sin_value.value.integer = SC_TOP->get_value_sout();
 			din_value.value.integer = SC_TOP->get_value_dout();
 			vpi_put_value(DIN, &din_value, NULL, vpiNoDelay);
@@ -58,12 +57,14 @@ static int run_sim_calltf(char*user_data)
 
 			vpi_get_value(tx_clock, &sout_value);
 
-			if(sout_value.value.integer != SC_TOP->verilog_frequency())
-			{
-				sin_value.value.integer = SC_TOP->verilog_frequency();
-				vpi_put_value(tx_clock, &sin_value, NULL, vpiNoDelay);
-			}
-		#endif
+		}
+
+		if(sout_value.value.integer != SC_TOP->verilog_frequency())
+		{
+			sin_value.value.integer = SC_TOP->verilog_frequency();
+			vpi_put_value(tx_clock, &sin_value, NULL, vpiNoDelay);
+		}
+
 		//fsm_value.value.integer = SC_TOP->clock_tx();
 		//vpi_put_value(TX_CLOCK_OUT, &fsm_value, NULL, vpiNoDelay);
 
