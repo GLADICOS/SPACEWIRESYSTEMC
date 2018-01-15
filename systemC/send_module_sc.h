@@ -57,10 +57,10 @@ SC_MODULE(SPW_TX_SEND_DATA)
 
 	void INCREMMENT_DATA()
 	{
-		if(a < data_generated_sc.size()-(unsigned int)1)
-			a++;
-		else
+		if(a == data_generated_sc.size())
 			a=0;
+		else
+			a++;
 	}
 
 	void SEND_TIME_CODE()
@@ -75,7 +75,7 @@ SC_MODULE(SPW_TX_SEND_DATA)
 		{
 			if(start_tick_data)
 			{
-				if( c < 256)
+				if( c <= data_generated_sc.size())
 				{
 
 					if(!READY_TICK_DATA)

@@ -74,11 +74,11 @@ void data_rx_sc_o(unsigned int type_char, sc_uint<4> control, sc_uint<4> last_co
 #include "top_spw.h"
 
 //Data generation
-unsigned long int max_data = 256; 
+unsigned long int max_data = 255; 
 
 std::random_device rd;
 std::uniform_int_distribution<unsigned long int> data_in(0,255);
-std::uniform_int_distribution<unsigned long int> nchar(1,max_data-1);//eop-eep
+std::uniform_int_distribution<unsigned long int> nchar(1,max_data);//eop-eep
 
 class sc_TOP_SPW;
 
@@ -127,13 +127,6 @@ SC_MODULE(sc_TOP_SPW)
 			   FSM_SPW_OUT("FSM_SPW_OUT"),
 			   CLOCK_GEN("CLOCK_GEN"),
 			   E_SEND_DATA("E_SEND_DATA"),
-			   //TICKIN_TX("TICKIN_TX"),
-			   //TIMEIN_CONTROL_FLAG_TX("TIMEIN_CONTROL_FLAG_TX"),
-			   //TXWRITE_TX("TXWRITE_TX"),
-			   //TXDATA_FLAGCTRL_TX("TXDATA_FLAGCTRL_TX"),
-
-			   //READY_TX("READY_TX"),
-			  //READY_TICK("READY_TICK"),
 			   DOUT("DOUT"),
 			   SOUT("SOUT"),
 
@@ -157,13 +150,7 @@ SC_MODULE(sc_TOP_SPW)
 	DUT.FSM_SPW_OUT(FSM_SPW_OUT);
 	DUT.CLOCK_GEN(CLOCK_GEN);
 	DUT.E_SEND_DATA(E_SEND_DATA);
-	//DUT.TICKIN_TX(TICKIN_TX);
-	//DUT.TIMEIN_CONTROL_FLAG_TX(TIMEIN_CONTROL_FLAG_TX);
-	//DUT.TXWRITE_TX(TXWRITE_TX);
-	//DUT.TXDATA_FLAGCTRL_TX(TXDATA_FLAGCTRL_TX);
 	DUT.FSM_TX(FSM_TX);
-	//DUT.READY_TX(READY_TX);
-	//DUT.READY_TICK(READY_TICK);
 	DUT.DOUT(DOUT);
 	DUT.SOUT(SOUT);
 
@@ -389,19 +376,24 @@ void on_BtnGenerationDataVerilog_clicked()
 	data_iteration_vlog=0;
 	if(CheckBtnEopGenVerilog->get_active())
 	{
-		for(unsigned int cnt_max_data = 0; cnt_max_data <= max_data;cnt_max_data++)
+		for(int cnt_max_data = 0; cnt_max_data < max_data;cnt_max_data++)
 		{
-			if(cnt_max_data == 0 || cnt_max_data == max_data)
-			{
-				intermediate_verilog(8,8) = 1;
-				intermediate_verilog(7,0) = 0;
-			}else if(cnt_max_data > 0 && cnt_max_data < max_data)
+			if(cnt_max_data >= 0 && cnt_max_data < max_data)
 			{
 				intermediate_verilog(7,0) = data_in(rd);
 				intermediate_verilog(8,8) = 0;
+
+				data_generated_verilog.push_back(intermediate_verilog);
 			}
-			data_generated_verilog.push_back(intermediate_verilog);
+			intermediate_verilog=0;
+
 		}
+
+		intermediate_verilog(8,8) = 1;
+		intermediate_verilog(7,0) = 0;
+
+		data_generated_verilog.push_back(intermediate_verilog);
+		intermediate_verilog=0;
 	}else if(CheckBtnEepGenVerilog->get_active())
 	{
 		for(unsigned int cnt_max_data = 0; cnt_max_data <= max_data;cnt_max_data++)
@@ -415,7 +407,13 @@ void on_BtnGenerationDataVerilog_clicked()
 				intermediate_verilog(7,0) = data_in(rd);
 				intermediate_verilog(8,8) = 0;
 			}
+			else
+			{
+				intermediate_verilog(7,0) = data_in(rd);
+				intermediate_verilog(8,8) = 0;
+			}
 			data_generated_verilog.push_back(intermediate_verilog);
+			intermediate_verilog=0;
 		}
 		intermediate_verilog(7,0) = 1;
 		intermediate_verilog(8,8) = 1;
@@ -498,19 +496,22 @@ void on_BtnGenerateDataSc_clicked()
 	data_iteration_sc=0;
 	if(CheckBtnEopGenSystemC->get_active())
 	{
-		for(unsigned int cnt_max_data = 0; cnt_max_data <= max_data;cnt_max_data++)
+		for(int cnt_max_data = 0; cnt_max_data <= max_data;cnt_max_data++)
 		{
-			if(cnt_max_data == 0 || cnt_max_data == max_data)
-			{
-				intermediate_sc(8,8) = 1;
-				intermediate_sc(7,0) = 0;
-			}else if(cnt_max_data > 0 && cnt_max_data < max_data)
+			if(cnt_max_data > 0 && cnt_max_data < max_data)
 			{
 				intermediate_sc(7,0) = data_in(rd);
 				intermediate_sc(8,8) = 0;
 			}
 			data_generated_sc.push_back(intermediate_sc);
 		}
+
+		intermediate_sc(8,8) = 1;
+		intermediate_sc(7,0) = 0;
+
+		data_generated_sc.push_back(intermediate_verilog);
+		intermediate_sc=0;
+
 	}else if(CheckBtnEepGenSystemC->get_active())
 	{
 		for(unsigned int cnt_max_data = 0; cnt_max_data <= max_data;cnt_max_data++)
@@ -843,12 +844,12 @@ void Control_SC::end_tx_test()
 
 int Control_SC::size_data_test_vlog()
 {
-	return data_generated_verilog.size()-1;
+	return data_generated_verilog.size();
 }
 
 int Control_SC::size_data_test_sc()
 {
-	return data_generated_sc.size()-1;
+	return data_generated_sc.size();
 }
 
 unsigned int Control_SC::take_data(unsigned int a)
@@ -887,12 +888,15 @@ void Control_SC::data_o(unsigned int data, unsigned int pos)
 void  Control_SC::data_rx_vlog_loopback_o(unsigned int data, unsigned int pos)
 {
 
-	sc_uint<9> intermediate = data;
+	sc_uint<9> intermediate;
+
+	data_col_store.clear();
 
 	data_col_store.push_back("DATA");
-	intermediate_data = data_generated_verilog[pos];
-	data_col_store.push_back(intermediate_data.to_string(SC_HEX));
+	intermediate = data_generated_verilog[pos];
+	data_col_store.push_back(intermediate.to_string(SC_HEX));
 
+	intermediate = data;
 	data_col_store.push_back(intermediate(8,0).to_string(SC_HEX));
 	data_col_store.push_back(" ");
 	COMPARE_SPW->compare_test(&data_col_store);

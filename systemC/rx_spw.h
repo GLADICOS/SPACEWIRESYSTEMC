@@ -78,6 +78,10 @@ SC_MODULE(SPW_RX_SC)
 	bool time_code_found;
 
 
+	bool last_is_control;
+	bool last_is_data;
+
+
 	bool NULL_FOUND;
 	bool FCT_FOUND;
 	bool DATA_FOUND;
@@ -98,7 +102,9 @@ SC_MODULE(SPW_RX_SC)
 		control_parity_error = false;
 		data_parity_error = false;
 		time_code_parity_error = false;
-		if(last_char == ESC || last_char == FCT || last_char == EOP || last_char == EEP)
+
+
+		if(last_is_control)
 		{
 			if(control_found)
 			{
@@ -112,14 +118,9 @@ SC_MODULE(SPW_RX_SC)
 				{
 					data_parity_error = true;
 				}
-			}else if(time_code_found)
-			{
-				if(!(timecode_sys[8]^last_control_sys[0]^last_control_sys[1]) != timecode_sys[9])
-				{
-					time_code_parity_error = true;
-				}
 			}
-		}else if(last_char == DATA)
+
+		}else if(last_is_data)
 		{
 			if(control_found)
 			{
@@ -133,35 +134,9 @@ SC_MODULE(SPW_RX_SC)
 				{
 					data_parity_error = true;
 				}
-			}else if(time_code_found)
-			{
-				if(!(data_sys[8]^timecode_sys[0]^timecode_sys[1]^timecode_sys[2]^timecode_sys[3]^timecode_sys[4]^timecode_sys[5]^timecode_sys[6]^timecode_sys[7])  != data_sys[9])
-				{
-					time_code_parity_error = true;
-				}
 			}
-		}else if(last_char == TIME_CODE)
-		{
-			if(control_found)
-			{
-				if(!(timecode_sys[8]^last_control_sys[0]^last_control_sys[1])  != timecode_sys[9])
-				{
-					control_parity_error = true;
-				}
-			}/*else if(data_found)
-			{
-				if(!(timecode[8]^data_sys[0]^data_sys[1]^data_sys[2]^data_sys[3]^data_sys[4])^data_sys[5]^data_sys[6]^data_sys[7] != timecode[9])
-				{
-					data_parity_error = true;
-				}
-			}else if(time_code_found)
-			{
-				if(!(timecode[8]^timecode_sys[0]^timecode_sys[1]^timecode_sys[2]^timecode_sys[3]^timecode_sys[4]^timecode_sys[5]^timecode_sys[6]^timecode_sys[7])  != timecode[9])
-				{
-					time_code_parity_error = true;
-				}
-			}*/
 		}
+
 	}
 
 	void gotFCT()
@@ -282,6 +257,10 @@ SC_MODULE(SPW_RX_SC)
 		FCT_FOUND      = false;
 		DATA_FOUND     = false;
 		TIMECODE_FOUND = false;
+
+		last_is_control = false;
+		last_is_data	= false;
+
 		data_col_store.clear();
 
 		if(!connected)
@@ -314,16 +293,10 @@ SC_MODULE(SPW_RX_SC)
 					NULL_FOUND = true;
 					FCT_FOUND = false;
 					DATA_FOUND = false;
+
 					last_char = ESC;
 
 					data_rx_sc_o(0,control,last_control_sys,data,timecode_sys);
-
-					//data_col_store.push_back("NULL");
-					//data_col_store.push_back(" - ");
-					//data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
-					//data_col_store.push_back(" - ");
-					//data_col_store.push_back(sc_time_stamp().to_string());
-					//REC_TX_SPW->storedata(data_col_store);		
 
 					if(counter_fct > 0)
 					{
@@ -341,13 +314,6 @@ SC_MODULE(SPW_RX_SC)
 
 					data_rx_sc_o(1,control,last_control_sys,data,timecode_sys);
 
-					//data_col_store.push_back("FCT");
-					//data_col_store.push_back(" - ");
-					//data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
-					//data_col_store.push_back(" - ");
-					//data_col_store.push_back(sc_time_stamp().to_string());
-					//REC_TX_SPW->storedata(data_col_store);
-
 				}else if(last_control_sys(2,0) == 4 && control(2,0) == 7)
 				{
 					last_char = ESC;
@@ -362,17 +328,8 @@ SC_MODULE(SPW_RX_SC)
 					//cout << last_control_sys(2,0) <<  control_sys(2,0) << endl;
 
 					data_rx_sc_o(4,control,last_control_sys,data,timecode_sys);
-
-					//data_col_store.push_back("INVALID CONNECTION");
-					//data_col_store.push_back(" - ");
-					//data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
-					//data_col_store.push_back(" - ");
-					//data_col_store.push_back(sc_time_stamp().to_string());
-					//REC_TX_SPW->storedata(data_col_store);
 				}
 				last_control_sys = control;
-				//control_sys = control;
-
 			}
 		}
 		else
@@ -397,13 +354,16 @@ SC_MODULE(SPW_RX_SC)
 				
 				if(control(2,2) == 1)
 				{
+
+					last_is_control = control_found;
+					last_is_data	= data_found;
+
 					control_found = true;
+					data_found    = false;
 					counter = 0;
 					
 					if(last_control_sys(2,0) == 7 && control(2,0) == 4)
 					{
-						//data_col_store.clear();
-
 						control_found = true;
 						NULL_FOUND = true;
 						FCT_FOUND  = false;
@@ -411,13 +371,6 @@ SC_MODULE(SPW_RX_SC)
 						last_char = ESC;
 						
 						data_rx_sc_o(0,control,last_control_sys,data,timecode_sys);
-
-						//data_col_store.push_back("NULL");
-						//data_col_store.push_back(" - ");
-						//data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
-						//data_col_store.push_back(" - ");
-						//data_col_store.push_back(sc_time_stamp().to_string());
-						//REC_TX_SPW->storedata(data_col_store);	
 
 						if(counter_fct > 0)
 						{
@@ -427,8 +380,6 @@ SC_MODULE(SPW_RX_SC)
 
 					}else if(last_control_sys(2,0) != 7 && control(2,0) == 4)
 					{
-						//data_col_store.clear();
-
 						last_char = FCT;
 						counter_fct++;
 
@@ -438,16 +389,8 @@ SC_MODULE(SPW_RX_SC)
 
 						data_rx_sc_o(1,control,last_control_sys,data,timecode_sys);
 
-						//data_col_store.push_back("FCT");
-						//data_col_store.push_back(" - ");
-						//data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
-						//data_col_store.push_back(" - ");
-						//data_col_store.push_back(sc_time_stamp().to_string());
-						//REC_TX_SPW->storedata(data_col_store);
-
 					}else if(last_control_sys(2,0) != 7 && control(2,0) == 5)
 					{
-						//data_col_store.clear();
 
 						last_char = EOP;
 
@@ -456,17 +399,6 @@ SC_MODULE(SPW_RX_SC)
 						DATA_FOUND = true;
 						
 						data_rx_sc_o(2,control,last_control_sys,data,timecode_sys);
-
-						//intermediate_data = data_generated_verilog[data_iteration];
-						//data_col_store.push_back(intermediate_data.to_string(SC_HEX));
-
-						//data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
-						//data_col_store.push_back(" ");
-						//COMPARE_SPW->compare_test(&data_col_store);
-						//data_iteration++;
-
-						//data_col_store.push_back(sc_time_stamp().to_string());
-						//REC_TX_SPW->storedata(data_col_store);
 
 						if(counter_fct > 0)
 						{
@@ -486,18 +418,6 @@ SC_MODULE(SPW_RX_SC)
 						DATA_FOUND = true;
 					
 						data_rx_sc_o(3,control,last_control_sys,data,timecode_sys);
-
-						//data_col_store.push_back("EEP");
-						//intermediate_data = data_generated_verilog[data_iteration];
-						//data_col_store.push_back(intermediate_data.to_string(SC_HEX));
-
-						//data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control(2,0).to_string());
-						//data_col_store.push_back(" ");
-						//COMPARE_SPW->compare_test(&data_col_store);
-						//data_iteration++;
-
-						//data_col_store.push_back(sc_time_stamp().to_string());
-						//REC_TX_SPW->storedata(data_col_store);
 
 						if(counter_fct > 0)
 						{
@@ -534,14 +454,6 @@ SC_MODULE(SPW_RX_SC)
 						connected = false;
 
 						data_rx_sc_o(4,control,last_control_sys,data,timecode_sys);
-
-						//cout << last_control_sys(2,0) <<  control_sys(2,0) << endl;
-						//data_col_store.push_back("INVALID CONNECTION");
-						//data_col_store.push_back(" - ");
-						//data_col_store.push_back(last_control_sys(2,0).to_string(SC_HEX) + control_sys(2,0).to_string());
-						//data_col_store.push_back(" - ");
-						//data_col_store.push_back(sc_time_stamp().to_string());
-						//REC_TX_SPW->storedata(data_col_store);
 					}
 					last_control_sys = control;
 
@@ -577,11 +489,15 @@ SC_MODULE(SPW_RX_SC)
 			{
 				timecode(7,7) = data(7,7) = DIN;
 				
+				last_is_control = control_found;
+				last_is_data	= data_found;
+
+				control_found = false;
+				data_found    = true;
+		
 				if(data(8,8) == 0 && last_control_sys(2,0) != 7)
 				{
 					data_col_store.clear();
-
-					data_found = true;
 					
 					FCT_FOUND = false;
 					NULL_FOUND = false;
@@ -594,18 +510,6 @@ SC_MODULE(SPW_RX_SC)
 
 					data_rx_sc_o(5,control,last_control_sys,data,timecode_sys);
 
-
-					//data_col_store.push_back("DATA");
-
-					//intermediate_data = data_generated_verilog[data_iteration];
-					//data_col_store.push_back(intermediate_data.to_string(SC_HEX));
-
-					//data_col_store.push_back(data(8,0).to_string(SC_HEX));
-					//data_col_store.push_back(" ");
-					//COMPARE_SPW->compare_test(&data_col_store);
-
-					//data_col_store.push_back(sc_time_stamp().to_string());
-					//REC_TX_SPW->storedata(data_col_store);
 					counter_received_data = counter_received_data + 8;
 
 					//data_iteration++;
@@ -624,23 +528,13 @@ SC_MODULE(SPW_RX_SC)
 					DATA_FOUND = false;
 					TIMECODE_FOUND = true;
 
-					time_code_found = true;
 					timecode_sys = timecode;
-					time_code_found = false;
 					
 					last_char = TIME_CODE;
 					control_sys = 0;
 					last_control_sys =0;
 
 					data_rx_sc_o(6,control,last_control_sys,data,timecode_sys);
-
-					//data_col_store.push_back("TIMECODE");
-					//data_col_store.push_back(" - ");
-					//data_col_store.push_back(timecode_sys(7,0).to_string());
-					//data_col_store.push_back(" - ");
-					//data_col_store.push_back(sc_time_stamp().to_string());
-					//REC_TX_SPW->storedata(data_col_store);
-					//last_timecode = timecode_sys;
 
 					if(counter_fct > 0)
 					{
