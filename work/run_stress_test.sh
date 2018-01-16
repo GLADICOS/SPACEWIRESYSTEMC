@@ -11,7 +11,12 @@ g++ -c -ldl -fpic ../vpi/vpi_test_stress/env_global_spw.cpp -Wall -Wextra  -std=
 
 g++ -shared  -Wall -Wextra -oenv_global_spw.vpi env_global_spw.o -lvpi -std=c++11 -Wwrite-strings -fpermissive
 
-iverilog -oenv_global_spw.vvp -D VERILOG_B ../rtl/RTL_VB/*.v ../testbench/module_tb.v 
+#EXECUTE LOOPBACK IP
+#OBS: CHANGE on file env_global_spw.cpp variable LOOPBACK_VLOG_EN to 1 
 #iverilog -oenv_global_spw.vvp -D VERILOG_B ../rtl/RTL_VB/*.v ../testbench/module_tb.v 
+ 
+#EXECUTE WITH SYSTEMC 
+#OBS: CHANGE on file env_global_spw.cpp variable LOOPBACK_VLOG_EN to 0
+iverilog -oenv_global_spw.vvp ../rtl/RTL_VB/*.v ../testbench/module_tb.v 
 
 vvp -M. -menv_global_spw env_global_spw.vvp
