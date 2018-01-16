@@ -35,7 +35,7 @@ static int receive_rx_data_spw_ultra_light_calltf(char*user_data)
 			break;
 			case 3:
 
-				if(LOOPBACK_VLOG_EN == 1)
+				if(LOOPBACK_VLOG_EN == 0)
 				{
 					vpi_get_value(DATARX_FLAG, &value_to_rx);
 					SC_TOP->data_o(value_to_rx.value.integer,data_rx_received_cnt);
@@ -45,7 +45,8 @@ static int receive_rx_data_spw_ultra_light_calltf(char*user_data)
 					if(data_rx_received_cnt == SC_TOP->size_data_test_sc())
 						data_rx_received_cnt = 0;
 				}
-				else
+
+				if(LOOPBACK_VLOG_EN == 1)
 				{
 					vpi_get_value(DATARX_FLAG, &value_to_rx);
 					SC_TOP->data_rx_vlog_loopback_o(value_to_rx.value.integer,data_rx_received_cnt);

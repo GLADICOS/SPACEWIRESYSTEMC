@@ -47,7 +47,7 @@ s_vpi_value link_disable_value;
 #define SEND_TIME_CODE 	0
 #define WAIT_500_CYCLES	1
 
-unsigned int LOOPBACK_VLOG_EN = 1;
+unsigned int LOOPBACK_VLOG_EN = 0;
 
 unsigned int state_test=0;
 unsigned int state_test_tx_timec=0;

@@ -39,7 +39,7 @@ static int run_sim_calltf(char*user_data)
 
 		SC_TOP->run_sim();
 
-		if(LOOPBACK_VLOG_EN == 1)	
+		if(LOOPBACK_VLOG_EN == 0)	
 		{
 			sin_value.value.integer = SC_TOP->get_value_sout();
 			din_value.value.integer = SC_TOP->get_value_dout();
