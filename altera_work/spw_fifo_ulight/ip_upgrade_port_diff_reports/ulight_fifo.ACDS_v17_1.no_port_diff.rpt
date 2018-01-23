@@ -1,0 +1,23 @@
+IP Ports Diff Report for ulight_fifo
+Tue Jan 23 17:32:00 2018
+Quartus Prime Version 17.1.1 Internal Build 593 12/11/2017 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. IP Information
+
+
+
++------------------------------------------------------------+
+; IP Information                                             ;
++----------------------+-------------------------------------+
+; IP Variation Name    ; ulight_fifo                         ;
+; Prior Version        ; ACDS_v17.0                          ;
+; New Version          ; ACDS_v17.1                          ;
+; New File             ; ulight_fifo/synthesis/ulight_fifo.v ;
+; Has Port Differences ; No                                  ;
++----------------------+-------------------------------------+
+
+

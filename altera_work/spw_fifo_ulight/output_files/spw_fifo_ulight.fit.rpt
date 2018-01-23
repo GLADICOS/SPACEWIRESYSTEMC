@@ -1,6 +1,6 @@
 Fitter report for spw_fifo_ulight
-Thu Jan 11 15:01:38 2018
-Quartus Prime Version 17.0.2 Build 602 07/19/2017 SJ Lite Edition
+Tue Jan 23 17:45:29 2018
+Quartus Prime Version 17.1.1 Internal Build 593 12/11/2017 SJ Lite Edition
 
 
 ---------------------
@@ -54,39 +54,38 @@ functions, and any output files from any of the foregoing
 associated documentation or information are expressly subject 
 to the terms and conditions of the Intel Program License 
 Subscription Agreement, the Intel Quartus Prime License Agreement,
-the Intel MegaCore Function License Agreement, or other 
-applicable license agreement, including, without limitation, 
-that your use is for the sole purpose of programming logic 
-devices manufactured by Intel and sold by Intel or its 
-authorized distributors.  Please refer to the applicable 
-agreement for further details.
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
 
 
 
-+-------------------------------------------------------------------------------+
-; Fitter Summary                                                                ;
-+---------------------------------+---------------------------------------------+
-; Fitter Status                   ; Successful - Thu Jan 11 15:01:37 2018       ;
-; Quartus Prime Version           ; 17.0.2 Build 602 07/19/2017 SJ Lite Edition ;
-; Revision Name                   ; spw_fifo_ulight                             ;
-; Top-level Entity Name           ; SPW_ULIGHT_FIFO                             ;
-; Family                          ; Cyclone V                                   ;
-; Device                          ; 5CSEMA4U23C6                                ;
-; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 3,380 / 15,880 ( 21 % )                     ;
-; Total registers                 ; 4664                                        ;
-; Total pins                      ; 19 / 314 ( 6 % )                            ;
-; Total virtual pins              ; 0                                           ;
-; Total block memory bits         ; 0 / 2,764,800 ( 0 % )                       ;
-; Total RAM Blocks                ; 0 / 270 ( 0 % )                             ;
-; Total DSP Blocks                ; 0 / 84 ( 0 % )                              ;
-; Total HSSI RX PCSs              ; 0                                           ;
-; Total HSSI PMA RX Deserializers ; 0                                           ;
-; Total HSSI TX PCSs              ; 0                                           ;
-; Total HSSI PMA TX Serializers   ; 0                                           ;
-; Total PLLs                      ; 1 / 5 ( 20 % )                              ;
-; Total DLLs                      ; 0 / 4 ( 0 % )                               ;
-+---------------------------------+---------------------------------------------+
++----------------------------------------------------------------------------------------+
+; Fitter Summary                                                                         ;
++---------------------------------+------------------------------------------------------+
+; Fitter Status                   ; Successful - Tue Jan 23 17:45:28 2018                ;
+; Quartus Prime Version           ; 17.1.1 Internal Build 593 12/11/2017 SJ Lite Edition ;
+; Revision Name                   ; spw_fifo_ulight                                      ;
+; Top-level Entity Name           ; SPW_ULIGHT_FIFO                                      ;
+; Family                          ; Cyclone V                                            ;
+; Device                          ; 5CSEMA4U23C6                                         ;
+; Timing Models                   ; Final                                                ;
+; Logic utilization (in ALMs)     ; 3,380 / 15,880 ( 21 % )                              ;
+; Total registers                 ; 4664                                                 ;
+; Total pins                      ; 19 / 314 ( 6 % )                                     ;
+; Total virtual pins              ; 0                                                    ;
+; Total block memory bits         ; 0 / 2,764,800 ( 0 % )                                ;
+; Total RAM Blocks                ; 0 / 270 ( 0 % )                                      ;
+; Total DSP Blocks                ; 0 / 84 ( 0 % )                                       ;
+; Total HSSI RX PCSs              ; 0                                                    ;
+; Total HSSI PMA RX Deserializers ; 0                                                    ;
+; Total HSSI TX PCSs              ; 0                                                    ;
+; Total HSSI PMA TX Serializers   ; 0                                                    ;
+; Total PLLs                      ; 1 / 5 ( 20 % )                                       ;
+; Total DLLs                      ; 0 / 4 ( 0 % )                                        ;
++---------------------------------+------------------------------------------------------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -100,7 +99,7 @@ agreement for further details.
 ; Router Timing Optimization Level                                           ; MAXIMUM                               ; Normal                                ;
 ; Placement Effort Multiplier                                                ; 4.0                                   ; 1.0                                   ;
 ; Auto RAM to MLAB Conversion                                                ; Off                                   ; On                                    ;
-; PowerPlay Power Optimization During Fitting                                ; Extra effort                          ; Normal compilation                    ;
+; Power Optimization During Fitting                                          ; Extra effort                          ; Normal compilation                    ;
 ; Optimize IOC Register Placement for Timing                                 ; Pack All IO Registers                 ; Normal                                ;
 ; Auto Delay Chains for High Fanout Input Pins                               ; On                                    ; Off                                   ;
 ; Perform Physical Synthesis for Combinational Logic for Fitting             ; On                                    ; Off                                   ;
@@ -156,12 +155,12 @@ agreement for further details.
 ; Number detected on machine ; 4           ;
 ; Maximum allowed            ; 2           ;
 ;                            ;             ;
-; Average used               ; 1.09        ;
+; Average used               ; 1.10        ;
 ; Maximum used               ; 2           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   9.2%      ;
+;     Processor 2            ;   9.7%      ;
 +----------------------------+-------------+
 
 
@@ -2531,38 +2530,38 @@ Info (128001): Physical synthesis optimizations for speed complete: elapsed time
 Info (176233): Starting register packing
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
-Info (11798): Fitter preparation operations ending: elapsed time is 00:00:27
+Info (11798): Fitter preparation operations ending: elapsed time is 00:00:28
 Warning (170136): Design uses Placement Effort Multiplier = 4.0.  Using a Placement Effort Multiplier > 1.0 can increase processing time, especially when used during a second or third fitting attempt.
 Info (170189): Fitter placement preparation operations beginning
 Info (223000): Starting Vectorless Power Activity Estimation
 Info (223001): Completed Vectorless Power Activity Estimation
 Info (14951): The Fitter is using Advanced Physical Optimization.
-Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:38
+Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:45
 Info (223000): Starting Vectorless Power Activity Estimation
 Info (223001): Completed Vectorless Power Activity Estimation
 Info (170191): Fitter placement operations beginning
 Info (170137): Fitter placement was successful
-Info (170192): Fitter placement operations ending: elapsed time is 00:01:02
+Info (170192): Fitter placement operations ending: elapsed time is 00:01:06
 Info (170193): Fitter routing operations beginning
 Info (223000): Starting Vectorless Power Activity Estimation
 Info (223001): Completed Vectorless Power Activity Estimation
 Info (170195): Router estimated average interconnect usage is 4% of the available device resources
     Info (170196): Router estimated peak interconnect usage is 12% of the available device resources in the region that extends from location X34_Y0 to location X45_Y11
 Info (170202): The Fitter performed an Auto Fit compilation.  No optimizations were skipped because the design's timing and routability requirements required full optimization.
-Info (170194): Fitter routing operations ending: elapsed time is 00:01:06
-Info (11888): Total time spent on timing analysis during the Fitter is 28.64 seconds.
+Info (170194): Fitter routing operations ending: elapsed time is 00:01:03
+Info (11888): Total time spent on timing analysis during the Fitter is 31.13 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:38
+Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:44
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Info (144001): Generated suppressed messages file /home/felipe/Documentos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_fifo_ulight/output_files/spw_fifo_ulight.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 2692 megabytes
-    Info: Processing ended: Thu Jan 11 15:01:41 2018
-    Info: Elapsed time: 00:05:03
-    Info: Total CPU time (on all processors): 00:08:26
+    Info: Peak virtual memory: 2682 megabytes
+    Info: Processing ended: Tue Jan 23 17:45:31 2018
+    Info: Elapsed time: 00:05:28
+    Info: Total CPU time (on all processors): 00:09:03
 
 
 +----------------------------+

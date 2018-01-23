@@ -1,6 +1,6 @@
 TimeQuest Timing Analyzer report for spw_fifo_ulight
-Thu Jan 11 15:03:26 2018
-Quartus Prime Version 17.0.2 Build 602 07/19/2017 SJ Lite Edition
+Tue Jan 23 17:47:05 2018
+Quartus Prime Version 17.1.1 Internal Build 593 12/11/2017 SJ Lite Edition
 
 
 ---------------------
@@ -72,27 +72,26 @@ functions, and any output files from any of the foregoing
 associated documentation or information are expressly subject 
 to the terms and conditions of the Intel Program License 
 Subscription Agreement, the Intel Quartus Prime License Agreement,
-the Intel MegaCore Function License Agreement, or other 
-applicable license agreement, including, without limitation, 
-that your use is for the sole purpose of programming logic 
-devices manufactured by Intel and sold by Intel or its 
-authorized distributors.  Please refer to the applicable 
-agreement for further details.
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
 
 
 
-+-----------------------------------------------------------------------------+
-; TimeQuest Timing Analyzer Summary                                           ;
-+-----------------------+-----------------------------------------------------+
-; Quartus Prime Version ; Version 17.0.2 Build 602 07/19/2017 SJ Lite Edition ;
-; Timing Analyzer       ; TimeQuest                                           ;
-; Revision Name         ; spw_fifo_ulight                                     ;
-; Device Family         ; Cyclone V                                           ;
-; Device Name           ; 5CSEMA4U23C6                                        ;
-; Timing Models         ; Final                                               ;
-; Delay Model           ; Combined                                            ;
-; Rise/Fall Delays      ; Enabled                                             ;
-+-----------------------+-----------------------------------------------------+
++--------------------------------------------------------------------------------------+
+; TimeQuest Timing Analyzer Summary                                                    ;
++-----------------------+--------------------------------------------------------------+
+; Quartus Prime Version ; Version 17.1.1 Internal Build 593 12/11/2017 SJ Lite Edition ;
+; Timing Analyzer       ; TimeQuest                                                    ;
+; Revision Name         ; spw_fifo_ulight                                              ;
+; Device Family         ; Cyclone V                                                    ;
+; Device Name           ; 5CSEMA4U23C6                                                 ;
+; Timing Models         ; Final                                                        ;
+; Delay Model           ; Combined                                                     ;
+; Rise/Fall Delays      ; Enabled                                                      ;
++-----------------------+--------------------------------------------------------------+
 
 
 +------------------------------------------+
@@ -108,7 +107,7 @@ agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;  17.9%      ;
+;     Processor 2            ;  18.0%      ;
 +----------------------------+-------------+
 
 
@@ -117,8 +116,8 @@ agreement for further details.
 +--------------------------------------------------------------+--------+--------------------------+
 ; SDC File Path                                                ; Status ; Read at                  ;
 +--------------------------------------------------------------+--------+--------------------------+
-; sdc/spw_fifo_ulight.out.sdc                                  ; OK     ; Thu Jan 11 15:02:20 2018 ;
-; ulight_fifo/synthesis/submodules/altera_reset_controller.sdc ; OK     ; Thu Jan 11 15:02:20 2018 ;
+; sdc/spw_fifo_ulight.out.sdc                                  ; OK     ; Tue Jan 23 17:45:58 2018 ;
+; ulight_fifo/synthesis/submodules/altera_reset_controller.sdc ; OK     ; Tue Jan 23 17:45:58 2018 ;
 +--------------------------------------------------------------+--------+--------------------------+
 
 
@@ -766,10 +765,10 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +------------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime TimeQuest Timing Analyzer
-    Info: Version 17.0.2 Build 602 07/19/2017 SJ Lite Edition
-    Info: Processing started: Thu Jan 11 15:02:13 2018
+    Info: Version 17.1.1 Internal Build 593 12/11/2017 SJ Lite Edition
+    Info: Processing started: Tue Jan 23 17:45:51 2018
 Info: Command: quartus_sta spw_fifo_ulight -c spw_fifo_ulight
-Info: qsta_default_script.tcl version: #1
+Info: qsta_default_script.tcl version: #3
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (21077): Low junction temperature is 0 degrees C
@@ -983,8 +982,8 @@ Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 5 warnings
     Info: Peak virtual memory: 1557 megabytes
-    Info: Processing ended: Thu Jan 11 15:03:26 2018
-    Info: Elapsed time: 00:01:13
+    Info: Processing ended: Tue Jan 23 17:47:05 2018
+    Info: Elapsed time: 00:01:14
     Info: Total CPU time (on all processors): 00:01:23
 
 

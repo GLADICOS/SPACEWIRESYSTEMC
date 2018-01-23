@@ -349,7 +349,7 @@
    internal="write_en_tx.external_connection"
    type="conduit"
    dir="end" />
- <module name="auto_start" kind="altera_avalon_pio" version="17.0" enabled="1">
+ <module name="auto_start" kind="altera_avalon_pio" version="17.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
@@ -363,13 +363,13 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="1" />
  </module>
- <module name="clk_0" kind="clock_source" version="17.0" enabled="1">
+ <module name="clk_0" kind="clock_source" version="17.1" enabled="1">
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="true" />
   <parameter name="inputClockFrequency" value="0" />
   <parameter name="resetSynchronousEdges" value="NONE" />
  </module>
- <module name="clock_sel" kind="altera_avalon_pio" version="17.0" enabled="1">
+ <module name="clock_sel" kind="altera_avalon_pio" version="17.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
@@ -386,7 +386,7 @@
  <module
    name="counter_rx_fifo"
    kind="altera_avalon_pio"
-   version="17.0"
+   version="17.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -404,7 +404,7 @@
  <module
    name="counter_tx_fifo"
    kind="altera_avalon_pio"
-   version="17.0"
+   version="17.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -422,7 +422,7 @@
  <module
    name="data_flag_rx"
    kind="altera_avalon_pio"
-   version="17.0"
+   version="17.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -437,7 +437,7 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="9" />
  </module>
- <module name="data_info" kind="altera_avalon_pio" version="17.0" enabled="1">
+ <module name="data_info" kind="altera_avalon_pio" version="17.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
@@ -454,7 +454,7 @@
  <module
    name="data_read_en_rx"
    kind="altera_avalon_pio"
-   version="17.0"
+   version="17.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -472,7 +472,7 @@
  <module
    name="fifo_empty_rx_status"
    kind="altera_avalon_pio"
-   version="17.0"
+   version="17.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -490,7 +490,7 @@
  <module
    name="fifo_empty_tx_status"
    kind="altera_avalon_pio"
-   version="17.0"
+   version="17.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -508,7 +508,7 @@
  <module
    name="fifo_full_rx_status"
    kind="altera_avalon_pio"
-   version="17.0"
+   version="17.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -526,7 +526,7 @@
  <module
    name="fifo_full_tx_status"
    kind="altera_avalon_pio"
-   version="17.0"
+   version="17.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -541,7 +541,7 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="1" />
  </module>
- <module name="fsm_info" kind="altera_avalon_pio" version="17.0" enabled="1">
+ <module name="fsm_info" kind="altera_avalon_pio" version="17.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
@@ -555,7 +555,7 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="6" />
  </module>
- <module name="hps_0" kind="altera_hps" version="17.0" enabled="1">
+ <module name="hps_0" kind="altera_hps" version="17.1" enabled="1">
   <parameter name="ABSTRACT_REAL_COMPARE_TEST" value="false" />
   <parameter name="ABS_RAM_MEM_INIT_FILENAME" value="meminit" />
   <parameter name="ACV_PHY_CLK_ADD_FR_PHASE" value="0.0" />
@@ -1088,7 +1088,7 @@
  <module
    name="led_pio_test"
    kind="altera_avalon_pio"
-   version="17.0"
+   version="17.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -1106,7 +1106,7 @@
  <module
    name="link_disable"
    kind="altera_avalon_pio"
-   version="17.0"
+   version="17.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -1121,7 +1121,7 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="1" />
  </module>
- <module name="link_start" kind="altera_avalon_pio" version="17.0" enabled="1">
+ <module name="link_start" kind="altera_avalon_pio" version="17.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
@@ -1135,7 +1135,7 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="1" />
  </module>
- <module name="pll_0" kind="altera_pll" version="17.0" enabled="1">
+ <module name="pll_0" kind="altera_pll" version="17.1" enabled="1">
   <parameter name="debug_print_output" value="false" />
   <parameter name="debug_use_rbc_taf_method" value="false" />
   <parameter name="device" value="5CSEMA4U23C6" />
@@ -1198,7 +1198,7 @@
   <parameter name="gui_cascade_outclk_index" value="0" />
   <parameter name="gui_channel_spacing" value="0.0" />
   <parameter name="gui_clk_bad" value="false" />
-  <parameter name="gui_device_speed_grade" value="1" />
+  <parameter name="gui_device_speed_grade" value="2" />
   <parameter name="gui_divide_factor_c0" value="1" />
   <parameter name="gui_divide_factor_c1" value="1" />
   <parameter name="gui_divide_factor_c10" value="1" />
@@ -1341,7 +1341,7 @@
  <module
    name="timecode_ready_rx"
    kind="altera_avalon_pio"
-   version="17.0"
+   version="17.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -1359,7 +1359,7 @@
  <module
    name="timecode_rx"
    kind="altera_avalon_pio"
-   version="17.0"
+   version="17.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -1377,7 +1377,7 @@
  <module
    name="timecode_tx_data"
    kind="altera_avalon_pio"
-   version="17.0"
+   version="17.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -1395,7 +1395,7 @@
  <module
    name="timecode_tx_enable"
    kind="altera_avalon_pio"
-   version="17.0"
+   version="17.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -1413,7 +1413,7 @@
  <module
    name="timecode_tx_ready"
    kind="altera_avalon_pio"
-   version="17.0"
+   version="17.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -1431,7 +1431,7 @@
  <module
    name="write_data_fifo_tx"
    kind="altera_avalon_pio"
-   version="17.0"
+   version="17.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -1449,7 +1449,7 @@
  <module
    name="write_en_tx"
    kind="altera_avalon_pio"
-   version="17.0"
+   version="17.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -1466,7 +1466,7 @@
  </module>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="hps_0.h2f_axi_master"
    end="led_pio_test.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1475,7 +1475,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="hps_0.h2f_axi_master"
    end="timecode_rx.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1484,7 +1484,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="hps_0.h2f_axi_master"
    end="timecode_ready_rx.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1493,7 +1493,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="hps_0.h2f_axi_master"
    end="data_flag_rx.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1502,7 +1502,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="hps_0.h2f_axi_master"
    end="data_read_en_rx.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1511,7 +1511,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="hps_0.h2f_axi_master"
    end="fifo_full_rx_status.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1520,7 +1520,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="hps_0.h2f_axi_master"
    end="fifo_empty_rx_status.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1529,7 +1529,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="hps_0.h2f_axi_master"
    end="link_start.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1538,7 +1538,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="hps_0.h2f_axi_master"
    end="auto_start.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1547,7 +1547,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="hps_0.h2f_axi_master"
    end="link_disable.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1556,7 +1556,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="hps_0.h2f_axi_master"
    end="write_data_fifo_tx.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1565,7 +1565,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="hps_0.h2f_axi_master"
    end="write_en_tx.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1574,7 +1574,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="hps_0.h2f_axi_master"
    end="fifo_full_tx_status.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1583,7 +1583,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="hps_0.h2f_axi_master"
    end="fifo_empty_tx_status.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1592,7 +1592,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="hps_0.h2f_axi_master"
    end="timecode_tx_data.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1601,7 +1601,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="hps_0.h2f_axi_master"
    end="timecode_tx_enable.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1610,7 +1610,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="hps_0.h2f_axi_master"
    end="timecode_tx_ready.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1619,7 +1619,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="hps_0.h2f_axi_master"
    end="data_info.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1628,7 +1628,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="hps_0.h2f_axi_master"
    end="clock_sel.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1637,7 +1637,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="hps_0.h2f_axi_master"
    end="fsm_info.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1646,7 +1646,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="hps_0.h2f_axi_master"
    end="counter_tx_fifo.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1655,199 +1655,199 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="hps_0.h2f_axi_master"
    end="counter_rx_fifo.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0006a000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
- <connection kind="clock" version="17.0" start="clk_0.clk" end="led_pio_test.clk" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="led_pio_test.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk"
    end="timecode_ready_rx.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk"
    end="fifo_empty_rx_status.clk" />
- <connection kind="clock" version="17.0" start="clk_0.clk" end="link_start.clk" />
- <connection kind="clock" version="17.0" start="clk_0.clk" end="write_en_tx.clk" />
- <connection kind="clock" version="17.0" start="clk_0.clk" end="clock_sel.clk" />
- <connection kind="clock" version="17.0" start="clk_0.clk" end="link_disable.clk" />
- <connection kind="clock" version="17.0" start="clk_0.clk" end="auto_start.clk" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="link_start.clk" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="write_en_tx.clk" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="clock_sel.clk" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="link_disable.clk" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="auto_start.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk"
    end="timecode_tx_data.clk" />
- <connection kind="clock" version="17.0" start="clk_0.clk" end="data_info.clk" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="data_info.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk"
    end="timecode_tx_ready.clk" />
- <connection kind="clock" version="17.0" start="clk_0.clk" end="fsm_info.clk" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="fsm_info.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk"
    end="counter_tx_fifo.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk"
    end="counter_rx_fifo.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk"
    end="write_data_fifo_tx.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk"
    end="timecode_tx_enable.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk"
    end="fifo_full_tx_status.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk"
    end="fifo_full_rx_status.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk"
    end="data_read_en_rx.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk"
    end="fifo_empty_tx_status.clk" />
- <connection kind="clock" version="17.0" start="clk_0.clk" end="timecode_rx.clk" />
- <connection kind="clock" version="17.0" start="clk_0.clk" end="data_flag_rx.clk" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="timecode_rx.clk" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="data_flag_rx.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk"
    end="hps_0.h2f_axi_clock" />
- <connection kind="clock" version="17.0" start="clk_0.clk" end="pll_0.refclk" />
- <connection kind="clock" version="17.0" start="clk_0.clk" end="pll_0.refclk1" />
- <connection kind="reset" version="17.0" start="clk_0.clk_reset" end="pll_0.reset" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="pll_0.refclk" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="pll_0.refclk1" />
+ <connection kind="reset" version="17.1" start="clk_0.clk_reset" end="pll_0.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk_reset"
    end="led_pio_test.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk_reset"
    end="timecode_rx.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk_reset"
    end="timecode_ready_rx.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk_reset"
    end="data_flag_rx.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk_reset"
    end="data_read_en_rx.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk_reset"
    end="fifo_full_rx_status.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk_reset"
    end="fifo_empty_rx_status.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk_reset"
    end="link_start.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk_reset"
    end="auto_start.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk_reset"
    end="link_disable.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk_reset"
    end="write_data_fifo_tx.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk_reset"
    end="write_en_tx.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk_reset"
    end="fifo_full_tx_status.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk_reset"
    end="fifo_empty_tx_status.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk_reset"
    end="timecode_tx_data.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk_reset"
    end="timecode_tx_enable.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk_reset"
    end="timecode_tx_ready.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk_reset"
    end="data_info.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk_reset"
    end="clock_sel.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk_reset"
    end="fsm_info.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk_reset"
    end="counter_tx_fifo.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="clk_0.clk_reset"
    end="counter_rx_fifo.reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />

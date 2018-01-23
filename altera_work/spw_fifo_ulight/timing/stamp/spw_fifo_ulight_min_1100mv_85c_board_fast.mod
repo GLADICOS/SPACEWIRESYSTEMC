@@ -7,12 +7,11 @@
  associated documentation or information are expressly subject 
  to the terms and conditions of the Intel Program License 
  Subscription Agreement, the Intel Quartus Prime License Agreement,
- the Intel MegaCore Function License Agreement, or other 
- applicable license agreement, including, without limitation, 
- that your use is for the sole purpose of programming logic 
- devices manufactured by Intel and sold by Intel or its 
- authorized distributors.  Please refer to the applicable 
- agreement for further details.
+ the Intel FPGA IP License Agreement, or other applicable license
+ agreement, including, without limitation, that your use is for
+ the sole purpose of programming logic devices manufactured by
+ Intel and sold by Intel or its authorized distributors.  Please
+ refer to the applicable agreement for further details.
 */
 MODEL
 /*MODEL HEADER*/
@@ -23,7 +22,7 @@ MODEL
 */
 MODEL_VERSION "1.0";
 DESIGN "spw_fifo_ulight";
-DATE "01/11/2018 15:03:34";
+DATE "01/23/2018 17:47:12";
 PROGRAM "Quartus Prime";
 
 
