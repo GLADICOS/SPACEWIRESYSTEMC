@@ -14,11 +14,6 @@ using namespace boost;
 #include "../gladicapi/data_recorder.h"
 #include "../gladicapi/data_check.h"
 
-bool enable_null;
-bool enable_fct;
-bool enable_time_code;
-bool enable_n_char;
-
 bool EEP_EOP;
 
 unsigned int finish = 0;
@@ -95,14 +90,7 @@ SC_MODULE(sc_TOP_SPW)
 
 	sc_signal<sc_uint<10> > CLOCK_GEN;
 	sc_signal<bool> E_SEND_DATA;
-	//sc_signal<bool> TICKIN_TX;
-	//sc_signal<sc_uint<8> > TIMEIN_CONTROL_FLAG_TX;
 
-	//sc_signal<bool> TXWRITE_TX;
-	//sc_signal<sc_uint<9> > TXDATA_FLAGCTRL_TX;
-
-	//sc_signal<bool> READY_TX;
-	//sc_signal<bool> READY_TICK;
 
 	sc_signal<bool> BUFFER_READY;
 	sc_signal<sc_uint<9> > DATARX_FLAG;
@@ -318,54 +306,6 @@ void on_BtnSimpleTest_clicked()
 	{
 		enable_time_code_verilog = false;
 	}
-
-	/*
-	data_generated.clear();
-	data_iteration=0;
-	data_iteration_vlog=0;
-	if(CheckBtnEop->get_active())
-	{
-		for(int cnt_max_data = 0; cnt_max_data <= max_data;cnt_max_data++)
-		{
-			if(cnt_max_data == 0 || cnt_max_data == max_data)
-			{
-				intermediate(8,8) = 1;
-				intermediate(7,0) = 0;
-			}else if(cnt_max_data > 0 && cnt_max_data < max_data)
-			{
-				intermediate(7,0) = data_in(rd);
-				intermediate(8,8) = 0;
-			}
-			data_generated.push_back(intermediate);
-		}
-		start_send_data_verilog = true;
-	}else if(CheckBtnEep->get_active())
-	{
-		for(int cnt_max_data = 0; cnt_max_data <= max_data;cnt_max_data++)
-		{
-			if(cnt_max_data == 0 || cnt_max_data == max_data)
-			{
-				intermediate(8,8) = 1;
-				intermediate(7,0) = 1;
-			}else if(cnt_max_data > 0 && cnt_max_data < max_data)
-			{
-				intermediate(7,0) = data_in(rd);
-				intermediate(8,8) = 0;
-			}
-			data_generated.push_back(intermediate);
-		}
-		intermediate(7,0) = 1;
-		intermediate(8,8) = 1;
-		data_generated[nchar(rd)] = intermediate;
-		start_send_data_verilog = true;
-	}
-
-	if(CheckBtnTimeCode->get_active())
-	{
-		enable_time_code_verilog = true;
-	}
-	*/
-
 
 }
 
@@ -680,11 +620,6 @@ void Control_SC::init()
 
 	sn_top->CLOCK_GEN = 1;
 	frquency_nano_second = 500;
-	//sn_top->TICKIN_TX = false;
-	//sn_top->TIMEIN_CONTROL_FLAG_TX = 0;
-
-	//sn_top->TXWRITE_TX = false;
-	//sn_top->TXDATA_FLAGCTRL_TX = 0;
 }
 
 void autostart()
