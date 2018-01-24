@@ -50,8 +50,6 @@ module fifo_rx
 	reg [AWIDTH-1:0] rd_ptr;
 
 	reg [AWIDTH-1:0] credit_counter;
-	reg [AWIDTH-1:0] credit_counter_write;
-	reg [AWIDTH-1:0] credit_counter_reader;
 
 	reg  [1:0] state_data_write;
 	reg  [1:0] next_state_data_write;
@@ -63,9 +61,6 @@ module fifo_rx
 	reg  [1:0] next_state_open_slot;
 
 	reg [10:0] counter_wait;
-
-	reg [AWIDTH-1:0] counter_writer;
-	reg [AWIDTH-1:0] counter_reader;
 
 /****************************************/
 
@@ -284,40 +279,38 @@ begin
 		f_empty <= 1'b0;
 		overflow_credit_error<=1'b0;
 		counter <= {(AWIDTH){1'b0}};
-		credit_counter <= 6'd0;
-		credit_counter_write <= 6'd0;
-		credit_counter_reader <= 6'd56;			
-		counter_writer <= {(AWIDTH){1'b0}};
-		counter_reader <= {(AWIDTH){1'b0}};
+		credit_counter <= 6'd56;		
 	end
 	else
 	begin
 
-		if (state_data_write == 2'd2)
+		if(state_data_read == 2'd1 && rd_en && state_data_write == 2'd2)
 		begin
-			credit_counter_write   <= credit_counter_write + 6'd1;
+			credit_counter   <= credit_counter;
 		end
-		else
-			credit_counter_write   <= credit_counter_write;
-		
-		if(state_data_read == 2'd1 && !rd_en)
+		else if(state_data_read == 2'd1 && rd_en)
 		begin
 			if(rd_ptr == 6'd7 || rd_ptr == 6'd15 || rd_ptr == 6'd23 || rd_ptr == 6'd31 || rd_ptr == 6'd39 || rd_ptr == 6'd47 || rd_ptr == 6'd55 || rd_ptr == 6'd63)
 			begin		
 				if(credit_counter < 6'd49)			
-					credit_counter_reader <= credit_counter_reader + 6'd8;
+					credit_counter <= credit_counter + 6'd8;
 				else
-					credit_counter_reader <= credit_counter_reader + 6'd7;
+					credit_counter <= credit_counter + 6'd7;
 			end
 			else
-				credit_counter_reader <= credit_counter_reader;	
+			begin
+				credit_counter <= credit_counter;	
 			end
-		else 
-		begin
-			credit_counter_reader <= credit_counter_reader;
 		end
-			
-		credit_counter <=  credit_counter_reader - credit_counter_write;
+		else if (state_data_write == 2'd2)
+		begin
+			if(credit_counter > 6'd0)
+				credit_counter   <= credit_counter - 6'd1;
+			else
+				credit_counter   <= credit_counter;
+		end
+		else
+			credit_counter   <= credit_counter;
 
 		if(credit_counter > 6'd56)
 		begin
@@ -326,25 +319,14 @@ begin
 		else 
 			overflow_credit_error <= 1'b0;
 
-		if(state_data_write == 2'd2)
-		begin
-			counter_writer <= counter_writer + 6'd1;
-		end
+		if(state_data_write == 2'd2 && state_data_read == 2'd1 && rd_en)
+			counter <= counter;
+		else if(state_data_read == 2'd1 && rd_en)
+			counter <= counter - 6'd1;
+		else if(state_data_write == 2'd2)
+			counter <= counter + 6'd1;
 		else
-		begin
-			counter_writer <= counter_writer;
-		end
-		
-		if(state_data_read == 2'd1 && !rd_en)
-		begin
-			counter_reader <= counter_reader + 6'd1;
-		end
-		else
-		begin
-			counter_reader <= counter_reader;
-		end
-
-		counter <= counter_writer - counter_reader;
+			counter <= counter;
 
 		if(counter == 6'd63)
 		begin

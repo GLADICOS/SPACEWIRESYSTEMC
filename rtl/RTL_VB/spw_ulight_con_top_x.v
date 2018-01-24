@@ -92,7 +92,7 @@ module spw_ulight_con_top_x(
 	wire [8:0] top_tx_data_w;
 	wire tx_reset_n;
 
-	assign tx_reset_n = (!reset_spw_n_b)?1'b0:1'b1;
+	assign tx_reset_n = (!reset_spw_n_b | top_fsm != 6'd16)?1'b0:1'b1;
 
 	//assign time_out = time_out_w;
 	assign datarx_flag = datarx_flag_axi;

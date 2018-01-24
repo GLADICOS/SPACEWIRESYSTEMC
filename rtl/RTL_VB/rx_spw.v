@@ -84,8 +84,6 @@ module RX_SPW (
 	wire last_is_data;
 	wire last_is_timec;
 
-	wire [2:0] control/* synthesis dont_replicate */;
-
 	wire [2:0] control_p_r/* synthesis dont_replicate */;
 	wire [7:0] timecode/* synthesis dont_replicate */;
 
