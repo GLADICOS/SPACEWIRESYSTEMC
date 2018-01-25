@@ -89,6 +89,8 @@ localparam [5:0] NULL     = 6'b000001,
 
 	reg [2:0] next_state_tx/* synthesis dont_replicate */;
 
+	wire [3:0] counter_aux;
+
 	reg char_sent;
 	reg fct_sent;
 
@@ -120,6 +122,12 @@ localparam [5:0] NULL     = 6'b000001,
 			 (global_counter_transfer == 4'd0 & (last_type == TIMEC))?~(result_shift[0]^last_time_in_control_flag_tx):result_shift[0];
 
 	assign tx_sout = (tx_dout == last_tx_dout)?~last_tx_sout:last_tx_sout;
+
+	assign counter_aux = (state_tx == tx_spw_null || state_tx == tx_spw_null_c)?4'd7:
+			     (state_tx == tx_spw_fct  || state_tx == tx_spw_fct_c)?4'd3:
+			     ((state_tx == tx_spw_data_c  || state_tx == tx_spw_data_c_0) && (!tx_data_in[8] || !tx_data_in_0[8]))?4'd9:
+			     ((state_tx == tx_spw_data_c  || state_tx == tx_spw_data_c_0) && ( tx_data_in[8] ||  tx_data_in_0[8]))?4'd3:
+			     (state_tx == tx_spw_time_code_c)?4'd13:4'd7;
 
 always@(posedge pclk_tx or negedge enable_tx)
 begin
@@ -418,7 +426,7 @@ begin
 
 			last_type  <=FCT;
 
-			if(global_counter_transfer == 4'd3)
+			if(global_counter_transfer == counter_aux)
 			begin
 				fct_sent <= 1'b0;
 			end
@@ -435,7 +443,7 @@ begin
 			ready_tx_data <= 1'b0;
 			last_type  <= NULL;
 
-			if(global_counter_transfer == 4'd7)
+			if(global_counter_transfer == counter_aux)
 			begin
 				ready_tx_timecode <= 1'b0;
 			end
@@ -451,7 +459,7 @@ begin
 
 			last_type  <=FCT;
 
-			if(global_counter_transfer == 4'd3)
+			if(global_counter_transfer == counter_aux)
 			begin		
 				char_sent <= 1'b0;	
 				fct_sent <=  1'b0;
@@ -477,7 +485,7 @@ begin
 
 				last_type  <= DATA;
 
-				if(global_counter_transfer == 4'd9)
+				if(global_counter_transfer == counter_aux)
 				begin
 					fct_sent <=  1'b0;
 					ready_tx_timecode <= 1'b0;
@@ -513,7 +521,7 @@ begin
 			else
 			begin
 
-				if(global_counter_transfer == 4'd3)
+				if(global_counter_transfer == counter_aux)
 				begin
 					char_sent <= 1'b0;
 					fct_sent <=  1'b0;
@@ -553,7 +561,7 @@ begin
 
 				last_type  <= DATA;
 
-				if(global_counter_transfer == 4'd9)
+				if(global_counter_transfer == counter_aux)
 				begin
 					fct_sent <=  1'b0;
 					ready_tx_timecode <= 1'b0;
@@ -587,7 +595,7 @@ begin
 			else
 			begin
 
-				if(global_counter_transfer == 4'd3)
+				if(global_counter_transfer == counter_aux)
 				begin
 					fct_sent <=  1'b0;
 					char_sent <= 1'b0;
@@ -625,7 +633,7 @@ begin
 			ready_tx_data <= 1'b0;				
 			last_type  <= TIMEC;
 
-			if(global_counter_transfer == 4'd13)
+			if(global_counter_transfer == counter_aux)
 			begin
 				fct_sent <=  1'b0;
 				ready_tx_timecode <= 1'b1;
@@ -668,9 +676,9 @@ begin
 				global_counter_transfer <= 4'd0;
 
 		end
-		tx_spw_null,tx_spw_null_c:
+		tx_spw_null,tx_spw_null_c,tx_spw_fct,tx_spw_fct_c,tx_spw_data_c,tx_spw_data_c_0,tx_spw_time_code_c:
 		begin
-			if(global_counter_transfer == 4'd7)
+			if(global_counter_transfer == counter_aux)
 			begin
 				global_counter_transfer <= 4'd0;
 			end
@@ -678,92 +686,6 @@ begin
 			begin		
 				global_counter_transfer <= global_counter_transfer + 4'd1;
 			end
-
-		end
-		tx_spw_fct,tx_spw_fct_c:
-		begin
-			if(global_counter_transfer == 4'd3)
-			begin		
-				global_counter_transfer <= 4'd0;
-			end
-			else
-			begin
-				global_counter_transfer <= global_counter_transfer + 4'd1;
-			end
-
-		end
-		tx_spw_data_c:
-		begin
-
-			if(!tx_data_in[8])
-			begin
-
-				if(global_counter_transfer == 4'd9)
-				begin
-					global_counter_transfer <= 4'd0;
-				end
-				else
-				begin
-					global_counter_transfer <= global_counter_transfer + 4'd1;
-				end
-
-			end
-			else
-			begin
-
-				if(global_counter_transfer == 4'd3)
-				begin
-					global_counter_transfer <= 4'd0;
-				end
-				else
-				begin
-					global_counter_transfer <= global_counter_transfer + 4'd1;
-				end
-			end
-
-		end
-		tx_spw_data_c_0:
-		begin
-
-			if(!tx_data_in_0[8])
-			begin
-
-				if(global_counter_transfer == 4'd9)
-				begin
-					global_counter_transfer <= 4'd0;
-				end
-				else
-				begin
-					global_counter_transfer <= global_counter_transfer + 4'd1;
-				end
-
-			end
-			else
-			begin
-
-				if(global_counter_transfer == 4'd3)
-				begin
-					global_counter_transfer <= 4'd0;
-				end
-				else
-				begin
-					global_counter_transfer <= global_counter_transfer + 4'd1;
-				end
-			end
-
-		end
-		tx_spw_time_code_c:
-		begin
-
-			if(global_counter_transfer == 4'd13)
-			begin
-				global_counter_transfer <= 4'd0;
-			end
-			else
-			begin
-				global_counter_transfer <= global_counter_transfer + 4'd1;
-			end
-
 		end
 		default:
 		begin
