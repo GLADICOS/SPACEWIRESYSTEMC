@@ -46,7 +46,7 @@ module detector_tokens(
 	reg rx_got_time_code;
 	reg rx_got_fct;
 			
-	reg  [5:0] counter_neg;
+	wire  [5:0] counter_neg;
 
 	reg  [1:0] state_data_process;
 	reg  [1:0] next_state_data_process;
@@ -55,25 +55,24 @@ module detector_tokens(
 	wire posedge_clk;
 	wire negedge_clk;
 
-	reg bit_c_0;//N
-	reg bit_c_1;//P
-	reg bit_c_2;//N
-	reg bit_c_3;//P
-	reg bit_c_ex;//P
+	wire bit_c_0;//N
+	wire bit_c_1;//P
+	wire bit_c_2;//N
+	wire bit_c_3;//P
+	wire bit_c_ex;//P
 
-	reg bit_d_0;//N
-	reg bit_d_1;//P
-	reg bit_d_2;//N
-	reg bit_d_3;//P
-	reg bit_d_4;//N
-	reg bit_d_5;//P
-	reg bit_d_6;//N
-	reg bit_d_7;//P
-	reg bit_d_8;//N
-	reg bit_d_9;//P
-	//reg bit_d_ex;//P
+	wire bit_d_0;//N
+	wire bit_d_1;//P
+	wire bit_d_2;//N
+	wire bit_d_3;//P
+	wire bit_d_4;//N
+	wire bit_d_5;//P
+	wire bit_d_6;//N
+	wire bit_d_7;//P
+	wire bit_d_8;//N
+	wire bit_d_9;//P
 
-	reg is_control;
+	wire is_control;
 	reg is_data;
 
 	reg last_is_control;
@@ -114,13 +113,30 @@ module detector_tokens(
 	reg ready_control_p_r;
 	reg ready_data_p_r;
 
-	reg posedge_p;
+	wire posedge_p;
+
+	reg f_time;
 	
 	//CLOCK RECOVERY
 	assign posedge_clk 	= posedge_p;
-	assign negedge_clk 	= !posedge_p;
+	assign negedge_clk 	= (f_time)?!posedge_p:1'b0;
 
 	assign rx_error		= rx_error_c | rx_error_d;
+
+	buf (posedge_p,rx_din ^ rx_sin);
+
+always@(posedge posedge_clk or negedge rx_resetn)
+begin
+
+	if(!rx_resetn)
+	begin
+		f_time 	  	<= 1'b0;
+	end
+	else
+	begin
+		f_time 	  	<= 1'b1;
+	end
+end
 
 always@(*)
 begin
@@ -151,165 +167,45 @@ begin
 	end
 end
 
-always@(*)
-begin
-	posedge_p = 1'b0;
-
-	if((rx_din ^ rx_sin) == 1'b1)
-	begin
-		posedge_p = 1'b1;
-	end
-end
-
-
-always@(posedge posedge_clk or negedge rx_resetn)
-begin
-
-	if(!rx_resetn)
-	begin
-		bit_d_1 <= 1'b0;
-		bit_d_3 <= 1'b0;
-		bit_d_5 <= 1'b0;
-		bit_d_7 <= 1'b0;
-		bit_d_9 <= 1'b0;
-	end
-	else
-	begin
-		bit_d_1    <= rx_din;
-		bit_d_3    <= bit_d_1;
-		bit_d_5    <= bit_d_3;
-		bit_d_7    <= bit_d_5;
-		bit_d_9    <= bit_d_7;
-	end
-
-end
-
-always@(posedge posedge_clk or negedge rx_resetn)
-begin
-
-	if(!rx_resetn)
-	begin
-		bit_c_1   <= 1'b0;
-		bit_c_3   <= 1'b0;
-		//bit_c_ex  <= 1'b0;
-	end
-	else
-	begin
-		bit_c_1 <= rx_din;
-		bit_c_3 <= bit_c_1;
-		//bit_c_ex <= bit_c_3;
-	end
-
-end
-
-
-always@(posedge negedge_clk or negedge rx_resetn)
-begin
-
-	if(!rx_resetn)
-	begin
-		bit_d_0 <= 1'b0;
-		bit_d_2 <= 1'b0;
-		bit_d_4 <= 1'b0;
-		bit_d_6 <= 1'b0;
-		bit_d_8 <= 1'b0;
-	end
-	else
-	begin	
-		bit_d_0 <= rx_din;
-		bit_d_2 <= bit_d_0;
-		bit_d_4 <= bit_d_2;
-		bit_d_6 <= bit_d_4;
-		bit_d_8 <= bit_d_6;
-	end
-end
-
-
-always@(posedge negedge_clk or negedge rx_resetn)
-begin
-
-	if(!rx_resetn)
-	begin
-		bit_c_0 <= 1'b0;
-		bit_c_2 <= 1'b0;
-	end
-	else
-	begin
-	
-		bit_c_0 <= rx_din;
-		bit_c_2 <= bit_c_0;
-	end
-end
-
-always@(posedge negedge_clk or negedge rx_resetn)
-begin
-
-	if(!rx_resetn)
-	begin
-		is_control <= 1'b0;
-		control_bit_found <= 1'b0;
-		counter_neg[5:0]  <= 6'd1;
-	end
-	else
-	begin
-
+bit_capture_data capture_d(
+			.negedge_clk(negedge_clk),
+			.posedge_clk(posedge_clk),
+			.rx_resetn(rx_resetn),
 			
-		control_bit_found <= rx_din;
+			.rx_din(rx_din),
+			
+			.bit_d_0(bit_d_0),//N
+			.bit_d_1(bit_d_1),//P
+			.bit_d_2(bit_d_2),//N
+			.bit_d_3(bit_d_3),//P
+			.bit_d_4(bit_d_4),//N
+			.bit_d_5(bit_d_5),//P
+			.bit_d_6(bit_d_6),//N
+			.bit_d_7(bit_d_7),//P
+			.bit_d_8(bit_d_8),//N
+			.bit_d_9(bit_d_9)//P
+		  );
 
-		case(counter_neg)
-		6'd1:
-		begin
-			counter_neg[5:0]  <=  6'd2;
-		end
-		6'd2:
-		begin
-			if(control_bit_found == 1'b1)
-			begin
-				is_control  <= 1'b1;	
-			end
-			else 
-			begin
-				is_control  <= 1'b0;
-			end
+bit_capture_control capture_c(
+			.negedge_clk(negedge_clk),
+			.posedge_clk(posedge_clk),
+			.rx_resetn(rx_resetn),
+			
+			.rx_din(rx_din),
+			
+			.bit_c_0(bit_c_0),
+			.bit_c_1(bit_c_1),
+			.bit_c_2(bit_c_2),
+			.bit_c_3(bit_c_3)
+		  );
 
-			counter_neg[5:0] <= 6'd4;
-		end
-		6'd4:
-		begin
-			if(is_control == 1'b1)
-			begin		
-				counter_neg[5:0] <= 6'd2;
-				is_control <= 1'b0;
-			end
-			else
-			begin
-				is_control  <= is_control;
-				counter_neg[5:0] <= 6'd8;
-			end
-		end
-		6'd8:
-		begin
-			counter_neg[5:0] <= 6'd16;
-		end
-		6'd16:
-		begin
-			is_control <= 1'b1;
-			counter_neg[5:0] <= 6'd32;
-		end 
-		6'd32:
-		begin
-			is_control <= 1'b0;
-			counter_neg[5:0] <= 6'd2;
-		end
-		default:
-		begin
-			is_control <= is_control;
-			counter_neg[5:0] <= counter_neg[5:0];	
-		end
-		endcase
-
-	end
-end
+counter_neg cnt_neg(
+			.negedge_clk(negedge_clk),
+			.rx_resetn(rx_resetn),
+			.rx_din(rx_din),	
+			.is_control(is_control),
+			.counter_neg(counter_neg)
+		  );
 
 always@(*)
 begin
@@ -439,20 +335,6 @@ begin
 	end
 end
 
-/*
-always@(posedge ready_control_p or negedge rx_resetn )
-begin
-	if(!rx_resetn)
-	begin
-		control_p_r	   	<= 4'd0;
-	end
-	else
-	begin
-		control_p_r	  <= control_r;
-	end
-end
-*/
-
 always@(posedge posedge_clk or negedge rx_resetn )
 begin
 	if(!rx_resetn)
@@ -476,21 +358,6 @@ begin
 		end
 	end
 end
-
-/*
-always@(posedge ready_data_p or negedge rx_resetn )
-begin
-	if(!rx_resetn)
-	begin
-		dta_timec_p	   	<= 10'd0;
-	end
-	else
-	begin
-		dta_timec_p  <= dta_timec;
-	end
-end
-*/
-
 
 always@(posedge posedge_clk or negedge rx_resetn )
 begin
