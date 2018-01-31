@@ -108,7 +108,6 @@ tx_fsm_m  tx_fsm(
 		.ready_tx_timecode(ready_tx_timecode),
 
 		.fct_counter_p(fct_counter_p),
-		//.fct_flag_p(fct_flag_p),
 
 		.gotfct_tx(gotfct_tx),
 		.send_fct_now(send_fct_now),

@@ -75,7 +75,7 @@ localparam [7:0] null_s = 8'b00101111;
 localparam [3:0] fct_s  = 4'b0011;
 localparam [3:0] eop_s  = 4'b1011;
 localparam [3:0] eep_s  = 4'b0111;
-localparam [13:0] timecode_ss    = 14'b00000000001111;
+//localparam [13:0] timecode_ss    = 14'b00000000001111;
 
 localparam [5:0] NULL     = 6'b000001,
 		 FCT      = 6'b000010,
@@ -94,7 +94,7 @@ localparam [5:0] NULL     = 6'b000001,
 	reg char_sent;
 	reg fct_sent;
 
-	reg [13:0] timecode_s;
+	//reg [13:0] timecode_s;
 	reg tx_data_flagctrl_tx_last;
 	reg last_time_in_control_flag_tx;
 	reg [5:0] last_type;
@@ -106,7 +106,7 @@ localparam [5:0] NULL     = 6'b000001,
 	reg last_tx_dout;
 	reg last_tx_sout;
 
-	assign result_shift = (state_tx == tx_spw_time_code_c)?timecode_s >> global_counter_transfer:
+	assign result_shift = (state_tx == tx_spw_time_code_c)?{tx_tcode_in[7:0],2'd2,4'b1111} >> global_counter_transfer:
 			      (state_tx == tx_spw_data_c & !tx_data_in[8] )?{4'd0,{tx_data_in[7:0],2'b0} >> global_counter_transfer}:
 			      (state_tx == tx_spw_data_c & tx_data_in[1:0] == 2'd0 & tx_data_in[8])?{10'd0,eop_s >> global_counter_transfer}:
 			      (state_tx == tx_spw_data_c & tx_data_in[1:0] == 2'd1 & tx_data_in[8])?{10'd0,eep_s >> global_counter_transfer}:
@@ -382,7 +382,7 @@ begin
 		tx_data_flagctrl_tx_last     <= 1'b0;
 		last_time_in_control_flag_tx <= 1'b0;
 
-		timecode_s    <= 14'b01110000000000;	
+		//timecode_s    <= 14'b01110000000000;	
 
 		ready_tx_data	  <= 1'b0;
 		ready_tx_timecode <= 1'b0;
@@ -644,7 +644,7 @@ begin
 				char_sent <= 1'b0;
 				ready_tx_timecode <= 1'b0;
 
-				timecode_s <= {timecode_ss[13:10],2'd2,tx_tcode_in[7:0]};
+				//timecode_s <= {tx_tcode_in[7:0],2'd2,4'b1111};
 				last_timein_control_flag_tx <= tx_tcode_in;
 			end
 		end

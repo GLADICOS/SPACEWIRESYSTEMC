@@ -322,9 +322,18 @@ begin
 		if(state_data_write == 2'd2 && state_data_read == 2'd1 && rd_en)
 			counter <= counter;
 		else if(state_data_read == 2'd1 && rd_en)
-			counter <= counter - 6'd1;
+		begin
+			if(counter > 6'd0)
+				counter <= counter - 6'd1;
+			else
+				counter <= counter;
+		end
 		else if(state_data_write == 2'd2)
-			counter <= counter + 6'd1;
+			if(counter < 6'd63)
+				counter <= counter + 6'd1;
+			else
+				counter <= counter;
+			
 		else
 			counter <= counter;
 
