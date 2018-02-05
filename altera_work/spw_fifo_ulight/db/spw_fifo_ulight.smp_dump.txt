@@ -153,6 +153,38 @@ state.ST_COMP_TRANS 1 0 0 1
 state.ST_UNCOMP_TRANS 1 0 1 0 
 state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
 
+State Machine - |SPW_ULIGHT_FIFO|detector_tokens:m_x|state_data_process
+Name state_data_process.01 
+state_data_process.00 0 
+state_data_process.01 1 
+
+State Machine - |SPW_ULIGHT_FIFO|spw_ulight_con_top_x:A_SPW_TOP|fifo_rx:rx_data|state_open_slot
+Name state_open_slot.00 state_open_slot.10 state_open_slot.01 
+state_open_slot.00 0 0 0 
+state_open_slot.01 1 0 1 
+state_open_slot.10 1 1 0 
+
+State Machine - |SPW_ULIGHT_FIFO|spw_ulight_con_top_x:A_SPW_TOP|fifo_rx:rx_data|state_data_write
+Name state_data_write.00 state_data_write.10 state_data_write.01 
+state_data_write.00 0 0 0 
+state_data_write.01 1 0 1 
+state_data_write.10 1 1 0 
+
+State Machine - |SPW_ULIGHT_FIFO|spw_ulight_con_top_x:A_SPW_TOP|fifo_rx:rx_data|state_data_read
+Name state_data_read.00 state_data_read.10 state_data_read.01 
+state_data_read.00 0 0 0 
+state_data_read.01 1 0 1 
+state_data_read.10 1 1 0 
+
+State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_pll_0:pll_0|altera_pll:altera_pll_i|dps_extra_kick:dps_extra_inst|dps_current_state
+Name dps_current_state.PHASE_DONE_LOW_0 dps_current_state.PHASE_DONE_LOW_4 dps_current_state.PHASE_DONE_LOW_3 dps_current_state.PHASE_DONE_LOW_2 dps_current_state.PHASE_DONE_LOW_1 dps_current_state.PHASE_DONE_HIGH 
+dps_current_state.PHASE_DONE_HIGH 0 0 0 0 0 0 
+dps_current_state.PHASE_DONE_LOW_1 0 0 0 0 1 1 
+dps_current_state.PHASE_DONE_LOW_2 0 0 0 1 0 1 
+dps_current_state.PHASE_DONE_LOW_3 0 0 1 0 0 1 
+dps_current_state.PHASE_DONE_LOW_4 0 1 0 0 0 1 
+dps_current_state.PHASE_DONE_LOW_0 1 0 0 0 0 1 
+
 State Machine - |SPW_ULIGHT_FIFO|spw_ulight_con_top_x:A_SPW_TOP|fifo_tx:tx_data|state_data_read
 Name state_data_read.11 state_data_read.10 state_data_read.01 state_data_read.00 
 state_data_read.00 0 0 0 0 
@@ -160,14 +192,21 @@ state_data_read.01 0 0 1 1
 state_data_read.10 0 1 0 1 
 state_data_read.11 1 0 0 1 
 
-State Machine - |SPW_ULIGHT_FIFO|spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|last_type
-Name last_type.TIMEC last_type.DATA last_type.EEP last_type.EOP last_type.FCT last_type.NULL 
-last_type.NULL 0 0 0 0 0 0 
-last_type.FCT 0 0 0 0 1 1 
-last_type.EOP 0 0 0 1 0 1 
-last_type.EEP 0 0 1 0 0 1 
-last_type.DATA 0 1 0 0 0 1 
-last_type.TIMEC 1 0 0 0 0 1 
+State Machine - |SPW_ULIGHT_FIFO|spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|state_tx
+Name state_tx.tx_spw_time_code_c state_tx.tx_spw_data_c_0 state_tx.tx_spw_data_c state_tx.tx_spw_fct_c state_tx.tx_spw_null_c state_tx.tx_spw_fct state_tx.tx_spw_null state_tx.tx_spw_start 
+state_tx.tx_spw_start 0 0 0 0 0 0 0 0 
+state_tx.tx_spw_null 0 0 0 0 0 0 1 1 
+state_tx.tx_spw_fct 0 0 0 0 0 1 0 1 
+state_tx.tx_spw_null_c 0 0 0 0 1 0 0 1 
+state_tx.tx_spw_fct_c 0 0 0 1 0 0 0 1 
+state_tx.tx_spw_data_c 0 0 1 0 0 0 0 1 
+state_tx.tx_spw_data_c_0 0 1 0 0 0 0 0 1 
+state_tx.tx_spw_time_code_c 1 0 0 0 0 0 0 1 
+
+State Machine - |SPW_ULIGHT_FIFO|spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_fct_send:tx_fct_snd|state_fct_send
+Name state_fct_send.001 
+state_fct_send.000 0 
+state_fct_send.001 1 
 
 State Machine - |SPW_ULIGHT_FIFO|spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_fct_send:tx_fct_snd|state_fct_send_p
 Name state_fct_send_p.000 state_fct_send_p.010 state_fct_send_p.001 
@@ -183,26 +222,11 @@ state_fct_p.010 0 1 0 1 0
 state_fct_p.011 1 0 0 1 0 
 state_fct_p.100 0 0 0 1 1 
 
-State Machine - |SPW_ULIGHT_FIFO|ulight_fifo:u0|ulight_fifo_pll_0:pll_0|altera_pll:altera_pll_i|dps_extra_kick:dps_extra_inst|dps_current_state
-Name dps_current_state.PHASE_DONE_LOW_0 dps_current_state.PHASE_DONE_LOW_4 dps_current_state.PHASE_DONE_LOW_3 dps_current_state.PHASE_DONE_LOW_2 dps_current_state.PHASE_DONE_LOW_1 dps_current_state.PHASE_DONE_HIGH 
-dps_current_state.PHASE_DONE_HIGH 0 0 0 0 0 0 
-dps_current_state.PHASE_DONE_LOW_1 0 0 0 0 1 1 
-dps_current_state.PHASE_DONE_LOW_2 0 0 0 1 0 1 
-dps_current_state.PHASE_DONE_LOW_3 0 0 1 0 0 1 
-dps_current_state.PHASE_DONE_LOW_4 0 1 0 0 0 1 
-dps_current_state.PHASE_DONE_LOW_0 1 0 0 0 0 1 
-
-State Machine - |SPW_ULIGHT_FIFO|spw_ulight_con_top_x:A_SPW_TOP|fifo_rx:rx_data|state_open_slot
-Name state_open_slot.00 state_open_slot.10 state_open_slot.01 
-state_open_slot.00 0 0 0 
-state_open_slot.01 1 0 1 
-state_open_slot.10 1 1 0 
-
-State Machine - |SPW_ULIGHT_FIFO|spw_ulight_con_top_x:A_SPW_TOP|fifo_rx:rx_data|state_data_read
-Name state_data_read.00 state_data_read.10 state_data_read.01 
-state_data_read.00 0 0 0 
-state_data_read.01 1 0 1 
-state_data_read.10 1 1 0 
+State Machine - |SPW_ULIGHT_FIFO|spw_ulight_con_top_x:A_SPW_TOP|fifo_tx:tx_data|state_data_write
+Name state_data_write.00 state_data_write.10 state_data_write.01 
+state_data_write.00 0 0 0 
+state_data_write.01 1 0 1 
+state_data_write.10 1 1 0 
 
 State Machine - |SPW_ULIGHT_FIFO|spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_fct_counter:tx_fct_cnt|state_fct_receive
 Name state_fct_receive.011 state_fct_receive.010 state_fct_receive.001 state_fct_receive.000 state_fct_receive.100 
@@ -220,25 +244,3 @@ state_fsm.ready 1 0 0 0 1 0
 state_fsm.started 1 0 0 1 0 0 
 state_fsm.connecting 1 0 1 0 0 0 
 state_fsm.run 1 1 0 0 0 0 
-
-State Machine - |SPW_ULIGHT_FIFO|spw_ulight_con_top_x:A_SPW_TOP|fifo_tx:tx_data|state_data_write
-Name state_data_write.00 state_data_write.10 state_data_write.01 
-state_data_write.00 0 0 0 
-state_data_write.01 1 0 1 
-state_data_write.10 1 1 0 
-
-State Machine - |SPW_ULIGHT_FIFO|spw_ulight_con_top_x:A_SPW_TOP|fifo_rx:rx_data|state_data_write
-Name state_data_write.00 state_data_write.10 state_data_write.01 
-state_data_write.00 0 0 0 
-state_data_write.01 1 0 1 
-state_data_write.10 1 1 0 
-
-State Machine - |SPW_ULIGHT_FIFO|spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_fct_send:tx_fct_snd|state_fct_send
-Name state_fct_send.001 
-state_fct_send.000 0 
-state_fct_send.001 1 
-
-State Machine - |SPW_ULIGHT_FIFO|detector_tokens:m_x|state_data_process
-Name state_data_process.01 
-state_data_process.00 0 
-state_data_process.01 1 
