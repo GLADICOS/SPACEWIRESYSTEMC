@@ -8,19 +8,18 @@
 ## associated documentation or information are expressly subject 
 ## to the terms and conditions of the Intel Program License 
 ## Subscription Agreement, the Intel Quartus Prime License Agreement,
-## the Intel MegaCore Function License Agreement, or other 
-## applicable license agreement, including, without limitation, 
-## that your use is for the sole purpose of programming logic 
-## devices manufactured by Intel and sold by Intel or its 
-## authorized distributors.  Please refer to the applicable 
-## agreement for further details.
+## the Intel FPGA IP License Agreement, or other applicable license
+## agreement, including, without limitation, that your use is for
+## the sole purpose of programming logic devices manufactured by
+## Intel and sold by Intel or its authorized distributors.  Please
+## refer to the applicable agreement for further details.
 
 
 ## VENDOR  "Altera"
 ## PROGRAM "Quartus Prime"
-## VERSION "Version 17.0.2 Build 602 07/19/2017 SJ Lite Edition"
+## VERSION "Version 17.1.1 Internal Build 593 12/11/2017 SJ Lite Edition"
 
-## DATE    "Wed Jan 10 22:26:06 2018"
+## DATE    "Sat Feb  3 17:13:42 2018"
 
 ##
 ## DEVICE  "5CSEMA4U23C6"
@@ -43,7 +42,7 @@ create_clock -name {FPGA_CLK1_50} -period 20.000 -waveform { 0.000 10.000 } [get
 create_clock -name {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i} -period 10.000 -waveform { 0.000 5.000 } [get_registers { clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i }]
 create_clock -name {din_a} -period 4.000 -waveform { 0.000 2.000 } [get_ports { din_a }]
 create_clock -name {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i} -period 2.500 -waveform { 0.000 1.250 } [get_registers { clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i }]
-create_clock -name {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e} -period 4.000 -waveform { 0.000 2.000 } [get_registers { spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e }]
+create_clock -name {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e} -period 4.000 -waveform { 0.000 2.000 } [get_registers { spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e }]
 
 
 #**************************************************************
@@ -80,30 +79,34 @@ set_clock_uncertainty -fall_from [get_clocks {u0|pll_0|altera_pll_i|cyclonev_pll
 set_clock_uncertainty -fall_from [get_clocks {u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.240  
 set_clock_uncertainty -fall_from [get_clocks {u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]  0.240  
 set_clock_uncertainty -fall_from [get_clocks {u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]  0.240  
-set_clock_uncertainty -rise_from [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}] -rise_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}]  0.380  
-set_clock_uncertainty -rise_from [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}] -fall_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}]  0.380  
-set_clock_uncertainty -rise_from [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}] -rise_to [get_clocks {FPGA_CLK1_50}]  0.280  
-set_clock_uncertainty -rise_from [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}] -fall_to [get_clocks {FPGA_CLK1_50}]  0.280  
-set_clock_uncertainty -fall_from [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}] -rise_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}]  0.380  
-set_clock_uncertainty -fall_from [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}] -fall_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}]  0.380  
-set_clock_uncertainty -fall_from [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}] -rise_to [get_clocks {FPGA_CLK1_50}]  0.280  
-set_clock_uncertainty -fall_from [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}] -fall_to [get_clocks {FPGA_CLK1_50}]  0.280  
-set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}] -rise_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}]  0.320  
-set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}] -fall_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}]  0.320  
+set_clock_uncertainty -rise_from [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}] -rise_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}]  0.380  
+set_clock_uncertainty -rise_from [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}] -fall_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}]  0.380  
+set_clock_uncertainty -rise_from [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}] -rise_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.320  
+set_clock_uncertainty -rise_from [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}] -fall_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.320  
+set_clock_uncertainty -rise_from [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}] -rise_to [get_clocks {FPGA_CLK1_50}]  0.350  
+set_clock_uncertainty -rise_from [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}] -fall_to [get_clocks {FPGA_CLK1_50}]  0.350  
+set_clock_uncertainty -fall_from [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}] -rise_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}]  0.380  
+set_clock_uncertainty -fall_from [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}] -fall_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}]  0.380  
+set_clock_uncertainty -fall_from [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}] -rise_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.320  
+set_clock_uncertainty -fall_from [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}] -fall_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.320  
+set_clock_uncertainty -fall_from [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}] -rise_to [get_clocks {FPGA_CLK1_50}]  0.350  
+set_clock_uncertainty -fall_from [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}] -fall_to [get_clocks {FPGA_CLK1_50}]  0.350  
+set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}] -rise_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}]  0.320  
+set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}] -fall_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}]  0.320  
 set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}] -rise_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.270  
 set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}] -fall_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.270  
 set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}] -rise_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]  0.270  
 set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}] -fall_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]  0.270  
-set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}] -rise_to [get_clocks {FPGA_CLK1_50}]  0.220  
-set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}] -fall_to [get_clocks {FPGA_CLK1_50}]  0.220  
-set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}] -rise_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}]  0.320  
-set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}] -fall_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}]  0.320  
+set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}] -rise_to [get_clocks {FPGA_CLK1_50}]  0.290  
+set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}] -fall_to [get_clocks {FPGA_CLK1_50}]  0.290  
+set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}] -rise_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}]  0.320  
+set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}] -fall_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}]  0.320  
 set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}] -rise_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.270  
 set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}] -fall_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.270  
 set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}] -rise_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]  0.270  
 set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}] -fall_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]  0.270  
-set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}] -rise_to [get_clocks {FPGA_CLK1_50}]  0.220  
-set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}] -fall_to [get_clocks {FPGA_CLK1_50}]  0.220  
+set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}] -rise_to [get_clocks {FPGA_CLK1_50}]  0.290  
+set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}] -fall_to [get_clocks {FPGA_CLK1_50}]  0.290  
 set_clock_uncertainty -rise_from [get_clocks {din_a}] -rise_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.290  
 set_clock_uncertainty -rise_from [get_clocks {din_a}] -fall_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.290  
 set_clock_uncertainty -rise_from [get_clocks {din_a}] -rise_to [get_clocks {din_a}] -setup 0.310  
@@ -112,8 +115,8 @@ set_clock_uncertainty -rise_from [get_clocks {din_a}] -fall_to [get_clocks {din_
 set_clock_uncertainty -rise_from [get_clocks {din_a}] -fall_to [get_clocks {din_a}] -hold 0.270  
 set_clock_uncertainty -rise_from [get_clocks {din_a}] -rise_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]  0.290  
 set_clock_uncertainty -rise_from [get_clocks {din_a}] -fall_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]  0.290  
-set_clock_uncertainty -rise_from [get_clocks {din_a}] -rise_to [get_clocks {FPGA_CLK1_50}]  0.250  
-set_clock_uncertainty -rise_from [get_clocks {din_a}] -fall_to [get_clocks {FPGA_CLK1_50}]  0.250  
+set_clock_uncertainty -rise_from [get_clocks {din_a}] -rise_to [get_clocks {FPGA_CLK1_50}]  0.310  
+set_clock_uncertainty -rise_from [get_clocks {din_a}] -fall_to [get_clocks {FPGA_CLK1_50}]  0.310  
 set_clock_uncertainty -fall_from [get_clocks {din_a}] -rise_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.290  
 set_clock_uncertainty -fall_from [get_clocks {din_a}] -fall_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.290  
 set_clock_uncertainty -fall_from [get_clocks {din_a}] -rise_to [get_clocks {din_a}] -setup 0.310  
@@ -122,52 +125,52 @@ set_clock_uncertainty -fall_from [get_clocks {din_a}] -fall_to [get_clocks {din_
 set_clock_uncertainty -fall_from [get_clocks {din_a}] -fall_to [get_clocks {din_a}] -hold 0.270  
 set_clock_uncertainty -fall_from [get_clocks {din_a}] -rise_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]  0.290  
 set_clock_uncertainty -fall_from [get_clocks {din_a}] -fall_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]  0.290  
-set_clock_uncertainty -fall_from [get_clocks {din_a}] -rise_to [get_clocks {FPGA_CLK1_50}]  0.250  
-set_clock_uncertainty -fall_from [get_clocks {din_a}] -fall_to [get_clocks {FPGA_CLK1_50}]  0.250  
-set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -rise_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}]  0.320  
-set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -fall_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}]  0.320  
+set_clock_uncertainty -fall_from [get_clocks {din_a}] -rise_to [get_clocks {FPGA_CLK1_50}]  0.310  
+set_clock_uncertainty -fall_from [get_clocks {din_a}] -fall_to [get_clocks {FPGA_CLK1_50}]  0.310  
+set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -rise_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}]  0.320  
+set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -fall_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}]  0.320  
 set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -rise_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.270  
 set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -fall_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.270  
 set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -rise_to [get_clocks {din_a}]  0.290  
 set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -fall_to [get_clocks {din_a}]  0.290  
 set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -rise_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]  0.270  
 set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -fall_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]  0.270  
-set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -rise_to [get_clocks {FPGA_CLK1_50}]  0.220  
-set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -fall_to [get_clocks {FPGA_CLK1_50}]  0.220  
-set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -rise_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}]  0.320  
-set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -fall_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}]  0.320  
+set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -rise_to [get_clocks {FPGA_CLK1_50}]  0.290  
+set_clock_uncertainty -rise_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -fall_to [get_clocks {FPGA_CLK1_50}]  0.290  
+set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -rise_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}]  0.320  
+set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -fall_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}]  0.320  
 set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -rise_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.270  
 set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -fall_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.270  
 set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -rise_to [get_clocks {din_a}]  0.290  
 set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -fall_to [get_clocks {din_a}]  0.290  
 set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -rise_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]  0.270  
 set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -fall_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]  0.270  
-set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -rise_to [get_clocks {FPGA_CLK1_50}]  0.220  
-set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -fall_to [get_clocks {FPGA_CLK1_50}]  0.220  
-set_clock_uncertainty -rise_from [get_clocks {FPGA_CLK1_50}] -rise_to [get_clocks {u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.200  
-set_clock_uncertainty -rise_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clocks {u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.200  
-set_clock_uncertainty -rise_from [get_clocks {FPGA_CLK1_50}] -rise_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}]  0.280  
-set_clock_uncertainty -rise_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}]  0.280  
-set_clock_uncertainty -rise_from [get_clocks {FPGA_CLK1_50}] -rise_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.220  
-set_clock_uncertainty -rise_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.220  
-set_clock_uncertainty -rise_from [get_clocks {FPGA_CLK1_50}] -rise_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]  0.220  
-set_clock_uncertainty -rise_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]  0.220  
-set_clock_uncertainty -rise_from [get_clocks {FPGA_CLK1_50}] -rise_to [get_clocks {FPGA_CLK1_50}] -setup 0.180  
-set_clock_uncertainty -rise_from [get_clocks {FPGA_CLK1_50}] -rise_to [get_clocks {FPGA_CLK1_50}] -hold 0.080  
-set_clock_uncertainty -rise_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clocks {FPGA_CLK1_50}] -setup 0.180  
-set_clock_uncertainty -rise_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clocks {FPGA_CLK1_50}] -hold 0.080  
-set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -rise_to [get_clocks {u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.200  
-set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clocks {u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.200  
-set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -rise_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}]  0.280  
-set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}]  0.280  
-set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -rise_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.220  
-set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.220  
-set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -rise_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]  0.220  
-set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]  0.220  
-set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -rise_to [get_clocks {FPGA_CLK1_50}] -setup 0.180  
-set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -rise_to [get_clocks {FPGA_CLK1_50}] -hold 0.080  
-set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clocks {FPGA_CLK1_50}] -setup 0.180  
-set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clocks {FPGA_CLK1_50}] -hold 0.080  
+set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -rise_to [get_clocks {FPGA_CLK1_50}]  0.290  
+set_clock_uncertainty -fall_from [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}] -fall_to [get_clocks {FPGA_CLK1_50}]  0.290  
+set_clock_uncertainty -rise_from [get_clocks {FPGA_CLK1_50}] -rise_to [get_clocks {u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.260  
+set_clock_uncertainty -rise_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clocks {u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.260  
+set_clock_uncertainty -rise_from [get_clocks {FPGA_CLK1_50}] -rise_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}]  0.350  
+set_clock_uncertainty -rise_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}]  0.350  
+set_clock_uncertainty -rise_from [get_clocks {FPGA_CLK1_50}] -rise_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.290  
+set_clock_uncertainty -rise_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.290  
+set_clock_uncertainty -rise_from [get_clocks {FPGA_CLK1_50}] -rise_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]  0.290  
+set_clock_uncertainty -rise_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]  0.290  
+set_clock_uncertainty -rise_from [get_clocks {FPGA_CLK1_50}] -rise_to [get_clocks {FPGA_CLK1_50}] -setup 0.310  
+set_clock_uncertainty -rise_from [get_clocks {FPGA_CLK1_50}] -rise_to [get_clocks {FPGA_CLK1_50}] -hold 0.270  
+set_clock_uncertainty -rise_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clocks {FPGA_CLK1_50}] -setup 0.310  
+set_clock_uncertainty -rise_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clocks {FPGA_CLK1_50}] -hold 0.270  
+set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -rise_to [get_clocks {u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.260  
+set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clocks {u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.260  
+set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -rise_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}]  0.350  
+set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_fsm_m:tx_fsm|tx_dout_e}]  0.350  
+set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -rise_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.290  
+set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  0.290  
+set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -rise_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]  0.290  
+set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]  0.290  
+set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -rise_to [get_clocks {FPGA_CLK1_50}] -setup 0.310  
+set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -rise_to [get_clocks {FPGA_CLK1_50}] -hold 0.270  
+set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clocks {FPGA_CLK1_50}] -setup 0.310  
+set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clocks {FPGA_CLK1_50}] -hold 0.270  
 
 
 #**************************************************************
@@ -192,19 +195,14 @@ set_clock_uncertainty -fall_from [get_clocks {FPGA_CLK1_50}] -fall_to [get_clock
 # Set False Path
 #**************************************************************
 
-set_false_path  -from  [get_clocks {din_a}]  -to  [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]
+set_false_path  -from  [get_clocks {FPGA_CLK1_50}]  -to  [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]
 set_false_path  -from  [get_clocks {FPGA_CLK1_50}]  -to  [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]
-set_false_path  -from  [get_clocks {FPGA_CLK1_50}]  -to  [get_clocks {u0|pll_0|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]
-set_false_path  -from  [get_clocks {din_a}]  -to  [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]
-set_false_path  -from  [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}]  -to  [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}]
-set_false_path  -from  [get_clocks {din_a}]  -to  [get_clocks {din_a}]
-set_false_path  -from  [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_100_reduced_i}]  -to  [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]
-set_false_path  -from  [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]  -to  [get_clocks {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|tx_transport:trasnport_layer|tx_dout_e}]
+set_false_path  -from  [get_clocks {din_a}]  -to  [get_clocks {clock_reduce:R_400_to_2_5_10_100_200_300MHZ|clk_reduced_i}]
+set_false_path -from [get_keepers {debounce_db:db_system_spwulight_b|aux_pb}] -to [get_keepers {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|FSM_SPW:FSM|*}]
 set_false_path -from [get_keepers {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|FSM_SPW:FSM|rx_resetn}] -to [get_keepers {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|RX_SPW:RX|*}]
 set_false_path -from [get_keepers {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|FSM_SPW:FSM|enable_tx}] -to [get_keepers {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|TX_SPW:TX|*}]
-set_false_path -from [get_keepers {debounce_db:db_system_spwulight_b|aux_pb}] -to [get_keepers {spw_ulight_con_top_x:A_SPW_TOP|top_spw_ultra_light:SPW|FSM_SPW:FSM|*}]
-set_false_path -from [get_keepers {debounce_db:db_system_spwulight_b|aux_pb}] -to [get_keepers {detector_tokens:m_x|*}]
 set_false_path -to [get_pins -nocase -compatibility_mode {*|alt_rst_sync_uq1|altera_reset_synchronizer_int_chain*|clrn}]
+
 
 #**************************************************************
 # Set Multicycle Path
