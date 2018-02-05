@@ -111,7 +111,7 @@ begin
 end
 
 
-always@(posedge pclk_tx or negedge enable_tx)
+always@(posedge pclk_tx)
 begin
 	if(!enable_tx)
 	begin
@@ -210,7 +210,7 @@ begin
 end
 
 
-always@(posedge pclk_tx or negedge enable_tx)
+always@(posedge pclk_tx)
 begin
 	if(!enable_tx)
 	begin

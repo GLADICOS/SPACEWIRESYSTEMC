@@ -34,8 +34,8 @@ module tx_data_send(
 			input pclk_tx,
 			input enable_tx,
 
-			input [2:0] state_tx,
-			input [3:0] global_counter_transfer,
+			input get_data,
+			input get_data_0,
 
 			input [7:0] timecode_tx_i,
 			input tickin_tx,
@@ -43,7 +43,7 @@ module tx_data_send(
 			input [8:0] data_tx_i,
 			input txwrite_tx,
 			
-			input [5:0] fct_counter_p,
+			input fct_counter_p,
 
 			output reg [8:0]  tx_data_in,
 			output reg [8:0]  tx_data_in_0,
@@ -56,16 +56,11 @@ module tx_data_send(
 
 		   );
 
-localparam [2:0] tx_spw_start              = 3'b000,
-	   	 tx_spw_null               = 3'b001,
-	   	 tx_spw_fct                = 3'b010,
-	   	 tx_spw_null_c             = 3'b011,
-	   	 tx_spw_fct_c              = 3'b100,
-	   	 tx_spw_data_c             = 3'b101,
-	   	 tx_spw_data_c_0           = 3'b110,
-	   	 tx_spw_time_code_c        = 3'b111/* synthesis dont_replicate */;
+	wire process_data_en;
 
-always@(posedge pclk_tx or negedge enable_tx)
+	assign process_data_en = (txwrite_tx & fct_counter_p)?1'b1:1'b0;
+
+always@(posedge pclk_tx )
 begin
 
 	if(!enable_tx)
@@ -74,117 +69,7 @@ begin
 		process_data_0 <= 1'b0;
 	
 		tcode_rdy_trnsp <= 1'b0;
-	end
-	else
-	begin
 
-		case(state_tx)
-		tx_spw_start,tx_spw_null,tx_spw_fct:
-		begin
-			process_data    <= 1'b0;
-			process_data_0  <= 1'b0;
-			tcode_rdy_trnsp <= 1'b0;
-		end
-		tx_spw_null_c,tx_spw_data_c_0,tx_spw_time_code_c:
-		begin
-
-			case(global_counter_transfer)
-			4'd8:
-			begin
-				process_data_0  <= process_data_0;
-				process_data    <= process_data;
-				tcode_rdy_trnsp <= tcode_rdy_trnsp;
-			end
-			4'd5:
-			begin
-				process_data_0  <= 1'b0;
-
-				if(tickin_tx)
-				begin
-					tcode_rdy_trnsp <= 1'b1;
-				end
-				else
-				begin
-					tcode_rdy_trnsp <= 1'b0;
-				end
-
-				if(txwrite_tx && fct_counter_p > 6'd0)
-				begin
-					process_data   <= 1'b1;
-				end
-				else
-				begin
-					process_data   <= 1'b0;
-				end
-			end
-			default:
-			begin
-			end
-			endcase
-
-		end
-		tx_spw_fct_c:
-		begin
-			process_data   <= process_data;
-			process_data_0 <= process_data_0;
-		end
-		tx_spw_data_c:
-		begin
-
-			case(global_counter_transfer)
-			4'd1:
-			begin
-				process_data   <= 1'b0;
-				process_data_0 <= 1'b0;
-			end
-			4'd5:
-			begin	
-				process_data   <= process_data;			
-
-				if(txwrite_tx && fct_counter_p > 6'd0)
-				begin
-					process_data_0 <= 1'b1;
-				end
-				else
-				begin
-					process_data_0 <= 1'b0;
-				end
-			end
-			4'd9:
-			begin
-				process_data_0  <= process_data_0;
-				process_data    <= process_data;
-				tcode_rdy_trnsp <= tcode_rdy_trnsp;
-			end
-			default:
-			begin
-				process_data   <= process_data;	
-				process_data_0   <= process_data_0;
-	
-				if(tickin_tx && global_counter_transfer > 4'd8)
-				begin
-					tcode_rdy_trnsp <= 1'b1;
-				end
-				else
-				begin
-					tcode_rdy_trnsp <= 1'b0;
-				end
-			end
-			endcase
-		end
-		default:
-		begin
-			process_data   <= 1'b0;
-			process_data_0 <= 1'b0;
-		end
-		endcase
-	end
-end
-
-always@(posedge pclk_tx or negedge enable_tx)
-begin
-	if(!enable_tx)
-	begin
 		tx_data_in      <= 9'd0;
 		tx_data_in_0    <= 9'd0;
 		tx_tcode_in     <= 8'd0;
@@ -192,55 +77,46 @@ begin
 	else
 	begin
 
-		case(state_tx)
-		tx_spw_start,tx_spw_null,tx_spw_fct,tx_spw_fct_c:
+		if(tickin_tx)
 		begin
-			tx_data_in     <= tx_data_in;
-			tx_data_in_0   <= tx_data_in_0;
+			tx_tcode_in    <= timecode_tx_i;
+			tcode_rdy_trnsp <= 1'b1;
+		end
+		else
+		begin
 			tx_tcode_in    <= tx_tcode_in;
+			tcode_rdy_trnsp <= 1'b0;
 		end
-		tx_spw_null_c,tx_spw_data_c_0,tx_spw_time_code_c:
-		begin
-			case(global_counter_transfer)
-			4'd4:
-			begin
-				tx_data_in_0   <= tx_data_in_0;
-				tx_data_in     <= data_tx_i;
-				tx_tcode_in    <= timecode_tx_i;
-			end
-			default:
-			begin
-				tx_data_in_0   <= tx_data_in_0;
-				tx_data_in     <= tx_data_in;
-				tx_tcode_in    <= timecode_tx_i;
-			end
-			endcase
-		end
-		tx_spw_data_c:
-		begin
 
-			case(global_counter_transfer)
-			4'd5:
-			begin
-				tx_data_in <= tx_data_in;
-				tx_data_in_0 <= data_tx_i;
-				tx_tcode_in <= timecode_tx_i;
-			end
-			default:
-			begin
-				tx_data_in <= tx_data_in;
-				tx_data_in_0 <= tx_data_in_0;
-				tx_tcode_in <= timecode_tx_i;
-			end
-			endcase
+		if(!process_data_en)
+		begin
+			process_data   <= 1'b0;
 		end
-		default:
+		else if(get_data && process_data_en)
+		begin
+			tx_data_in     <= data_tx_i;
+			process_data   <= 1'b1;			
+		end
+		else
 		begin
 			tx_data_in     <= tx_data_in;
-			tx_data_in_0   <= tx_data_in_0;
-			tx_tcode_in    <= tx_tcode_in;
+			process_data   <= process_data;
 		end
-		endcase
+
+		if(!process_data_en)
+		begin
+			process_data_0 <= 1'b0;
+		end
+		else if(get_data_0 && process_data_en)
+		begin
+			tx_data_in_0 <= data_tx_i;
+			process_data_0 <= 1'b1;
+		end
+		else
+		begin
+			tx_data_in_0 <= tx_data_in_0;
+			process_data_0 <= process_data_0;
+		end
 	end
 end
 

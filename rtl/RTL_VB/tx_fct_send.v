@@ -79,7 +79,7 @@ begin
 	endcase
 end
 
-always@(posedge pclk_tx or negedge enable_tx)
+always@(posedge pclk_tx)
 begin
 	if(!enable_tx)
 	begin
@@ -231,6 +231,5 @@ begin
 		endcase
 	end
 end
-
 
 endmodule
