@@ -16,7 +16,7 @@
 //=
 //=================================================================//
 */
-module SpwTCR(
+module SPW_TOP(
 CLOCK,
 RESETn,
 LINK_START,
