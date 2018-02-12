@@ -1,0 +1,20 @@
+Fitter Status : Successful - Mon Feb 12 17:33:32 2018
+Quartus Prime Version : 17.1.1 Internal Build 593 12/11/2017 SJ Lite Edition
+Revision Name : spw_babasu
+Top-level Entity Name : SPW_BABASU_TOP
+Family : Cyclone V
+Device : 5CSEMA4U23C6
+Timing Models : Final
+Logic utilization (in ALMs) : 2,204 / 15,880 ( 14 % )
+Total registers : 2921
+Total pins : 19 / 314 ( 6 % )
+Total virtual pins : 0
+Total block memory bits : 4,608 / 2,764,800 ( < 1 % )
+Total RAM Blocks : 4 / 270 ( 1 % )
+Total DSP Blocks : 0 / 84 ( 0 % )
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 1 / 5 ( 20 % )
+Total DLLs : 0 / 4 ( 0 % )

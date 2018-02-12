@@ -1,0 +1,192 @@
+
+State Machine - |SPW_BABASU_TOP|SPW_TOP:spw_babasu_TRC|SpwTCR_TX:TX|SpillSt
+Name SpillSt.SPILL_RUN SpillSt.SPILL_CHECK SpillSt.SPILL_OFF 
+SpillSt.SPILL_CHECK 0 0 0 
+SpillSt.SPILL_OFF 0 1 1 
+SpillSt.SPILL_RUN 1 1 0 
+
+State Machine - |SPW_BABASU_TOP|SPW_TOP:spw_babasu_TRC|SpwTCR_TX:TX|FctSt
+Name FctSt.FCT_REQ FctSt.FCT_WAIT FctSt.FCT_ACK 
+FctSt.FCT_WAIT 0 0 0 
+FctSt.FCT_ACK 0 1 1 
+FctSt.FCT_REQ 1 1 0 
+
+State Machine - |SPW_BABASU_TOP|SPW_TOP:spw_babasu_TRC|SpwTCR_TX:TX|State
+Name State.CHAR_TIME State.CHAR_DATA State.CHAR_ESC_NULL State.CHAR_ESC_TIME State.CHAR_EEP State.CHAR_FCT_NULL State.CHAR_EOP State.CHAR_FCT State.CHAR_START 
+State.CHAR_START 0 0 0 0 0 0 0 0 0 
+State.CHAR_FCT 0 0 0 0 0 0 0 1 1 
+State.CHAR_EOP 0 0 0 0 0 0 1 0 1 
+State.CHAR_FCT_NULL 0 0 0 0 0 1 0 0 1 
+State.CHAR_EEP 0 0 0 0 1 0 0 0 1 
+State.CHAR_ESC_TIME 0 0 0 1 0 0 0 0 1 
+State.CHAR_ESC_NULL 0 0 1 0 0 0 0 0 1 
+State.CHAR_DATA 0 1 0 0 0 0 0 0 1 
+State.CHAR_TIME 1 0 0 0 0 0 0 0 1 
+
+State Machine - |SPW_BABASU_TOP|SPW_TOP:spw_babasu_TRC|SpwTCR_TX:TX|DataSt
+Name DataSt.DATA_READY DataSt.DATA_SPILL DataSt.DATA_SPILL_OFF DataSt.DATA_WAIT DataSt.DATA_STORE 
+DataSt.DATA_WAIT 0 0 0 0 0 
+DataSt.DATA_SPILL_OFF 0 0 1 1 0 
+DataSt.DATA_SPILL 0 1 0 1 0 
+DataSt.DATA_READY 1 0 0 1 0 
+DataSt.DATA_STORE 0 0 0 1 1 
+
+State Machine - |SPW_BABASU_TOP|SPW_TOP:spw_babasu_TRC|SpwTCR_TX_FIFO:TX_FIFO|DataSt
+Name DataSt.READ_DATA DataSt.DATA_WAIT DataSt.DATA_READY 
+DataSt.DATA_WAIT 0 0 0 
+DataSt.DATA_READY 0 1 1 
+DataSt.READ_DATA 1 1 0 
+
+State Machine - |SPW_BABASU_TOP|SPW_TOP:spw_babasu_TRC|SpwTCR_RX:RX|SpwTCR_RX_TIMEOUT:RX_TIMEOUT|state
+Name state.COUNT state.RESET state.DISCONNECT 
+state.RESET 0 0 0 
+state.DISCONNECT 0 1 1 
+state.COUNT 1 1 0 
+
+State Machine - |SPW_BABASU_TOP|SPW_TOP:spw_babasu_TRC|SpwTCR_RX:RX|SpwTCR_RXTX_credit:RX_credit|FctSt
+Name FctSt.FCT_REQ FctSt.FCT_WAIT FctSt.FCT_ACK 
+FctSt.FCT_WAIT 0 0 0 
+FctSt.FCT_ACK 0 1 1 
+FctSt.FCT_REQ 1 1 0 
+
+State Machine - |SPW_BABASU_TOP|SPW_TOP:spw_babasu_TRC|SpwTCR_RX:RX|SpwTCR_RX_receiver:RX_receiver|state
+Name state.ESC_ERR state.PARITY_ERR state.DISCONNECT_ERR state.PRE_TIME state.PRE_NULL state.GOT_ESC state.DATA_AQ state.CONTROL_AQ state.START state.FIND_NULL state.WAIT 
+state.WAIT 0 0 0 0 0 0 0 0 0 0 0 
+state.FIND_NULL 0 0 0 0 0 0 0 0 0 1 1 
+state.START 0 0 0 0 0 0 0 0 1 0 1 
+state.CONTROL_AQ 0 0 0 0 0 0 0 1 0 0 1 
+state.DATA_AQ 0 0 0 0 0 0 1 0 0 0 1 
+state.GOT_ESC 0 0 0 0 0 1 0 0 0 0 1 
+state.PRE_NULL 0 0 0 0 1 0 0 0 0 0 1 
+state.PRE_TIME 0 0 0 1 0 0 0 0 0 0 1 
+state.DISCONNECT_ERR 0 0 1 0 0 0 0 0 0 0 1 
+state.PARITY_ERR 0 1 0 0 0 0 0 0 0 0 1 
+state.ESC_ERR 1 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |SPW_BABASU_TOP|SPW_TOP:spw_babasu_TRC|SpwTCR_FSM:FSM|State
+Name State.RUN State.CONNECTING State.READY State.STARTED State.ERROR_WAIT State.ERROR_RESET 
+State.ERROR_RESET 0 0 0 0 0 0 
+State.ERROR_WAIT 0 0 0 0 1 1 
+State.STARTED 0 0 0 1 0 1 
+State.READY 0 0 1 0 0 1 
+State.CONNECTING 0 1 0 0 0 1 
+State.RUN 1 0 0 0 0 1 
+
+State Machine - |SPW_BABASU_TOP|spw_babasu:u0|spw_babasu_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:spill_enable_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_BABASU_TOP|spw_babasu:u0|spw_babasu_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:tx_clk_div_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_BABASU_TOP|spw_babasu:u0|spw_babasu_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:time_in_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_BABASU_TOP|spw_babasu:u0|spw_babasu_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:tick_in_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_BABASU_TOP|spw_babasu:u0|spw_babasu_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:time_out_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_BABASU_TOP|spw_babasu:u0|spw_babasu_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:tick_out_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_BABASU_TOP|spw_babasu:u0|spw_babasu_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:rx_empty_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_BABASU_TOP|spw_babasu:u0|spw_babasu_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:rd_data_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_BABASU_TOP|spw_babasu:u0|spw_babasu_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:data_o_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_BABASU_TOP|spw_babasu:u0|spw_babasu_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:tx_full_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_BABASU_TOP|spw_babasu:u0|spw_babasu_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:wr_data_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_BABASU_TOP|spw_babasu:u0|spw_babasu_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:data_i_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_BABASU_TOP|spw_babasu:u0|spw_babasu_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:flags_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_BABASU_TOP|spw_babasu:u0|spw_babasu_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:currentstate_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_BABASU_TOP|spw_babasu:u0|spw_babasu_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:autostart_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_BABASU_TOP|spw_babasu:u0|spw_babasu_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:link_disable_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_BABASU_TOP|spw_babasu:u0|spw_babasu_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:link_start_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 

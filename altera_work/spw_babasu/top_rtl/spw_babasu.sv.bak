@@ -1,0 +1,104 @@
+module SPW_BABASU(
+								input   FPGA_CLK1_50,
+								input   [1:0] KEY,
+								
+								input		din_a,
+								input		sin_a,
+								//input		din_b,
+								//input		sin_b,
+								output	dout_a,
+								output	sout_a,
+								//output	dout_b,
+								//output	sout_b,
+								//////////// LED ////////////
+								/* 3.3-V LVTTL */
+								output   [7:0] LED
+
+							);
+						
+			wire CLOCK_200MHZ;	
+			wire LINK_START;
+			wire LINK_DISABLE;
+			wire AUTOSTART;
+			wire [2:0] 	CURRENTSTATE;
+			wire [10:0]	FLAGS;
+			wire [8:0]	DATA_I;
+			wire WR_DATA;
+			wire TX_FULL;
+			wire [8:0]	DATA_O;
+			wire RD_DATA;
+			wire RX_EMPTY;
+			wire TICK_OUT;
+			wire [7:0] 	TIME_OUT;
+			wire TICK_IN;
+			wire [7:0]	TIME_IN;
+			wire [6:0]	TX_CLK_DIV;
+			wire SPILL_ENABLE;
+							
+	spw_babasu u0 (
+		.clk_clk                                 (FPGA_CLK1_50),                                 //                              clk.clk
+		/*.memory_mem_a                            (<connected-to-memory_mem_a>),                            //                           memory.mem_a
+		.memory_mem_ba                           (<connected-to-memory_mem_ba>),                           //                                 .mem_ba
+		.memory_mem_ck                           (<connected-to-memory_mem_ck>),                           //                                 .mem_ck
+		.memory_mem_ck_n                         (<connected-to-memory_mem_ck_n>),                         //                                 .mem_ck_n
+		.memory_mem_cke                          (<connected-to-memory_mem_cke>),                          //                                 .mem_cke
+		.memory_mem_cs_n                         (<connected-to-memory_mem_cs_n>),                         //                                 .mem_cs_n
+		.memory_mem_ras_n                        (<connected-to-memory_mem_ras_n>),                        //                                 .mem_ras_n
+		.memory_mem_cas_n                        (<connected-to-memory_mem_cas_n>),                        //                                 .mem_cas_n
+		.memory_mem_we_n                         (<connected-to-memory_mem_we_n>),                         //                                 .mem_we_n
+		.memory_mem_reset_n                      (<connected-to-memory_mem_reset_n>),                      //                                 .mem_reset_n
+		.memory_mem_dq                           (<connected-to-memory_mem_dq>),                           //                                 .mem_dq
+		.memory_mem_dqs                          (<connected-to-memory_mem_dqs>),                          //                                 .mem_dqs
+		.memory_mem_dqs_n                        (<connected-to-memory_mem_dqs_n>),                        //                                 .mem_dqs_n
+		.memory_mem_odt                          (<connected-to-memory_mem_odt>),                          //                                 .mem_odt
+		.memory_mem_dm                           (<connected-to-memory_mem_dm>),                           //                                 .mem_dm
+		.memory_oct_rzqin                        (<connected-to-memory_oct_rzqin>),                        //                                 .oct_rzqin
+	*/
+		.reset_reset_n                           (KEY[1]),                           //                            reset.reset_n
+		.link_start_external_connection_export   (LINK_START),   //   link_start_external_connection.export
+		.link_disable_external_connection_export (LINK_DISABLE), // link_disable_external_connection.export
+		.autostart_external_connection_export    (AUTOSTART),    //    autostart_external_connection.export
+		.currentstate_external_connection_export (CURRENTSTATE), // currentstate_external_connection.export
+		.flags_external_connection_export        (FLAGS),        //        flags_external_connection.export
+		.data_i_external_connection_export       (DATA_I),       //       data_i_external_connection.export
+		.wr_data_external_connection_export      (WR_DATA),      //      wr_data_external_connection.export
+		.tx_full_external_connection_export      (TX_FULL),      //      tx_full_external_connection.export
+		.data_o_external_connection_export       (DATA_O),       //       data_o_external_connection.export
+		.rd_data_external_connection_export      (RD_DATA),      //      rd_data_external_connection.export
+		.rx_empty_external_connection_export     (RX_EMPTY),     //     rx_empty_external_connection.export
+		.tick_out_external_connection_export     (TICK_OUT),     //     tick_out_external_connection.export
+		.time_out_external_connection_export     (TIME_OUT),     //     time_out_external_connection.export
+		.tick_in_external_connection_export      (TICK_IN),      //      tick_in_external_connection.export
+		.time_in_external_connection_export      (TIME_IN),      //      time_in_external_connection.export
+		.tx_clk_div_external_connection_export   (TX_CLK_DIV),   //   tx_clk_div_external_connection.export
+		.spill_enable_external_connection_export (SPILL_ENABLE),  // spill_enable_external_connection.export
+		.pll_0_locked_export                     (CLOCK_200MHZ)
+	);
+	
+	SpwTCR spw_babasu(
+		CLOCK(CLOCK_200MHZ),
+		RESETn(KEY[1]),
+		LINK_START(LINK_START),
+		LINK_DISABLE(LINK_DISABLE),
+		AUTOSTART(AUTOSTART),
+		CURRENTSTATE(CURRENTSTATE),
+		FLAGS(FLAGS),
+		DATA_I(DATA_I),
+		WR_DATA(WR_DATA),
+		TX_FULL(TX_FULL),
+		DATA_O(DATA_O),
+		RD_DATA(RD_DATA),
+		RX_EMPTY(RX_EMPTY),
+		TICK_OUT(TICK_OUT),
+		TIME_OUT(TIME_OUT),
+		TICK_IN(TICK_IN),
+		TIME_IN(TIME_IN),
+		TX_CLK_DIV(TX_CLK_DIV),
+		SPILL_ENABLE(SPILL_ENABLE),
+		Din(din_a), 
+		Sin(sin_a),
+		Dout(dout_a),
+		Sout(sout_a)
+	);
+					
+endmodule

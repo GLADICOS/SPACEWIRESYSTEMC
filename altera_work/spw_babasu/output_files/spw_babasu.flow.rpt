@@ -1,0 +1,172 @@
+Flow report for spw_babasu
+Mon Feb 12 17:34:41 2018
+Quartus Prime Version 17.1.1 Internal Build 593 12/11/2017 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+  8. Flow Messages
+  9. Flow Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------------+
+; Flow Summary                                                                           ;
++---------------------------------+------------------------------------------------------+
+; Flow Status                     ; Successful - Mon Feb 12 17:34:41 2018                ;
+; Quartus Prime Version           ; 17.1.1 Internal Build 593 12/11/2017 SJ Lite Edition ;
+; Revision Name                   ; spw_babasu                                           ;
+; Top-level Entity Name           ; SPW_BABASU_TOP                                       ;
+; Family                          ; Cyclone V                                            ;
+; Device                          ; 5CSEMA4U23C6                                         ;
+; Timing Models                   ; Final                                                ;
+; Logic utilization (in ALMs)     ; 2,204 / 15,880 ( 14 % )                              ;
+; Total registers                 ; 2921                                                 ;
+; Total pins                      ; 19 / 314 ( 6 % )                                     ;
+; Total virtual pins              ; 0                                                    ;
+; Total block memory bits         ; 4,608 / 2,764,800 ( < 1 % )                          ;
+; Total DSP Blocks                ; 0 / 84 ( 0 % )                                       ;
+; Total HSSI RX PCSs              ; 0                                                    ;
+; Total HSSI PMA RX Deserializers ; 0                                                    ;
+; Total HSSI TX PCSs              ; 0                                                    ;
+; Total HSSI PMA TX Serializers   ; 0                                                    ;
+; Total PLLs                      ; 1 / 5 ( 20 % )                                       ;
+; Total DLLs                      ; 0 / 4 ( 0 % )                                        ;
++---------------------------------+------------------------------------------------------+
+
+
++-----------------------------------------+
+; Flow Settings                           ;
++-------------------+---------------------+
+; Option            ; Setting             ;
++-------------------+---------------------+
+; Start date & time ; 02/12/2018 17:25:28 ;
+; Main task         ; Compilation         ;
+; Revision Name     ; spw_babasu          ;
++-------------------+---------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                                                                       ;
++-------------------------------------+--------------------------------------------------------------------------+---------------+--------------------------------+----------------------+
+; Assignment Name                     ; Value                                                                    ; Default Value ; Entity Name                    ; Section Id           ;
++-------------------------------------+--------------------------------------------------------------------------+---------------+--------------------------------+----------------------+
+; COMPILER_SIGNATURE_ID               ; 31032335263289.151846352507058                                           ; --            ; --                             ; --                   ;
+; EDA_DESIGN_ENTRY_SYNTHESIS_TOOL     ; Precision Synthesis                                                      ; <None>        ; --                             ; --                   ;
+; EDA_INPUT_DATA_FORMAT               ; Vqm                                                                      ; --            ; --                             ; eda_design_synthesis ;
+; EDA_LMF_FILE                        ; mentor.lmf                                                               ; --            ; --                             ; eda_design_synthesis ;
+; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                                                              ; --            ; --                             ; eda_simulation       ;
+; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)                                                ; <None>        ; --                             ; --                   ;
+; EDA_TIME_SCALE                      ; 1 ps                                                                     ; --            ; --                             ; eda_simulation       ;
+; HPS_ISW_FILE                        ; spw_babasu/synthesis/submodules/sequencer/sdram_io.pre.h                 ; --            ; spw_babasu_hps_0_hps_io_border ; --                   ;
+; HPS_ISW_FILE                        ; spw_babasu/synthesis/submodules/sequencer/alt_types.pre.h                ; --            ; spw_babasu_hps_0_hps_io_border ; --                   ;
+; HPS_ISW_FILE                        ; spw_babasu/synthesis/submodules/sequencer/system.pre.h                   ; --            ; spw_babasu_hps_0_hps_io_border ; --                   ;
+; HPS_ISW_FILE                        ; spw_babasu/synthesis/submodules/sequencer/sequencer.pre.c                ; --            ; spw_babasu_hps_0_hps_io_border ; --                   ;
+; HPS_ISW_FILE                        ; spw_babasu/synthesis/submodules/sequencer/sequencer.pre.h                ; --            ; spw_babasu_hps_0_hps_io_border ; --                   ;
+; HPS_ISW_FILE                        ; spw_babasu/synthesis/submodules/sequencer/tclrpt.pre.c                   ; --            ; spw_babasu_hps_0_hps_io_border ; --                   ;
+; HPS_ISW_FILE                        ; spw_babasu/synthesis/submodules/sequencer/tclrpt.pre.h                   ; --            ; spw_babasu_hps_0_hps_io_border ; --                   ;
+; HPS_ISW_FILE                        ; spw_babasu/synthesis/submodules/sequencer/sequencer_defines.pre.h        ; --            ; spw_babasu_hps_0_hps_io_border ; --                   ;
+; HPS_ISW_FILE                        ; spw_babasu/synthesis/submodules/sequencer/sequencer_auto_ac_init.pre.c   ; --            ; spw_babasu_hps_0_hps_io_border ; --                   ;
+; HPS_ISW_FILE                        ; spw_babasu/synthesis/submodules/sequencer/sequencer_auto_inst_init.pre.c ; --            ; spw_babasu_hps_0_hps_io_border ; --                   ;
+; HPS_ISW_FILE                        ; spw_babasu/synthesis/submodules/sequencer/sequencer_auto.pre.h           ; --            ; spw_babasu_hps_0_hps_io_border ; --                   ;
+; HPS_ISW_FILE                        ; spw_babasu/synthesis/submodules/sequencer/emif.pre.xml                   ; --            ; spw_babasu_hps_0_hps_io_border ; --                   ;
+; HPS_ISW_FILE                        ; spw_babasu/synthesis/submodules/hps.pre.xml                              ; --            ; spw_babasu_hps_0_hps_io_border ; --                   ;
+; HPS_PARTITION                       ; On                                                                       ; --            ; spw_babasu_hps_0_hps_io_border ; --                   ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                                                       ; --            ; --                             ; --                   ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                                                        ; --            ; --                             ; --                   ;
+; MISC_FILE                           ; spw_babasu/synthesis/../spw_babasu.cmp                                   ; --            ; --                             ; --                   ;
+; MISC_FILE                           ; spw_babasu/synthesis/spw_babasu_hps_0_hps.svd                            ; --            ; --                             ; --                   ;
+; MISC_FILE                           ; spw_babasu/synthesis/../../spw_babasu.qsys                               ; --            ; --                             ; --                   ;
+; MISC_FILE                           ; spw_babasu/synthesis/submodules/sequencer/sdram_io.pre.h                 ; --            ; --                             ; --                   ;
+; MISC_FILE                           ; spw_babasu/synthesis/submodules/sequencer/alt_types.pre.h                ; --            ; --                             ; --                   ;
+; MISC_FILE                           ; spw_babasu/synthesis/submodules/sequencer/system.pre.h                   ; --            ; --                             ; --                   ;
+; MISC_FILE                           ; spw_babasu/synthesis/submodules/sequencer/sequencer.pre.c                ; --            ; --                             ; --                   ;
+; MISC_FILE                           ; spw_babasu/synthesis/submodules/sequencer/sequencer.pre.h                ; --            ; --                             ; --                   ;
+; MISC_FILE                           ; spw_babasu/synthesis/submodules/sequencer/tclrpt.pre.c                   ; --            ; --                             ; --                   ;
+; MISC_FILE                           ; spw_babasu/synthesis/submodules/sequencer/tclrpt.pre.h                   ; --            ; --                             ; --                   ;
+; MISC_FILE                           ; spw_babasu/synthesis/submodules/sequencer/sequencer_defines.pre.h        ; --            ; --                             ; --                   ;
+; MISC_FILE                           ; spw_babasu/synthesis/submodules/sequencer/sequencer_auto_ac_init.pre.c   ; --            ; --                             ; --                   ;
+; MISC_FILE                           ; spw_babasu/synthesis/submodules/sequencer/sequencer_auto_inst_init.pre.c ; --            ; --                             ; --                   ;
+; MISC_FILE                           ; spw_babasu/synthesis/submodules/sequencer/sequencer_auto.pre.h           ; --            ; --                             ; --                   ;
+; MISC_FILE                           ; spw_babasu/synthesis/submodules/sequencer/emif.pre.xml                   ; --            ; --                             ; --                   ;
+; MISC_FILE                           ; spw_babasu/synthesis/submodules/hps.pre.xml                              ; --            ; --                             ; --                   ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family)                                   ; --            ; SPW_BABASU_TOP                 ; Top                  ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family)                                   ; --            ; SPW_BABASU_TOP                 ; Top                  ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)                                   ; --            ; SPW_BABASU_TOP                 ; Top                  ;
+; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                                      ; --            ; --                             ; --                   ;
+; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                                    ; --            ; --                             ; --                   ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                             ; --            ; --                             ; --                   ;
+; SLD_FILE                            ; spw_babasu/synthesis/spw_babasu.regmap                                   ; --            ; --                             ; --                   ;
+; SLD_FILE                            ; spw_babasu/synthesis/spw_babasu.debuginfo                                ; --            ; --                             ; --                   ;
+; SLD_INFO                            ; QSYS_NAME spw_babasu HAS_SOPCINFO 1 GENERATION_ID 1518455687             ; --            ; --                             ; --                   ;
+; SOPCINFO_FILE                       ; spw_babasu/synthesis/../../spw_babasu.sopcinfo                           ; --            ; --                             ; --                   ;
+; SYNTHESIS_ONLY_QIP                  ; On                                                                       ; --            ; --                             ; --                   ;
+; TOP_LEVEL_ENTITY                    ; SPW_BABASU_TOP                                                           ; spw_babasu    ; --                             ; --                   ;
++-------------------------------------+--------------------------------------------------------------------------+---------------+--------------------------------+----------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                             ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis      ; 00:00:53     ; 1.0                     ; 1228 MB             ; 00:01:17                           ;
+; Fitter                    ; 00:03:15     ; 1.1                     ; 2132 MB             ; 00:05:43                           ;
+; Assembler                 ; 00:00:20     ; 1.0                     ; 1022 MB             ; 00:00:14                           ;
+; TimeQuest Timing Analyzer ; 00:00:32     ; 1.4                     ; 1316 MB             ; 00:00:39                           ;
+; EDA Netlist Writer        ; 00:00:09     ; 1.0                     ; 1286 MB             ; 00:00:09                           ;
+; Total                     ; 00:05:09     ; --                      ; --                  ; 00:08:02                           ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++-----------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                         ;
++---------------------------+------------------+------------+------------+----------------+
+; Module Name               ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
++---------------------------+------------------+------------+------------+----------------+
+; Analysis & Synthesis      ; linux-hjij.suse  ; SUSE LINUX ; 42         ; x86_64         ;
+; Fitter                    ; linux-hjij.suse  ; SUSE LINUX ; 42         ; x86_64         ;
+; Assembler                 ; linux-hjij.suse  ; SUSE LINUX ; 42         ; x86_64         ;
+; TimeQuest Timing Analyzer ; linux-hjij.suse  ; SUSE LINUX ; 42         ; x86_64         ;
+; EDA Netlist Writer        ; linux-hjij.suse  ; SUSE LINUX ; 42         ; x86_64         ;
++---------------------------+------------------+------------+------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map --read_settings_files=on --write_settings_files=off spw_babasu -c spw_babasu
+quartus_fit --read_settings_files=off --write_settings_files=off spw_babasu -c spw_babasu
+quartus_asm --read_settings_files=off --write_settings_files=off spw_babasu -c spw_babasu
+quartus_sta spw_babasu -c spw_babasu
+quartus_eda --read_settings_files=off --write_settings_files=off spw_babasu -c spw_babasu
+
+
+
