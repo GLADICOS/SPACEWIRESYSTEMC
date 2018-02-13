@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for spw_babasu
-Mon Feb 12 17:34:31 2018
+Tue Feb 13 11:33:33 2018
 Quartus Prime Version 17.1.1 Internal Build 593 12/11/2017 SJ Lite Edition
 
 
@@ -102,12 +102,12 @@ refer to the applicable agreement for further details.
 ; Number detected on machine ; 4           ;
 ; Maximum allowed            ; 2           ;
 ;                            ;             ;
-; Average used               ; 1.43        ;
+; Average used               ; 1.44        ;
 ; Maximum used               ; 2           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;  43.0%      ;
+;     Processor 2            ;  43.6%      ;
 +----------------------------+-------------+
 
 
@@ -116,8 +116,8 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------+--------+--------------------------+
 ; SDC File Path                                               ; Status ; Read at                  ;
 +-------------------------------------------------------------+--------+--------------------------+
-; sdc/spw_babasu.out.sdc                                      ; OK     ; Mon Feb 12 17:34:08 2018 ;
-; spw_babasu/synthesis/submodules/altera_reset_controller.sdc ; OK     ; Mon Feb 12 17:34:08 2018 ;
+; sdc/spw_babasu.out.sdc                                      ; OK     ; Tue Feb 13 11:33:13 2018 ;
+; spw_babasu/synthesis/submodules/altera_reset_controller.sdc ; OK     ; Tue Feb 13 11:33:13 2018 ;
 +-------------------------------------------------------------+--------+--------------------------+
 
 
@@ -658,7 +658,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime TimeQuest Timing Analyzer
     Info: Version 17.1.1 Internal Build 593 12/11/2017 SJ Lite Edition
-    Info: Processing started: Mon Feb 12 17:33:59 2018
+    Info: Processing started: Tue Feb 13 11:33:06 2018
 Info: Command: quartus_sta spw_babasu -c spw_babasu
 Info: qsta_default_script.tcl version: #3
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -829,9 +829,9 @@ Info (332114): Report Metastability: Found 2 synchronizer chains.
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 1316 megabytes
-    Info: Processing ended: Mon Feb 12 17:34:31 2018
-    Info: Elapsed time: 00:00:32
-    Info: Total CPU time (on all processors): 00:00:39
+    Info: Peak virtual memory: 1318 megabytes
+    Info: Processing ended: Tue Feb 13 11:33:33 2018
+    Info: Elapsed time: 00:00:27
+    Info: Total CPU time (on all processors): 00:00:33
 
 
