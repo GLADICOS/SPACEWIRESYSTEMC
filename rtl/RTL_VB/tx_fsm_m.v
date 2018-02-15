@@ -126,7 +126,7 @@ localparam [3:0] eep_s  = 4'b0111;
 			      (state_tx == tx_spw_data_c_0 & tx_data_in_0[1:0] == 2'd0 & tx_data_in_0[8])?{10'd0,eop_s >> global_counter_transfer}:
 			      (state_tx == tx_spw_data_c_0 & tx_data_in_0[1:0] == 2'd1 & tx_data_in_0[8])?{10'd0,eep_s >> global_counter_transfer}:
 			      (state_tx == tx_spw_fct | state_tx == tx_spw_fct_c)?{10'd0,fct_s >> global_counter_transfer}:
-			      (state_tx == tx_spw_null | state_tx == tx_spw_null_c)?{6'd0,null_s >> global_counter_transfer}:14'd1;
+			      (state_tx == tx_spw_null | state_tx == tx_spw_null_c)?{6'd0,null_s >> global_counter_transfer}:14'd0;
 
 	assign tx_dout = (global_counter_transfer == 4'd0 & last_type_null_fct)?~(result_shift[0]^1'b0):
 			 (global_counter_transfer == 4'd0 & last_type_eop_eep)?~(result_shift[0]^1'b1):
@@ -368,7 +368,7 @@ begin
 	endcase
 end
 
-always@(posedge pclk_tx)
+always@(posedge pclk_tx or negedge enable_tx)
 begin
 	if(!enable_tx)
 	begin
@@ -438,7 +438,7 @@ begin
 end
 
 
-always@(posedge pclk_tx)
+always@(posedge pclk_tx or negedge enable_tx)
 begin
 	if(!enable_tx)
 	begin
@@ -465,7 +465,7 @@ begin
 		state_tx <= tx_spw_start;
 
 	end
-	else
+	else  if(send_null_tx)
 	begin
 		state_tx <= next_state_tx;
 		
@@ -478,23 +478,11 @@ begin
 			ready_tx_data <= 1'b0;
 			ready_tx_timecode <= 1'b0;
 
-			if(send_null_tx)
-			begin
-				last_tx_dout <= tx_dout;
-				last_tx_sout <= tx_sout;
+			last_tx_dout <= tx_dout;
+			last_tx_sout <= tx_sout;
 
-				tx_dout_e <= tx_dout;
-				tx_sout_e <= tx_sout;
-			end
-			else
-			begin
-				last_tx_dout <= last_tx_dout;
-				last_tx_sout <= last_tx_sout;
-
-				tx_dout_e <=  tx_dout_e;
-				tx_sout_e <=  tx_sout_e;
-			end
-			
+			tx_dout_e <= tx_dout;
+			tx_sout_e <= tx_sout;			
 		end
 		tx_spw_null:
 		begin
@@ -742,22 +730,18 @@ begin
 end
 
 
-always@(posedge pclk_tx)
+always@(posedge pclk_tx or negedge enable_tx)
 begin
 	if(!enable_tx)
 	begin
 		global_counter_transfer   <= 4'd0;
 	end
-	else
+	else if(send_null_tx)
 	begin
 		case(state_tx)
 		tx_spw_start:
 		begin
-			if(send_null_tx)
-				global_counter_transfer <= global_counter_transfer + 4'd1;
-			else
-				global_counter_transfer <= 4'd0;
-
+			global_counter_transfer <= global_counter_transfer + 4'd1;
 		end
 		tx_spw_null,tx_spw_null_c,tx_spw_fct,tx_spw_fct_c,tx_spw_data_c,tx_spw_data_c_0,tx_spw_time_code_c:
 		begin

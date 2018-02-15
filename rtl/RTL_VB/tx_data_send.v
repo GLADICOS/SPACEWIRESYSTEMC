@@ -60,7 +60,7 @@ module tx_data_send(
 
 	assign process_data_en = (txwrite_tx & fct_counter_p)?1'b1:1'b0;
 
-always@(posedge pclk_tx )
+always@(posedge pclk_tx or negedge enable_tx)
 begin
 
 	if(!enable_tx)
