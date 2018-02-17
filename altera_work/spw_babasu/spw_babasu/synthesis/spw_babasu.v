@@ -12,7 +12,7 @@ module spw_babasu (
 		input  wire [10:0] flags_external_connection_export,        //        flags_external_connection.export
 		output wire        link_disable_external_connection_export, // link_disable_external_connection.export
 		output wire        link_start_external_connection_export,   //   link_start_external_connection.export
-		output wire        pll_0_locked_export,                     //                     pll_0_locked.export
+		output wire        pll_0_outclk0_clk,                       //                    pll_0_outclk0.clk
 		output wire        rd_data_external_connection_export,      //      rd_data_external_connection.export
 		input  wire        reset_reset_n,                           //                            reset.reset_n
 		input  wire        rx_empty_external_connection_export,     //     rx_empty_external_connection.export
@@ -217,7 +217,7 @@ module spw_babasu (
 		.in_port  (rx_empty_external_connection_export)     // external_connection.export
 	);
 
-	spw_babasu_AUTOSTART spill_enable (
+	spw_babasu_SPILL_ENABLE spill_enable (
 		.clk        (clk_clk),                                      //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),              //               reset.reset_n
 		.address    (mm_interconnect_0_spill_enable_s1_address),    //                  s1.address
@@ -357,10 +357,10 @@ module spw_babasu (
 	);
 
 	spw_babasu_pll_0 pll_0 (
-		.refclk   (clk_clk),             //  refclk.clk
-		.rst      (~reset_reset_n),      //   reset.reset
-		.outclk_0 (),                    // outclk0.clk
-		.locked   (pll_0_locked_export)  //  locked.export
+		.refclk   (clk_clk),           //  refclk.clk
+		.rst      (~reset_reset_n),    //   reset.reset
+		.outclk_0 (pll_0_outclk0_clk), // outclk0.clk
+		.locked   ()                   // (terminated)
 	);
 
 	spw_babasu_mm_interconnect_0 mm_interconnect_0 (

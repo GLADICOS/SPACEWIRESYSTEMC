@@ -7,7 +7,7 @@
 		.flags_external_connection_export        (<connected-to-flags_external_connection_export>),        //        flags_external_connection.export
 		.link_disable_external_connection_export (<connected-to-link_disable_external_connection_export>), // link_disable_external_connection.export
 		.link_start_external_connection_export   (<connected-to-link_start_external_connection_export>),   //   link_start_external_connection.export
-		.pll_0_locked_export                     (<connected-to-pll_0_locked_export>),                     //                     pll_0_locked.export
+		.pll_0_outclk0_clk                       (<connected-to-pll_0_outclk0_clk>),                       //                    pll_0_outclk0.clk
 		.rd_data_external_connection_export      (<connected-to-rd_data_external_connection_export>),      //      rd_data_external_connection.export
 		.reset_reset_n                           (<connected-to-reset_reset_n>),                           //                            reset.reset_n
 		.rx_empty_external_connection_export     (<connected-to-rx_empty_external_connection_export>),     //     rx_empty_external_connection.export

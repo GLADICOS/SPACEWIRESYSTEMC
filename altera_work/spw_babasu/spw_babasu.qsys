@@ -169,6 +169,14 @@
          type = "int";
       }
    }
+   element spw_babasu
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
 }
 ]]></parameter>
  <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
@@ -226,7 +234,12 @@
    internal="LINK_START.external_connection"
    type="conduit"
    dir="end" />
- <interface name="pll_0_locked" internal="pll_0.locked" type="conduit" dir="end" />
+ <interface name="pll_0_locked" internal="pll_0.locked" />
+ <interface
+   name="pll_0_outclk0"
+   internal="pll_0.outclk0"
+   type="clock"
+   dir="start" />
  <interface
    name="rd_data_external_connection"
    internal="RD_DATA.external_connection"
@@ -425,7 +438,7 @@
   <parameter name="edgeType" value="RISING" />
   <parameter name="generateIRQ" value="false" />
   <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="0" />
+  <parameter name="resetValue" value="1" />
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="1" />
@@ -495,7 +508,7 @@
   <parameter name="edgeType" value="RISING" />
   <parameter name="generateIRQ" value="false" />
   <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="0" />
+  <parameter name="resetValue" value="3" />
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="7" />
@@ -1182,7 +1195,7 @@
   <parameter name="gui_mif_generate" value="false" />
   <parameter name="gui_multiply_factor" value="1" />
   <parameter name="gui_number_of_clocks" value="1" />
-  <parameter name="gui_operation_mode" value="direct" />
+  <parameter name="gui_operation_mode" value="normal" />
   <parameter name="gui_output_clock_frequency0" value="200.0" />
   <parameter name="gui_output_clock_frequency1" value="100.0" />
   <parameter name="gui_output_clock_frequency10" value="100.0" />
@@ -1265,7 +1278,7 @@
   <parameter name="gui_reference_clock_frequency" value="50.0" />
   <parameter name="gui_switchover_delay" value="0" />
   <parameter name="gui_switchover_mode">Automatic Switchover</parameter>
-  <parameter name="gui_use_locked" value="true" />
+  <parameter name="gui_use_locked" value="false" />
  </module>
  <connection
    kind="avalon"
@@ -1273,7 +1286,7 @@
    start="hps_0.h2f_axi_master"
    end="LINK_START.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="baseAddress" value="0x00070000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1282,7 +1295,7 @@
    start="hps_0.h2f_axi_master"
    end="LINK_DISABLE.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0010" />
+  <parameter name="baseAddress" value="0x00090000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1291,7 +1304,7 @@
    start="hps_0.h2f_axi_master"
    end="AUTOSTART.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0020" />
+  <parameter name="baseAddress" value="0x00080000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1300,7 +1313,7 @@
    start="hps_0.h2f_axi_master"
    end="CURRENTSTATE.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0030" />
+  <parameter name="baseAddress" value="0x0004a000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection

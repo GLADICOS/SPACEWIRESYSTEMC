@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="spw_babasu" kind="spw_babasu" version="1.0" fabric="QSYS">
  <!-- Format version 17.1 593 (Future versions may contain additional information.) -->
- <!-- 2018.02.12.15:14:50 -->
+ <!-- 2018.02.17.18:45:58 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1518455687</value>
+  <value>1518900355</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -7066,7 +7066,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.RESET_VALUE</name>
-   <value>0</value>
+   <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -7086,7 +7086,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.resetvalue</name>
-   <value>0</value>
+   <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -7150,7 +7150,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="resetValue">
    <type>long</type>
-   <value>0</value>
+   <value>1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -10912,7 +10912,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.RESET_VALUE</name>
-   <value>0</value>
+   <value>3</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -10932,7 +10932,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.resetvalue</name>
-   <value>0</value>
+   <value>3</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -10996,7 +10996,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="resetValue">
    <type>long</type>
-   <value>0</value>
+   <value>3</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -28833,7 +28833,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>LINK_START</moduleName>
     <slaveName>s1</slaveName>
     <name>LINK_START.s1</name>
-    <baseAddress>0</baseAddress>
+    <baseAddress>458752</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -28841,7 +28841,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>LINK_DISABLE</moduleName>
     <slaveName>s1</slaveName>
     <name>LINK_DISABLE.s1</name>
-    <baseAddress>16</baseAddress>
+    <baseAddress>589824</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -28849,7 +28849,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>AUTOSTART</moduleName>
     <slaveName>s1</slaveName>
     <name>AUTOSTART.s1</name>
-    <baseAddress>32</baseAddress>
+    <baseAddress>524288</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -28857,7 +28857,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>CURRENTSTATE</moduleName>
     <slaveName>s1</slaveName>
     <name>CURRENTSTATE.s1</name>
-    <baseAddress>48</baseAddress>
+    <baseAddress>303104</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -54468,7 +54468,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>LINK_START</moduleName>
     <slaveName>s1</slaveName>
     <name>LINK_START.s1</name>
-    <baseAddress>0</baseAddress>
+    <baseAddress>458752</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -54476,7 +54476,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>LINK_DISABLE</moduleName>
     <slaveName>s1</slaveName>
     <name>LINK_DISABLE.s1</name>
-    <baseAddress>16</baseAddress>
+    <baseAddress>589824</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -54484,7 +54484,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>AUTOSTART</moduleName>
     <slaveName>s1</slaveName>
     <name>AUTOSTART.s1</name>
-    <baseAddress>32</baseAddress>
+    <baseAddress>524288</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -54492,7 +54492,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>CURRENTSTATE</moduleName>
     <slaveName>s1</slaveName>
     <name>CURRENTSTATE.s1</name>
-    <baseAddress>48</baseAddress>
+    <baseAddress>303104</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -55723,7 +55723,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>LINK_START</moduleName>
     <slaveName>s1</slaveName>
     <name>LINK_START.s1</name>
-    <baseAddress>3221225472</baseAddress>
+    <baseAddress>3221684224</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -55731,7 +55731,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>LINK_DISABLE</moduleName>
     <slaveName>s1</slaveName>
     <name>LINK_DISABLE.s1</name>
-    <baseAddress>3221225488</baseAddress>
+    <baseAddress>3221815296</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -55739,7 +55739,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>AUTOSTART</moduleName>
     <slaveName>s1</slaveName>
     <name>AUTOSTART.s1</name>
-    <baseAddress>3221225504</baseAddress>
+    <baseAddress>3221749760</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -55747,7 +55747,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>CURRENTSTATE</moduleName>
     <slaveName>s1</slaveName>
     <name>CURRENTSTATE.s1</name>
-    <baseAddress>3221225520</baseAddress>
+    <baseAddress>3221528576</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -56674,7 +56674,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>LINK_START</moduleName>
     <slaveName>s1</slaveName>
     <name>LINK_START.s1</name>
-    <baseAddress>3221225472</baseAddress>
+    <baseAddress>3221684224</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -56682,7 +56682,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>LINK_DISABLE</moduleName>
     <slaveName>s1</slaveName>
     <name>LINK_DISABLE.s1</name>
-    <baseAddress>3221225488</baseAddress>
+    <baseAddress>3221815296</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -56690,7 +56690,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>AUTOSTART</moduleName>
     <slaveName>s1</slaveName>
     <name>AUTOSTART.s1</name>
-    <baseAddress>3221225504</baseAddress>
+    <baseAddress>3221749760</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -56698,7 +56698,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>CURRENTSTATE</moduleName>
     <slaveName>s1</slaveName>
     <name>CURRENTSTATE.s1</name>
-    <baseAddress>3221225520</baseAddress>
+    <baseAddress>3221528576</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -84487,7 +84487,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="gui_operation_mode">
    <type>java.lang.String</type>
-   <value>direct</value>
+   <value>normal</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -84535,7 +84535,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="operation_mode">
    <type>java.lang.String</type>
-   <value>direct</value>
+   <value>normal</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -84543,7 +84543,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="gui_use_locked">
    <type>boolean</type>
-   <value>true</value>
+   <value>false</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -87951,7 +87951,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="mimic_fbclk_type">
    <type>java.lang.String</type>
-   <value>none</value>
+   <value>gclk</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -87967,7 +87967,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="pll_fbclk_mux_2">
    <type>java.lang.String</type>
-   <value>m_cnt</value>
+   <value>fb_1</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -87999,7 +87999,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="gui_parameter_values">
    <type>[Ljava.lang.String;</type>
-   <value>4,4,256,256,false,true,false,false,1,1,1,0,ph_mux_clk,false,false,2,20,4000,400.0 MHz,1,none,glb,m_cnt,ph_mux_clk,false</value>
+   <value>4,4,256,256,false,true,false,false,1,1,1,0,ph_mux_clk,false,false,2,20,4000,400.0 MHz,1,gclk,glb,fb_1,ph_mux_clk,false</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -88354,55 +88354,6 @@ parameters are a RESULT of the module parameters. -->
     <direction>Output</direction>
     <width>1</width>
     <role>clk</role>
-   </port>
-  </interface>
-  <interface name="locked" kind="conduit_end" version="17.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <assignment>
-    <name>ui.blockdiagram.direction</name>
-    <value>OUTPUT</value>
-   </assignment>
-   <parameter name="associatedClock">
-    <type>java.lang.String</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="associatedReset">
-    <type>java.lang.String</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>conduit</type>
-   <isStart>false</isStart>
-   <port>
-    <name>locked</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>export</role>
    </port>
   </interface>
  </module>
@@ -96406,7 +96357,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x0000</value>
+   <value>0x00070000</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -96457,7 +96408,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x0010</value>
+   <value>0x00090000</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -96508,7 +96459,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x0020</value>
+   <value>0x00080000</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -96559,7 +96510,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x0030</value>
+   <value>0x0004a000</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -98289,7 +98240,7 @@ parameters are a RESULT of the module parameters. -->
   <version>17.1</version>
  </plugin>
  <plugin>
-  <instanceCount>20</instanceCount>
+  <instanceCount>19</instanceCount>
   <name>conduit_end</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>

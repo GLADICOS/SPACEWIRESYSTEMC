@@ -8,7 +8,7 @@
 			flags_external_connection_export        : in  std_logic_vector(10 downto 0) := (others => 'X'); -- export
 			link_disable_external_connection_export : out std_logic;                                        -- export
 			link_start_external_connection_export   : out std_logic;                                        -- export
-			pll_0_locked_export                     : out std_logic;                                        -- export
+			pll_0_outclk0_clk                       : out std_logic;                                        -- clk
 			rd_data_external_connection_export      : out std_logic;                                        -- export
 			reset_reset_n                           : in  std_logic                     := 'X';             -- reset_n
 			rx_empty_external_connection_export     : in  std_logic                     := 'X';             -- export
@@ -33,7 +33,7 @@
 			flags_external_connection_export        => CONNECTED_TO_flags_external_connection_export,        --        flags_external_connection.export
 			link_disable_external_connection_export => CONNECTED_TO_link_disable_external_connection_export, -- link_disable_external_connection.export
 			link_start_external_connection_export   => CONNECTED_TO_link_start_external_connection_export,   --   link_start_external_connection.export
-			pll_0_locked_export                     => CONNECTED_TO_pll_0_locked_export,                     --                     pll_0_locked.export
+			pll_0_outclk0_clk                       => CONNECTED_TO_pll_0_outclk0_clk,                       --                    pll_0_outclk0.clk
 			rd_data_external_connection_export      => CONNECTED_TO_rd_data_external_connection_export,      --      rd_data_external_connection.export
 			reset_reset_n                           => CONNECTED_TO_reset_reset_n,                           --                            reset.reset_n
 			rx_empty_external_connection_export     => CONNECTED_TO_rx_empty_external_connection_export,     --     rx_empty_external_connection.export

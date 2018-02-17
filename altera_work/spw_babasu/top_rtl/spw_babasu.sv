@@ -72,7 +72,7 @@ module SPW_BABASU_TOP(
 		.time_in_external_connection_export      (TIME_IN_w),      //      time_in_external_connection.export
 		.tx_clk_div_external_connection_export   (TX_CLK_DIV_w),   //   tx_clk_div_external_connection.export
 		.spill_enable_external_connection_export (SPILL_ENABLE_w),  // spill_enable_external_connection.export
-		.pll_0_locked_export                     (CLOCK_200MHZ)
+		.pll_0_outclk0_clk                       (CLOCK_200MHZ)
 	);
 	
 	SPW_TOP spw_babasu_TRC(

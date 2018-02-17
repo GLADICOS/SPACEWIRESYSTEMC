@@ -17,7 +17,7 @@ module  spw_babasu_pll_0(
 	altera_pll #(
 		.fractional_vco_multiplier("false"),
 		.reference_clock_frequency("50.0 MHz"),
-		.operation_mode("direct"),
+		.operation_mode("normal"),
 		.number_of_clocks(1),
 		.output_clock_frequency0("200.000000 MHz"),
 		.phase_shift0("0 ps"),
