@@ -79,7 +79,7 @@ begin
 	endcase
 end
 
-always@(posedge pclk_tx)
+always@(posedge pclk_tx or negedge enable_tx)
 begin
 	if(!enable_tx)
 	begin

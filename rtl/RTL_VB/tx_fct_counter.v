@@ -61,7 +61,7 @@ begin
 	case(state_fct_receive)
 	3'd0:
 	begin
-		if(rec_b)
+		if(gotfct_tx)
 		begin
 			next_state_fct_receive = 3'd1;
 		end
@@ -79,7 +79,7 @@ begin
 	end
 	3'd2:
 	begin
-		if(rec_b)
+		if(gotfct_tx)
 		begin
 			next_state_fct_receive = 3'd2;
 		end
@@ -111,7 +111,7 @@ begin
 end
 
 
-always@(posedge pclk_tx)
+always@(posedge pclk_tx or negedge enable_tx)
 begin
 	if(!enable_tx)
 	begin
@@ -181,26 +181,33 @@ begin
 	end
 	3'd2:
 	begin
-		if(char_sent)
+		if(fct_counter_receive == 6'd0)
 			next_state_fct_p = 3'd3;
 		else
 			next_state_fct_p = 3'd2;
 	end
 	3'd3:
 	begin
-		if(!char_sent)
+		if(char_sent)
 			next_state_fct_p = 3'd4;
 		else
 			next_state_fct_p = 3'd3;
 	end
 	3'd4:
 	begin
+		if(!char_sent)
+			next_state_fct_p = 3'd5;
+		else
+			next_state_fct_p = 3'd4;
+	end
+	3'd5:
+	begin
 		if(fct_counter_p == 6'd0)
 			next_state_fct_p = 3'd0;
 		else if(fct_counter_p > 6'd0)
-			next_state_fct_p = 3'd2;
+			next_state_fct_p = 3'd3;
 		else
-			next_state_fct_p = 3'd4;
+			next_state_fct_p = 3'd5;
 	end
 	default:
 	begin
@@ -210,7 +217,7 @@ begin
 end
 
 
-always@(posedge pclk_tx)
+always@(posedge pclk_tx or negedge enable_tx)
 begin
 	if(!enable_tx)
 	begin
@@ -236,13 +243,18 @@ begin
 		end
 		3'd2:
 		begin
-			clear_reg <= 1'b0;
+
+			if(fct_counter_receive == 6'd0)
+				clear_reg <= 1'b0;
+			else
+				clear_reg <= 1'b1;
+
 			fct_counter_p <= fct_counter_p;
 		end
 		3'd3:
 		begin
 			clear_reg <= 1'b0;
-			if(!char_sent)
+			if(char_sent)
 			begin
 				if(fct_counter_p == 6'd0)
 					fct_counter_p <= fct_counter_p;
@@ -253,6 +265,11 @@ begin
 				fct_counter_p <= fct_counter_p;
 		end
 		3'd4:
+		begin
+			clear_reg <= 1'b0;
+			fct_counter_p <= fct_counter_p;
+		end
+		3'd5:
 		begin
 			clear_reg <= 1'b0;
 			fct_counter_p <= fct_counter_p;

@@ -88,34 +88,44 @@ begin
 			tcode_rdy_trnsp <= 1'b0;
 		end
 
-		if(!process_data_en)
+		if(!txwrite_tx)
 		begin
-			process_data   <= 1'b0;
+			process_data   <= 1'b0;	
+			process_data_0 <= 1'b0;	
 		end
 		else if(get_data && process_data_en)
 		begin
-			tx_data_in     <= data_tx_i;
-			process_data   <= 1'b1;			
-		end
-		else
-		begin
-			tx_data_in     <= tx_data_in;
-			process_data   <= process_data;
-		end
-
-		if(!process_data_en)
-		begin
-			process_data_0 <= 1'b0;
+			process_data   <= 1'b1;	
+			process_data_0 <= 1'b0;		
 		end
 		else if(get_data_0 && process_data_en)
 		begin
-			tx_data_in_0 <= data_tx_i;
+			process_data   <= 1'b0;	
 			process_data_0 <= 1'b1;
 		end
 		else
 		begin
-			tx_data_in_0 <= tx_data_in_0;
+			process_data   <= process_data;	
 			process_data_0 <= process_data_0;
+		end
+
+
+		if(get_data)
+		begin
+			tx_data_in     <= data_tx_i;	
+		end
+		else
+		begin
+			tx_data_in     <= tx_data_in;
+		end
+
+		if(get_data_0)
+		begin
+			tx_data_in_0 <= data_tx_i;
+		end
+		else
+		begin
+			tx_data_in_0 <= tx_data_in_0;
 		end
 	end
 end
