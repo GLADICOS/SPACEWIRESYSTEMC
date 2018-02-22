@@ -122,7 +122,7 @@ begin
 
 		rx_got_fct        <= 1'b0;
 	end
-	else
+	else if(rx_resetn)
 	begin
 
 		state_data_process <= next_state_data_process;
@@ -136,7 +136,6 @@ begin
 
 			if(ready_control_p_r)
 			begin
-				
 				if(control_l_r[2:0] != 3'd7 && control_p_r[2:0] == 3'd4)
 				begin
 					rx_got_fct        <= 1'b1;

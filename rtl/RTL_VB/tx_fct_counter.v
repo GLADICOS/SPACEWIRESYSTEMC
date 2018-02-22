@@ -51,8 +51,20 @@ module tx_fct_counter(
 
 	reg clear_reg;
 
-	reg rec_a,rec_b;
+	reg internal_reset;
+	reg get_got_fct;
 
+always@(posedge gotfct_tx or negedge internal_reset)
+begin
+	if(!internal_reset)
+	begin
+		get_got_fct <= 1'b0;
+	end
+	else
+	begin
+		get_got_fct <= 1'b1;
+	end
+end
 
 always@(*)
 begin
@@ -61,7 +73,7 @@ begin
 	case(state_fct_receive)
 	3'd0:
 	begin
-		if(gotfct_tx)
+		if(get_got_fct)
 		begin
 			next_state_fct_receive = 3'd1;
 		end
@@ -79,7 +91,7 @@ begin
 	end
 	3'd2:
 	begin
-		if(gotfct_tx)
+		if(get_got_fct)
 		begin
 			next_state_fct_receive = 3'd2;
 		end
@@ -117,38 +129,37 @@ begin
 	begin
 		fct_counter_receive<= 6'd0;
 		state_fct_receive <= 3'd0;
-
-		rec_a <= 1'b0;
-		rec_b <= 1'b0;
+		
+		internal_reset <= 1'b0;
 	end
 	else
 	begin
-
-
-		rec_a <= gotfct_tx;
-		rec_b <= rec_a;
-
 		state_fct_receive <= next_state_fct_receive;
 
 		case(state_fct_receive)
 		3'd0:
 		begin
 			fct_counter_receive <= fct_counter_receive;
+			internal_reset <= 1'b1;
 		end
 		3'd1:
 		begin
 			fct_counter_receive <= fct_counter_receive + 6'd8;
+			internal_reset <= 1'b0;
 		end
 		3'd2:
 		begin
 			fct_counter_receive <= fct_counter_receive;
+			internal_reset <= 1'b0;
 		end
 		3'd3:
 		begin
 			fct_counter_receive <= fct_counter_receive;
+			internal_reset <= 1'b0;
 		end
 		3'd4:
 		begin
+			internal_reset <= 1'b1;
 			fct_counter_receive <= 6'd0;
 		end
 		default:

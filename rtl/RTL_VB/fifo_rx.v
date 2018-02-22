@@ -403,9 +403,9 @@ end
 	end
 
 
-mem_data mem_dta_fifo_tx(
+mem_data mem_dta_fifo_rx(
 
-		.clock(clock), 
+		.clock(wr_en), 
 		.reset(reset), 
 
 		.data_in(data_in),

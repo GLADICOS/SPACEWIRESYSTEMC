@@ -131,15 +131,14 @@ begin
 end
 
 //Read pointer
-always@(posedge clock or negedge reset)
+always@(*)
 begin
-	if (!reset)
+
+	data_out  = 9'd0;
+
+	if(reset)
 	begin
-		data_out   <= 9'd0;
-	end
-	else
-	begin
-		data_out   <= MEM[rd_ptr];
+		data_out = MEM[rd_ptr];	
 	end
 end
 
