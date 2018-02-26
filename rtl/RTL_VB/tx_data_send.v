@@ -32,6 +32,7 @@
 //-FHDR------------------------------------------------------------------------
 module tx_data_send(
 			input pclk_tx,
+			input send_null_tx,
 			input enable_tx,
 
 			input get_data,
@@ -74,7 +75,7 @@ begin
 		tx_data_in_0    <= 9'd0;
 		tx_tcode_in     <= 8'd0;
 	end
-	else
+	else if(send_null_tx)
 	begin
 
 		if(tickin_tx)
@@ -108,7 +109,6 @@ begin
 			process_data   <= process_data;	
 			process_data_0 <= process_data_0;
 		end
-
 
 		if(get_data)
 		begin

@@ -118,6 +118,7 @@ tx_fsm_m  tx_fsm(
 
 tx_data_send tx_data_snd(
 			.pclk_tx(pclk_tx),
+			.send_null_tx(send_null_tx),
 			.enable_tx(enable_tx),
 
 			.get_data(get_data),

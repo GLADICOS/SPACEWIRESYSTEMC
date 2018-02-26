@@ -32,6 +32,7 @@
 //-FHDR------------------------------------------------------------------------
 module tx_fct_counter(
 			input pclk_tx,
+			input send_null_tx,
 			input enable_tx,
 
 			input gotfct_tx,
@@ -132,7 +133,7 @@ begin
 		
 		internal_reset <= 1'b0;
 	end
-	else
+	else if(send_null_tx)
 	begin
 		state_fct_receive <= next_state_fct_receive;
 
@@ -236,7 +237,7 @@ begin
 		state_fct_p  <= 3'd0;
 		clear_reg <= 1'b0;
 	end
-	else
+	else if(send_null_tx)
 	begin
 
 		state_fct_p <= next_state_fct_p;

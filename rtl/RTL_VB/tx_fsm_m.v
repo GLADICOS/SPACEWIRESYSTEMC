@@ -764,6 +764,7 @@ end
 
 tx_fct_counter  tx_fct_cnt( 
 			.pclk_tx(pclk_tx),
+			.send_null_tx(send_null_tx),
 			.enable_tx(enable_tx),
 
 			.gotfct_tx(gotfct_tx),
@@ -774,6 +775,7 @@ tx_fct_counter  tx_fct_cnt(
 
 tx_fct_send	tx_fct_snd(
 			.pclk_tx(pclk_tx),
+			.send_null_tx(send_null_tx),
 			.enable_tx(enable_tx),
 			.send_fct_now(send_fct_now),
 			.fct_sent(fct_sent),

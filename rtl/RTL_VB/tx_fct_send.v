@@ -32,6 +32,7 @@
 //-FHDR------------------------------------------------------------------------
 module tx_fct_send(
 			input pclk_tx,
+			input send_null_tx,
 			input enable_tx,
 
 			input send_fct_now,
@@ -86,7 +87,7 @@ begin
 		fct_flag <= 3'd0;
 		state_fct_send<= 3'd0;
 	end
-	else
+	else if(send_null_tx)
 	begin
 		state_fct_send <= next_state_fct_send;
 
@@ -181,7 +182,7 @@ begin
 		state_fct_send_p<= 3'd1;
 		clear_reg_fct_flag <=1'b0;
 	end
-	else
+	else if(send_null_tx)
 	begin
 		state_fct_send_p <= next_state_fct_send_p;
 
