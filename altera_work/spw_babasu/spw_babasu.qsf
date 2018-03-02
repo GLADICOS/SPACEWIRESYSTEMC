@@ -80,6 +80,7 @@ set_location_assignment PIN_AE20 -to sin_a
 set_location_assignment PIN_AD20 -to "sin_a(n)"
 set_location_assignment PIN_AF20 -to sout_a
 set_location_assignment PIN_AG20 -to "sout_a(n)"
+set_global_assignment -name SDC_FILE sdc/spw_babasu.out.sdc
 set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/RTL_VA/TX_FIFO.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/RTL_VA/TX_CLOCK.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/RTL_VA/TX.sv

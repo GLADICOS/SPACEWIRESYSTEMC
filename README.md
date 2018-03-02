@@ -1,9 +1,9 @@
 # SPACEWIRESYSTEMC
 This project provide the necessary to run a envireonment test to spacewire verilog using SystemC and running it on icarus verilog
 
-###Donate and help us "Bitcoin is the future"
+###Donate and help us donating in Ethereum
 
- - 1CSZ9nHBWxLaf1nU9E9E15GAjKcYXD1wnV
+ - 0x6BA1760241Aa8046DAB946aB5EBD29bd132B0b7A
 
 ###ABOUT this Spacewire
 

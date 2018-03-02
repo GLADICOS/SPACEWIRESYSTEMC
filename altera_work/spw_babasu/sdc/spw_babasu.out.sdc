@@ -19,7 +19,7 @@
 ## PROGRAM "Quartus Prime"
 ## VERSION "Version 17.1.1 Internal Build 593 12/11/2017 SJ Lite Edition"
 
-## DATE    "Sat Feb 17 18:31:43 2018"
+## DATE    "Mon Feb 26 12:55:17 2018"
 
 ##
 ## DEVICE  "5CSEMA4U23C6"
@@ -39,7 +39,7 @@ set_time_format -unit ns -decimal_places 3
 #**************************************************************
 
 create_clock -name {FPGA_CLK1_50} -period 20.000 -waveform { 0.000 10.000 } [get_ports {FPGA_CLK1_50}]
-create_clock -name {din_a} -period 9.000 -waveform { 0.000 4.500 } [get_ports { din_a }]
+create_clock -name {din_a} -period 4.800 -waveform { 0.000 2.400 } [get_ports { din_a }]
 
 
 #**************************************************************
