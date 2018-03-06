@@ -1,10 +1,10 @@
-Analysis & Synthesis Status : Successful - Mon Feb 26 13:29:21 2018
+Analysis & Synthesis Status : Successful - Tue Mar  6 18:38:45 2018
 Quartus Prime Version : 17.1.1 Internal Build 593 12/11/2017 SJ Lite Edition
 Revision Name : spw_babasu
 Top-level Entity Name : SPW_BABASU_TOP
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 2731
+Total registers : 2705
 Total pins : 15
 Total virtual pins : 0
 Total block memory bits : 4,608

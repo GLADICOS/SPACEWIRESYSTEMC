@@ -8,6 +8,7 @@ module spw_babasu (
 	flags_external_connection_export,
 	link_disable_external_connection_export,
 	link_start_external_connection_export,
+	pll_0_locked_export,
 	pll_0_outclk0_clk,
 	rd_data_external_connection_export,
 	reset_reset_n,
@@ -29,6 +30,7 @@ module spw_babasu (
 	input	[10:0]	flags_external_connection_export;
 	output		link_disable_external_connection_export;
 	output		link_start_external_connection_export;
+	output		pll_0_locked_export;
 	output		pll_0_outclk0_clk;
 	output		rd_data_external_connection_export;
 	input		reset_reset_n;

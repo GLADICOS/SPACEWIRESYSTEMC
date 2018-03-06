@@ -1,28 +1,28 @@
 # # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
 # 
-preplace inst spw_babasu.DATA_O -pg 1 -lvl 3 -y 330
+preplace inst spw_babasu.DATA_O -pg 1 -lvl 3 -y 230
 preplace inst spw_babasu.hps_0.gmac1 -pg 1
-preplace inst spw_babasu.WR_DATA -pg 1 -lvl 3 -y 1690
-preplace inst spw_babasu.FLAGS -pg 1 -lvl 3 -y 530
+preplace inst spw_babasu.WR_DATA -pg 1 -lvl 3 -y 1570
+preplace inst spw_babasu.FLAGS -pg 1 -lvl 3 -y 330
 preplace inst spw_babasu.hps_0.rstmgr -pg 1
-preplace inst spw_babasu.clk_0 -pg 1 -lvl 1 -y 630
+preplace inst spw_babasu.clk_0 -pg 1 -lvl 1 -y 450
 preplace inst spw_babasu.hps_0.sdrctl -pg 1
 preplace inst spw_babasu.hps_0.timer0 -pg 1
-preplace inst spw_babasu.hps_0 -pg 1 -lvl 2 -y 740
+preplace inst spw_babasu.hps_0 -pg 1 -lvl 2 -y 560
 preplace inst spw_babasu.hps_0.timer1 -pg 1
 preplace inst spw_babasu.hps_0.timer2 -pg 1
-preplace inst spw_babasu.TIME_IN -pg 1 -lvl 3 -y 1290
+preplace inst spw_babasu.TIME_IN -pg 1 -lvl 3 -y 1170
 preplace inst spw_babasu.hps_0.timer3 -pg 1
-preplace inst spw_babasu.TX_FULL -pg 1 -lvl 3 -y 1590
+preplace inst spw_babasu.TX_FULL -pg 1 -lvl 3 -y 1470
 preplace inst spw_babasu.hps_0.timer -pg 1
-preplace inst spw_babasu.RX_EMPTY -pg 1 -lvl 3 -y 890
+preplace inst spw_babasu.RX_EMPTY -pg 1 -lvl 3 -y 770
 preplace inst spw_babasu.hps_0.fpga_interfaces -pg 1
 preplace inst spw_babasu.hps_0.l3regs -pg 1
 preplace inst spw_babasu.hps_0.i2c0 -pg 1
 preplace inst spw_babasu.hps_0.spim0 -pg 1
-preplace inst spw_babasu.SPILL_ENABLE -pg 1 -lvl 3 -y 990
+preplace inst spw_babasu.SPILL_ENABLE -pg 1 -lvl 3 -y 870
 preplace inst spw_babasu.hps_0.i2c1 -pg 1
-preplace inst spw_babasu.RD_DATA -pg 1 -lvl 3 -y 790
+preplace inst spw_babasu.RD_DATA -pg 1 -lvl 3 -y 670
 preplace inst spw_babasu.hps_0.spim1 -pg 1
 preplace inst spw_babasu.hps_0.i2c2 -pg 1
 preplace inst spw_babasu.hps_0.f2s_periph_ref_clk -pg 1
@@ -31,23 +31,23 @@ preplace inst spw_babasu.hps_0.qspi -pg 1
 preplace inst spw_babasu.hps_0.hps_io.border -pg 1
 preplace inst spw_babasu.hps_0.nand0 -pg 1
 preplace inst spw_babasu.hps_0.fpgamgr -pg 1
-preplace inst spw_babasu.AUTOSTART -pg 1 -lvl 3 -y 30
+preplace inst spw_babasu.AUTOSTART -pg 1 -lvl 3 -y 1670
 preplace inst spw_babasu.hps_0.bridges -pg 1
 preplace inst spw_babasu.hps_0.arm_a9_0 -pg 1
 preplace inst spw_babasu.hps_0.sysmgr -pg 1
 preplace inst spw_babasu.hps_0.arm_a9_1 -pg 1
 preplace inst spw_babasu.hps_0.usb0 -pg 1
-preplace inst spw_babasu.LINK_DISABLE -pg 1 -lvl 3 -y 430
+preplace inst spw_babasu.LINK_DISABLE -pg 1 -lvl 3 -y 450
 preplace inst spw_babasu -pg 1 -lvl 1 -y 40 -regy -20
 preplace inst spw_babasu.hps_0.f2s_sdram_ref_clk -pg 1
 preplace inst spw_babasu.hps_0.usb1 -pg 1
-preplace inst spw_babasu.TICK_IN -pg 1 -lvl 3 -y 1090
+preplace inst spw_babasu.TICK_IN -pg 1 -lvl 3 -y 970
 preplace inst spw_babasu.hps_0.L2 -pg 1
 preplace inst spw_babasu.hps_0.axi_ocram -pg 1
 preplace inst spw_babasu.hps_0.clk_0 -pg 1
-preplace inst spw_babasu.LINK_START -pg 1 -lvl 3 -y 670
-preplace inst spw_babasu.TIME_OUT -pg 1 -lvl 3 -y 1390
-preplace inst spw_babasu.pll_0 -pg 1 -lvl 2 -y 610
+preplace inst spw_babasu.LINK_START -pg 1 -lvl 3 -y 550
+preplace inst spw_babasu.TIME_OUT -pg 1 -lvl 3 -y 1270
+preplace inst spw_babasu.pll_0 -pg 1 -lvl 2 -y 370
 preplace inst spw_babasu.hps_0.sdmmc -pg 1
 preplace inst spw_babasu.hps_0.arm_gic_0 -pg 1
 preplace inst spw_babasu.hps_0.axi_sdram -pg 1
@@ -56,13 +56,13 @@ preplace inst spw_babasu.hps_0.wd_timer1 -pg 1
 preplace inst spw_babasu.hps_0.clkmgr -pg 1
 preplace inst spw_babasu.hps_0.dcan0 -pg 1
 preplace inst spw_babasu.hps_0.dcan1 -pg 1
-preplace inst spw_babasu.TICK_OUT -pg 1 -lvl 3 -y 1190
-preplace inst spw_babasu.TX_CLK_DIV -pg 1 -lvl 3 -y 1490
-preplace inst spw_babasu.DATA_I -pg 1 -lvl 3 -y 230
+preplace inst spw_babasu.TICK_OUT -pg 1 -lvl 3 -y 1070
+preplace inst spw_babasu.TX_CLK_DIV -pg 1 -lvl 3 -y 1370
+preplace inst spw_babasu.DATA_I -pg 1 -lvl 3 -y 130
 preplace inst spw_babasu.hps_0.gpio0 -pg 1
 preplace inst spw_babasu.hps_0.eosc1 -pg 1
 preplace inst spw_babasu.hps_0.gpio1 -pg 1
-preplace inst spw_babasu.CURRENTSTATE -pg 1 -lvl 3 -y 130
+preplace inst spw_babasu.CURRENTSTATE -pg 1 -lvl 3 -y 30
 preplace inst spw_babasu.hps_0.eosc2 -pg 1
 preplace inst spw_babasu.hps_0.gpio2 -pg 1
 preplace inst spw_babasu.hps_0.uart0 -pg 1
@@ -71,28 +71,29 @@ preplace inst spw_babasu.hps_0.hps_io -pg 1
 preplace inst spw_babasu.hps_0.uart1 -pg 1
 preplace inst spw_babasu.hps_0.dma -pg 1
 preplace inst spw_babasu.hps_0.gmac0 -pg 1
-preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)spw_babasu.tick_in_external_connection,(SLAVE)TICK_IN.external_connection) 1 0 3 NJ 1120 NJ 1120 NJ
-preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)spw_babasu.flags_external_connection,(SLAVE)FLAGS.external_connection) 1 0 3 NJ 560 NJ 560 NJ
-preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)spw_babasu.autostart_external_connection,(SLAVE)AUTOSTART.external_connection) 1 0 3 NJ 60 NJ 60 NJ
-preplace netloc FAN_OUT<net_container>spw_babasu</net_container>(SLAVE)TICK_OUT.s1,(SLAVE)SPILL_ENABLE.s1,(SLAVE)TIME_IN.s1,(SLAVE)FLAGS.s1,(SLAVE)DATA_O.s1,(SLAVE)TICK_IN.s1,(SLAVE)TX_CLK_DIV.s1,(SLAVE)WR_DATA.s1,(SLAVE)AUTOSTART.s1,(SLAVE)RD_DATA.s1,(SLAVE)LINK_DISABLE.s1,(SLAVE)CURRENTSTATE.s1,(SLAVE)TIME_OUT.s1,(MASTER)hps_0.h2f_axi_master,(SLAVE)RX_EMPTY.s1,(SLAVE)DATA_I.s1,(SLAVE)LINK_START.s1,(SLAVE)TX_FULL.s1) 1 2 1 780
-preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)spw_babasu.time_in_external_connection,(SLAVE)TIME_IN.external_connection) 1 0 3 NJ 1320 NJ 1320 NJ
-preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)spw_babasu.reset,(SLAVE)clk_0.clk_in_reset) 1 0 1 NJ
-preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)RD_DATA.external_connection,(SLAVE)spw_babasu.rd_data_external_connection) 1 0 3 NJ 820 NJ 820 NJ
-preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)clk_0.clk_in,(SLAVE)spw_babasu.clk) 1 0 1 NJ
-preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)RX_EMPTY.external_connection,(SLAVE)spw_babasu.rx_empty_external_connection) 1 0 3 NJ 920 NJ 920 NJ
-preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)DATA_I.external_connection,(SLAVE)spw_babasu.data_i_external_connection) 1 0 3 NJ 260 NJ 260 NJ
-preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)TX_CLK_DIV.external_connection,(SLAVE)spw_babasu.tx_clk_div_external_connection) 1 0 3 NJ 1520 NJ 1520 NJ
-preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)spw_babasu.data_o_external_connection,(SLAVE)DATA_O.external_connection) 1 0 3 NJ 360 NJ 360 NJ
-preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)spw_babasu.currentstate_external_connection,(SLAVE)CURRENTSTATE.external_connection) 1 0 3 NJ 160 NJ 160 NJ
-preplace netloc FAN_OUT<net_container>spw_babasu</net_container>(SLAVE)WR_DATA.clk,(SLAVE)hps_0.h2f_axi_clock,(SLAVE)TICK_IN.clk,(MASTER)clk_0.clk,(SLAVE)AUTOSTART.clk,(SLAVE)TIME_OUT.clk,(SLAVE)TICK_OUT.clk,(SLAVE)CURRENTSTATE.clk,(SLAVE)SPILL_ENABLE.clk,(SLAVE)pll_0.refclk,(SLAVE)TX_FULL.clk,(SLAVE)RX_EMPTY.clk,(SLAVE)TIME_IN.clk,(SLAVE)LINK_DISABLE.clk,(SLAVE)DATA_O.clk,(SLAVE)DATA_I.clk,(SLAVE)FLAGS.clk,(SLAVE)RD_DATA.clk,(SLAVE)TX_CLK_DIV.clk,(SLAVE)LINK_START.clk) 1 1 2 410 600 740
-preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)SPILL_ENABLE.external_connection,(SLAVE)spw_babasu.spill_enable_external_connection) 1 0 3 NJ 1020 NJ 1020 NJ
-preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)spw_babasu.link_start_external_connection,(SLAVE)LINK_START.external_connection) 1 0 3 NJ 700 NJ 700 NJ
-preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)WR_DATA.external_connection,(SLAVE)spw_babasu.wr_data_external_connection) 1 0 3 NJ 1720 NJ 1720 NJ
-preplace netloc FAN_OUT<net_container>spw_babasu</net_container>(SLAVE)CURRENTSTATE.reset,(SLAVE)TICK_IN.reset,(SLAVE)TIME_IN.reset,(MASTER)clk_0.clk_reset,(SLAVE)TIME_OUT.reset,(SLAVE)TX_CLK_DIV.reset,(SLAVE)DATA_O.reset,(SLAVE)TX_FULL.reset,(SLAVE)AUTOSTART.reset,(SLAVE)SPILL_ENABLE.reset,(SLAVE)TICK_OUT.reset,(SLAVE)pll_0.reset,(SLAVE)FLAGS.reset,(SLAVE)LINK_DISABLE.reset,(SLAVE)RX_EMPTY.reset,(SLAVE)LINK_START.reset,(SLAVE)DATA_I.reset,(SLAVE)RD_DATA.reset,(SLAVE)WR_DATA.reset) 1 1 2 430 580 760
-preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)TICK_OUT.external_connection,(SLAVE)spw_babasu.tick_out_external_connection) 1 0 3 NJ 1220 NJ 1220 NJ
-preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)spw_babasu.link_disable_external_connection,(SLAVE)LINK_DISABLE.external_connection) 1 0 3 NJ 460 NJ 460 NJ
-preplace netloc EXPORT<net_container>spw_babasu</net_container>(MASTER)pll_0.outclk0,(MASTER)spw_babasu.pll_0_outclk0) 1 2 2 NJ 640 NJ
-preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)spw_babasu.tx_full_external_connection,(SLAVE)TX_FULL.external_connection) 1 0 3 NJ 1620 NJ 1620 NJ
-preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)TIME_OUT.external_connection,(SLAVE)spw_babasu.time_out_external_connection) 1 0 3 NJ 1420 NJ 1420 NJ
+preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)spw_babasu.reset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)spw_babasu.flags_external_connection,(SLAVE)FLAGS.external_connection) 1 0 3 NJ 360 NJ 360 NJ
+preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)spw_babasu.autostart_external_connection,(SLAVE)AUTOSTART.external_connection) 1 0 3 NJ 1700 NJ 1700 NJ
+preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)RD_DATA.external_connection,(SLAVE)spw_babasu.rd_data_external_connection) 1 0 3 NJ 700 NJ 700 NJ
+preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)TICK_IN.external_connection,(SLAVE)spw_babasu.tick_in_external_connection) 1 0 3 NJ 1000 NJ 1000 NJ
+preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)spw_babasu.data_i_external_connection,(SLAVE)DATA_I.external_connection) 1 0 3 NJ 640 NJ 640 NJ
+preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)spw_babasu.rx_empty_external_connection,(SLAVE)RX_EMPTY.external_connection) 1 0 3 NJ 800 NJ 800 NJ
+preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)spw_babasu.pll_0_locked,(SLAVE)pll_0.locked) 1 0 2 NJ 380 NJ
+preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)DATA_O.external_connection,(SLAVE)spw_babasu.data_o_external_connection) 1 0 3 NJ 260 NJ 260 NJ
+preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)TX_CLK_DIV.external_connection,(SLAVE)spw_babasu.tx_clk_div_external_connection) 1 0 3 NJ 1400 NJ 1400 NJ
+preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)spw_babasu.currentstate_external_connection,(SLAVE)CURRENTSTATE.external_connection) 1 0 3 NJ 60 NJ 60 NJ
+preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)SPILL_ENABLE.external_connection,(SLAVE)spw_babasu.spill_enable_external_connection) 1 0 3 NJ 900 NJ 900 NJ
+preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)spw_babasu.link_start_external_connection,(SLAVE)LINK_START.external_connection) 1 0 3 NJ 660 NJ 660 NJ
+preplace netloc FAN_OUT<net_container>spw_babasu</net_container>(SLAVE)CURRENTSTATE.reset,(SLAVE)TIME_OUT.reset,(SLAVE)LINK_START.reset,(SLAVE)RX_EMPTY.reset,(SLAVE)TICK_IN.reset,(SLAVE)DATA_I.reset,(SLAVE)TX_CLK_DIV.reset,(MASTER)clk_0.clk_reset,(SLAVE)FLAGS.reset,(SLAVE)AUTOSTART.reset,(SLAVE)DATA_O.reset,(SLAVE)SPILL_ENABLE.reset,(SLAVE)RD_DATA.reset,(SLAVE)TX_FULL.reset,(SLAVE)WR_DATA.reset,(SLAVE)TICK_OUT.reset,(SLAVE)LINK_DISABLE.reset,(SLAVE)TIME_IN.reset,(SLAVE)pll_0.reset) 1 1 2 430 500 780
+preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)spw_babasu.wr_data_external_connection,(SLAVE)WR_DATA.external_connection) 1 0 3 NJ 1600 NJ 1600 NJ
+preplace netloc FAN_OUT<net_container>spw_babasu</net_container>(SLAVE)LINK_START.s1,(SLAVE)TICK_OUT.s1,(MASTER)hps_0.h2f_axi_master,(SLAVE)CURRENTSTATE.s1,(SLAVE)RD_DATA.s1,(SLAVE)TICK_IN.s1,(SLAVE)DATA_I.s1,(SLAVE)RX_EMPTY.s1,(SLAVE)AUTOSTART.s1,(SLAVE)TIME_IN.s1,(SLAVE)LINK_DISABLE.s1,(SLAVE)DATA_O.s1,(SLAVE)TIME_OUT.s1,(SLAVE)TX_CLK_DIV.s1,(SLAVE)FLAGS.s1,(SLAVE)TX_FULL.s1,(SLAVE)SPILL_ENABLE.s1,(SLAVE)WR_DATA.s1) 1 2 1 800
+preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)TICK_OUT.external_connection,(SLAVE)spw_babasu.tick_out_external_connection) 1 0 3 NJ 1100 NJ 1100 NJ
+preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)spw_babasu.link_disable_external_connection,(SLAVE)LINK_DISABLE.external_connection) 1 0 3 NJ 440 NJ 480 NJ
+preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)TIME_IN.external_connection,(SLAVE)spw_babasu.time_in_external_connection) 1 0 3 NJ 1200 NJ 1200 NJ
+preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)spw_babasu.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
+preplace netloc EXPORT<net_container>spw_babasu</net_container>(MASTER)spw_babasu.pll_0_outclk0,(MASTER)pll_0.outclk0) 1 2 2 NJ 440 NJ
+preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)spw_babasu.tx_full_external_connection,(SLAVE)TX_FULL.external_connection) 1 0 3 NJ 1500 NJ 1500 NJ
+preplace netloc FAN_OUT<net_container>spw_babasu</net_container>(SLAVE)TICK_IN.clk,(SLAVE)AUTOSTART.clk,(SLAVE)DATA_I.clk,(SLAVE)TX_FULL.clk,(SLAVE)TIME_OUT.clk,(SLAVE)DATA_O.clk,(MASTER)clk_0.clk,(SLAVE)TIME_IN.clk,(SLAVE)LINK_START.clk,(SLAVE)TICK_OUT.clk,(SLAVE)LINK_DISABLE.clk,(SLAVE)SPILL_ENABLE.clk,(SLAVE)RX_EMPTY.clk,(SLAVE)WR_DATA.clk,(SLAVE)CURRENTSTATE.clk,(SLAVE)FLAGS.clk,(SLAVE)pll_0.refclk,(SLAVE)hps_0.h2f_axi_clock,(SLAVE)RD_DATA.clk,(SLAVE)TX_CLK_DIV.clk) 1 1 2 410 520 760
+preplace netloc EXPORT<net_container>spw_babasu</net_container>(SLAVE)spw_babasu.time_out_external_connection,(SLAVE)TIME_OUT.external_connection) 1 0 3 NJ 1300 NJ 1300 NJ
 levelinfo -pg 1 0 200 1110
 levelinfo -hier spw_babasu 210 240 550 850 1000
