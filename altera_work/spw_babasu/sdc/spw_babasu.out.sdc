@@ -40,13 +40,14 @@ set_time_format -unit ns -decimal_places 3
 
 create_clock -name {FPGA_CLK1_50} -period 20.000 -waveform { 0.000 10.000 } [get_ports {FPGA_CLK1_50}]
 create_clock -name {din_a} -period 10.000 -waveform { 0.000 5.000 } [get_ports { din_a }]
+create_clock -name {CLK_SPW} -period 5.000 -waveform { 0.000 2.500 } [get_pins {u0|pll_0|altera_pll_i|outclk_wire[0]~CLKENA0|outclk}]
 
 
 #**************************************************************
 # Create Generated Clock
 #**************************************************************
 
-create_generated_clock -name {u0|pll_0|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]} -source [get_pins {u0|pll_0|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|refclkin}] -duty_cycle 50/1 -multiply_by 16 -divide_by 2 -master_clock {FPGA_CLK1_50} [get_pins {u0|pll_0|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] 
+#create_generated_clock -name {u0|pll_0|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]} -source [get_pins {u0|pll_0|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|refclkin}] -duty_cycle 50/1 -multiply_by 16 -divide_by 2 -master_clock {FPGA_CLK1_50} [get_pins {u0|pll_0|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] 
 
 
 #**************************************************************
