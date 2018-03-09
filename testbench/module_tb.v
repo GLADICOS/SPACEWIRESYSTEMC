@@ -41,6 +41,20 @@ module module_tb;
 		wire TX_CLOCK_OUT;
 		wire TX_CLOCK_OUT_SC;
 
+		integer i;
+		integer time_clk_ns;
+
+		assign SPILL_ENABLE = 1'b1;
+
+		initial
+		 begin
+			$dumpfile("module_tb.vcd");
+			$dumpvars(0,module_tb);
+			$global_init;
+			i=0;
+			time_clk_ns = 500;
+		 end
+
 		assign RX_CLOCK_RECOVERY_SC = Din ^ Sin;
 		assign TX_CLOCK_OUT_SC = TX_CLOCK_OUT;
 		assign SPW_SC_FSM_OUT = SPW_SC_FSM;
@@ -52,7 +66,7 @@ module module_tb;
 		initial CLK = 1'b0;
 		always #(10) CLK = ~CLK;
 
-		SpwTCR DUT_TCR (
+		SPW_TOP DUT_TCR (
 				.CLOCK(CLOCK),
 				.RESETn(RESETn),
 				.LINK_START(LINK_START),
@@ -78,8 +92,7 @@ module module_tb;
 				.Sout(Sout)
 			);
 
-
-			always@(posedge CLK , negedge CLK)
+			always@(posedge CLK)
 				$global_reset;
 
 			always@(posedge CLK)
@@ -87,6 +100,9 @@ module module_tb;
 
 			always@(posedge CLK)
 				$receive_rx_spw;
+			//
+			always@(posedge CLK)
+				$run_sim;
 
 			//FLAG USED TO FINISH SIMULATION PROGRAM 
 			always@(posedge CLK)
@@ -99,11 +115,12 @@ module module_tb;
 	`ifdef VERILOG_B
 		assign TOP_SIN = TOP_SOUT;
 		assign TOP_DIN = TOP_DOUT;
-	 `endif		
+	 	
 
 		integer time_clk_ns;
 
 		reg PCLK;
+		reg PCLK_FIFO;
 		reg PPLLCLK;
 
 		wire RESETN;
@@ -144,6 +161,12 @@ module module_tb;
 		wire [3:0] SPW_SC_FSM;
 		wire [3:0] SPW_SC_FSM_OUT;
 
+		wire [31:0] counter;
+		wire [3:0] global_counter_actual;
+		wire [13:0] data_took_is;
+		wire din_out;
+		wire sin_out;
+
 		wire F_FULL,F_EMPTY,F_FULL_RX,F_EMPTY_RX; 
 
 		assign TX_CLOCK_RECOVERY_VLOG = TOP_DOUT ^ TOP_SOUT;
@@ -152,7 +175,7 @@ module module_tb;
 		integer i;
 
 		initial
-		 begin
+		begin
 			$dumpfile("module_tb.vcd");
 			$dumpvars(0,module_tb);
 			$global_init;
@@ -163,6 +186,9 @@ module module_tb;
 		initial PCLK = 1'b0;
 		always #(5) PCLK = ~PCLK;
 
+		initial PCLK_FIFO = 1'b0;
+		always #(10) PCLK_FIFO = ~PCLK_FIFO;
+
 		initial PPLLCLK = 1'b0;
 		always #(time_clk_ns/2) PPLLCLK = ~PPLLCLK;
 
@@ -170,12 +196,11 @@ module module_tb;
 		always #(1) CLK_SIM = ~CLK_SIM;
 
 		initial CLK_SYS_RX = 1'b0;
-		always #(2.5) CLK_SYS_RX = ~CLK_SYS_RX;
+		always #(4) CLK_SYS_RX = ~CLK_SYS_RX;
 		
 		spw_ulight_con_top_x DUT_ULIGHT(
 					.ppll_100_MHZ(PCLK),
 					.ppllclk(PPLLCLK),
-					//.clk_sys_rx(CLK_SYS_RX),
 					.reset_spw_n_b(RESETN),
 
 					.top_sin(TOP_SIN),
@@ -211,19 +236,19 @@ module module_tb;
 					.counter_fifo_rx(COUNTER_FIFO_RX)
 				      );
 
-	//
-	always@(posedge PCLK)
-		$write_tx_fsm_spw_ultra_light;
+		
 
 	//
-	always@(posedge PCLK)
+	always@(posedge PCLK_FIFO)
+		$write_tx_fsm_spw_ultra_light;
+	//
+	always@(posedge PCLK_FIFO)
 		$write_tx_data_spw_ultra_light;
 
-	always@(posedge PCLK)
+	always@(posedge PCLK_FIFO)
 		$write_tx_time_code_spw_ultra_light;
-
 	//
-	always@(posedge PCLK)
+	always@(posedge PCLK_FIFO)
 		$receive_rx_data_spw_ultra_light;
 		
 	always@(posedge TICK_OUT)
@@ -243,6 +268,8 @@ module module_tb;
 		wait(i == 1);
 		$finish();
 	end
+
+	`endif
 
 
 endmodule
