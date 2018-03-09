@@ -26,7 +26,7 @@ static int write_tx_spw_calltf(char*user_data)
 					value_to_tx.value.integer = 0;
 					vpi_put_value(WR_DATA, &value_to_tx, NULL, vpiNoDelay);
 
-					if(position <= SC_TOP->size_data_test())
+					if(position <= SC_TOP->size_data_test_vlog())
 					{
 						vpi_get_value(TX_FULL, &value_to_tx);
 						if(value_to_tx.value.integer == 1)
@@ -39,7 +39,7 @@ static int write_tx_spw_calltf(char*user_data)
 							position = position + 1;
 						}
 					}
-					if(position > SC_TOP->size_data_test()) 
+					if(position > SC_TOP->size_data_test_vlog()) 
 					{
 						state_test = 60;
 					}

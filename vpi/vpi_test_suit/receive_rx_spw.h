@@ -52,7 +52,7 @@ static int receive_rx_spw_calltf(char*user_data)
 				value_to_rx.value.integer = 0;
 				vpi_put_value(RD_DATA, &value_to_rx, NULL, vpiNoDelay);
 
-				if(data_iteration_vlog > SC_TOP->size_data_test())
+				if(data_iteration_vlog > SC_TOP->size_data_test_sc())
 					data_iteration_vlog = 0;
 			break;
 		}
