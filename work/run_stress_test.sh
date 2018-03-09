@@ -1,9 +1,9 @@
 
 # export SC_SIGNAL_WRITE_CHECK=DISABLE 
 
-SYSTEMC_HOME=/home/felipe/Downloads/PROGRAMAS/systemc-2.3.0
+SYSTEMC_HOME=/opt/systemc
 
-g++ -I. -I$SYSTEMC_HOME/include -L. -L$SYSTEMC_HOME/lib-linux64 -Wall -Wreorder -Wextra -std=c++11 -fPIC -shared -fpermissive -lsystemc `pkg-config gtkmm-3.0 --cflags --libs` -lboost_thread -lboost_system  ../systemC/main.cc -o final_spw.so 
+g++ -I. -I$SYSTEMC_HOME/include -L. -L$SYSTEMC_HOME/lib64 -Wall -Wreorder -Wextra -std=c++11 -fPIC -shared -fpermissive -lsystemc `pkg-config gtkmm-3.0 --cflags --libs` -lboost_thread -lboost_system  ../systemC/main.cc -o final_spw.so 
 
 #g++ -I. -I$SYSTEMC_HOME/include -L. -L$SYSTEMC_HOME/lib-linux64 -std=c++11 -fPIC -shared -fpermissive -lsystemc ../systemC/main.cc -o final_spw.so 
 
