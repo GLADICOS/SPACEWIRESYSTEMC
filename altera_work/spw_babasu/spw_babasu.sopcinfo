@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="spw_babasu" kind="spw_babasu" version="1.0" fabric="QSYS">
  <!-- Format version 17.1 593 (Future versions may contain additional information.) -->
- <!-- 2018.03.06.12:24:23 -->
+ <!-- 2018.03.09.16:30:18 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1520349860</value>
+  <value>1520623813</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -28833,7 +28833,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>LINK_START</moduleName>
     <slaveName>s1</slaveName>
     <name>LINK_START.s1</name>
-    <baseAddress>0</baseAddress>
+    <baseAddress>458752</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -28841,7 +28841,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>LINK_DISABLE</moduleName>
     <slaveName>s1</slaveName>
     <name>LINK_DISABLE.s1</name>
-    <baseAddress>16</baseAddress>
+    <baseAddress>589824</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -28849,7 +28849,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>AUTOSTART</moduleName>
     <slaveName>s1</slaveName>
     <name>AUTOSTART.s1</name>
-    <baseAddress>32</baseAddress>
+    <baseAddress>524288</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -54468,7 +54468,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>LINK_START</moduleName>
     <slaveName>s1</slaveName>
     <name>LINK_START.s1</name>
-    <baseAddress>0</baseAddress>
+    <baseAddress>458752</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -54476,7 +54476,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>LINK_DISABLE</moduleName>
     <slaveName>s1</slaveName>
     <name>LINK_DISABLE.s1</name>
-    <baseAddress>16</baseAddress>
+    <baseAddress>589824</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -54484,7 +54484,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>AUTOSTART</moduleName>
     <slaveName>s1</slaveName>
     <name>AUTOSTART.s1</name>
-    <baseAddress>32</baseAddress>
+    <baseAddress>524288</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -55723,7 +55723,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>LINK_START</moduleName>
     <slaveName>s1</slaveName>
     <name>LINK_START.s1</name>
-    <baseAddress>3221225472</baseAddress>
+    <baseAddress>3221684224</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -55731,7 +55731,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>LINK_DISABLE</moduleName>
     <slaveName>s1</slaveName>
     <name>LINK_DISABLE.s1</name>
-    <baseAddress>3221225488</baseAddress>
+    <baseAddress>3221815296</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -55739,7 +55739,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>AUTOSTART</moduleName>
     <slaveName>s1</slaveName>
     <name>AUTOSTART.s1</name>
-    <baseAddress>3221225504</baseAddress>
+    <baseAddress>3221749760</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -56674,7 +56674,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>LINK_START</moduleName>
     <slaveName>s1</slaveName>
     <name>LINK_START.s1</name>
-    <baseAddress>3221225472</baseAddress>
+    <baseAddress>3221684224</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -56682,7 +56682,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>LINK_DISABLE</moduleName>
     <slaveName>s1</slaveName>
     <name>LINK_DISABLE.s1</name>
-    <baseAddress>3221225488</baseAddress>
+    <baseAddress>3221815296</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -56690,7 +56690,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>AUTOSTART</moduleName>
     <slaveName>s1</slaveName>
     <name>AUTOSTART.s1</name>
-    <baseAddress>3221225504</baseAddress>
+    <baseAddress>3221749760</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -96406,7 +96406,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x0000</value>
+   <value>0x00070000</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -96457,7 +96457,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x0010</value>
+   <value>0x00090000</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -96508,7 +96508,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x0020</value>
+   <value>0x00080000</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>

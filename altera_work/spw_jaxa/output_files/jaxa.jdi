@@ -1,0 +1,16 @@
+<sld_project_info>
+  <project>
+    <hash md5_digest_80b="24918eb31ba2816f3211"/>
+  </project>
+  <file_info>
+    <file device="5CSEMA4U23C6" path="jaxa.sof" usercode="0xFFFFFFFF"/>
+  </file_info>
+  <sld_infos>
+    <sld_info hpath="jaxa:u0" name="u0">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME jaxa HAS_SOPCINFO 1 GENERATION_ID 1522097813"/>
+      </assignment_values>
+      <parameters/>
+    </sld_info>
+  </sld_infos>
+</sld_project_info>

@@ -1,5 +1,5 @@
 Flow report for spw_babasu
-Tue Mar  6 18:42:35 2018
+Fri Mar  9 17:07:30 2018
 Quartus Prime Version 17.1.1 Internal Build 593 12/11/2017 SJ Lite Edition
 
 
@@ -40,7 +40,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------------+
 ; Flow Summary                                                                           ;
 +---------------------------------+------------------------------------------------------+
-; Flow Status                     ; Successful - Tue Mar  6 18:42:35 2018                ;
+; Flow Status                     ; Successful - Fri Mar  9 17:07:30 2018                ;
 ; Quartus Prime Version           ; 17.1.1 Internal Build 593 12/11/2017 SJ Lite Edition ;
 ; Revision Name                   ; spw_babasu                                           ;
 ; Top-level Entity Name           ; SPW_BABASU_TOP                                       ;
@@ -48,7 +48,7 @@ refer to the applicable agreement for further details.
 ; Device                          ; 5CSEMA4U23C6                                         ;
 ; Timing Models                   ; Final                                                ;
 ; Logic utilization (in ALMs)     ; 2,203 / 15,880 ( 14 % )                              ;
-; Total registers                 ; 2925                                                 ;
+; Total registers                 ; 2899                                                 ;
 ; Total pins                      ; 19 / 314 ( 6 % )                                     ;
 ; Total virtual pins              ; 0                                                    ;
 ; Total block memory bits         ; 4,608 / 2,764,800 ( < 1 % )                          ;
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 03/06/2018 18:34:00 ;
+; Start date & time ; 03/09/2018 16:59:39 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; spw_babasu          ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+--------------------------------------------------------------------------+---------------+--------------------------------+----------------------+
 ; Assignment Name                     ; Value                                                                    ; Default Value ; Entity Name                    ; Section Id           ;
 +-------------------------------------+--------------------------------------------------------------------------+---------------+--------------------------------+----------------------+
-; COMPILER_SIGNATURE_ID               ; 31032335263289.152037203605858                                           ; --            ; --                             ; --                   ;
+; COMPILER_SIGNATURE_ID               ; 31032335263289.152062557611687                                           ; --            ; --                             ; --                   ;
 ; EDA_DESIGN_ENTRY_SYNTHESIS_TOOL     ; Precision Synthesis                                                      ; <None>        ; --                             ; --                   ;
 ; EDA_INPUT_DATA_FORMAT               ; Vqm                                                                      ; --            ; --                             ; eda_design_synthesis ;
 ; EDA_LMF_FILE                        ; mentor.lmf                                                               ; --            ; --                             ; eda_design_synthesis ;
@@ -120,6 +120,7 @@ refer to the applicable agreement for further details.
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family)                                   ; --            ; SPW_BABASU_TOP                 ; Top                  ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family)                                   ; --            ; SPW_BABASU_TOP                 ; Top                  ;
 ; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)                                   ; --            ; SPW_BABASU_TOP                 ; Top                  ;
+; PLACEMENT_EFFORT_MULTIPLIER         ; 4.0                                                                      ; 1.0           ; --                             ; --                   ;
 ; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                                      ; --            ; --                             ; --                   ;
 ; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                                    ; --            ; --                             ; --                   ;
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                             ; --            ; --                             ; --                   ;
@@ -137,12 +138,12 @@ refer to the applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:50     ; 1.0                     ; 1272 MB             ; 00:01:10                           ;
-; Fitter                    ; 00:02:54     ; 1.1                     ; 2143 MB             ; 00:04:42                           ;
-; Assembler                 ; 00:00:14     ; 1.0                     ; 1021 MB             ; 00:00:10                           ;
-; TimeQuest Timing Analyzer ; 00:00:27     ; 1.4                     ; 1316 MB             ; 00:00:30                           ;
-; EDA Netlist Writer        ; 00:00:06     ; 1.0                     ; 1284 MB             ; 00:00:06                           ;
-; Total                     ; 00:04:31     ; --                      ; --                  ; 00:06:38                           ;
+; Analysis & Synthesis      ; 00:00:54     ; 1.0                     ; 1278 MB             ; 00:01:09                           ;
+; Fitter                    ; 00:02:05     ; 1.1                     ; 2139 MB             ; 00:03:50                           ;
+; Assembler                 ; 00:00:15     ; 1.0                     ; 1018 MB             ; 00:00:10                           ;
+; TimeQuest Timing Analyzer ; 00:00:32     ; 1.4                     ; 1323 MB             ; 00:00:30                           ;
+; EDA Netlist Writer        ; 00:00:06     ; 1.0                     ; 1281 MB             ; 00:00:06                           ;
+; Total                     ; 00:03:52     ; --                      ; --                  ; 00:05:45                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

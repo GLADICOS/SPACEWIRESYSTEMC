@@ -1,0 +1,145 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst jaxa.tickIn -pg 1 -lvl 3 -y 3010
+preplace inst jaxa.statisticalInformation_3 -pg 1 -lvl 3 -y 2410
+preplace inst jaxa.hps_0.timer2 -pg 1
+preplace inst jaxa.outstandingCount -pg 1 -lvl 3 -y 830
+preplace inst jaxa.statisticalInformation_4 -pg 1 -lvl 3 -y 2510
+preplace inst jaxa.hps_0.fpgamgr -pg 1
+preplace inst jaxa.controlFlagsIn -pg 1 -lvl 3 -y 130
+preplace inst jaxa.hps_0.timer3 -pg 1
+preplace inst jaxa.hps_0.axi_sdram -pg 1
+preplace inst jaxa.statisticalInformation_5 -pg 1 -lvl 3 -y 2710
+preplace inst jaxa.hps_0.eosc1 -pg 1
+preplace inst jaxa.statisticalInformation_6 -pg 1 -lvl 3 -y 2810
+preplace inst jaxa.hps_0.arm_a9_0 -pg 1
+preplace inst jaxa.hps_0.eosc2 -pg 1
+preplace inst jaxa.statisticalInformation_7 -pg 1 -lvl 3 -y 2910
+preplace inst jaxa.hps_0.arm_a9_1 -pg 1
+preplace inst jaxa.hps_0.hps_io -pg 1
+preplace inst jaxa.hps_0.qspi -pg 1
+preplace inst jaxa.transmitFIFOFull -pg 1 -lvl 3 -y 3910
+preplace inst jaxa.statisticalInformationClear -pg 1 -lvl 3 -y 2610
+preplace inst jaxa.hps_0.timer -pg 1
+preplace inst jaxa.hps_0.dma -pg 1
+preplace inst jaxa.hps_0.usb0 -pg 1
+preplace inst jaxa.hps_0.usb1 -pg 1
+preplace inst jaxa.spaceWireStrobeOut -pg 1 -lvl 3 -y 2010
+preplace inst jaxa.pll_0 -pg 1 -lvl 3 -y 930
+preplace inst jaxa.hps_0.uart0 -pg 1
+preplace inst jaxa.hps_0.wd_timer0 -pg 1
+preplace inst jaxa.receiveFIFODataCount -pg 1 -lvl 3 -y 1210
+preplace inst jaxa.hps_0.uart1 -pg 1
+preplace inst jaxa.hps_0.wd_timer1 -pg 1
+preplace inst jaxa.receiveFIFOEmpty -pg 1 -lvl 3 -y 1410
+preplace inst jaxa.receiveActivity -pg 1 -lvl 3 -y 1010
+preplace inst jaxa.receiveClock -pg 1 -lvl 3 -y 1110
+preplace inst jaxa.hps_0.gmac0 -pg 1
+preplace inst jaxa.receiveFIFOFull -pg 1 -lvl 3 -y 1510
+preplace inst jaxa.hps_0.gmac1 -pg 1
+preplace inst jaxa.hps_0.sdmmc -pg 1
+preplace inst jaxa.spaceWireStrobeIn -pg 1 -lvl 3 -y 1910
+preplace inst jaxa.hps_0.arm_gic_0 -pg 1
+preplace inst jaxa.hps_0.sdrctl -pg 1
+preplace inst jaxa.clk_0 -pg 1 -lvl 2 -y 730
+preplace inst jaxa.hps_0.rstmgr -pg 1
+preplace inst jaxa.transmitClock -pg 1 -lvl 3 -y 3510
+preplace inst jaxa.linkStart -pg 1 -lvl 3 -y 630
+preplace inst jaxa.hps_0.hps_io.border -pg 1
+preplace inst jaxa.controlFlagsOut -pg 1 -lvl 3 -y 230
+preplace inst jaxa.hps_0.fpga_interfaces -pg 1
+preplace inst jaxa.hps_0.L2 -pg 1
+preplace inst jaxa.transmitFIFODataIn -pg 1 -lvl 3 -y 3810
+preplace inst jaxa.hps_0.nand0 -pg 1
+preplace inst jaxa.hps_0.clk_0 -pg 1
+preplace inst jaxa.hps_0.scu -pg 1
+preplace inst jaxa.hps_0.f2s_sdram_ref_clk -pg 1
+preplace inst jaxa.transmitFIFODataCount -pg 1 -lvl 3 -y 3710
+preplace inst jaxa.transmitClockDivideValue -pg 1 -lvl 3 -y 3610
+preplace inst jaxa.timeIn -pg 1 -lvl 3 -y 3210
+preplace inst jaxa.tickOut -pg 1 -lvl 3 -y 3110
+preplace inst jaxa.spaceWireDataOut -pg 1 -lvl 3 -y 1810
+preplace inst jaxa -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst jaxa.transmitFIFOWriteEnable -pg 1 -lvl 3 -y 4010
+preplace inst jaxa.hps_0.sysmgr -pg 1
+preplace inst jaxa.autoStart -pg 1 -lvl 3 -y 30
+preplace inst jaxa.transmitActivity -pg 1 -lvl 3 -y 3410
+preplace inst jaxa.errorStatus -pg 1 -lvl 3 -y 430
+preplace inst jaxa.hps_0.i2c0 -pg 1
+preplace inst jaxa.receiveFIFODataOut -pg 1 -lvl 3 -y 1310
+preplace inst jaxa.hps_0.i2c1 -pg 1
+preplace inst jaxa.linkDisable -pg 1 -lvl 3 -y 530
+preplace inst jaxa.hps_0.i2c2 -pg 1
+preplace inst jaxa.hps_0 -pg 1 -lvl 1 -y 760
+preplace inst jaxa.hps_0.dcan0 -pg 1
+preplace inst jaxa.hps_0.i2c3 -pg 1
+preplace inst jaxa.timeOut -pg 1 -lvl 3 -y 3310
+preplace inst jaxa.hps_0.dcan1 -pg 1
+preplace inst jaxa.linkStatus -pg 1 -lvl 3 -y 730
+preplace inst jaxa.spaceWireDataIn -pg 1 -lvl 3 -y 1710
+preplace inst jaxa.receiveFIFOReadEnable -pg 1 -lvl 3 -y 1610
+preplace inst jaxa.hps_0.l3regs -pg 1
+preplace inst jaxa.hps_0.clkmgr -pg 1
+preplace inst jaxa.hps_0.gpio0 -pg 1
+preplace inst jaxa.creditCount -pg 1 -lvl 3 -y 330
+preplace inst jaxa.hps_0.gpio1 -pg 1
+preplace inst jaxa.hps_0.gpio2 -pg 1
+preplace inst jaxa.statisticalInformation_0 -pg 1 -lvl 3 -y 2110
+preplace inst jaxa.hps_0.axi_ocram -pg 1
+preplace inst jaxa.hps_0.spim0 -pg 1
+preplace inst jaxa.statisticalInformation_1 -pg 1 -lvl 3 -y 2210
+preplace inst jaxa.hps_0.f2s_periph_ref_clk -pg 1
+preplace inst jaxa.hps_0.spim1 -pg 1
+preplace inst jaxa.hps_0.timer0 -pg 1
+preplace inst jaxa.statisticalInformation_2 -pg 1 -lvl 3 -y 2310
+preplace inst jaxa.hps_0.timer1 -pg 1
+preplace inst jaxa.hps_0.bridges -pg 1
+preplace netloc POINT_TO_POINT<net_container>jaxa</net_container>(SLAVE)clk_0.clk_in_reset,(MASTER)hps_0.h2f_reset) 1 1 1 580
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)jaxa.errorstatus_external_connection,(SLAVE)errorStatus.external_connection) 1 0 3 NJ 460 NJ 460 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(MASTER)jaxa.pll_0_outclk0,(MASTER)pll_0.outclk0) 1 3 1 N
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)jaxa.controlflagsin_external_connection,(SLAVE)controlFlagsIn.external_connection) 1 0 3 NJ 160 NJ 160 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)statisticalInformation_2.external_connection,(SLAVE)jaxa.statisticalinformation_2_external_connection) 1 0 3 NJ 2340 NJ 2340 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)receiveFIFODataCount.external_connection,(SLAVE)jaxa.receivefifodatacount_external_connection) 1 0 3 NJ 1240 NJ 1240 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)jaxa.receivefiforeadenable_external_connection,(SLAVE)receiveFIFOReadEnable.external_connection) 1 0 3 NJ 1640 NJ 1640 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)transmitFIFODataCount.external_connection,(SLAVE)jaxa.transmitfifodatacount_external_connection) 1 0 3 NJ 3740 NJ 3740 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)spaceWireDataOut.external_connection,(SLAVE)jaxa.spacewiredataout_external_connection) 1 0 3 NJ 1840 NJ 1840 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)receiveFIFOFull.external_connection,(SLAVE)jaxa.receivefifofull_external_connection) 1 0 3 NJ 1540 NJ 1540 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)creditCount.external_connection,(SLAVE)jaxa.creditcount_external_connection) 1 0 3 NJ 360 NJ 360 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)transmitFIFOWriteEnable.external_connection,(SLAVE)jaxa.transmitfifowriteenable_external_connection) 1 0 3 NJ 4040 NJ 4040 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)jaxa.transmitfifofull_external_connection,(SLAVE)transmitFIFOFull.external_connection) 1 0 3 NJ 3940 NJ 3940 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)transmitClock.external_connection,(SLAVE)jaxa.transmitclock_external_connection) 1 0 3 NJ 3540 NJ 3540 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)transmitActivity.external_connection,(SLAVE)jaxa.transmitactivity_external_connection) 1 0 3 NJ 3440 NJ 3440 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)jaxa.statisticalinformation_1_external_connection,(SLAVE)statisticalInformation_1.external_connection) 1 0 3 NJ 2240 NJ 2240 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)linkStatus.external_connection,(SLAVE)jaxa.linkstatus_external_connection) 1 0 3 NJ 700 NJ 680 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)statisticalInformation_3.external_connection,(SLAVE)jaxa.statisticalinformation_3_external_connection) 1 0 3 NJ 2440 NJ 2440 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)statisticalInformationClear.external_connection,(SLAVE)jaxa.statisticalinformationclear_external_connection) 1 0 3 NJ 2640 NJ 2640 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)jaxa.receiveactivity_external_connection,(SLAVE)receiveActivity.external_connection) 1 0 3 NJ 1040 NJ 1040 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)receiveClock.external_connection,(SLAVE)jaxa.receiveclock_external_connection) 1 0 3 NJ 1140 NJ 1140 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)statisticalInformation_0.external_connection,(SLAVE)jaxa.statisticalinformation_0_external_connection) 1 0 3 NJ 2140 NJ 2140 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)jaxa.timeout_external_connection,(SLAVE)timeOut.external_connection) 1 0 3 NJ 3340 NJ 3340 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)jaxa.autostart_external_connection,(SLAVE)autoStart.external_connection) 1 0 3 NJ 60 NJ 60 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)transmitFIFODataIn.external_connection,(SLAVE)jaxa.transmitfifodatain_external_connection) 1 0 3 NJ 3840 NJ 3840 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)transmitClockDivideValue.external_connection,(SLAVE)jaxa.transmitclockdividevalue_external_connection) 1 0 3 NJ 3640 NJ 3640 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)jaxa.statisticalinformation_4_external_connection,(SLAVE)statisticalInformation_4.external_connection) 1 0 3 NJ 2540 NJ 2540 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)tickOut.external_connection,(SLAVE)jaxa.tickout_external_connection) 1 0 3 NJ 3140 NJ 3140 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)jaxa.statisticalinformation_7_external_connection,(SLAVE)statisticalInformation_7.external_connection) 1 0 3 NJ 2940 NJ 2940 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)receiveFIFODataOut.external_connection,(SLAVE)jaxa.receivefifodataout_external_connection) 1 0 3 NJ 1340 NJ 1340 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)jaxa.spacewiredatain_external_connection,(SLAVE)spaceWireDataIn.external_connection) 1 0 3 NJ 1740 NJ 1740 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)receiveFIFOEmpty.external_connection,(SLAVE)jaxa.receivefifoempty_external_connection) 1 0 3 NJ 1440 NJ 1440 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)jaxa.spacewirestrobeout_external_connection,(SLAVE)spaceWireStrobeOut.external_connection) 1 0 3 NJ 2040 NJ 2040 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)clk_0.clk_in,(SLAVE)jaxa.clk) 1 0 2 NJ 680 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)jaxa.statisticalinformation_6_external_connection,(SLAVE)statisticalInformation_6.external_connection) 1 0 3 NJ 2840 NJ 2840 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)jaxa.controlflagsout_external_connection,(SLAVE)controlFlagsOut.external_connection) 1 0 3 NJ 260 NJ 260 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)jaxa.linkdisable_external_connection,(SLAVE)linkDisable.external_connection) 1 0 3 NJ 560 NJ 560 NJ
+preplace netloc FAN_OUT<net_container>jaxa</net_container>(SLAVE)linkDisable.s1,(MASTER)hps_0.h2f_axi_master,(SLAVE)transmitFIFODataIn.s1,(SLAVE)statisticalInformation_4.s1,(SLAVE)spaceWireStrobeIn.s1,(SLAVE)outstandingCount.s1,(SLAVE)timeOut.s1,(SLAVE)statisticalInformation_1.s1,(SLAVE)transmitClockDivideValue.s1,(SLAVE)creditCount.s1,(SLAVE)spaceWireStrobeOut.s1,(SLAVE)timeIn.s1,(SLAVE)receiveFIFODataCount.s1,(SLAVE)transmitActivity.s1,(SLAVE)linkStart.s1,(SLAVE)transmitFIFOWriteEnable.s1,(SLAVE)transmitClock.s1,(SLAVE)statisticalInformation_3.s1,(SLAVE)transmitFIFODataCount.s1,(SLAVE)statisticalInformation_7.s1,(SLAVE)controlFlagsOut.s1,(SLAVE)statisticalInformation_2.s1,(SLAVE)spaceWireDataIn.s1,(SLAVE)tickOut.s1,(SLAVE)statisticalInformation_5.s1,(SLAVE)receiveFIFODataOut.s1,(SLAVE)statisticalInformation_0.s1,(SLAVE)receiveActivity.s1,(SLAVE)receiveFIFOEmpty.s1,(SLAVE)autoStart.s1,(SLAVE)receiveClock.s1,(SLAVE)receiveFIFOReadEnable.s1,(SLAVE)receiveFIFOFull.s1,(SLAVE)spaceWireDataOut.s1,(SLAVE)controlFlagsIn.s1,(SLAVE)statisticalInformation_6.s1,(SLAVE)tickIn.s1,(SLAVE)linkStatus.s1,(SLAVE)errorStatus.s1,(SLAVE)statisticalInformationClear.s1,(SLAVE)transmitFIFOFull.s1) 1 1 2 560 720 840
+preplace netloc FAN_OUT<net_container>jaxa</net_container>(SLAVE)receiveActivity.reset,(SLAVE)statisticalInformation_4.reset,(SLAVE)timeOut.reset,(SLAVE)autoStart.reset,(SLAVE)receiveFIFODataCount.reset,(SLAVE)statisticalInformationClear.reset,(SLAVE)receiveFIFOReadEnable.reset,(SLAVE)statisticalInformation_1.reset,(SLAVE)receiveFIFODataOut.reset,(SLAVE)statisticalInformation_6.reset,(SLAVE)receiveFIFOFull.reset,(SLAVE)statisticalInformation_5.reset,(SLAVE)linkStatus.reset,(SLAVE)transmitClockDivideValue.reset,(SLAVE)statisticalInformation_7.reset,(SLAVE)transmitFIFODataCount.reset,(SLAVE)timeIn.reset,(SLAVE)transmitActivity.reset,(SLAVE)linkDisable.reset,(MASTER)clk_0.clk_reset,(SLAVE)receiveFIFOEmpty.reset,(SLAVE)pll_0.reset,(SLAVE)statisticalInformation_0.reset,(SLAVE)spaceWireStrobeIn.reset,(SLAVE)transmitFIFOWriteEnable.reset,(SLAVE)statisticalInformation_2.reset,(SLAVE)statisticalInformation_3.reset,(SLAVE)linkStart.reset,(SLAVE)transmitFIFOFull.reset,(SLAVE)creditCount.reset,(SLAVE)controlFlagsIn.reset,(SLAVE)spaceWireStrobeOut.reset,(SLAVE)spaceWireDataIn.reset,(SLAVE)outstandingCount.reset,(SLAVE)transmitClock.reset,(SLAVE)controlFlagsOut.reset,(SLAVE)receiveClock.reset,(SLAVE)tickIn.reset,(SLAVE)errorStatus.reset,(SLAVE)transmitFIFODataIn.reset,(SLAVE)spaceWireDataOut.reset,(SLAVE)tickOut.reset) 1 2 1 820
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)timeIn.external_connection,(SLAVE)jaxa.timein_external_connection) 1 0 3 NJ 3240 NJ 3240 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)jaxa.outstandingcount_external_connection,(SLAVE)outstandingCount.external_connection) 1 0 3 NJ 860 NJ 860 NJ
+preplace netloc FAN_OUT<net_container>jaxa</net_container>(SLAVE)statisticalInformation_5.clk,(SLAVE)timeIn.clk,(SLAVE)tickIn.clk,(SLAVE)hps_0.h2f_axi_clock,(SLAVE)transmitClock.clk,(SLAVE)controlFlagsIn.clk,(SLAVE)spaceWireDataOut.clk,(SLAVE)pll_0.refclk,(SLAVE)creditCount.clk,(SLAVE)statisticalInformation_1.clk,(SLAVE)errorStatus.clk,(SLAVE)tickOut.clk,(SLAVE)transmitClockDivideValue.clk,(SLAVE)transmitFIFODataIn.clk,(SLAVE)statisticalInformation_7.clk,(SLAVE)statisticalInformation_0.clk,(SLAVE)statisticalInformationClear.clk,(SLAVE)timeOut.clk,(SLAVE)statisticalInformation_6.clk,(SLAVE)linkStart.clk,(SLAVE)statisticalInformation_3.clk,(SLAVE)statisticalInformation_4.clk,(SLAVE)transmitFIFOFull.clk,(SLAVE)receiveFIFOEmpty.clk,(SLAVE)autoStart.clk,(SLAVE)transmitFIFODataCount.clk,(SLAVE)outstandingCount.clk,(SLAVE)receiveClock.clk,(SLAVE)receiveFIFODataOut.clk,(SLAVE)receiveFIFODataCount.clk,(SLAVE)spaceWireDataIn.clk,(MASTER)clk_0.clk,(SLAVE)transmitFIFOWriteEnable.clk,(SLAVE)receiveActivity.clk,(SLAVE)spaceWireStrobeIn.clk,(SLAVE)linkDisable.clk,(SLAVE)transmitActivity.clk,(SLAVE)linkStatus.clk,(SLAVE)statisticalInformation_2.clk,(SLAVE)receiveFIFOReadEnable.clk,(SLAVE)controlFlagsOut.clk,(SLAVE)spaceWireStrobeOut.clk,(SLAVE)receiveFIFOFull.clk) 1 0 3 230 720 NJ 700 800
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)jaxa.linkstart_external_connection,(SLAVE)linkStart.external_connection) 1 0 3 NJ 660 NJ 660 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)jaxa.statisticalinformation_5_external_connection,(SLAVE)statisticalInformation_5.external_connection) 1 0 3 NJ 2740 NJ 2740 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)jaxa.tickin_external_connection,(SLAVE)tickIn.external_connection) 1 0 3 NJ 3040 NJ 3040 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)jaxa.spacewirestrobein_external_connection,(SLAVE)spaceWireStrobeIn.external_connection) 1 0 3 NJ 1940 NJ 1940 NJ
+preplace netloc EXPORT<net_container>jaxa</net_container>(SLAVE)jaxa.memory,(SLAVE)hps_0.memory) 1 0 1 NJ
+levelinfo -pg 1 0 200 1140
+levelinfo -hier jaxa 210 330 610 870 1030

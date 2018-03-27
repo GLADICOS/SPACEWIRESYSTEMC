@@ -1278,7 +1278,7 @@
    start="hps_0.h2f_axi_master"
    end="LINK_START.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="baseAddress" value="0x00070000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1287,7 +1287,7 @@
    start="hps_0.h2f_axi_master"
    end="LINK_DISABLE.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0010" />
+  <parameter name="baseAddress" value="0x00090000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1296,7 +1296,7 @@
    start="hps_0.h2f_axi_master"
    end="AUTOSTART.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0020" />
+  <parameter name="baseAddress" value="0x00080000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection

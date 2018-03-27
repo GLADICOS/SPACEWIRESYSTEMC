@@ -1,0 +1,965 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'u0|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : -0.511
+TNS   : -1.402
+
+Type  : Slow 1100mV 85C Model Setup 'FPGA_CLK1_50'
+Slack : -0.268
+TNS   : -0.467
+
+Type  : Slow 1100mV 85C Model Setup 'jaxa:u0|jaxa_autoStart:transmitclock|data_out'
+Slack : 0.340
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'jaxa:u0|jaxa_autoStart:receiveclock|data_out'
+Slack : 0.862
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'u0|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.281
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'FPGA_CLK1_50'
+Slack : 0.287
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'jaxa:u0|jaxa_autoStart:transmitclock|data_out'
+Slack : 0.365
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'jaxa:u0|jaxa_autoStart:receiveclock|data_out'
+Slack : 0.596
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverEEPOut'
+Slack : 1.089
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveNullOut'
+Slack : 1.111
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iSendStart'
+Slack : 1.198
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverDataValidOut'
+Slack : 1.259
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'jaxa:u0|jaxa_autoStart:receiveclock|data_out'
+Slack : 1.261
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveTimeCodeValidOut'
+Slack : 1.346
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverEOPOut'
+Slack : 1.354
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitEEPAsynchronous'
+Slack : 1.521
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitEOPAsynchronous'
+Slack : 1.576
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveFCTOut'
+Slack : 1.620
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'jaxa:u0|jaxa_autoStart:transmitclock|data_out'
+Slack : 2.053
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iDisconnectErrorOut'
+Slack : 2.507
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitByteAsynchronous'
+Slack : 2.518
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|iTransmitDataEnable'
+Slack : 2.537
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'jaxa:u0|jaxa_autoStart:tickin|data_out'
+Slack : 2.725
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'u0|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 3.087
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'FPGA_CLK1_50'
+Slack : 3.422
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'FPGA_CLK1_50'
+Slack : 0.934
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'u0|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 1.077
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveFCTOut'
+Slack : 1.164
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|iTransmitDataEnable'
+Slack : 1.244
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'jaxa:u0|jaxa_autoStart:tickin|data_out'
+Slack : 1.364
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'jaxa:u0|jaxa_autoStart:receiveclock|data_out'
+Slack : 1.398
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverEOPOut'
+Slack : 1.451
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverDataValidOut'
+Slack : 1.487
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'jaxa:u0|jaxa_autoStart:transmitclock|data_out'
+Slack : 1.531
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverEEPOut'
+Slack : 1.781
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iDisconnectErrorOut'
+Slack : 4.188
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitByteAsynchronous'
+Slack : 4.363
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitEEPAsynchronous'
+Slack : 5.425
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitEOPAsynchronous'
+Slack : 5.596
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveNullOut'
+Slack : 5.626
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iSendStart'
+Slack : 5.687
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveTimeCodeValidOut'
+Slack : 5.850
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'u0|pll_0|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'
+Slack : 1.666
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'u0|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 3.753
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'jaxa:u0|jaxa_autoStart:receiveclock|data_out'
+Slack : 3.903
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'FPGA_CLK1_50'
+Slack : 3.945
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverEOPOut'
+Slack : 4.105
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iDisconnectErrorOut'
+Slack : 4.153
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverDataValidOut'
+Slack : 4.192
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|iTransmitDataEnable'
+Slack : 4.205
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'jaxa:u0|jaxa_autoStart:tickin|data_out'
+Slack : 4.205
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitEOPAsynchronous'
+Slack : 4.207
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverEEPOut'
+Slack : 4.229
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'jaxa:u0|jaxa_autoStart:transmitclock|data_out'
+Slack : 4.237
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitEEPAsynchronous'
+Slack : 4.249
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitByteAsynchronous'
+Slack : 4.253
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveTimeCodeValidOut'
+Slack : 4.277
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iSendStart'
+Slack : 4.350
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveNullOut'
+Slack : 4.361
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveFCTOut'
+Slack : 4.420
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'FPGA_CLK1_50'
+Slack : -0.078
+TNS   : -0.154
+
+Type  : Slow 1100mV 0C Model Setup 'u0|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : -0.042
+TNS   : -0.042
+
+Type  : Slow 1100mV 0C Model Setup 'jaxa:u0|jaxa_autoStart:transmitclock|data_out'
+Slack : 0.326
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'jaxa:u0|jaxa_autoStart:receiveclock|data_out'
+Slack : 0.887
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'u0|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.119
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'FPGA_CLK1_50'
+Slack : 0.273
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'jaxa:u0|jaxa_autoStart:transmitclock|data_out'
+Slack : 0.355
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'jaxa:u0|jaxa_autoStart:receiveclock|data_out'
+Slack : 0.570
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverEEPOut'
+Slack : 1.159
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveNullOut'
+Slack : 1.228
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverDataValidOut'
+Slack : 1.338
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'jaxa:u0|jaxa_autoStart:receiveclock|data_out'
+Slack : 1.349
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iSendStart'
+Slack : 1.357
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverEOPOut'
+Slack : 1.400
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveTimeCodeValidOut'
+Slack : 1.426
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitEEPAsynchronous'
+Slack : 1.643
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveFCTOut'
+Slack : 1.676
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitEOPAsynchronous'
+Slack : 1.703
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'jaxa:u0|jaxa_autoStart:transmitclock|data_out'
+Slack : 2.149
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitByteAsynchronous'
+Slack : 2.579
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|iTransmitDataEnable'
+Slack : 2.620
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iDisconnectErrorOut'
+Slack : 2.626
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'jaxa:u0|jaxa_autoStart:tickin|data_out'
+Slack : 2.705
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'FPGA_CLK1_50'
+Slack : 3.590
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'u0|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 3.704
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'FPGA_CLK1_50'
+Slack : 0.876
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'u0|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.930
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveFCTOut'
+Slack : 1.131
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|iTransmitDataEnable'
+Slack : 1.190
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'jaxa:u0|jaxa_autoStart:receiveclock|data_out'
+Slack : 1.319
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'jaxa:u0|jaxa_autoStart:tickin|data_out'
+Slack : 1.342
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverDataValidOut'
+Slack : 1.383
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverEOPOut'
+Slack : 1.402
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'jaxa:u0|jaxa_autoStart:transmitclock|data_out'
+Slack : 1.482
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverEEPOut'
+Slack : 1.706
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iDisconnectErrorOut'
+Slack : 4.236
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitByteAsynchronous'
+Slack : 4.444
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitEEPAsynchronous'
+Slack : 5.484
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitEOPAsynchronous'
+Slack : 5.603
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iSendStart'
+Slack : 5.673
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveNullOut'
+Slack : 5.674
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveTimeCodeValidOut'
+Slack : 5.848
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'u0|pll_0|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'
+Slack : 1.666
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'u0|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 3.716
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'FPGA_CLK1_50'
+Slack : 3.899
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'jaxa:u0|jaxa_autoStart:receiveclock|data_out'
+Slack : 3.915
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverEOPOut'
+Slack : 4.127
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iDisconnectErrorOut'
+Slack : 4.172
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverDataValidOut'
+Slack : 4.205
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|iTransmitDataEnable'
+Slack : 4.206
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'jaxa:u0|jaxa_autoStart:tickin|data_out'
+Slack : 4.208
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverEEPOut'
+Slack : 4.224
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitEOPAsynchronous'
+Slack : 4.225
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'jaxa:u0|jaxa_autoStart:transmitclock|data_out'
+Slack : 4.257
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitByteAsynchronous'
+Slack : 4.261
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitEEPAsynchronous'
+Slack : 4.265
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveTimeCodeValidOut'
+Slack : 4.280
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iSendStart'
+Slack : 4.360
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveNullOut'
+Slack : 4.374
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveFCTOut'
+Slack : 4.419
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'u0|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.160
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'FPGA_CLK1_50'
+Slack : 1.175
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'jaxa:u0|jaxa_autoStart:receiveclock|data_out'
+Slack : 1.821
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'jaxa:u0|jaxa_autoStart:transmitclock|data_out'
+Slack : 1.974
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'jaxa:u0|jaxa_autoStart:transmitclock|data_out'
+Slack : 0.134
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'FPGA_CLK1_50'
+Slack : 0.163
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'u0|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.179
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'jaxa:u0|jaxa_autoStart:receiveclock|data_out'
+Slack : 0.330
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'jaxa:u0|jaxa_autoStart:receiveclock|data_out'
+Slack : 2.279
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'u0|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 4.228
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveNullOut'
+Slack : 4.333
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iSendStart'
+Slack : 4.375
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverEEPOut'
+Slack : 4.388
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverDataValidOut'
+Slack : 4.479
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverEOPOut'
+Slack : 4.540
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveTimeCodeValidOut'
+Slack : 4.617
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitEEPAsynchronous'
+Slack : 4.617
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitEOPAsynchronous'
+Slack : 4.635
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveFCTOut'
+Slack : 4.793
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iDisconnectErrorOut'
+Slack : 5.171
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'jaxa:u0|jaxa_autoStart:transmitclock|data_out'
+Slack : 5.282
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitByteAsynchronous'
+Slack : 5.684
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|iTransmitDataEnable'
+Slack : 5.724
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'jaxa:u0|jaxa_autoStart:tickin|data_out'
+Slack : 5.928
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'FPGA_CLK1_50'
+Slack : 6.056
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveFCTOut'
+Slack : 0.386
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|iTransmitDataEnable'
+Slack : 0.460
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'jaxa:u0|jaxa_autoStart:tickin|data_out'
+Slack : 0.492
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'FPGA_CLK1_50'
+Slack : 0.544
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverEOPOut'
+Slack : 0.635
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverDataValidOut'
+Slack : 0.689
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'jaxa:u0|jaxa_autoStart:receiveclock|data_out'
+Slack : 0.738
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'jaxa:u0|jaxa_autoStart:transmitclock|data_out'
+Slack : 0.743
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverEEPOut'
+Slack : 0.818
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'u0|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.823
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iDisconnectErrorOut'
+Slack : 2.024
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitByteAsynchronous'
+Slack : 2.294
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitEEPAsynchronous'
+Slack : 2.695
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitEOPAsynchronous'
+Slack : 2.856
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveNullOut'
+Slack : 2.891
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iSendStart'
+Slack : 2.934
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveTimeCodeValidOut'
+Slack : 2.987
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'u0|pll_0|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'
+Slack : 1.666
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'FPGA_CLK1_50'
+Slack : 3.828
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'u0|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 3.883
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'jaxa:u0|jaxa_autoStart:receiveclock|data_out'
+Slack : 3.895
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverEOPOut'
+Slack : 4.351
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iDisconnectErrorOut'
+Slack : 4.396
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverDataValidOut'
+Slack : 4.419
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'jaxa:u0|jaxa_autoStart:tickin|data_out'
+Slack : 4.437
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|iTransmitDataEnable'
+Slack : 4.453
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitEOPAsynchronous'
+Slack : 4.454
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverEEPOut'
+Slack : 4.465
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'jaxa:u0|jaxa_autoStart:transmitclock|data_out'
+Slack : 4.471
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitEEPAsynchronous'
+Slack : 4.473
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitByteAsynchronous'
+Slack : 4.482
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveTimeCodeValidOut'
+Slack : 4.514
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iSendStart'
+Slack : 4.559
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveNullOut'
+Slack : 4.575
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveFCTOut'
+Slack : 4.652
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'u0|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 1.032
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'FPGA_CLK1_50'
+Slack : 1.759
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'jaxa:u0|jaxa_autoStart:receiveclock|data_out'
+Slack : 2.165
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'jaxa:u0|jaxa_autoStart:transmitclock|data_out'
+Slack : 2.280
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'jaxa:u0|jaxa_autoStart:transmitclock|data_out'
+Slack : 0.117
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'FPGA_CLK1_50'
+Slack : 0.146
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'u0|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.168
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'jaxa:u0|jaxa_autoStart:receiveclock|data_out'
+Slack : 0.295
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'jaxa:u0|jaxa_autoStart:receiveclock|data_out'
+Slack : 2.570
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveNullOut'
+Slack : 4.813
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverEEPOut'
+Slack : 4.841
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iSendStart'
+Slack : 4.881
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverDataValidOut'
+Slack : 4.929
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverEOPOut'
+Slack : 4.973
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveTimeCodeValidOut'
+Slack : 5.070
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitEEPAsynchronous'
+Slack : 5.080
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitEOPAsynchronous'
+Slack : 5.092
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveFCTOut'
+Slack : 5.217
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'u0|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 5.233
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iDisconnectErrorOut'
+Slack : 5.595
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'jaxa:u0|jaxa_autoStart:transmitclock|data_out'
+Slack : 5.648
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitByteAsynchronous'
+Slack : 5.881
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'SpaceWireCODECIP:Jaxa_De0_Soc|iTransmitDataEnable'
+Slack : 5.922
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'jaxa:u0|jaxa_autoStart:tickin|data_out'
+Slack : 6.071
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'FPGA_CLK1_50'
+Slack : 6.301
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveFCTOut'
+Slack : 0.321
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|iTransmitDataEnable'
+Slack : 0.387
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'jaxa:u0|jaxa_autoStart:tickin|data_out'
+Slack : 0.421
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'FPGA_CLK1_50'
+Slack : 0.496
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverEOPOut'
+Slack : 0.548
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'u0|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.573
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverDataValidOut'
+Slack : 0.577
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'jaxa:u0|jaxa_autoStart:receiveclock|data_out'
+Slack : 0.607
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'jaxa:u0|jaxa_autoStart:transmitclock|data_out'
+Slack : 0.677
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverEEPOut'
+Slack : 0.708
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iDisconnectErrorOut'
+Slack : 1.974
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitByteAsynchronous'
+Slack : 2.151
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitEEPAsynchronous'
+Slack : 2.607
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitEOPAsynchronous'
+Slack : 2.739
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveNullOut'
+Slack : 2.781
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iSendStart'
+Slack : 2.794
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveTimeCodeValidOut'
+Slack : 2.847
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'u0|pll_0|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'
+Slack : 1.666
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'FPGA_CLK1_50'
+Slack : 3.778
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'u0|pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 3.887
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'jaxa:u0|jaxa_autoStart:receiveclock|data_out'
+Slack : 3.926
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverEOPOut'
+Slack : 4.423
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iDisconnectErrorOut'
+Slack : 4.448
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverDataValidOut'
+Slack : 4.469
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'jaxa:u0|jaxa_autoStart:tickin|data_out'
+Slack : 4.473
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitEOPAsynchronous'
+Slack : 4.494
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|iTransmitDataEnable'
+Slack : 4.495
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiverEEPOut'
+Slack : 4.499
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'jaxa:u0|jaxa_autoStart:transmitclock|data_out'
+Slack : 4.517
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitEEPAsynchronous'
+Slack : 4.519
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iTransmitByteAsynchronous'
+Slack : 4.520
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveTimeCodeValidOut'
+Slack : 4.541
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|iSendStart'
+Slack : 4.575
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveNullOut'
+Slack : 4.597
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|iReceiveFCTOut'
+Slack : 4.662
+TNS   : 0.000
+
+------------------------------------------------------------

@@ -1,0 +1,274 @@
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:receiveclock_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:receiveactivity_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:outstandingcount_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:creditcount_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:controlflagsout_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:controlflagsin_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:spacewiredatain_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:spacewiredataout_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:spacewirestrobeout_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:spacewirestrobein_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:transmitactivity_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:transmitclock_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:transmitclockdividevalue_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:errorstatus_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:linkstatus_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:statisticalinformationclear_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:statisticalinformation_1_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:statisticalinformation_0_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:timeout_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:tickout_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:timein_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:tickin_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:transmitfifodatacount_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:transmitfifodatain_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:transmitfifowriteenable_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:transmitfifofull_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:receivefiforeadenable_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:receivefifofull_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:receivefifoempty_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:receivefifodataout_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:receivefifodatacount_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:linkstart_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:linkdisable_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|jaxa:u0|jaxa_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:autostart_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPW_JAXA|SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPReceiverSynchronize:spaceWireReceiver|spaceWireState
+Name spaceWireState.spaceWireWaitOdd spaceWireState.spaceWireOdd1 spaceWireState.spaceWireOdd0 spaceWireState.spaceWireWaitEven spaceWireState.spaceWireEven1 spaceWireState.spaceWireEven0 spaceWireState.spaceWireOff spaceWireState.spaceWireIdel 
+spaceWireState.spaceWireIdel 0 0 0 0 0 0 0 0 
+spaceWireState.spaceWireOff 0 0 0 0 0 0 1 1 
+spaceWireState.spaceWireEven0 0 0 0 0 0 1 0 1 
+spaceWireState.spaceWireEven1 0 0 0 0 1 0 0 1 
+spaceWireState.spaceWireWaitEven 0 0 0 1 0 0 0 1 
+spaceWireState.spaceWireOdd0 0 0 1 0 0 0 0 1 
+spaceWireState.spaceWireOdd1 0 1 0 0 0 0 0 1 
+spaceWireState.spaceWireWaitOdd 1 0 0 0 0 0 0 1 
+
+State Machine - |SPW_JAXA|SpaceWireCODECIP:Jaxa_De0_Soc|transmitterWriteState
+Name transmitterWriteState.transmitterWriteStateReset2 transmitterWriteState.transmitterWriteStateReset1 transmitterWriteState.transmitterWriteStateReset0 transmitterWriteState.transmitterWriteStateWrite1 transmitterWriteState.transmitterWriteStateWrite0 transmitterWriteState.transmitterWriteStateIdle 
+transmitterWriteState.transmitterWriteStateIdle 0 0 0 0 0 0 
+transmitterWriteState.transmitterWriteStateWrite0 0 0 0 0 1 1 
+transmitterWriteState.transmitterWriteStateWrite1 0 0 0 1 0 1 
+transmitterWriteState.transmitterWriteStateReset0 0 0 1 0 0 1 
+transmitterWriteState.transmitterWriteStateReset1 0 1 0 0 0 1 
+transmitterWriteState.transmitterWriteStateReset2 1 0 0 0 0 1 
+
+State Machine - |SPW_JAXA|SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPStateMachine:spaceWireStateMachine|linkState
+Name linkState.linkStateRun linkState.linkStateConnecting linkState.linkStateStarted linkState.linkStateReady linkState.linkStateErrorWait linkState.linkStateErrorReset 
+linkState.linkStateErrorReset 0 0 0 0 0 0 
+linkState.linkStateErrorWait 0 0 0 0 1 1 
+linkState.linkStateReady 0 0 0 1 0 1 
+linkState.linkStateStarted 0 0 1 0 0 1 
+linkState.linkStateConnecting 0 1 0 0 0 1 
+linkState.linkStateRun 1 0 0 0 0 1 
+
+State Machine - |SPW_JAXA|SpaceWireCODECIP:Jaxa_De0_Soc|SpaceWireCODECIPLinkInterface:SpaceWireLinkInterface|SpaceWireCODECIPTransmitter:spaceWireTransmitter|transmitState
+Name transmitState.transmitStateData transmitState.transmitStateControl transmitState.transmitStateParity transmitState.transmitStateStop 
+transmitState.transmitStateStop 0 0 0 0 
+transmitState.transmitStateParity 0 0 1 1 
+transmitState.transmitStateControl 0 1 0 1 
+transmitState.transmitStateData 1 0 0 1 
