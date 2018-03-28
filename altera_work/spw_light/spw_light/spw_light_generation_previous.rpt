@@ -1,0 +1,298 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate /run/media/felipe/FFCOSTA/Projetos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_light/spw_light.qsys --block-symbol-file --output-directory=/run/media/felipe/FFCOSTA/Projetos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_light/spw_light --family="Cyclone V" --part=5CSEMA4U23C6
+Progress: Loading spw_light/spw_light.qsys
+Progress: Reading input file
+Progress: Adding autostart [altera_avalon_pio 17.1]
+Progress: Parameterizing module autostart
+Progress: Adding clk_0 [clock_source 17.1]
+Progress: Parameterizing module clk_0
+Progress: Adding connecting [altera_avalon_pio 17.1]
+Progress: Parameterizing module connecting
+Progress: Adding ctrl_in [altera_avalon_pio 17.1]
+Progress: Parameterizing module ctrl_in
+Progress: Adding ctrl_out [altera_avalon_pio 17.1]
+Progress: Parameterizing module ctrl_out
+Progress: Adding errcred [altera_avalon_pio 17.1]
+Progress: Parameterizing module errcred
+Progress: Adding errdisc [altera_avalon_pio 17.1]
+Progress: Parameterizing module errdisc
+Progress: Adding erresc [altera_avalon_pio 17.1]
+Progress: Parameterizing module erresc
+Progress: Adding errpar [altera_avalon_pio 17.1]
+Progress: Parameterizing module errpar
+Progress: Adding hps_0 [altera_hps 17.1]
+Progress: Parameterizing module hps_0
+Progress: Adding linkdis [altera_avalon_pio 17.1]
+Progress: Parameterizing module linkdis
+Progress: Adding linkstart [altera_avalon_pio 17.1]
+Progress: Parameterizing module linkstart
+Progress: Adding pll_0 [altera_pll 17.1]
+Progress: Parameterizing module pll_0
+Progress: Adding running [altera_avalon_pio 17.1]
+Progress: Parameterizing module running
+Progress: Adding rxclk [altera_avalon_pio 17.1]
+Progress: Parameterizing module rxclk
+Progress: Adding rxdata [altera_avalon_pio 17.1]
+Progress: Parameterizing module rxdata
+Progress: Adding rxflag [altera_avalon_pio 17.1]
+Progress: Parameterizing module rxflag
+Progress: Adding rxhalff [altera_avalon_pio 17.1]
+Progress: Parameterizing module rxhalff
+Progress: Adding rxread [altera_avalon_pio 17.1]
+Progress: Parameterizing module rxread
+Progress: Adding rxvalid [altera_avalon_pio 17.1]
+Progress: Parameterizing module rxvalid
+Progress: Adding started [altera_avalon_pio 17.1]
+Progress: Parameterizing module started
+Progress: Adding tick_in [altera_avalon_pio 17.1]
+Progress: Parameterizing module tick_in
+Progress: Adding tick_out [altera_avalon_pio 17.1]
+Progress: Parameterizing module tick_out
+Progress: Adding time_in [altera_avalon_pio 17.1]
+Progress: Parameterizing module time_in
+Progress: Adding time_out [altera_avalon_pio 17.1]
+Progress: Parameterizing module time_out
+Progress: Adding txclk [altera_avalon_pio 17.1]
+Progress: Parameterizing module txclk
+Progress: Adding txdata [altera_avalon_pio 17.1]
+Progress: Parameterizing module txdata
+Progress: Adding txdivcnt [altera_avalon_pio 17.1]
+Progress: Parameterizing module txdivcnt
+Progress: Adding txflag [altera_avalon_pio 17.1]
+Progress: Parameterizing module txflag
+Progress: Adding txhalff [altera_avalon_pio 17.1]
+Progress: Parameterizing module txhalff
+Progress: Adding txrdy [altera_avalon_pio 17.1]
+Progress: Parameterizing module txrdy
+Progress: Adding txwrite [altera_avalon_pio 17.1]
+Progress: Parameterizing module txwrite
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: spw_light.connecting: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.ctrl_out: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.errcred: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.errdisc: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.erresc: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.errpar: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.hps_0: HPS Main PLL counter settings: n = 0  m = 36
+Info: spw_light.hps_0: HPS peripherial PLL counter settings: n = 0  m = 19
+Warning: spw_light.hps_0: "Configuration/HPS-to-FPGA user 0 clock frequency" (desired_cfg_clk_mhz) requested 100.0 MHz, but only achieved 97.368421 MHz
+Warning: spw_light.hps_0: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
+Warning: spw_light.hps_0: ODT is disabled. Enabling ODT (Mode Register 1) may improve signal integrity
+Warning: spw_light.hps_0: set_interface_assignment: Interface "hps_io" does not exist
+Info: spw_light.pll_0: The legal reference clock frequency is 5.0 MHz..800.0 MHz
+Info: spw_light.pll_0: Able to implement PLL with user settings
+Info: spw_light.running: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.rxdata: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.rxflag: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.rxhalff: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.rxvalid: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.started: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.tick_out: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.time_out: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.txhalff: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.txrdy: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Warning: spw_light.autostart: autostart.s1 must be connected to an Avalon-MM master
+Warning: spw_light.connecting: connecting.s1 must be connected to an Avalon-MM master
+Warning: spw_light.ctrl_in: ctrl_in.s1 must be connected to an Avalon-MM master
+Warning: spw_light.ctrl_out: ctrl_out.s1 must be connected to an Avalon-MM master
+Warning: spw_light.errcred: errcred.s1 must be connected to an Avalon-MM master
+Warning: spw_light.errdisc: errdisc.s1 must be connected to an Avalon-MM master
+Warning: spw_light.erresc: erresc.s1 must be connected to an Avalon-MM master
+Warning: spw_light.errpar: errpar.s1 must be connected to an Avalon-MM master
+Warning: spw_light.linkdis: linkdis.s1 must be connected to an Avalon-MM master
+Warning: spw_light.linkstart: linkstart.s1 must be connected to an Avalon-MM master
+Warning: spw_light.running: running.s1 must be connected to an Avalon-MM master
+Warning: spw_light.rxdata: rxdata.s1 must be connected to an Avalon-MM master
+Warning: spw_light.rxflag: rxflag.s1 must be connected to an Avalon-MM master
+Warning: spw_light.rxhalff: rxhalff.s1 must be connected to an Avalon-MM master
+Warning: spw_light.rxread: rxread.s1 must be connected to an Avalon-MM master
+Warning: spw_light.rxvalid: rxvalid.s1 must be connected to an Avalon-MM master
+Warning: spw_light.started: started.s1 must be connected to an Avalon-MM master
+Warning: spw_light.tick_in: tick_in.s1 must be connected to an Avalon-MM master
+Warning: spw_light.tick_out: tick_out.s1 must be connected to an Avalon-MM master
+Warning: spw_light.time_in: time_in.s1 must be connected to an Avalon-MM master
+Warning: spw_light.time_out: time_out.s1 must be connected to an Avalon-MM master
+Warning: spw_light.txdata: txdata.s1 must be connected to an Avalon-MM master
+Warning: spw_light.txdivcnt: txdivcnt.s1 must be connected to an Avalon-MM master
+Warning: spw_light.txflag: txflag.s1 must be connected to an Avalon-MM master
+Warning: spw_light.txhalff: txhalff.s1 must be connected to an Avalon-MM master
+Warning: spw_light.txrdy: txrdy.s1 must be connected to an Avalon-MM master
+Warning: spw_light.txwrite: txwrite.s1 must be connected to an Avalon-MM master
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate /run/media/felipe/FFCOSTA/Projetos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_light/spw_light.qsys --synthesis=VERILOG --output-directory=/run/media/felipe/FFCOSTA/Projetos/verilog_projects/GITHUBPROJECTS/SPACEWIRESYSTEMC/altera_work/spw_light/spw_light/synthesis --family="Cyclone V" --part=5CSEMA4U23C6
+Progress: Loading spw_light/spw_light.qsys
+Progress: Reading input file
+Progress: Adding autostart [altera_avalon_pio 17.1]
+Progress: Parameterizing module autostart
+Progress: Adding clk_0 [clock_source 17.1]
+Progress: Parameterizing module clk_0
+Progress: Adding connecting [altera_avalon_pio 17.1]
+Progress: Parameterizing module connecting
+Progress: Adding ctrl_in [altera_avalon_pio 17.1]
+Progress: Parameterizing module ctrl_in
+Progress: Adding ctrl_out [altera_avalon_pio 17.1]
+Progress: Parameterizing module ctrl_out
+Progress: Adding errcred [altera_avalon_pio 17.1]
+Progress: Parameterizing module errcred
+Progress: Adding errdisc [altera_avalon_pio 17.1]
+Progress: Parameterizing module errdisc
+Progress: Adding erresc [altera_avalon_pio 17.1]
+Progress: Parameterizing module erresc
+Progress: Adding errpar [altera_avalon_pio 17.1]
+Progress: Parameterizing module errpar
+Progress: Adding hps_0 [altera_hps 17.1]
+Progress: Parameterizing module hps_0
+Progress: Adding linkdis [altera_avalon_pio 17.1]
+Progress: Parameterizing module linkdis
+Progress: Adding linkstart [altera_avalon_pio 17.1]
+Progress: Parameterizing module linkstart
+Progress: Adding pll_0 [altera_pll 17.1]
+Progress: Parameterizing module pll_0
+Progress: Adding running [altera_avalon_pio 17.1]
+Progress: Parameterizing module running
+Progress: Adding rxclk [altera_avalon_pio 17.1]
+Progress: Parameterizing module rxclk
+Progress: Adding rxdata [altera_avalon_pio 17.1]
+Progress: Parameterizing module rxdata
+Progress: Adding rxflag [altera_avalon_pio 17.1]
+Progress: Parameterizing module rxflag
+Progress: Adding rxhalff [altera_avalon_pio 17.1]
+Progress: Parameterizing module rxhalff
+Progress: Adding rxread [altera_avalon_pio 17.1]
+Progress: Parameterizing module rxread
+Progress: Adding rxvalid [altera_avalon_pio 17.1]
+Progress: Parameterizing module rxvalid
+Progress: Adding started [altera_avalon_pio 17.1]
+Progress: Parameterizing module started
+Progress: Adding tick_in [altera_avalon_pio 17.1]
+Progress: Parameterizing module tick_in
+Progress: Adding tick_out [altera_avalon_pio 17.1]
+Progress: Parameterizing module tick_out
+Progress: Adding time_in [altera_avalon_pio 17.1]
+Progress: Parameterizing module time_in
+Progress: Adding time_out [altera_avalon_pio 17.1]
+Progress: Parameterizing module time_out
+Progress: Adding txclk [altera_avalon_pio 17.1]
+Progress: Parameterizing module txclk
+Progress: Adding txdata [altera_avalon_pio 17.1]
+Progress: Parameterizing module txdata
+Progress: Adding txdivcnt [altera_avalon_pio 17.1]
+Progress: Parameterizing module txdivcnt
+Progress: Adding txflag [altera_avalon_pio 17.1]
+Progress: Parameterizing module txflag
+Progress: Adding txhalff [altera_avalon_pio 17.1]
+Progress: Parameterizing module txhalff
+Progress: Adding txrdy [altera_avalon_pio 17.1]
+Progress: Parameterizing module txrdy
+Progress: Adding txwrite [altera_avalon_pio 17.1]
+Progress: Parameterizing module txwrite
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: spw_light.connecting: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.ctrl_out: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.errcred: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.errdisc: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.erresc: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.errpar: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.hps_0: HPS Main PLL counter settings: n = 0  m = 36
+Info: spw_light.hps_0: HPS peripherial PLL counter settings: n = 0  m = 19
+Warning: spw_light.hps_0: "Configuration/HPS-to-FPGA user 0 clock frequency" (desired_cfg_clk_mhz) requested 100.0 MHz, but only achieved 97.368421 MHz
+Warning: spw_light.hps_0: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
+Warning: spw_light.hps_0: ODT is disabled. Enabling ODT (Mode Register 1) may improve signal integrity
+Warning: spw_light.hps_0: set_interface_assignment: Interface "hps_io" does not exist
+Info: spw_light.pll_0: The legal reference clock frequency is 5.0 MHz..800.0 MHz
+Info: spw_light.pll_0: Able to implement PLL with user settings
+Info: spw_light.running: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.rxdata: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.rxflag: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.rxhalff: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.rxvalid: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.started: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.tick_out: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.time_out: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.txhalff: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: spw_light.txrdy: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Warning: spw_light.autostart: autostart.s1 must be connected to an Avalon-MM master
+Warning: spw_light.connecting: connecting.s1 must be connected to an Avalon-MM master
+Warning: spw_light.ctrl_in: ctrl_in.s1 must be connected to an Avalon-MM master
+Warning: spw_light.ctrl_out: ctrl_out.s1 must be connected to an Avalon-MM master
+Warning: spw_light.errcred: errcred.s1 must be connected to an Avalon-MM master
+Warning: spw_light.errdisc: errdisc.s1 must be connected to an Avalon-MM master
+Warning: spw_light.erresc: erresc.s1 must be connected to an Avalon-MM master
+Warning: spw_light.errpar: errpar.s1 must be connected to an Avalon-MM master
+Warning: spw_light.linkdis: linkdis.s1 must be connected to an Avalon-MM master
+Warning: spw_light.linkstart: linkstart.s1 must be connected to an Avalon-MM master
+Warning: spw_light.running: running.s1 must be connected to an Avalon-MM master
+Warning: spw_light.rxdata: rxdata.s1 must be connected to an Avalon-MM master
+Warning: spw_light.rxflag: rxflag.s1 must be connected to an Avalon-MM master
+Warning: spw_light.rxhalff: rxhalff.s1 must be connected to an Avalon-MM master
+Warning: spw_light.rxread: rxread.s1 must be connected to an Avalon-MM master
+Warning: spw_light.rxvalid: rxvalid.s1 must be connected to an Avalon-MM master
+Warning: spw_light.started: started.s1 must be connected to an Avalon-MM master
+Warning: spw_light.tick_in: tick_in.s1 must be connected to an Avalon-MM master
+Warning: spw_light.tick_out: tick_out.s1 must be connected to an Avalon-MM master
+Warning: spw_light.time_in: time_in.s1 must be connected to an Avalon-MM master
+Warning: spw_light.time_out: time_out.s1 must be connected to an Avalon-MM master
+Warning: spw_light.txdata: txdata.s1 must be connected to an Avalon-MM master
+Warning: spw_light.txdivcnt: txdivcnt.s1 must be connected to an Avalon-MM master
+Warning: spw_light.txflag: txflag.s1 must be connected to an Avalon-MM master
+Warning: spw_light.txhalff: txhalff.s1 must be connected to an Avalon-MM master
+Warning: spw_light.txrdy: txrdy.s1 must be connected to an Avalon-MM master
+Warning: spw_light.txwrite: txwrite.s1 must be connected to an Avalon-MM master
+Info: spw_light: Generating spw_light "spw_light" for QUARTUS_SYNTH
+Info: autostart: Starting RTL generation for module 'spw_light_autostart'
+Info: autostart:   Generation command is [exec /home/felipe/intelFPGA_lite/17.1/quartus/linux64/perl/bin/perl -I /home/felipe/intelFPGA_lite/17.1/quartus/linux64/perl/lib -I /home/felipe/intelFPGA_lite/17.1/quartus/sopc_builder/bin/europa -I /home/felipe/intelFPGA_lite/17.1/quartus/sopc_builder/bin/perl_lib -I /home/felipe/intelFPGA_lite/17.1/quartus/sopc_builder/bin -I /home/felipe/intelFPGA_lite/17.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/felipe/intelFPGA_lite/17.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/felipe/intelFPGA_lite/17.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=spw_light_autostart --dir=/tmp/alt7617_7624007123161128850.dir/0002_autostart_gen/ --quartus_dir=/home/felipe/intelFPGA_lite/17.1/quartus --verilog --config=/tmp/alt7617_7624007123161128850.dir/0002_autostart_gen//spw_light_autostart_component_configuration.pl  --do_build_sim=0  ]
+Info: autostart: Done RTL generation for module 'spw_light_autostart'
+Info: autostart: "spw_light" instantiated altera_avalon_pio "autostart"
+Info: connecting: Starting RTL generation for module 'spw_light_connecting'
+Info: connecting:   Generation command is [exec /home/felipe/intelFPGA_lite/17.1/quartus/linux64/perl/bin/perl -I /home/felipe/intelFPGA_lite/17.1/quartus/linux64/perl/lib -I /home/felipe/intelFPGA_lite/17.1/quartus/sopc_builder/bin/europa -I /home/felipe/intelFPGA_lite/17.1/quartus/sopc_builder/bin/perl_lib -I /home/felipe/intelFPGA_lite/17.1/quartus/sopc_builder/bin -I /home/felipe/intelFPGA_lite/17.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/felipe/intelFPGA_lite/17.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/felipe/intelFPGA_lite/17.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=spw_light_connecting --dir=/tmp/alt7617_7624007123161128850.dir/0003_connecting_gen/ --quartus_dir=/home/felipe/intelFPGA_lite/17.1/quartus --verilog --config=/tmp/alt7617_7624007123161128850.dir/0003_connecting_gen//spw_light_connecting_component_configuration.pl  --do_build_sim=0  ]
+Info: connecting: Done RTL generation for module 'spw_light_connecting'
+Info: connecting: "spw_light" instantiated altera_avalon_pio "connecting"
+Info: ctrl_in: Starting RTL generation for module 'spw_light_ctrl_in'
+Info: ctrl_in:   Generation command is [exec /home/felipe/intelFPGA_lite/17.1/quartus/linux64/perl/bin/perl -I /home/felipe/intelFPGA_lite/17.1/quartus/linux64/perl/lib -I /home/felipe/intelFPGA_lite/17.1/quartus/sopc_builder/bin/europa -I /home/felipe/intelFPGA_lite/17.1/quartus/sopc_builder/bin/perl_lib -I /home/felipe/intelFPGA_lite/17.1/quartus/sopc_builder/bin -I /home/felipe/intelFPGA_lite/17.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/felipe/intelFPGA_lite/17.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/felipe/intelFPGA_lite/17.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=spw_light_ctrl_in --dir=/tmp/alt7617_7624007123161128850.dir/0004_ctrl_in_gen/ --quartus_dir=/home/felipe/intelFPGA_lite/17.1/quartus --verilog --config=/tmp/alt7617_7624007123161128850.dir/0004_ctrl_in_gen//spw_light_ctrl_in_component_configuration.pl  --do_build_sim=0  ]
+Info: ctrl_in: Done RTL generation for module 'spw_light_ctrl_in'
+Info: ctrl_in: "spw_light" instantiated altera_avalon_pio "ctrl_in"
+Info: ctrl_out: Starting RTL generation for module 'spw_light_ctrl_out'
+Info: ctrl_out:   Generation command is [exec /home/felipe/intelFPGA_lite/17.1/quartus/linux64/perl/bin/perl -I /home/felipe/intelFPGA_lite/17.1/quartus/linux64/perl/lib -I /home/felipe/intelFPGA_lite/17.1/quartus/sopc_builder/bin/europa -I /home/felipe/intelFPGA_lite/17.1/quartus/sopc_builder/bin/perl_lib -I /home/felipe/intelFPGA_lite/17.1/quartus/sopc_builder/bin -I /home/felipe/intelFPGA_lite/17.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/felipe/intelFPGA_lite/17.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/felipe/intelFPGA_lite/17.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=spw_light_ctrl_out --dir=/tmp/alt7617_7624007123161128850.dir/0005_ctrl_out_gen/ --quartus_dir=/home/felipe/intelFPGA_lite/17.1/quartus --verilog --config=/tmp/alt7617_7624007123161128850.dir/0005_ctrl_out_gen//spw_light_ctrl_out_component_configuration.pl  --do_build_sim=0  ]
+Info: ctrl_out: Done RTL generation for module 'spw_light_ctrl_out'
+Info: ctrl_out: "spw_light" instantiated altera_avalon_pio "ctrl_out"
+Info: hps_0: "Running  for module: hps_0"
+Info: hps_0: HPS Main PLL counter settings: n = 0  m = 36
+Info: hps_0: HPS peripherial PLL counter settings: n = 0  m = 19
+Warning: hps_0: "Configuration/HPS-to-FPGA user 0 clock frequency" (desired_cfg_clk_mhz) requested 100.0 MHz, but only achieved 97.368421 MHz
+Warning: hps_0: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
+Warning: hps_0: ODT is disabled. Enabling ODT (Mode Register 1) may improve signal integrity
+Warning: hps_0: set_interface_assignment: Interface "hps_io" does not exist
+Info: hps_0: "spw_light" instantiated altera_hps "hps_0"
+Info: pll_0: "spw_light" instantiated altera_pll "pll_0"
+Info: rxdata: Starting RTL generation for module 'spw_light_rxdata'
+Info: rxdata:   Generation command is [exec /home/felipe/intelFPGA_lite/17.1/quartus/linux64/perl/bin/perl -I /home/felipe/intelFPGA_lite/17.1/quartus/linux64/perl/lib -I /home/felipe/intelFPGA_lite/17.1/quartus/sopc_builder/bin/europa -I /home/felipe/intelFPGA_lite/17.1/quartus/sopc_builder/bin/perl_lib -I /home/felipe/intelFPGA_lite/17.1/quartus/sopc_builder/bin -I /home/felipe/intelFPGA_lite/17.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/felipe/intelFPGA_lite/17.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/felipe/intelFPGA_lite/17.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=spw_light_rxdata --dir=/tmp/alt7617_7624007123161128850.dir/0007_rxdata_gen/ --quartus_dir=/home/felipe/intelFPGA_lite/17.1/quartus --verilog --config=/tmp/alt7617_7624007123161128850.dir/0007_rxdata_gen//spw_light_rxdata_component_configuration.pl  --do_build_sim=0  ]
+Info: rxdata: Done RTL generation for module 'spw_light_rxdata'
+Info: rxdata: "spw_light" instantiated altera_avalon_pio "rxdata"
+Info: time_in: Starting RTL generation for module 'spw_light_time_in'
+Info: time_in:   Generation command is [exec /home/felipe/intelFPGA_lite/17.1/quartus/linux64/perl/bin/perl -I /home/felipe/intelFPGA_lite/17.1/quartus/linux64/perl/lib -I /home/felipe/intelFPGA_lite/17.1/quartus/sopc_builder/bin/europa -I /home/felipe/intelFPGA_lite/17.1/quartus/sopc_builder/bin/perl_lib -I /home/felipe/intelFPGA_lite/17.1/quartus/sopc_builder/bin -I /home/felipe/intelFPGA_lite/17.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/felipe/intelFPGA_lite/17.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/felipe/intelFPGA_lite/17.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=spw_light_time_in --dir=/tmp/alt7617_7624007123161128850.dir/0008_time_in_gen/ --quartus_dir=/home/felipe/intelFPGA_lite/17.1/quartus --verilog --config=/tmp/alt7617_7624007123161128850.dir/0008_time_in_gen//spw_light_time_in_component_configuration.pl  --do_build_sim=0  ]
+Info: time_in: Done RTL generation for module 'spw_light_time_in'
+Info: time_in: "spw_light" instantiated altera_avalon_pio "time_in"
+Info: time_out: Starting RTL generation for module 'spw_light_time_out'
+Info: time_out:   Generation command is [exec /home/felipe/intelFPGA_lite/17.1/quartus/linux64/perl/bin/perl -I /home/felipe/intelFPGA_lite/17.1/quartus/linux64/perl/lib -I /home/felipe/intelFPGA_lite/17.1/quartus/sopc_builder/bin/europa -I /home/felipe/intelFPGA_lite/17.1/quartus/sopc_builder/bin/perl_lib -I /home/felipe/intelFPGA_lite/17.1/quartus/sopc_builder/bin -I /home/felipe/intelFPGA_lite/17.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/felipe/intelFPGA_lite/17.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/felipe/intelFPGA_lite/17.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=spw_light_time_out --dir=/tmp/alt7617_7624007123161128850.dir/0009_time_out_gen/ --quartus_dir=/home/felipe/intelFPGA_lite/17.1/quartus --verilog --config=/tmp/alt7617_7624007123161128850.dir/0009_time_out_gen//spw_light_time_out_component_configuration.pl  --do_build_sim=0  ]
+Info: time_out: Done RTL generation for module 'spw_light_time_out'
+Info: time_out: "spw_light" instantiated altera_avalon_pio "time_out"
+Info: txdata: Starting RTL generation for module 'spw_light_txdata'
+Info: txdata:   Generation command is [exec /home/felipe/intelFPGA_lite/17.1/quartus/linux64/perl/bin/perl -I /home/felipe/intelFPGA_lite/17.1/quartus/linux64/perl/lib -I /home/felipe/intelFPGA_lite/17.1/quartus/sopc_builder/bin/europa -I /home/felipe/intelFPGA_lite/17.1/quartus/sopc_builder/bin/perl_lib -I /home/felipe/intelFPGA_lite/17.1/quartus/sopc_builder/bin -I /home/felipe/intelFPGA_lite/17.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/felipe/intelFPGA_lite/17.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/felipe/intelFPGA_lite/17.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=spw_light_txdata --dir=/tmp/alt7617_7624007123161128850.dir/0010_txdata_gen/ --quartus_dir=/home/felipe/intelFPGA_lite/17.1/quartus --verilog --config=/tmp/alt7617_7624007123161128850.dir/0010_txdata_gen//spw_light_txdata_component_configuration.pl  --do_build_sim=0  ]
+Info: txdata: Done RTL generation for module 'spw_light_txdata'
+Info: txdata: "spw_light" instantiated altera_avalon_pio "txdata"
+Info: rst_controller: "spw_light" instantiated altera_reset_controller "rst_controller"
+Info: fpga_interfaces: "hps_0" instantiated altera_interface_generator "fpga_interfaces"
+Info: hps_io: "hps_0" instantiated altera_hps_io "hps_io"
+Info: border: "hps_io" instantiated altera_interface_generator "border"
+Info: spw_light: Done "spw_light" with 15 modules, 60 files
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

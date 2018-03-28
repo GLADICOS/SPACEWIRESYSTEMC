@@ -1,0 +1,17 @@
+Analysis & Synthesis Status : Successful - Wed Mar 28 10:35:42 2018
+Quartus Prime Version : 17.1.1 Internal Build 593 12/11/2017 SJ Lite Edition
+Revision Name : spw_light
+Top-level Entity Name : SPW_LIGHT_T
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 3589
+Total pins : 15
+Total virtual pins : 0
+Total block memory bits : 36,864
+Total DSP Blocks : 0
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 1
+Total DLLs : 0

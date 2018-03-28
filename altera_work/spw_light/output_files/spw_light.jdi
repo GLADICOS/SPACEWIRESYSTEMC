@@ -1,0 +1,16 @@
+<sld_project_info>
+  <project>
+    <hash md5_digest_80b="7d4ff71d8491d2691ea2"/>
+  </project>
+  <file_info>
+    <file device="5CSEMA4U23C6" path="spw_light.sof" usercode="0xFFFFFFFF"/>
+  </file_info>
+  <sld_infos>
+    <sld_info hpath="spw_light:u0" name="u0">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME spw_light HAS_SOPCINFO 1 GENERATION_ID 1522209305"/>
+      </assignment_values>
+      <parameters/>
+    </sld_info>
+  </sld_infos>
+</sld_project_info>

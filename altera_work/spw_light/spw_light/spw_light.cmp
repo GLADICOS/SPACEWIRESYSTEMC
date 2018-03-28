@@ -1,0 +1,52 @@
+	component spw_light is
+		port (
+			autostart_external_connection_export  : out   std_logic;                                        -- export
+			clk_clk                               : in    std_logic                     := 'X';             -- clk
+			connecting_external_connection_export : in    std_logic                     := 'X';             -- export
+			ctrl_in_external_connection_export    : out   std_logic_vector(1 downto 0);                     -- export
+			ctrl_out_external_connection_export   : in    std_logic_vector(1 downto 0)  := (others => 'X'); -- export
+			errcred_external_connection_export    : in    std_logic                     := 'X';             -- export
+			errdisc_external_connection_export    : in    std_logic                     := 'X';             -- export
+			erresc_external_connection_export     : in    std_logic                     := 'X';             -- export
+			errpar_external_connection_export     : in    std_logic                     := 'X';             -- export
+			linkdis_external_connection_export    : out   std_logic;                                        -- export
+			linkstart_external_connection_export  : out   std_logic;                                        -- export
+			memory_mem_a                          : out   std_logic_vector(12 downto 0);                    -- mem_a
+			memory_mem_ba                         : out   std_logic_vector(2 downto 0);                     -- mem_ba
+			memory_mem_ck                         : out   std_logic;                                        -- mem_ck
+			memory_mem_ck_n                       : out   std_logic;                                        -- mem_ck_n
+			memory_mem_cke                        : out   std_logic;                                        -- mem_cke
+			memory_mem_cs_n                       : out   std_logic;                                        -- mem_cs_n
+			memory_mem_ras_n                      : out   std_logic;                                        -- mem_ras_n
+			memory_mem_cas_n                      : out   std_logic;                                        -- mem_cas_n
+			memory_mem_we_n                       : out   std_logic;                                        -- mem_we_n
+			memory_mem_reset_n                    : out   std_logic;                                        -- mem_reset_n
+			memory_mem_dq                         : inout std_logic_vector(7 downto 0)  := (others => 'X'); -- mem_dq
+			memory_mem_dqs                        : inout std_logic                     := 'X';             -- mem_dqs
+			memory_mem_dqs_n                      : inout std_logic                     := 'X';             -- mem_dqs_n
+			memory_mem_odt                        : out   std_logic;                                        -- mem_odt
+			memory_mem_dm                         : out   std_logic;                                        -- mem_dm
+			memory_oct_rzqin                      : in    std_logic                     := 'X';             -- oct_rzqin
+			pll_0_locked_export                   : out   std_logic;                                        -- export
+			pll_0_outclk0_clk                     : out   std_logic;                                        -- clk
+			reset_reset_n                         : in    std_logic                     := 'X';             -- reset_n
+			running_external_connection_export    : in    std_logic                     := 'X';             -- export
+			rxdata_external_connection_export     : in    std_logic_vector(7 downto 0)  := (others => 'X'); -- export
+			rxflag_external_connection_export     : in    std_logic                     := 'X';             -- export
+			rxhalff_external_connection_export    : in    std_logic                     := 'X';             -- export
+			rxread_external_connection_export     : out   std_logic;                                        -- export
+			rxvalid_external_connection_export    : in    std_logic                     := 'X';             -- export
+			started_external_connection_export    : in    std_logic                     := 'X';             -- export
+			tick_in_external_connection_export    : out   std_logic;                                        -- export
+			tick_out_external_connection_export   : in    std_logic                     := 'X';             -- export
+			time_in_external_connection_export    : out   std_logic_vector(5 downto 0);                     -- export
+			time_out_external_connection_export   : in    std_logic_vector(5 downto 0)  := (others => 'X'); -- export
+			txdata_external_connection_export     : out   std_logic_vector(7 downto 0);                     -- export
+			txdivcnt_external_connection_export   : out   std_logic_vector(7 downto 0);                     -- export
+			txflag_external_connection_export     : out   std_logic;                                        -- export
+			txhalff_external_connection_export    : in    std_logic                     := 'X';             -- export
+			txrdy_external_connection_export      : in    std_logic                     := 'X';             -- export
+			txwrite_external_connection_export    : out   std_logic                                         -- export
+		);
+	end component spw_light;
+
