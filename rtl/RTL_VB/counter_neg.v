@@ -94,7 +94,7 @@ begin
 		end
 		6'd16:
 		begin
-			is_control    <= 1'b1;
+			is_control    <= 1'b0;
 			counter_neg <= 6'd32;
 		end
 		6'd32:

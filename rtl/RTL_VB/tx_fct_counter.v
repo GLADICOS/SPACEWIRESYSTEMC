@@ -61,7 +61,7 @@ begin
 	begin
 		get_got_fct <= 1'b0;
 	end
-	else
+	else if(send_null_tx)
 	begin
 		get_got_fct <= 1'b1;
 	end
@@ -251,7 +251,7 @@ begin
 		3'd1:
 		begin
 			fct_counter_p <= fct_counter_receive;
-			clear_reg <= 1'b1;
+			clear_reg <= 1'b0;
 		end
 		3'd2:
 		begin

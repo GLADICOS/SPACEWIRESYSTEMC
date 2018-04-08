@@ -154,7 +154,7 @@ begin
 		ready_control = 1'b1;
 		ready_data    = 1'b0;
 	end
-	else if(is_control && counter_neg == 6'd32 && !posedge_p)
+	else if(!is_control && counter_neg == 6'd32 && !posedge_p)
 	begin
 		ready_control = 1'b0;
 		ready_data    = 1'b1;

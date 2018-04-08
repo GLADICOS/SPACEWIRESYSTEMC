@@ -590,7 +590,7 @@ begin
 				end
 				else
 				begin
-					if(global_counter_transfer < 4'd3)
+					if(global_counter_transfer < 4'd4)
 					begin
 						ready_tx_data <= 1'b1;
 						char_sent <= 1'b1;
@@ -645,7 +645,7 @@ begin
 					fct_sent <=  1'b0;
 					ready_tx_timecode <= 1'b0;
 				end
-				else if(global_counter_transfer == 4'd5)
+				else if(global_counter_transfer == 4'd4)
 				begin
 					fct_sent <=  1'b0;
 					ready_tx_timecode <= ready_tx_timecode;

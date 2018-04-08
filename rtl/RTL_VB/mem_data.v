@@ -48,7 +48,7 @@ module mem_data
 		output reg [DWIDTH-1:0] data_out
 );
 
-	reg [DWIDTH-1:0] MEM [0:2**AWIDTH-1];
+	reg [DWIDTH-1:0] MEM [0:2**AWIDTH-1]/* synthesis syn_ramstyle = "M-RAM" */;
 
 always@(posedge clock or negedge reset)
 begin
@@ -123,23 +123,14 @@ begin
 		MEM[61] <= {(DWIDTH){1'b0}};
 		MEM[62] <= {(DWIDTH){1'b0}};
 		MEM[63] <= {(DWIDTH){1'b0}};
+		data_out  <= 9'd0;
+
 	end
 	else
 	begin
 		MEM[wr_ptr]<=data_in;
+		data_out <= MEM[rd_ptr];	
+
 	end
 end
-
-//Read pointer
-always@(*)
-begin
-
-	data_out  = 9'd0;
-
-	if(reset)
-	begin
-		data_out = MEM[rd_ptr];	
-	end
-end
-
 endmodule

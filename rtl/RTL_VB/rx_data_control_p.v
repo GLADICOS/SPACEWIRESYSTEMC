@@ -80,7 +80,7 @@ begin
 	end
 	else
 	begin
-		if(is_control && counter_neg == 6'd32)
+		if(!is_control && counter_neg == 6'd32)
 		begin
 			dta_timec_p  <= {bit_d_8,bit_d_0,bit_d_1,bit_d_2,bit_d_3,bit_d_4,bit_d_5,bit_d_6,bit_d_7};
 			parity_rec_d 	  <= bit_d_9;

@@ -278,66 +278,30 @@ begin
 		f_full  <= 1'b0;
 		f_empty <= 1'b0;
 		overflow_credit_error<=1'b0;
-		counter <= {(AWIDTH){1'b0}};
-		credit_counter <= 6'd56;		
+		counter <= {(AWIDTH){1'b0}};	
 	end
 	else
 	begin
-
-		if(state_data_read == 2'd1 && rd_en && state_data_write == 2'd2)
+		if(state_data_write == 2'd2)
 		begin
-			credit_counter   <= credit_counter;
-		end
-		else if(state_data_read == 2'd1 && rd_en)
-		begin
-			if(rd_ptr == 6'd7 || rd_ptr == 6'd15 || rd_ptr == 6'd23 || rd_ptr == 6'd31 || rd_ptr == 6'd39 || rd_ptr == 6'd47 || rd_ptr == 6'd55 || rd_ptr == 6'd63)
-			begin		
-				if(credit_counter < 6'd49)			
-					credit_counter <= credit_counter + 6'd8;
-				else
-					credit_counter <= credit_counter + 6'd7;
-			end
-			else
-			begin
-				credit_counter <= credit_counter;	
-			end
-		end
-		else if (state_data_write == 2'd2)
-		begin
-			if(credit_counter > 6'd0)
-				credit_counter   <= credit_counter - 6'd1;
-			else
-				credit_counter   <= credit_counter;
+			counter <= counter + 6'd1;
 		end
 		else
-			credit_counter   <= credit_counter;
+		begin
+			if(counter > 6'd0 && state_data_read == 2'd2)
+				counter <= counter - 6'd1;
+			else
+				counter <= counter;
+		end
 
-		if(credit_counter > 6'd56)
+		if(counter > 6'd56)
 		begin
 			overflow_credit_error <= 1'b1;
 		end
 		else 
 			overflow_credit_error <= 1'b0;
 
-		if(state_data_write == 2'd2 && state_data_read == 2'd1 && rd_en)
-			counter <= counter;
-		else if(state_data_read == 2'd1 && rd_en)
-		begin
-			if(counter > 6'd0)
-				counter <= counter - 6'd1;
-			else
-				counter <= counter;
-		end
-		else if(state_data_write == 2'd2)
-			if(counter < 6'd63)
-				counter <= counter + 6'd1;
-			else
-				counter <= counter;
-			
-		else
-			counter <= counter;
-
-		if(counter == 6'd63)
+		if(counter == 6'd56)
 		begin
 			f_full  <= 1'b1;
 		end
