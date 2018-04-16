@@ -48,6 +48,7 @@ module tx_fct_send(
 
 	reg  [2:0] state_fct_send_p/* synthesis dont_replicate */;
 	reg  [2:0] next_state_fct_send_p/* synthesis dont_replicate */;
+
 always@(*)
 begin
 	next_state_fct_send = state_fct_send;
@@ -64,9 +65,13 @@ begin
 	end
 	3'd1:
 	begin
+		next_state_fct_send = 3'd2;
+	end
+	3'd2:
+	begin
 		if(send_fct_now)
 		begin
-			next_state_fct_send = 3'd1;
+			next_state_fct_send = 3'd2;
 		end
 		else 
 		begin
@@ -98,19 +103,16 @@ begin
 			begin
 				fct_flag <= 3'd0;
 			end
-			else if(send_fct_now)
-			begin
-				if(fct_flag < 3'd7)
-					fct_flag <= fct_flag + 3'd1;
-				else
-					fct_flag <= fct_flag;
-			end
 			else 
 			begin
 				fct_flag <= fct_flag;
 			end
 		end
 		3'd1:
+		begin
+			fct_flag <= fct_flag + 3'd1;
+		end
+		3'd2:
 		begin
 			fct_flag <= fct_flag;
 		end
@@ -132,20 +134,11 @@ begin
 	case(state_fct_send_p)
 	3'd0:
 	begin
-		if(send_fct_now)
-		begin
-			next_state_fct_send_p = 3'd0;
-		end
-		else if(fct_flag == 3'd7)
-		begin
-			next_state_fct_send_p = 3'd1;
-		end
-		else 
-			next_state_fct_send_p = 3'd0;
+		next_state_fct_send_p = 3'd2;
 	end
 	3'd1:
 	begin
-		if(fct_sent)
+		if(fct_flag == 3'd7)
 		begin
 			next_state_fct_send_p = 3'd2;
 		end
@@ -154,17 +147,26 @@ begin
 	end
 	3'd2:
 	begin
+		if(fct_sent)
+		begin
+			next_state_fct_send_p = 3'd3;
+		end
+		else 
+			next_state_fct_send_p = 3'd2;
+	end
+	3'd3:
+	begin
 		if(fct_flag_p > 3'd0 && !fct_sent)
 		begin
-			next_state_fct_send_p = 3'd1;
+			next_state_fct_send_p = 3'd2;
 		end
 		else if(fct_flag_p == 3'd0 && !fct_sent)
 		begin
-			next_state_fct_send_p = 3'd0;
+			next_state_fct_send_p = 3'd1;
 		end
 		else
 		begin
-			next_state_fct_send_p = 3'd2;
+			next_state_fct_send_p = 3'd3;
 		end
 	end
 	default:
@@ -178,8 +180,8 @@ always@(posedge pclk_tx or negedge enable_tx)
 begin
 	if(!enable_tx)
 	begin
-		fct_flag_p <= 3'd7;
-		state_fct_send_p<= 3'd1;
+		fct_flag_p <= 3'd0;
+		state_fct_send_p<= 3'd0;
 		clear_reg_fct_flag <=1'b0;
 	end
 	else if(send_null_tx)
@@ -189,38 +191,36 @@ begin
 		case(state_fct_send_p)
 		3'd0:
 		begin
-			if(send_fct_now)
-			begin
-				fct_flag_p <= 3'd0;
-				clear_reg_fct_flag <=1'b0;	
-			end
-			else if(fct_flag < 3'd7)
-			begin
-				clear_reg_fct_flag <=1'b0;
-				fct_flag_p <= 3'd0;
-			end
-			else 
-			begin
-				clear_reg_fct_flag <=1'b1;
-				fct_flag_p <= fct_flag;				
-			end
+			clear_reg_fct_flag <=1'b0;
+			fct_flag_p <= 3'd7;
 		end
 		3'd1:
 		begin
 			clear_reg_fct_flag <=1'b0;
+
+			if(fct_flag == 3'd7)
+			begin
+				fct_flag_p <= 3'd7;
+			end
+			else 
+			begin	
+				fct_flag_p <= fct_flag_p;				
+			end
+		end
+		3'd2:
+		begin
+			clear_reg_fct_flag <=1'b1;
+
 			if(fct_sent)
 			begin
-				if(fct_flag_p > 3'd0)
-					fct_flag_p <= fct_flag_p - 3'd1;
-				else
-					fct_flag_p <= fct_flag_p;
+				fct_flag_p <= fct_flag_p - 3'd1;
 			end
 			else 
 			begin
 				fct_flag_p <= fct_flag_p;
 			end
 		end
-		3'd2:
+		3'd3:
 		begin
 			clear_reg_fct_flag <=1'b0;
 			fct_flag_p <= fct_flag_p;

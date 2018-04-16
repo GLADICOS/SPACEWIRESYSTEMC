@@ -55,7 +55,7 @@ begin
 	else
 	begin
 
-		if(state_data_process == 2'd1)
+		if(state_data_process == 2'd1 || state_data_process == 2'd2)
 		begin	
 			if(last_is_timec == 1'b1)
 			begin

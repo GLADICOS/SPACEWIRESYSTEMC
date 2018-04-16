@@ -135,17 +135,11 @@ localparam [3:0] eep_s  = 4'b0111;
 
 	assign tx_sout = (tx_dout == last_tx_dout)?~last_tx_sout:last_tx_sout;
 
-	assign counter_aux = (state_tx == tx_spw_null || state_tx == tx_spw_null_c)?4'd7:
-			     (state_tx == tx_spw_fct  || state_tx == tx_spw_fct_c)?4'd3:
-			     ((state_tx == tx_spw_data_c  || state_tx == tx_spw_data_c_0) && (!tx_data_in[8] || !tx_data_in_0[8]))?4'd9:
-			     ((state_tx == tx_spw_data_c  || state_tx == tx_spw_data_c_0) && ( tx_data_in[8] ||  tx_data_in_0[8]))?4'd3:
-			     (state_tx == tx_spw_time_code_c)?4'd13:4'd7;
-
-	assign fct_great_than_zero = (fct_counter_p > 6'd0)?1'b1:1'b0;
+	assign fct_great_than_zero      = (fct_counter_p > 6'd0)?1'b1:1'b0;
 	assign fct_send_great_than_zero = (fct_flag_p > 3'd0)?1'b1:1'b0;
 
-	assign get_data   = (state_tx == tx_spw_null_c | state_tx == tx_spw_data_c_0 | state_tx == tx_spw_time_code_c)?1'b1:1'b0;
-	assign get_data_0 = (state_tx == tx_spw_data_c)?1'b1:1'b0;
+	assign get_data   = ( (state_tx == tx_spw_null_c | state_tx == tx_spw_data_c_0 | state_tx == tx_spw_time_code_c) & global_counter_transfer == 4'd6)?1'b1:1'b0;
+	assign get_data_0 = (state_tx == tx_spw_data_c & global_counter_transfer == 4'd6)?1'b1:1'b0;
 
 always@(*)
 begin
@@ -272,7 +266,7 @@ begin
 				next_state_tx = tx_spw_data_c;	
 			end		
 		end
-		else if(tx_data_in[8])
+		else
 		begin
 			if(global_counter_transfer == 4'd3)
 			begin
@@ -318,7 +312,7 @@ begin
 				next_state_tx = tx_spw_data_c_0;	
 			end		
 		end
-		else if(tx_data_in_0[8])
+		else
 		begin
 			if(global_counter_transfer == 4'd3)
 			begin
@@ -507,7 +501,7 @@ begin
 			ready_tx_data <= 1'b0;
 			ready_tx_timecode <= 1'b0;
 
-			if(global_counter_transfer == counter_aux)
+			if(global_counter_transfer == 4'd3)
 			begin
 				fct_sent <= 1'b0;
 			end
@@ -529,7 +523,7 @@ begin
 
 			ready_tx_data <= 1'b0;
 
-			if(global_counter_transfer == counter_aux)
+			if(global_counter_transfer == 4'd7)
 			begin
 				ready_tx_timecode <= 1'b0;
 			end
@@ -548,7 +542,7 @@ begin
 			last_tx_dout <= tx_dout;
 			last_tx_sout <= tx_sout;
 
-			if(global_counter_transfer == counter_aux)
+			if(global_counter_transfer == 4'd3)
 			begin		
 				char_sent <= 1'b0;	
 				fct_sent <=  1'b0;
@@ -578,7 +572,7 @@ begin
 			begin
 				txdata_flagctrl_tx_last <= tx_data_in;
 
-				if(global_counter_transfer == counter_aux)
+				if(global_counter_transfer == 4'd9)
 				begin
 					fct_sent <=  1'b0;
 					ready_tx_timecode <= 1'b0;
@@ -600,9 +594,7 @@ begin
 					begin
 						fct_sent <=  1'b0;
 						ready_tx_data <= 1'b0;
-						char_sent <= 1'b0;
-
-							
+						char_sent <= 1'b0;							
 					end
 					ready_tx_timecode <= ready_tx_timecode;
 				 end
@@ -611,7 +603,7 @@ begin
 			else
 			begin
 
-				if(global_counter_transfer == counter_aux)
+				if(global_counter_transfer == 4'd3)
 				begin
 					char_sent <= 1'b0;
 					fct_sent <=  1'b0;
@@ -640,7 +632,7 @@ begin
 
 				txdata_flagctrl_tx_last <= tx_data_in_0;
 
-				if(global_counter_transfer == counter_aux)
+				if(global_counter_transfer == 4'd9)
 				begin
 					fct_sent <=  1'b0;
 					ready_tx_timecode <= 1'b0;
@@ -672,7 +664,7 @@ begin
 			else
 			begin
 
-				if(global_counter_transfer == counter_aux)
+				if(global_counter_transfer == 4'd3)
 				begin
 					fct_sent <=  1'b0;
 					char_sent <= 1'b0;
@@ -700,7 +692,7 @@ begin
 			ready_tx_data <= 1'b0;				
 			last_timein_control_flag_tx <= tx_tcode_in;
 
-			if(global_counter_transfer == counter_aux)
+			if(global_counter_transfer == 4'd13)
 			begin
 				fct_sent <=  1'b0;
 				ready_tx_timecode <= 1'b1;
@@ -743,9 +735,81 @@ begin
 		begin
 			global_counter_transfer <= global_counter_transfer + 4'd1;
 		end
-		tx_spw_null,tx_spw_null_c,tx_spw_fct,tx_spw_fct_c,tx_spw_data_c,tx_spw_data_c_0,tx_spw_time_code_c:
+		tx_spw_null,tx_spw_null_c:
 		begin
-			if(global_counter_transfer == counter_aux)
+			if(global_counter_transfer == 4'd7)
+			begin
+				global_counter_transfer <= 4'd0;
+			end
+			else 
+			begin		
+				global_counter_transfer <= global_counter_transfer + 4'd1;
+			end
+		end		
+		tx_spw_fct,tx_spw_fct_c:
+		begin
+			if(global_counter_transfer == 4'd3)
+			begin
+				global_counter_transfer <= 4'd0;
+			end
+			else 
+			begin		
+				global_counter_transfer <= global_counter_transfer + 4'd1;
+			end
+		end		
+		tx_spw_data_c:
+		begin
+			if(!tx_data_in[8])
+			begin
+				if(global_counter_transfer == 4'd9)
+				begin
+					global_counter_transfer <= 4'd0;
+				end
+				else 
+				begin		
+					global_counter_transfer <= global_counter_transfer + 4'd1;
+				end
+			end
+			else
+			begin
+				if(global_counter_transfer == 4'd3)
+				begin
+					global_counter_transfer <= 4'd0;
+				end
+				else 
+				begin		
+					global_counter_transfer <= global_counter_transfer + 4'd1;
+				end
+			end
+		end
+		tx_spw_data_c_0:
+		begin
+			if(!tx_data_in_0[8])
+			begin
+				if(global_counter_transfer == 4'd9)
+				begin
+					global_counter_transfer <= 4'd0;
+				end
+				else 
+				begin		
+					global_counter_transfer <= global_counter_transfer + 4'd1;
+				end
+			end
+			else
+			begin
+				if(global_counter_transfer == 4'd3)
+				begin
+					global_counter_transfer <= 4'd0;
+				end
+				else 
+				begin		
+					global_counter_transfer <= global_counter_transfer + 4'd1;
+				end
+			end
+		end		
+		tx_spw_time_code_c:
+		begin
+			if(global_counter_transfer == 4'd13)
 			begin
 				global_counter_transfer <= 4'd0;
 			end

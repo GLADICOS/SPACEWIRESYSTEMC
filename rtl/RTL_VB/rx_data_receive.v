@@ -122,7 +122,7 @@ begin
 
 		rx_got_fct        <= 1'b0;
 	end
-	else if(rx_resetn)
+	else
 	begin
 
 		state_data_process <= next_state_data_process;
@@ -147,11 +147,11 @@ begin
 
 				if(control_p_r[2:0] == 3'd6)
 				begin
-					rx_data_flag <= 9'd257;
+					rx_data_flag <= 9'b100000001;
 				end
 				else if(control_p_r[2:0] == 3'd5)
 				begin
-					rx_data_flag <= 9'd256;
+					rx_data_flag <= 9'b100000000;
 				end
 				else
 				begin
@@ -166,20 +166,20 @@ begin
 			else if(ready_data_p_r)
 			begin
 				rx_got_fct        <= 1'b0;
-
-				if(control_p_r[2:0] != 3'd7)
-				begin
-					rx_data_flag	<= {dta_timec_p[8],dta_timec_p[7],dta_timec_p[6],dta_timec_p[5],dta_timec_p[4],dta_timec_p[3],dta_timec_p[2],dta_timec_p[1],dta_timec_p[0]};					
-					last_is_control  	<=1'b0;
-					last_is_data     	<=1'b1;
-					last_is_timec    	<=1'b0;
-				end
-				else if(control_p_r[2:0] == 3'd7)
+				
+				if(control_p_r[2:0] == 3'd7)
 				begin
 					timecode     <=  {dta_timec_p[7],dta_timec_p[6],dta_timec_p[5],dta_timec_p[4],dta_timec_p[3],dta_timec_p[2],dta_timec_p[1],dta_timec_p[0]};
 					last_is_control  	<= 1'b0;
 					last_is_data     	<= 1'b0;
 					last_is_timec    	<= 1'b1;
+				end
+				else
+				begin
+					rx_data_flag	<= {dta_timec_p[8],dta_timec_p[7],dta_timec_p[6],dta_timec_p[5],dta_timec_p[4],dta_timec_p[3],dta_timec_p[2],dta_timec_p[1],dta_timec_p[0]};					
+					last_is_control  	<=1'b0;
+					last_is_data     	<=1'b1;
+					last_is_timec    	<=1'b0;
 				end
 			end
 			else
@@ -224,6 +224,7 @@ begin
 				rx_error_d <= rx_error_d;
 				rx_got_fct        <= 1'b0;
 			end
+
 			rx_data_flag	<= rx_data_flag;
 			timecode    	<= timecode;
 		end

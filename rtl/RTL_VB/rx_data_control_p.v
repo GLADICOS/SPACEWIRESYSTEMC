@@ -118,7 +118,12 @@ begin
 	else
 	begin
 
-		if(is_control && counter_neg == 6'd4)
+		if(!is_control && counter_neg == 6'd32)
+		begin
+			control_p_r  	<= 3'd0;
+			control_l_r	<= 3'd0;
+		end
+		else if(is_control && counter_neg == 6'd4)
 		begin
 			control_p_r	  <= {bit_c_2,bit_c_1,bit_c_0};
 			control_l_r	  <= control_p_r;

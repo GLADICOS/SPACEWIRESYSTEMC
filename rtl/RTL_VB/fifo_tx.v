@@ -52,8 +52,8 @@ module fifo_tx
 	reg  [1:0] state_data_read;
 	reg  [1:0] next_state_data_read;
 
-	reg [AWIDTH-1:0] counter_writer/* synthesis syn_noprune */;
-	reg [AWIDTH-1:0] counter_reader/* synthesis syn_noprune */;
+	//reg [AWIDTH-1:0] counter_writer/* synthesis syn_noprune */;
+	//reg [AWIDTH-1:0] counter_reader/* synthesis syn_noprune */;
 
 
 /****************************************/
@@ -189,31 +189,21 @@ begin
 		f_full  <= 1'b0;
 		f_empty <= 1'b0;
 		counter <= {(AWIDTH){1'b0}};
-		counter_writer <= {(AWIDTH){1'b0}};
-		counter_reader <= {(AWIDTH){1'b0}};
 	end
 	else
 	begin
 
 		if(state_data_write == 2'd2)
 		begin
-			counter_writer <= counter_writer + 6'd1;
+			counter <= counter + 6'd1;
 		end
 		else
 		begin
-			counter_writer <= counter_writer;
+			if(counter > 6'd0 && state_data_read == 2'd3)
+				counter <= counter - 6'd1;
+			else
+				counter <= counter;	
 		end
-		
-		if(state_data_read == 2'd2 && !rd_en)
-		begin
-			counter_reader <= counter_reader + 6'd1;
-		end
-		else
-		begin
-			counter_reader <= counter_reader;
-		end
-
-		counter <= counter_writer - counter_reader;
 
 		if(counter == 6'd63)
 		begin
