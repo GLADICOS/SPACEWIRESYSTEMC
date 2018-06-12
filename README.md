@@ -3,7 +3,7 @@ This project provide the necessary to run a envireonment test to spacewire veril
 
 ###Donate and help us donating in Ethereum
 
- - 0x6BA1760241Aa8046DAB946aB5EBD29bd132B0b7A
+ - 0xd52F269653885d585a03b793C59db5a528A49a18
 
 ###ABOUT this Spacewire
 
