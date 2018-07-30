@@ -1,10 +1,10 @@
 # SPACEWIRESYSTEMC
 This project provide the necessary to run a envireonment test to spacewire verilog using SystemC and running it on icarus verilog
 
-###Donate and help us donating mining for me on a mining pool
+###Donate and help us donating mining for us on a mining pool
 
- stratum+tcp://192.168.10.242:4444 litecoin 
- stratum+tcp://192.168.10.242:3333 bitcoin
+ # stratum+tcp://192.168.10.242:4444 litecoin 
+ # stratum+tcp://192.168.10.242:3333 bitcoin
 
 ###ABOUT this Spacewire
 
