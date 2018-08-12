@@ -3,8 +3,7 @@ This project provide the necessary to run a envireonment test to spacewire veril
 
 ###Donate and help us donating mining for us on a mining pool
 
- ## litecoin : stratum+tcp://45.228.137.157:4444  
- ## bitcoin  : stratum+tcp://45.228.137.157:3333 
+### 45.228.137.157 5% fee go to development
 
 ###ABOUT this Spacewire
 
