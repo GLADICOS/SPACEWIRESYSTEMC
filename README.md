@@ -1,9 +1,16 @@
 # SPACEWIRESYSTEMC
 This project provide the necessary to run a envireonment test to spacewire verilog using SystemC and running it on icarus verilog
 
-###Donate and help us donating mining for us on a mining pool
+###Donate to help us make much more to this world
 
-### 45.228.137.157 5% fee go to development
+### XVG  - VERGE    : DEpRyRqDisHcM38tTh5JRckCWQLoYYGLHa
+### DGB  - DIGIBYTE : DKHrs2Dr4v5HxNnHVGdrqu1RLPHQe7Xow2
+### LTC  - LITECOIN : M8vHgFurrJ5LTCNi1ZPaVXqCeFeXJuHg8v  
+### DOGE - DOGECOIN : DAL7LSZpZSrhfjZcMyoUqVbFqnBr4Hf712
+### BTC  - BITCOIN  : 34PZyDFZxKZmHztTqZ1g5MFsFo2gQSgYpX
+### LCC  - LITECOINC: MVgG85oVSmonKdKxAt7MAjrAoyx5v6Yj9F
+### DASH - DASHCOIN : XnK65Ep7yypUUP4scd9iYVsJrKtx6LWV8Z
+### FLO  - FLOCOIN  : FAv8YGHBoLipeBDTptXgT3dfkBXPQbD2KD
 
 ###ABOUT this Spacewire
 
@@ -54,6 +61,7 @@ This consist in a aerospace IP used to data between another switch who contain a
  - libboost
  - gtkmm
  - glade
+ - cmake
 
 *Obs: you need alredy know how to compile and understand concepts and how work icarus / SystemC / linux tools
 
@@ -61,7 +69,7 @@ This consist in a aerospace IP used to data between another switch who contain a
 
 To systemC , icarus verilog and gtkwave follow instalation guide provided by developers and make propely exports to linux distro see includes and objects used during build of environment. The folder work is where you need compile and execute the test using systemC and DUT in verilog. Note on env_global_spw.cpp some includes fail because location so you need set it where you have compiled or instaled icarus verilog. 
 
-On work folder you should see after yoo installed systemC if is propely installed
+On work folder you should see after you installed systemC if is propely installed
 
 ```sh
 $ ldd final_spw.so
@@ -161,17 +169,22 @@ To Run environment just do the follow command
 
  - Graphical interface to a better experience 
  - Dinamic change clock during environment execution on TX execution
+ - Debuging both spacewires TRC/ULIGHT
  - A output file in html format TX SystemC 2 RX Verilog contain data compared 
  - A output file in html format TX Verilog 2 RX SystemC contain data compared 
 
-###SystemC BUGS ? :-(
+ - Adding another spacewires to test in software
 
- - Some disconections Spacewire SystemC dont reconnect for some verilogs
- - I didnt think in all possible combinations to char's so you may get a bad one 
- - Time code on TX hiting button dont start send 
+### BUGS ? :-(
+
+ - Timecode still not functional
+ - SystemC is better coded now to avoid problems during execution
+ - verilog inst tested under syntesys verilog with sdf files. This might be a problem right now 
 
 ###What i will do on future if i still alive go to space X-D
 
- - A timecode file to verilog receiver
- - Debuging SystemC and verilog
- - Test range of frequencies on RX SystemC
+ - I'm a bit unhappy with graphical interface ... i wish rebuild it .. but i don't know when 
+ - Need help to build a better sdc aimed to Altera Fpga to run each Spacewire on altera first place .... 
+ - Re write Spacewire ulight documentation about blcoks
+ - Build a new set of tests cases to spacewire ulight without graphical interface
+ - i want build a better java interface to tests to software ... but Openjdk in new version ... i just want may be use javaFx 
