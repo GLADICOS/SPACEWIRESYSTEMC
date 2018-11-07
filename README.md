@@ -3,16 +3,16 @@ This project provide the necessary to run a envireonment test to spacewire veril
 
 ###Donate to help us make much more to this world
 
-### XVG  - VERGE    : DEpRyRqDisHcM38tTh5JRckCWQLoYYGLHa
-### DGB  - DIGIBYTE : DKHrs2Dr4v5HxNnHVGdrqu1RLPHQe7Xow2
-### LTC  - LITECOIN : M8vHgFurrJ5LTCNi1ZPaVXqCeFeXJuHg8v  
-### DOGE - DOGECOIN : DAL7LSZpZSrhfjZcMyoUqVbFqnBr4Hf712
-### BTC  - BITCOIN  : 34PZyDFZxKZmHztTqZ1g5MFsFo2gQSgYpX
-### LCC  - LITECOINC: MVgG85oVSmonKdKxAt7MAjrAoyx5v6Yj9F
-### DASH - DASHCOIN : XnK65Ep7yypUUP4scd9iYVsJrKtx6LWV8Z
-### FLO  - FLOCOIN  : FAv8YGHBoLipeBDTptXgT3dfkBXPQbD2KD
+### [XVG](https://vergecurrency.com/)  - VERGE    : DEpRyRqDisHcM38tTh5JRckCWQLoYYGLHa
+### [DGB](https://www.digibyte.co/digibyte-global-blockchain)  - DIGIBYTE : DKHrs2Dr4v5HxNnHVGdrqu1RLPHQe7Xow2
+### [LTC](https://litecoin.org/)  - LITECOIN : M8vHgFurrJ5LTCNi1ZPaVXqCeFeXJuHg8v  
+### [DOGE](https://dogecoin.com/) - DOGECOIN : DAL7LSZpZSrhfjZcMyoUqVbFqnBr4Hf712
+### [BTC](https://bitcoin.org/en/)  - BITCOIN  : 34PZyDFZxKZmHztTqZ1g5MFsFo2gQSgYpX
+### [LCC](https://litecoinca.sh/)  - LITECOINC: MVgG85oVSmonKdKxAt7MAjrAoyx5v6Yj9F
+### [DASH](https://www.dash.org/) - DASHCOIN : XnK65Ep7yypUUP4scd9iYVsJrKtx6LWV8Z
+### [FLO](https://www.flo.cash/)  - FLOCOIN  : FAv8YGHBoLipeBDTptXgT3dfkBXPQbD2KD
 
-###ABOUT this Spacewire
+### ABOUT this Spacewire
 
 This consist in a aerospace IP used to data between another switch who contain another spacewire. To this project we give to you the possibility to test or use the IP only spacewire2spacewire using the standart interface we elaborated by design. The model like verilog follow the standart spacewire from year 2008.
 
@@ -26,12 +26,12 @@ This consist in a aerospace IP used to data between another switch who contain a
   - Promoting microelectronics interested people on Latin America
   - Teamwork
 
-###IP features
+### IP features
  - Design definition
 
-###Model features
+### Model features
 
-###RX 
+### RX 
  - 850ns timeout
  - Parity error
  - Invalid combination
@@ -39,19 +39,19 @@ This consist in a aerospace IP used to data between another switch who contain a
  - Fct counter
  - Time Code
 
-###TX 
+### TX 
  - Parity calculation
  - Nchar "data-eop-eep"
  - Time Code
  - Send Fct
  - Frequencies worked Mhz "2 - 10 - 20 - 50 - 100 - 150 - 200 - 201 - 250 - 280"
 
-###FSM SPACEWIRE
+### FSM SPACEWIRE
  - Linkstart - AutoStart - LinkDisable
  - 12,8 us timeout
  - 6,4  us timeout
 
-###Requisites
+### Requisites
 
  - Linux Distro
  - Icarus verilog [http://iverilog.icarus.com/]
@@ -65,7 +65,7 @@ This consist in a aerospace IP used to data between another switch who contain a
 
 *Obs: you need alredy know how to compile and understand concepts and how work icarus / SystemC / linux tools
 
-###Configuration of Environment
+### Configuration of Environment
 
 To systemC , icarus verilog and gtkwave follow instalation guide provided by developers and make propely exports to linux distro see includes and objects used during build of environment. The folder work is where you need compile and execute the test using systemC and DUT in verilog. Note on env_global_spw.cpp some includes fail because location so you need set it where you have compiled or instaled icarus verilog. 
 
@@ -165,7 +165,7 @@ To Run environment just do the follow command
 ```sh
   bash run.sh
 ```
-###What I have done till now
+### What I have done till now
 
  - Graphical interface to a better experience 
  - Dinamic change clock during environment execution on TX execution
@@ -181,7 +181,7 @@ To Run environment just do the follow command
  - SystemC is better coded now to avoid problems during execution
  - verilog inst tested under syntesys verilog with sdf files. This might be a problem right now 
 
-###What i will do on future if i still alive go to space X-D
+### What i will do on future if i still alive go to space X-D
 
  - I'm a bit unhappy with graphical interface ... i wish rebuild it .. but i don't know when 
  - Need help to build a better sdc aimed to Altera Fpga to run each Spacewire on altera first place .... 
