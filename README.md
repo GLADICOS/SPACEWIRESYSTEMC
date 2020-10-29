@@ -1,17 +1,6 @@
 # SPACEWIRESYSTEMC
 This project provide the necessary to run a envireonment test to spacewire verilog using SystemC and running it on icarus verilog
 
-###Donate to help us make much more to this world
-
-### [XVG](https://vergecurrency.com/)  - VERGE    : DEpRyRqDisHcM38tTh5JRckCWQLoYYGLHa
-### [DGB](https://www.digibyte.co/digibyte-global-blockchain)  - DIGIBYTE : DKHrs2Dr4v5HxNnHVGdrqu1RLPHQe7Xow2
-### [LTC](https://litecoin.org/)  - LITECOIN : M8vHgFurrJ5LTCNi1ZPaVXqCeFeXJuHg8v  
-### [DOGE](https://dogecoin.com/) - DOGECOIN : DAL7LSZpZSrhfjZcMyoUqVbFqnBr4Hf712
-### [BTC](https://bitcoin.org/en/)  - BITCOIN  : 34PZyDFZxKZmHztTqZ1g5MFsFo2gQSgYpX
-### [LCC](https://litecoinca.sh/)  - LITECOINC: MVgG85oVSmonKdKxAt7MAjrAoyx5v6Yj9F
-### [DASH](https://www.dash.org/) - DASHCOIN : XnK65Ep7yypUUP4scd9iYVsJrKtx6LWV8Z
-### [FLO](https://www.flo.cash/)  - FLOCOIN  : FAv8YGHBoLipeBDTptXgT3dfkBXPQbD2KD
-
 ### ABOUT this Spacewire
 
 This consist in a aerospace IP used to data between another switch who contain another spacewire. To this project we give to you the possibility to test or use the IP only spacewire2spacewire using the standart interface we elaborated by design. The model like verilog follow the standart spacewire from year 2008.
